@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class GameManager : MonoBehaviour
     public int iPatternNumbers = 0;
     public string sPatternNumbers;
     public string sPatternAnswer;
+
+    public TMP_Text tScore;
+
+    bool isGameButtonsDisabled = true;
 
     void Start()
     {
@@ -20,7 +25,9 @@ public class GameManager : MonoBehaviour
     }
     void GeneratePattern()
     {
+        
         iPatternNumbers++;
+        SetTextScore();
         sPatternNumbers = "";
         for (int i = 0; i < iPatternNumbers; i++)
         {
@@ -85,5 +92,9 @@ public class GameManager : MonoBehaviour
     {
         sPatternAnswer += number.ToString();
         CheckAnswer();
+    }
+    void SetTextScore()
+    {
+        tScore.text = "SCORE: " + ((iPatternNumbers - 1).ToString());
     }
 }

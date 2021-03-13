@@ -8,10 +8,11 @@ public class GameManager : MonoBehaviour
 {
 
     public int iPatternNumbers = 0;
+    public int Highscore = 0;
     public string sPatternNumbers;
     public string sPatternAnswer;
 
-    public TMP_Text tScore;
+    public TMP_Text tScore, tHighscore;
 
     //Buttons
     public List<GameObject> Buttons = new List<GameObject>();
@@ -82,16 +83,24 @@ public class GameManager : MonoBehaviour
     {
         //Clear answer
         sPatternAnswer = "";
-        isGameButtonsDisabled = true;
+        EnableButtons(false);
         GeneratePattern();
     }
     void EndGame()
     {
-        //If new highscore
-        //New highscore!
-        //Else
+        
+        
+        
         //Show score
-
+        if (iPatternNumbers > Highscore) //If new highscore
+        {
+            //New highscore!
+            Highscore = iPatternNumbers;
+        }
+        else
+        {
+            //bleh
+        }
         //Play again?
         sPatternAnswer = "";
         iPatternNumbers = 0;
@@ -112,6 +121,7 @@ public class GameManager : MonoBehaviour
     void SetTextScore()
     {
         tScore.text = "SCORE: " + ((iPatternNumbers - 1).ToString());
+        tHighscore.text = "HIGH SCORE: " + Highscore.ToString();
     }
 
     IEnumerator AnimateButtonColours()
@@ -125,10 +135,31 @@ public class GameManager : MonoBehaviour
             Buttons[number].GetComponent<Button>().image.color = Color.red;
             yield return new WaitForSeconds(time_buttonsAreColour);
             //Uncolour button
-            Buttons[number].GetComponent<Button>().image.color = Color.white;
+            Buttons[number].GetComponent<Button>().image.color = Color.grey;
         }
-        isGameButtonsDisabled = false;
+        
+        EnableButtons(true);
         yield return new WaitForSeconds(0.0f);
+    }
+
+    void EnableButtons(bool state)
+    {
+        if (state == true)
+        {
+            isGameButtonsDisabled = false;
+            foreach (GameObject button in Buttons)
+            {
+                button.GetComponent<Button>().image.color = Color.white;
+            }
+        }
+        else
+        {
+            isGameButtonsDisabled = true;
+            foreach (GameObject button in Buttons)
+            {
+                button.GetComponent<Button>().image.color = Color.grey;
+            }
+        }
     }
 
 }

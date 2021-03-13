@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -12,17 +13,21 @@ public class GameManager : MonoBehaviour
 
     public TMP_Text tScore;
 
+    //Buttons
+    public List<GameObject> Buttons = new List<GameObject>();
     //Used to enable/disable user able to press buttons - mainly when showing patterns and when not in-game
     public bool isGameButtonsDisabled = false;
+
+
+    //Button Animation
+
+    public float time_buttonsAreColour = 0.5f;
+    public float time_buttonsTimeBetween = 0.25f;
+
 
     void Start()
     {
         GeneratePattern();
-    }
-
-    void Update()
-    {
-        
     }
     void GeneratePattern()
     {
@@ -35,6 +40,8 @@ public class GameManager : MonoBehaviour
             int number = Random.Range(1, 9);
             sPatternNumbers += number.ToString();
         }
+        //Animate
+        StartCoroutine(AnimateButtonColours());
     }
     //Call on every button press
     public void CheckAnswer()
@@ -75,6 +82,7 @@ public class GameManager : MonoBehaviour
     {
         //Clear answer
         sPatternAnswer = "";
+        isGameButtonsDisabled = true;
         GeneratePattern();
     }
     void EndGame()
@@ -89,6 +97,8 @@ public class GameManager : MonoBehaviour
         iPatternNumbers = 0;
         NextRound();
     }
+    
+    //Called when a button is pressed
     public void ButtonPressed(int number)
     {
         if (!isGameButtonsDisabled)
@@ -97,8 +107,28 @@ public class GameManager : MonoBehaviour
             CheckAnswer();
         }
     }
+
+    //Sets the text object's score
     void SetTextScore()
     {
         tScore.text = "SCORE: " + ((iPatternNumbers - 1).ToString());
     }
+
+    IEnumerator AnimateButtonColours()
+    {
+        for (int i = 0; i < sPatternNumbers.Length; i++)
+        {
+            yield return new WaitForSeconds(time_buttonsTimeBetween);
+            //Get number for button
+            int number = int.Parse(sPatternNumbers[i].ToString()) - 1;
+            //Colour button
+            Buttons[number].GetComponent<Button>().image.color = Color.red;
+            yield return new WaitForSeconds(time_buttonsAreColour);
+            //Uncolour button
+            Buttons[number].GetComponent<Button>().image.color = Color.white;
+        }
+        isGameButtonsDisabled = false;
+        yield return new WaitForSeconds(0.0f);
+    }
+
 }

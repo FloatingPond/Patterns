@@ -115,6 +115,7 @@ public class GameManager : MonoBehaviour
         }
         //Play again?
         sPatternAnswer = "";
+        sPatternNumbers = "";
         iPatternNumbers = 0;
         NextRound();
     }

@@ -28,9 +28,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        GeneratePattern();
+        //GenerateRandomPattern();
+        AddToExistingPattern();
     }
-    void GeneratePattern()
+    void GenerateRandomPattern()
     {
         
         iPatternNumbers++;
@@ -41,6 +42,16 @@ public class GameManager : MonoBehaviour
             int number = Random.Range(1, 9);
             sPatternNumbers += number.ToString();
         }
+        //Animate
+        StartCoroutine(AnimateButtonColours());
+    }
+    void AddToExistingPattern()
+    {
+        iPatternNumbers++;
+        SetTextScore();
+        //sPatternNumbers = "";
+        int number = Random.Range(1, 9);
+        sPatternNumbers += number.ToString();
         //Animate
         StartCoroutine(AnimateButtonColours());
     }
@@ -84,7 +95,8 @@ public class GameManager : MonoBehaviour
         //Clear answer
         sPatternAnswer = "";
         EnableButtons(false);
-        GeneratePattern();
+        //GenerateRandomPattern();
+        AddToExistingPattern();
     }
     void EndGame()
     {

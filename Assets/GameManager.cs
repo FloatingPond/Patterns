@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
 
     public TMP_Text tScore;
 
-    bool isGameButtonsDisabled = true;
+    //Used to enable/disable user able to press buttons - mainly when showing patterns and when not in-game
+    public bool isGameButtonsDisabled = false;
 
     void Start()
     {
@@ -90,8 +91,11 @@ public class GameManager : MonoBehaviour
     }
     public void ButtonPressed(int number)
     {
-        sPatternAnswer += number.ToString();
-        CheckAnswer();
+        if (!isGameButtonsDisabled)
+        { 
+            sPatternAnswer += number.ToString();
+            CheckAnswer();
+        }
     }
     void SetTextScore()
     {

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Android;
+using Unity.Notifications.Android;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
     public float time_buttonsAreColour = 0.5f;
     public float time_buttonsTimeBetween = 0.25f;
 
+    
 
     void Start()
     {
@@ -101,8 +104,7 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         
-        
-        
+
         //Show score
         if (iPatternNumbers > Highscore) //If new highscore
         {

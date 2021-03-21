@@ -103,8 +103,9 @@ public class GameManager : MonoBehaviour
     }
     void EndGame()
     {
-        
-
+        EnableButtons(false);
+        //Show "GAME OVER" TEXT
+        //Maybe also play a sound
         //Show score
         if (iPatternNumbers > Highscore) //If new highscore
         {
@@ -113,13 +114,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //bleh
+            
         }
         //Play again?
-        sPatternAnswer = "";
-        sPatternNumbers = "";
-        iPatternNumbers = 0;
-        NextRound();
+        //Enable Play Again and Return buttons
+        
     }
     
     //Called when a button is pressed
@@ -156,7 +155,6 @@ public class GameManager : MonoBehaviour
         EnableButtons(true);
         yield return new WaitForSeconds(0.0f);
     }
-
     void EnableButtons(bool state)
     {
         if (state == true)
@@ -175,6 +173,15 @@ public class GameManager : MonoBehaviour
                 button.GetComponent<Button>().image.color = Color.grey;
             }
         }
+    }
+
+    public void RestartGame()
+    {
+        //Disable Play Again and Return buttons
+        sPatternAnswer = "";
+        sPatternNumbers = "";
+        iPatternNumbers = 0;
+        NextRound();
     }
 
 }

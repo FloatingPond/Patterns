@@ -1,31 +1,13 @@
 {
-    "m_SelectedDeviceId": "X5BDU19128002043",
+    "m_SelectedDeviceId": "RFCMA01238V",
     "m_SelectedPackage": {
-        "deviceId": "X5BDU19128002043",
+        "deviceId": "RFCMA01238V",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 12179,
+        "processId": 22548,
         "exited": true
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "X5BDU19128002043",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 17458,
-            "exited": true
-        },
-        {
-            "deviceId": "X5BDU19128002043",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 18284,
-            "exited": true
-        },
-        {
-            "deviceId": "X5BDU19128002043",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 19610,
-            "exited": true
-        },
         {
             "deviceId": "X5BDU19128002043",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
@@ -42,12 +24,36 @@
             "deviceId": "X5BDU19128002043",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 9924,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "X5BDU19128002043",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 12179,
+            "exited": true
+        },
+        {
+            "deviceId": "X5BDU19128002043",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 13139,
+            "exited": true
+        },
+        {
+            "deviceId": "X5BDU19128002043",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 13425,
+            "exited": true
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.android.settings",
+            "processId": 26773,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 22548,
             "exited": true
         }
     ],

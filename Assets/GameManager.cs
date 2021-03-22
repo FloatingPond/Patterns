@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public string sPatternNumbers;
     public string sPatternAnswer;
 
-    public TMP_Text tScore, tHighscore;
+    public TMP_Text tScore, tHighscore, tAfterGame;
 
     ////Buttons
     //Game buttons
@@ -109,20 +109,24 @@ public class GameManager : MonoBehaviour
         EnableButtons(false);
         endgameCanvas.SetActive(true);
         //Show "GAME OVER" TEXT
+        
         //Maybe also play a sound
-        //Show score
-        if (iPatternNumbers > Highscore) //If new highscore
+        
+        if (iPatternNumbers-1 > Highscore) //If new highscore
         {
             //New highscore!
-            Highscore = iPatternNumbers;
+            Highscore = iPatternNumbers-1;
+            tAfterGame.text = "NEW HIGHSCORE!";
         }
         else
         {
-            
+            tAfterGame.text = "Game Over";
         }
+        //Show score
+        SetTextScore();
         //Play again?
         //Enable Play Again and Return buttons
-        
+
     }
     
     //Called when a button is pressed
@@ -186,6 +190,7 @@ public class GameManager : MonoBehaviour
         sPatternAnswer = "";
         sPatternNumbers = "";
         iPatternNumbers = 0;
+        tAfterGame.text = "";
         NextRound();
     }
 

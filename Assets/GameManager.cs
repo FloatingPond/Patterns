@@ -16,8 +16,11 @@ public class GameManager : MonoBehaviour
 
     public TMP_Text tScore, tHighscore;
 
-    //Buttons
+    ////Buttons
+    //Game buttons
     public List<GameObject> Buttons = new List<GameObject>();
+    //Canvas containing endgame buttons (Return, Restart)
+    public GameObject endgameCanvas;
     //Used to enable/disable user able to press buttons - mainly when showing patterns and when not in-game
     public bool isGameButtonsDisabled = false;
 
@@ -32,7 +35,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //GenerateRandomPattern();
-        AddToExistingPattern();
+        RestartGame();
     }
     void GenerateRandomPattern()
     {
@@ -104,6 +107,7 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         EnableButtons(false);
+        endgameCanvas.SetActive(true);
         //Show "GAME OVER" TEXT
         //Maybe also play a sound
         //Show score
@@ -178,6 +182,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         //Disable Play Again and Return buttons
+        endgameCanvas.SetActive(false);
         sPatternAnswer = "";
         sPatternNumbers = "";
         iPatternNumbers = 0;

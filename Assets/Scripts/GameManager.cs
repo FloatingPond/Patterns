@@ -31,9 +31,17 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        LoadGame();
         //Game no longer automatically starts as that is now controlled by MainMenu
         //GenerateRandomPattern();
         //RestartGame();
+    }
+    void LoadGame()
+    {
+        PlayerData data = SaveSystem.LoadGame();
+
+        Highscore = data.highscores[0];
+
     }
     void GenerateRandomPattern()
     {
@@ -114,6 +122,8 @@ public class GameManager : MonoBehaviour
             //New highscore!
             Highscore = iPatternNumbers-1;
             tAfterGame.text = "NEW HIGHSCORE!";
+            //Save highscore
+            SaveSystem.SaveGame(this);
         }
         else
         {

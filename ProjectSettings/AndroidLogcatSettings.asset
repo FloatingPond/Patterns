@@ -1,10 +1,10 @@
 {
-    "m_SelectedDeviceId": "RFCMA01238V",
+    "m_SelectedDeviceId": "d6ea2c80",
     "m_SelectedPackage": {
-        "deviceId": "RFCMA01238V",
+        "deviceId": "d6ea2c80",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 1627,
-        "exited": true
+        "processId": 15142,
+        "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -79,6 +79,12 @@
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 1627,
             "exited": true
+        },
+        {
+            "deviceId": "d6ea2c80",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 15142,
+            "exited": false
         }
     ],
     "m_Tags": {

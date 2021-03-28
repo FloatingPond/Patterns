@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     public GameManager gm;
     public void Start_Gamemode()
     {
-        SwitchToGameCanvas(true);
+        SwitchToCanvas("game");
         Gameplay.enabled = true;
         //No longer used
         gm.RestartGame();
@@ -23,7 +23,33 @@ public class MainMenu : MonoBehaviour
     }
     public void ReturnToMainMenu()
     {
-        SwitchToGameCanvas(false);
+        SwitchToCanvas("mainmenu");
+    }
+
+    private void SwitchToCanvas(string canvas)
+    {
+        if (canvas == "mainmenu")
+        {
+            Gameplay.enabled = false;
+            Endgame.enabled = false;
+            MainMenuCanvas.enabled = true;
+        }
+        else if (canvas == "stats")
+        {
+            Gameplay.enabled = false;
+            Endgame.enabled = false;
+            MainMenuCanvas.enabled = false;
+        }
+        else if (canvas == "game")
+        {
+            Gameplay.enabled = true;
+            Endgame.enabled = true;
+            MainMenuCanvas.enabled = false;
+        }
+        else
+        {
+            //wut
+        }
     }
 
 }

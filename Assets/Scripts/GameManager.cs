@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //GenerateRandomPattern();
-        RestartGame();
+        //RestartGame();
     }
     void GenerateRandomPattern()
     {
@@ -163,7 +163,7 @@ public class GameManager : MonoBehaviour
         EnableButtons(true);
         yield return new WaitForSeconds(0.0f);
     }
-    void EnableButtons(bool state)
+    public void EnableButtons(bool state)
     {
         if (state == true)
         {

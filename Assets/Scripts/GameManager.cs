@@ -24,22 +24,19 @@ public class GameManager : MonoBehaviour
     //Used to enable/disable user able to press buttons - mainly when showing patterns and when not in-game
     public bool isGameButtonsDisabled = false;
 
-
     //Button Animation
-
     public float time_buttonsAreColour = 0.5f;
     public float time_buttonsTimeBetween = 0.25f;
-
     
 
     void Start()
     {
+        //Game no longer automatically starts as that is now controlled by MainMenu
         //GenerateRandomPattern();
         //RestartGame();
     }
     void GenerateRandomPattern()
     {
-        
         iPatternNumbers++;
         SetTextScore();
         sPatternNumbers = "";

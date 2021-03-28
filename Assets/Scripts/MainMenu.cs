@@ -9,18 +9,21 @@ public class MainMenu : MonoBehaviour
     public GameManager gm;
     public void Start_Classic()
     {
-        HideCanvases();
+        HideCanvases(false);
         Gameplay.enabled = true;
-        Text.enabled = true;
+        //No longer used
         gm.RestartGame();
     }
 
-    private void HideCanvases()
+    private void HideCanvases(bool state)
     {
-        Gameplay.enabled = false;
-        Endgame.enabled = false;
-        Text.enabled = false;
-        MainMenuCanvas.enabled = false;
-
+        Gameplay.enabled = state;
+        Endgame.enabled = state;
+        MainMenuCanvas.enabled = state;
     }
+    public void ReturnToMainMenu()
+    {
+        HideCanvases(true);
+    }
+
 }

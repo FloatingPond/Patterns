@@ -292,8 +292,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 109}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &12598300
 MonoBehaviour:
@@ -470,7 +470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 45}
+  m_AnchoredPosition: {x: 0, y: 70}
   m_SizeDelta: {x: 250, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &58397361
@@ -756,8 +756,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -890,8 +890,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -1024,8 +1024,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -1111,8 +1111,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170, y: 109}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: 250, y: 150}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &107093224
 MonoBehaviour:
@@ -1261,8 +1261,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170, y: -61.000004}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: 250, y: -80}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &121645568
 MonoBehaviour:
@@ -1598,8 +1598,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -1819,8 +1819,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170, y: -231}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: 250, y: -310}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &231847310
 MonoBehaviour:
@@ -2018,8 +2018,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -2474,7 +2474,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506719603}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -2825,8 +2825,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -231}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: 0, y: -310}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &600193422
 MonoBehaviour:
@@ -3209,8 +3209,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -170, y: 109}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: -250, y: 150}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &621919456
 MonoBehaviour:
@@ -3603,7 +3603,7 @@ MonoBehaviour:
   openPrefabs: 0
   prefabs: []
   idRef:
-    _Keys: caf2345cdf3f826d5704f1f4cdb3f831f24d342247d5f47886079fc0679671599999a18914c026200db82a7a1f84206e2c17a797d4a46d0b01441d1820bd2a13764a5c33126e1d31f95374a722c1be5072e90f951eab7f6435d9bee7d56d0a7024e3ce0fd726db5030e0d29a1c3aac17d2818e155e02df6d0fbfc6ff7e198105d45846a904df31200561c0d141f16c6cf24751196fa68760aa42079f3cdfee367b20e974e4979029cb14f50e7106091c5359f2c56a9a7579e1a6ffc1d891e4248d76b39d251eae5bb627e3849b95d15cc615b21d12d634166a9dab7468aefe3931d09be7b9a74270084d7c927ef91475795c88ed44013749419d07c3c923c365261db46b31b9166ea9dcdaa0ac386a6f8a35fb0b2610f42e9a512957af053a2b11e1b89bae80a7328c09ba97d969627a08774cff1ecf8b3611e30483e36d1d5da2af8fca80cfc1098fc9982fcb8c08024b5ba0d9adc6b51f9310526d7bd5e91f14a2c67606d20528c8aa72179745fd6214f8c77833bc506866af5d90212e84634d48e4d63a6e031da0365fa8c6324827f34b7f8c629ead57aea1eea88b8af867daf09a20d62b637efde5d8fc5ca8a13367369dd6aff700140ac3d76780a46e2a2fc682b7cd68fe1e51026f823a4e0456beddf03ed731e92d0f50d665fc35015789513269da169902387f27b267824f5837d1565d4ccfad02de54a87c9298217904c6f8e91c9b7c2c880cf9a8f6c83973017d9dce8b5ea346a330462fbf1695605fadb62e7b3975645529d43fd5040b5971e384ea04ac11626a3e45ec544d6d72779906a47f67ef38093923b433e21b60dc1342246e55a30a40e66745809e4708bc62c73cfe67da09f44cf23dd0c6954da6593798706e1f323d11649800a9b759812c7195aa585f4312b3e745b71e24795019ebd9d5df792a81faffed0342084a6c664203c7d4074d060b55dbaa9b161e1415b81842227c5fa69b16a4574c472fab9cb11e60284125dfc72c3675627f1a1c1ffee705de7349151da2d3419d0a52ad7acff21508413c57dd3a7af646ea421dfc89384d602a76f005f7bd79921c7bd27e89fb928c0413223d6ed85c07ad5bf81b0fc2d9bd604cafa7fdefef7b3d3c3e41568843104f70078aa57531fd2d08b353c55e825aa1131f3caa3989f4035901cd65e54edbe7086b80c96462d57d4d1e955980447605038dfe76ff631257286cbcf302903db14841a34c8169ba6562720138467e983b0b84390d9eb3834e679d7aadfe90c2281fe510c1e7c2876d2c67ec739e25ef5503f9ff87c94a4ffc41ac1b1b11f3982e4fd9182a8e5922cd0c5ac5fa6009137373cfb1f68f49f26a6beb80c35894a4c631bf23773d1ae45d1a326c8f7aaa63c767a9a7e0a48ebd9918adbfa3d85e7577028d2ca1e59b35594bf2eea3239c103f7847a3ffc37b943f008b5fead9883579420b73f828fa52fd724f95b3a01a767b42fe1b1f02743a7e07125ea4c4b57f3c448b9fe7d6e8e9820ba78c74e5e09fe514e4a8d7a3557cb7450effc4a7093ed7312e08d445a1add51467ec56fe509c174e43b8a75d57e09907562dc8e825da021a9b59ec178cd4496e7eeb3c6925b8f55517126350967ada4d9232108b1b131141118e665677d1256e6e38db431d032d0e221ed01377b28321826156411a2a756a2504854be1b43346ecf4e15d9e97306a9fe052c61bdb475ff6bb2726d7987666ae451d187de12d6e1575d87d2fd97d196d3e1f0482c37a4a43d9be6324a5e27a95b750a686e712424e1b246e4c3a711b3e0e9415b87be915352ca5a85f6e6d6e6ca1168776286d54b09eae611716690769a2261511ccc21931c48ea6bd961d21afb5dbed51f892667ce96619cd88fd1d3d62bf43b7a7a2389ccfaa4d65386945bdcfb3613b7bb56f11c0992865a94c463e5397a429259656591452814e44004381215cfdd49ce246172e537741cb9e0dc6a3f7d9d6cbdf3440a957bcb3b18e5e7150bc58790e98234d9f0215cb115e44fa393b876c43e24cb1e0c8678c1ea535f36ea15108c31d2a4a12c1797606f24bcdf75866b9cf686bbbc8f8c64d50b241a99ab3ae48547d7ab6094d6020e054069e13e1ffe37b1b6bc4032210b9a0942175d3b0b081084b641eff656032b12524b61e606a46103d78734d64e341bbb301813f76ef34951556d7b93a27fe019879efd7dc3193d159624c63e0f23b36ef200a0a40d3c0ff0c4f1bda0c88808c037ea8fc005db8e4c35836e5e20b3e3b46103573e9473b2e1e4060624a3e35926724b917452cf2fcf2267393419991f1431d4410922bcd0a93474d065226f51a1d39803d2b58127a5151a667fb24ff3c573c5573c7da5b2ce27d0287b47560e3d85dd133546f20c4cb6ea37185971e086b53a552a8743a230f3e8f9df63290c75c19c1ca07fc0eac9545503ed2ef5e413f2661583531e3a8cb059986ff8aaffa1a24156b58e80f676206449c3b870901634da1302ec86ed4ca696af29d7753f56a4aa708250d16a9e906f72eee466c44fc65e94ce97fcc51b61637c27e1ccaebb34e33f12e1126716308b9d841623cee292509c89f602115e855aff1bc27d7f92e0b845feb84ea14c05a500ec75a6ce6ac47995926938a136f47257b9cca4bc3cf40aa36e79cd9ad100b0744af2fdd43c23845748e7ed39b806831cca0908709f01322f74fc900ef9215491a9acfc39f251d489cf040adb2eb0d4a8093f2f2807c11cb3cf31a0b07c734f85cca47fe4e5b6ea88249eb18b0662ae35d7f7f5c9f223697ab0486ac0b1240d5bc38097d320c04dbdb658a3598d51a2937029779b96f593a94deaa52e11b638ff6e9a388a352156984593705ac6c012916501cf1564672d46ebceeef48a843f7c9192c8179a37a1c12d20aa0c7ac7228dc803c91ff7238af76ce1ae763262125e9d23139677d5c4735c8fbd6aeec63c78e67deb40edf0841d6e8ab66dabc05b1d96d393085cb7d64d3b31ac09d093acf53fccaf171404ab2c6781c7b841941a17b668564522f4be087e771c3865f42c74fbe231cbbd439c4c640d8cdf97f2ed41aa01656c05021262f32a15a0cdc706a320588aa82de035bf51e446df5ea5d65ab2ab21fbe252c10f0234680434622d35262042aee943127204daeca56c115be77fbd966a97e72
+    _Keys: caf2345cdf3f826d5704f1f4cdb3f831f24d342247d5f47886079fc0679671599999a18914c026200db82a7a1f84206e2c17a797d4a46d0b01441d1820bd2a13764a5c33126e1d31f95374a722c1be5072e90f951eab7f6435d9bee7d56d0a7024e3ce0fd726db5030e0d29a1c3aac17d2818e155e02df6d0fbfc6ff7e198105d45846a904df31200561c0d141f16c6cf24751196fa68760aa42079f3cdfee367b20e974e4979029cb14f50e7106091c5359f2c56a9a7579e1a6ffc1d891e4248d76b39d251eae5bb627e3849b95d15cc615b21d12d634166a9dab7468aefe3931d09be7b9a74270084d7c927ef91475795c88ed44013749419d07c3c923c365261db46b31b9166ea9dcdaa0ac386a6f8a35fb0b2610f42e9a512957af053a2b11e1b89bae80a7328c09ba97d969627a08774cff1ecf8b3611e30483e36d1d5da2af8fca80cfc1098fc9982fcb8c08024b5ba0d9adc6b51f9310526d7bd5e91f14a2c67606d20528c8aa72179745fd6214f8c77833bc506866af5d90212e84634d48e4d63a6e031da0365fa8c6324827f34b7f8c629ead57aea1eea88b8af867daf09a20d62b637efde5d8fc5ca8a13367369dd6aff700140ac3d76780a46e2a2fc682b7cd68fe1e51026f823a4e0456beddf03ed731e92d0f50d665fc35015789513269da169902387f27b267824f5837d1565d4ccfad02de54a87c9298217904c6f8e91c9b7c2c880cf9a8f6c83973017d9dce8b5ea346a330462fbf1695605fadb62e7b3975645529d43fd5040b5971e384ea04ac11626a3e45ec544d6d72779906a47f67ef38093923b433e21b60dc1342246e55a30a40e66745809e4708bc62c73cfe67da09f44cf23dd0c6954da6593798706e1f323d11649800a9b759812c7195aa585f4312b3e745b71e24795019ebd9d5df792a81faffed0342084a6c664203c7d4074d060b55dbaa9b161e1415b81842227c5fa69b16a4574c472fab9cb11e60284125dfc72c3675627f1a1c1ffee705de7349151da2d3419d0a52ad7acff21508413c57dd3a7af646ea421dfc89384d602a76f005f7bd79921c7bd27e89fb928c0413223d6ed85c07ad5bf81b0fc2d9bd604cafa7fdefef7b3d3c3e41568843104f70078aa57531fd2d08b353c55e825aa1131f3caa3989f4035901cd65e54edbe7086b80c96462d57d4d1e955980447605038dfe76ff631257286cbcf302903db14841a34c8169ba6562720138467e983b0b84390d9eb3834e679d7aadfe90c2281fe510c1e7c2876d2c67ec739e25ef5503f9ff87c94a4ffc41ac1b1b11f3982e4fd9182a8e5922cd0c5ac5fa6009137373cfb1f68f49f26a6beb80c35894a4c631bf23773d1ae45d1a326c8f7aaa63c767a9a7e0a48ebd9918adbfa3d85e7577028d2ca1e59b35594bf2eea3239c103f7847a3ffc37b943f008b5fead9883579420b73f828fa52fd724f95b3a01a767b42fe1b1f02743a7e07125ea4c4b57f3c448b9fe7d6e8e9820ba78c74e5e09fe514e4a8d7a3557cb7450effc4a7093ed7312e08d445a1add51467ec56fe509c174e43b8a75d57e09907562dc8e825da021a9b59ec178cd4496e7eeb3c6925b8f55517126350967ada4d9232108b1b131141118e665677d1256e6e38db431d032d0e221ed01377b28321826156411a2a756a2504854be1b43346ecf4e15d9e97306a9fe052c61bdb475ff6bb2726d7987666ae451d187de12d6e1575d87d2fd97d196d3e1f0482c37a4a43d9be6324a5e27a95b750a686e712424e1b246e4c3a711b3e0e9415b87be915352ca5a85f6e6d6e6ca1168776286d54b09eae611716690769a2261511ccc21931c48ea6bd961d21afb5dbed51f892667ce96619cd88fd1d3d62bf43b7a7a2389ccfaa4d65386945bdcfb3613b7bb56f11c0992865a94c463e5397a429259656591452814e44004381215cfdd49ce246172e537741cb9e0dc6a3f7d9d6cbdf3440a957bcb3b18e5e7150bc58790e98234d9f0215cb115e44fa393b876c43e24cb1e0c8678c1ea535f36ea15108c31d2a4a12c1797606f24bcdf75866b9cf686bbbc8f8c64d50b241a99ab3ae48547d7ab6094d6020e054069e13e1ffe37b1b6bc4032210b9a0942175d3b0b081084b641eff656032b12524b61e606a46103d78734d64e341bbb301813f76ef34951556d7b93a27fe019879efd7dc3193d159624c63e0f23b36ef200a0a40d3c0ff0c4f1bda0c88808c037ea8fc005db8e4c35836e5e20b3e3b46103573e9473b2e1e4060624a3e35926724b917452cf2fcf2267393419991f1431d4410922bcd0a93474d065226f51a1d39803d2b58127a5151a667fb24ff3c573c5573c7da5b2ce27d0287b47560e3d85dd133546f20c4cb6ea37185971e086b53a552a8743a230f3e8f9df63290c75c19c1ca07fc0eac9545503ed2ef5e413f2661583531e3a8cb059986ff8aaffa1a24156b58e80f676206449c3b870901634da1302ec86ed4ca696af29d7753f56a4aa708250d16a9e906f72eee466c44fc65e94ce97fcc51b61637c27e1ccaebb34e33f12e1126716308b9d841623cee292509c89f602115e855aff1bc27d7f92e0b845feb84ea14c05a500ec75a6ce6ac47995926938a136f47257b9cca4bc3cf40aa36e79cd9ad100b0744af2fdd43c23845748e7ed39b806831cca0908709f01322f74fc900ef9215491a9acfc39f251d489cf040adb2eb0d4a8093f2f2807c11cb3cf31a0b07c734f85cca47fe4e5b6ea88249eb18b0662ae35d7f7f5c9f223697ab0486ac0b1240d5bc38097d320c04dbdb658a3598d51a2937029779b96f593a94deaa52e11b638ff6e9a388a352156984593705ac6c012916501cf1564672d46ebceeef48a843f7c9192c8179a37a1c12d20aa0c7ac7228dc803c91ff7238af76ce1ae763262125e9d23139677d5c4735c8fbd6aeec63c78e67deb40edf0841d6e8ab66dabc05b1d96d393085cb7d64d3b31ac09d093acf53fccaf171404ab2c6781c7b841941a17b668564522f4be087e771c3865f42c74fbe231cbbd439c4c640d8cdf97f2ed41aa01656c05021262f32a15a0cdc706a320588aa82de035bf51e446df5ea5d65ab2ab21fbe252c10f0234680434622d35262042aee943127204daeca56c1158eefd47ecf532900
     _Values:
     - {fileID: 1893154938}
     - {fileID: 1893154941}
@@ -3934,7 +3934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -2.5, y: 45}
+  m_AnchoredPosition: {x: -2.5, y: 70}
   m_SizeDelta: {x: 250, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &812369574
@@ -4068,7 +4068,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 45.150024}
+  m_AnchoredPosition: {x: 0, y: 70}
   m_SizeDelta: {x: 250, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &844202563
@@ -4205,8 +4205,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -170, y: -231}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: -250, y: -310}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &933739668
 MonoBehaviour:
@@ -4402,8 +4402,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -4755,8 +4755,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -61.000004}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: 0, y: -80}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1109900967
 MonoBehaviour:
@@ -5125,8 +5125,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -5327,7 +5327,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 45}
+  m_AnchoredPosition: {x: 0, y: 70}
   m_SizeDelta: {x: 250, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1245878258
@@ -5692,8 +5692,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -5779,8 +5779,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -170, y: -61.000004}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: -250, y: -80}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432482976
 MonoBehaviour:
@@ -7269,8 +7269,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0

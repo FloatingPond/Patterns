@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public Canvas Gameplay, MainMenuCanvas, Endgame;
+    public Canvas Gameplay, MainMenuCanvas, Endgame,StatsSound;
     public GameManager gm;
     public void Start_Gamemode()
     {
@@ -25,6 +25,10 @@ public class MainMenu : MonoBehaviour
     {
         SwitchToCanvas("mainmenu");
     }
+    public void ShowStats()
+    {
+        SwitchToCanvas("stats");
+    }
 
     private void SwitchToCanvas(string canvas)
     {
@@ -33,18 +37,21 @@ public class MainMenu : MonoBehaviour
             Gameplay.enabled = false;
             Endgame.enabled = false;
             MainMenuCanvas.enabled = true;
+            StatsSound.enabled = false;
         }
         else if (canvas == "stats")
         {
             Gameplay.enabled = false;
             Endgame.enabled = false;
             MainMenuCanvas.enabled = false;
+            StatsSound.enabled = true;
         }
         else if (canvas == "game")
         {
             Gameplay.enabled = true;
             Endgame.enabled = true;
             MainMenuCanvas.enabled = false;
+            StatsSound.enabled = false;
         }
         else
         {

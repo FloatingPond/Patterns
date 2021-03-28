@@ -2,11 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
     public Canvas Gameplay, MainMenuCanvas, Endgame,StatsSound;
     public GameManager gm;
+
+    public GameObject tClassicHighscore, tRandomHighscore, tGame3Highscore, tGame4Highscore;
+
+    public void Start()
+    {
+        DisplayHighScores();
+    }
+
     public void Start_Gamemode()
     {
         SwitchToCanvas("game");
@@ -23,13 +32,14 @@ public class MainMenu : MonoBehaviour
     }
     public void ReturnToMainMenu()
     {
+        //To display those sweet new high scores
+        DisplayHighScores();
         SwitchToCanvas("mainmenu");
     }
     public void ShowStats()
     {
         SwitchToCanvas("stats");
     }
-
     private void SwitchToCanvas(string canvas)
     {
         if (canvas == "mainmenu")
@@ -57,6 +67,17 @@ public class MainMenu : MonoBehaviour
         {
             //wut
         }
+    }
+
+    void DisplayHighScores()
+    {
+        PlayerData data = SaveSystem.LoadGame();
+
+        tClassicHighscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[0].ToString();
+        tRandomHighscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[1].ToString();
+        tGame3Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[2].ToString();
+        tGame4Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[3].ToString();
+
     }
 
 }

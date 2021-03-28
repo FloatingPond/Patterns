@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public Canvas Gameplay, MainMenuCanvas, Endgame, Text;
+    public Canvas Gameplay, MainMenuCanvas, Endgame;
     public GameManager gm;
-    public void Start_Classic()
+    public void Start_Gamemode()
     {
         SwitchToGameCanvas(true);
         Gameplay.enabled = true;

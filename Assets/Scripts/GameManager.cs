@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     //Game buttons
     public List<GameObject> Buttons = new List<GameObject>();
     //Canvas containing endgame buttons (Return, Restart)
-    public GameObject endgameCanvas;
+    public Canvas endgameCanvas;
     //Used to enable/disable user able to press buttons - mainly when showing patterns and when not in-game
     public bool isGameButtonsDisabled = false;
 
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         EnableButtons(false);
-        endgameCanvas.SetActive(true);
+        endgameCanvas.enabled = true;
         //Show "GAME OVER" TEXT
         
         //Maybe also play a sound
@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         //Disable Play Again and Return buttons
-        endgameCanvas.SetActive(false);
+        endgameCanvas.enabled = false;
         sPatternAnswer = "";
         sPatternNumbers = "";
         iPatternNumbers = 0;

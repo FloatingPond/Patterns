@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b16dc7c203450459bb86e24305f9ca, type: 3}
+  m_Name: ES3GlobalReferences
+  m_EditorClassIdentifier: 
+  refId:
+    _Keys:
+    - {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+    - {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+    - {fileID: 11500000, guid: 23bfcb0e2ef57a74dbd2e9338010b8d3, type: 3}
+    - {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+    - {fileID: 11500000, guid: fa6d9ddb221979948bb776eb4a77d881, type: 3}
+    - {fileID: 21300000, guid: c7b4cce99646c6e4f92af9e48798166b, type: 3}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+    - {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+    - {fileID: 21300000, guid: c3bd6a12c4eb77f4c85e8ef37d16c1a3, type: 3}
+    - {fileID: 21300000, guid: 9d9f9721974d2c148a402923e2ca2fdb, type: 3}
+    - {fileID: 21300000, guid: cb7ed2f423d653449a14d0d3e4f3d26a, type: 3}
+    - {fileID: 21300000, guid: b8cbdd7e2ee394e4b9968abcc02d3b35, type: 3}
+    - {fileID: 21300000, guid: e4795aa05b0ef4247950334edfd86e38, type: 3}
+    - {fileID: 21300000, guid: ad75a13dde5207d478bcdfa093f9cf49, type: 3}
+    - {fileID: 21300000, guid: f40eba26c08b3a5438ea3fcc066b8cdd, type: 3}
+    - {fileID: 21300000, guid: fefa534174169db42a87725b5329e112, type: 3}
+    - {fileID: 21300000, guid: f8a9a037ddaebe140ad0df572cfc6956, type: 3}
+    _Values: 86079fc0679671590db82a7a1f84206e01441d1820bd2a13d45846a904df31201f3caa3989f4035941a34c8169ba6562720138467e983b0b67ec739e25ef5503ac1b1b11f3982e4fc6a3f7d9d6cbdf344a12c1797606f24bc4032210b9a09421d7b93a27fe01987936e5e20b3e3b46104d065226f51a1d39a37185971e086b53c78e67deb40edf08b1d96d393085cb7d

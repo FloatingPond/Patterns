@@ -180,6 +180,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     public void RestartGame()
     {
         //Disable Play Again and Return buttons

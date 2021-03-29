@@ -11,6 +11,10 @@ public class MainMenu : MonoBehaviour
 
     public GameObject tClassicHighscore, tRandomHighscore, tGame3Highscore, tGame4Highscore;
 
+    //Stats
+
+    public GameObject tTimePlayed;
+
     public void Start()
     {
         DisplayHighScores();
@@ -22,6 +26,13 @@ public class MainMenu : MonoBehaviour
         Gameplay.enabled = true;
         //No longer used
         gm.RestartGame();
+    }
+    public void Update()
+    {
+        if (Gameplay.enabled == true)
+        {
+            gm.AddToGameTime(Time.deltaTime);
+        }
     }
 
     private void SwitchToGameCanvas(bool state)
@@ -38,6 +49,7 @@ public class MainMenu : MonoBehaviour
     }
     public void ShowStats()
     {
+        DisplayStats();
         SwitchToCanvas("stats");
     }
     private void SwitchToCanvas(string canvas)
@@ -78,6 +90,12 @@ public class MainMenu : MonoBehaviour
         tGame3Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[2].ToString();
         tGame4Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[3].ToString();
 
+    }
+    void DisplayStats()
+    {
+        PlayerData data = SaveSystem.LoadGame();
+
+        tTimePlayed.GetComponent<TextMeshProUGUI>().text = "Time played: " + data.secondsPlayed.ToString();
     }
 
 }

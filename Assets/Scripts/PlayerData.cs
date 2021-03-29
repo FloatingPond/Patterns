@@ -7,7 +7,7 @@ public class PlayerData
 {
     public string fileVersion;
     public int[] highscores;
-    public float hoursPlayed;
+    public float secondsPlayed; //NEEDS TO BE CHANGED TO MINUTES OR HOURS PRIOR TO RELEASE
 
     public PlayerData(GameManager gm)
     {
@@ -17,7 +17,7 @@ public class PlayerData
         highscores[1] = 0; //Random
         highscores[2] = 1; //Game 3
         highscores[3] = 2; //Game 4
-        hoursPlayed = 1f;
+        secondsPlayed = gm.fGameTime; //FOR NOW, SECONDS
     }
 
 

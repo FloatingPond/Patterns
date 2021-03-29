@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public int iPatternNumbers = 0;
     public int Highscore = 0;
+    public float fGameTime; //Seconds for now
     public string sPatternNumbers;
     public string sPatternAnswer;
 
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
         PlayerData data = SaveSystem.LoadGame();
 
         Highscore = data.highscores[0];
+        fGameTime = data.secondsPlayed;
 
     }
     void GenerateRandomPattern()
@@ -122,13 +124,15 @@ public class GameManager : MonoBehaviour
             //New highscore!
             Highscore = iPatternNumbers-1;
             tAfterGame.text = "NEW HIGHSCORE!";
-            //Save highscore
-            SaveSystem.SaveGame(this);
+            
+            
         }
         else
         {
             tAfterGame.text = "Game Over";
         }
+        //Save highscore regardless
+        SaveSystem.SaveGame(this);
         //Show score
         SetTextScore();
         //Play again?
@@ -200,6 +204,15 @@ public class GameManager : MonoBehaviour
         iPatternNumbers = 0;
         tAfterGame.text = "";
         NextRound();
+    }
+
+    public void AddToGameTime(float time)
+    {
+        fGameTime += time;
+    }
+    public float GetGameTime()
+    {
+        return fGameTime;
     }
 
 }

@@ -8,6 +8,9 @@ public class PlayerData
     public string fileVersion;
     public int[] highscores;
     public float secondsPlayed; //NEEDS TO BE CHANGED TO MINUTES OR HOURS PRIOR TO RELEASE
+    //Games played
+    //Games played per gametype []
+    //Total high scores - could either save it or calculate it on loaded data
 
     public PlayerData(GameManager gm)
     {

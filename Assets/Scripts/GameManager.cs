@@ -33,10 +33,16 @@ public class GameManager : MonoBehaviour
     //Game Streak
 
     private int gameStreak;
-    
+    private int gameStreakHighscore;
+
+
     public int GetGameStreak()
     {
         return gameStreak;
+    }
+    public int GetGameStreakHighscore()
+    {
+        return gameStreakHighscore;
     }
 
     public void AddToGameStreak()
@@ -46,6 +52,14 @@ public class GameManager : MonoBehaviour
     public void ResetGameStreak()
     {
         gameStreak = 1;
+    }
+
+    public void ChangeGameStreakHighscore()
+    {
+        if (gameStreak > gameStreakHighscore)
+        {
+            gameStreakHighscore = gameStreak;
+        }
     }
 
     void Start()

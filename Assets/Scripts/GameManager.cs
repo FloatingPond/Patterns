@@ -31,8 +31,9 @@ public class GameManager : MonoBehaviour
     public float time_buttonsTimeBetween = 0.25f;
 
     //Game Streak
-
+    [SerializeField]
     private int gameStreak;
+    [SerializeField]
     private int gameStreakHighscore;
 
 

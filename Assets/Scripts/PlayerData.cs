@@ -15,6 +15,10 @@ public class PlayerData
     public int buttonsPressed;
     //Total high scores - could either save it or calculate it on loaded data
 
+    //Streak
+    public int gameStreak;
+    public int gameStreakHighscore;
+
     public PlayerData(GameManager gm)
     {
         fileVersion = "dev02";
@@ -30,6 +34,8 @@ public class PlayerData
         buttonsPressed = gm.buttonsPressed;
 
         //Streak stuff
+        gameStreak = gm.GetGameStreak();
+        gameStreakHighscore = gm.GetGameStreakHighscore();
     }
 
 

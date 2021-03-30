@@ -45,6 +45,13 @@ public class GameManager : MonoBehaviour
         return gameStreakHighscore;
     }
 
+    //Used when loading in from Save data
+    void SetGameStreak(int gs, int gshs)
+    {
+        gameStreak = gs;
+        gameStreakHighscore = gshs;
+    }
+
     public void AddToGameStreak()
     {
         gameStreak++;
@@ -76,7 +83,7 @@ public class GameManager : MonoBehaviour
         Highscore = data.highscores[0];
         fGameTime = data.secondsPlayed;
         buttonsPressed = data.buttonsPressed;
-
+        SetGameStreak(data.gameStreak, data.gameStreakHighscore);
 
     }
     void GenerateRandomPattern()

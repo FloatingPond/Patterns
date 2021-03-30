@@ -29,7 +29,24 @@ public class GameManager : MonoBehaviour
     //Button Animation
     public float time_buttonsAreColour = 0.5f;
     public float time_buttonsTimeBetween = 0.25f;
+
+    //Game Streak
+
+    private int gameStreak;
     
+    public int GetGameStreak()
+    {
+        return gameStreak;
+    }
+
+    public void AddToGameStreak()
+    {
+        gameStreak++;
+    }
+    public void ResetGameStreak()
+    {
+        gameStreak = 1;
+    }
 
     void Start()
     {
@@ -231,5 +248,7 @@ public class GameManager : MonoBehaviour
         buttonsPressed += 1;
         Save();
     }
+
+
 
 }

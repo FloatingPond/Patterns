@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int iPatternNumbers = 0;
     public int Highscore = 0;
     public float fGameTime; //Seconds for now
+    public int buttonsPressed;
     public string sPatternNumbers;
     public string sPatternAnswer;
 
@@ -43,6 +44,8 @@ public class GameManager : MonoBehaviour
 
         Highscore = data.highscores[0];
         fGameTime = data.secondsPlayed;
+        buttonsPressed = data.buttonsPressed;
+
 
     }
     void GenerateRandomPattern()
@@ -132,7 +135,7 @@ public class GameManager : MonoBehaviour
             tAfterGame.text = "Game Over";
         }
         //Save highscore regardless
-        SaveSystem.SaveGame(this);
+        Save();
         //Show score
         SetTextScore();
         //Play again?
@@ -143,8 +146,10 @@ public class GameManager : MonoBehaviour
     //Called when a button is pressed
     public void ButtonPressed(int number)
     {
+        
         if (!isGameButtonsDisabled)
-        { 
+        {
+            AddToButtonPressed();
             sPatternAnswer += number.ToString();
             CheckAnswer();
         }
@@ -203,6 +208,7 @@ public class GameManager : MonoBehaviour
         sPatternNumbers = "";
         iPatternNumbers = 0;
         tAfterGame.text = "";
+        AddToButtonPressed();
         NextRound();
     }
 
@@ -213,6 +219,17 @@ public class GameManager : MonoBehaviour
     public float GetGameTime()
     {
         return fGameTime;
+    }
+
+    public void Save()
+    {
+        SaveSystem.SaveGame(this);
+    }
+    
+    public void AddToButtonPressed()
+    {
+        buttonsPressed += 1;
+        Save();
     }
 
 }

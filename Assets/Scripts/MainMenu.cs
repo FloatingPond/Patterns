@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
 
     //Stats
 
-    public GameObject tTimePlayed;
+    public GameObject tTimePlayed, tButtonsPressed;
 
     public void Start()
     {
@@ -23,6 +23,7 @@ public class MainMenu : MonoBehaviour
     public void Start_Gamemode()
     {
         SwitchToCanvas("game");
+        //AddToButton not needed as that is in RestartGame method below
         Gameplay.enabled = true;
         //No longer used
         gm.RestartGame();
@@ -46,6 +47,7 @@ public class MainMenu : MonoBehaviour
         //To display those sweet new high scores
         DisplayHighScores();
         SwitchToCanvas("mainmenu");
+        gm.AddToButtonPressed();
     }
     public void ShowStats()
     {
@@ -96,6 +98,7 @@ public class MainMenu : MonoBehaviour
         PlayerData data = SaveSystem.LoadGame();
 
         tTimePlayed.GetComponent<TextMeshProUGUI>().text = "Time played: " + data.secondsPlayed.ToString();
+        tButtonsPressed.GetComponent<TextMeshProUGUI>().text = "Buttons Pressed: " + data.buttonsPressed.ToString();
     }
 
 }

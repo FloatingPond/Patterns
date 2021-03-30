@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "d6ea2c80",
+    "m_SelectedDeviceId": "RFCMA01238V",
     "m_SelectedPackage": {
-        "deviceId": "d6ea2c80",
+        "deviceId": "RFCMA01238V",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 15145,
+        "processId": 11904,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -46,12 +46,6 @@
         },
         {
             "deviceId": "RFCMA01238V",
-            "name": "com.android.settings",
-            "processId": 26773,
-            "exited": true
-        },
-        {
-            "deviceId": "RFCMA01238V",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 22548,
             "exited": true
@@ -72,13 +66,55 @@
             "deviceId": "RFCMA01238V",
             "name": "com.teslacoilsw.launcher",
             "processId": 6145,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "RFCMA01238V",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 1627,
             "exited": true
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.teslacoilsw.launcher",
+            "processId": 1333,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 10518,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 10519,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 1586,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 9529,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 4054,
+            "exited": true
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 11904,
+            "exited": false
         },
         {
             "deviceId": "d6ea2c80",

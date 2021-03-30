@@ -49,6 +49,13 @@ public class MainMenu : MonoBehaviour
         SwitchToCanvas("mainmenu");
         gm.AddToButtonPressed();
     }
+
+    public void ReturnToMainMenuFromStats()
+    {
+        //To display those sweet new high scores
+        DisplayHighScores();
+        SwitchToCanvas("mainmenu");
+    }
     public void ShowStats()
     {
         DisplayStats();

@@ -56,12 +56,14 @@ public class GameManager : MonoBehaviour
     public void AddToGameStreak()
     {
         gameStreak++;
+        ChangeGameStreakHighscore();
     }
     public void ResetGameStreak()
     {
         gameStreak = 1;
     }
 
+    //Called after gameStreak changes
     public void ChangeGameStreakHighscore()
     {
         if (gameStreak > gameStreakHighscore)

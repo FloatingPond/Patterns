@@ -14,9 +14,7 @@ public class MainMenu : MonoBehaviour
     public GameObject tStreak, tStreakDesc;
 
     //Stats
-
     public GameObject tTimePlayed, tButtonsPressed;
-
     public void Start()
     {
         DisplayHighScoresAndStreak();
@@ -123,8 +121,11 @@ public class MainMenu : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadGame();
 
-        tTimePlayed.GetComponent<TextMeshProUGUI>().text = "Time played: " + data.secondsPlayed.ToString();
+        float hours = Mathf.FloorToInt((data.secondsPlayed / 60) / 60);
+        float minutes = Mathf.FloorToInt(data.secondsPlayed / 60);
+        float seconds = Mathf.FloorToInt(data.secondsPlayed % 60);
+
+        tTimePlayed.GetComponent<TextMeshProUGUI>().text = "Time played: " + string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
         tButtonsPressed.GetComponent<TextMeshProUGUI>().text = "Buttons Pressed: " + data.buttonsPressed.ToString();
     }
-
 }

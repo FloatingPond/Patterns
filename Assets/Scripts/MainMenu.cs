@@ -22,13 +22,13 @@ public class MainMenu : MonoBehaviour
         DisplayHighScoresAndStreak();
     }
 
-    public void Start_Gamemode()
+    public void Start_Gamemode(string gamemode)
     {
         SwitchToCanvas("game");
         //AddToButton not needed as that is in RestartGame method below
         Gameplay.enabled = true;
         //No longer used
-        gm.RestartGame();
+        gm.RestartGame(gamemode);
     }
     public void Update()
     {
@@ -95,25 +95,28 @@ public class MainMenu : MonoBehaviour
     void DisplayHighScoresAndStreak()
     {
         PlayerData data = SaveSystem.LoadGame();
-        //High scores
-        tClassicHighscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[0].ToString();
-        tRandomHighscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[1].ToString();
-        tGame3Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[2].ToString();
-        tGame4Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[3].ToString();
-        //Streak
+
+        if (data  != null)
+            { 
+            //High scores
+            tClassicHighscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[0].ToString();
+            tRandomHighscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[1].ToString();
+            tGame3Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[2].ToString();
+            tGame4Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[3].ToString();
+            //Streak
 
         
-        if (data.gameStreak > 1)
-        {
-            tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + data.gameStreak.ToString() + " days!";
-            tStreakDesc.GetComponent<TextMeshProUGUI>().text = "Woo!";
+            if (data.gameStreak > 1)
+            {
+                tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + data.gameStreak.ToString() + " days!";
+                tStreakDesc.GetComponent<TextMeshProUGUI>().text = "Woo!";
+            }
+            else
+            {
+                tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + data.gameStreak.ToString() + " day";
+                tStreakDesc.GetComponent<TextMeshProUGUI>().text = "EastEnders";
+            }
         }
-        else
-        {
-            tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + data.gameStreak.ToString() + " day";
-            tStreakDesc.GetComponent<TextMeshProUGUI>().text = "EastEnders";
-        }
-        
 
     }
     void DisplayStats()

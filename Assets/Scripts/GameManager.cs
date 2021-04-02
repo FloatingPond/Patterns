@@ -8,13 +8,15 @@ using Unity.Notifications.Android;
 
 public class GameManager : MonoBehaviour
 {
-
+    public string[] gamemodeNames = { "classic", "random", "Game3", "Game4" };
     public int iPatternNumbers = 0;
-    public int Highscore = 0;
+    public int[] Highscore = new int[4];
+    
     public float fGameTime; //Seconds for now
     public int buttonsPressed;
     public string sPatternNumbers;
     public string sPatternAnswer;
+    string currentGamemode;
 
     public TMP_Text tScore, tHighscore, tAfterGame;
 
@@ -74,6 +76,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Highscore = new int[4];
+        Highscore[0] = 0;
+        Highscore[1] = 0;
+        Highscore[2] = 0;
+        Highscore[3] = 0;
         LoadGame();
         //Game no longer automatically starts as that is now controlled by MainMenu
         //GenerateRandomPattern();
@@ -82,14 +89,19 @@ public class GameManager : MonoBehaviour
     void LoadGame()
     {
         PlayerData data = SaveSystem.LoadGame();
-
-        Highscore = data.highscores[0];
-        fGameTime = data.secondsPlayed;
-        buttonsPressed = data.buttonsPressed;
-        SetGameStreak(data.gameStreak, data.gameStreakHighscore);
+        if (data != null)
+        { 
+            Highscore[0] = data.highscores[0];
+            Highscore[1] = data.highscores[1];
+        
+            fGameTime = data.secondsPlayed;
+            buttonsPressed = data.buttonsPressed;
+            SetGameStreak(data.gameStreak, data.gameStreakHighscore);
+        }
+        
 
     }
-    void GenerateRandomPattern()
+    void RandomGenerateRandomPattern()
     {
         iPatternNumbers++;
         SetTextScore();
@@ -102,7 +114,7 @@ public class GameManager : MonoBehaviour
         //Animate
         StartCoroutine(AnimateButtonColours());
     }
-    void AddToExistingPattern()
+    void ClassicAddToExistingPattern()
     {
         iPatternNumbers++;
         SetTextScore();
@@ -153,28 +165,21 @@ public class GameManager : MonoBehaviour
         sPatternAnswer = "";
         EnableButtons(false);
         //GenerateRandomPattern();
-        AddToExistingPattern();
+        if (currentGamemode == gamemodeNames[0])
+        ClassicAddToExistingPattern();
+        if (currentGamemode == gamemodeNames[1])
+            RandomGenerateRandomPattern();
+
     }
     void EndGame()
     {
         EnableButtons(false);
         endgameCanvas.enabled = true;
         //Show "GAME OVER" TEXT
-        
+
         //Maybe also play a sound
+        CheckHighscore();
         
-        if (iPatternNumbers-1 > Highscore) //If new highscore
-        {
-            //New highscore!
-            Highscore = iPatternNumbers-1;
-            tAfterGame.text = "NEW HIGHSCORE!";
-            
-            
-        }
-        else
-        {
-            tAfterGame.text = "Game Over";
-        }
         //Save highscore regardless
         Save();
         //Show score
@@ -200,7 +205,27 @@ public class GameManager : MonoBehaviour
     void SetTextScore()
     {
         tScore.text = "SCORE: " + ((iPatternNumbers - 1).ToString());
-        tHighscore.text = "HIGH SCORE: " + Highscore.ToString();
+        if (currentGamemode == gamemodeNames[0])
+        {
+            tHighscore.text = "HIGH SCORE: " + Highscore[0].ToString();
+        }
+        else if (currentGamemode == gamemodeNames[1])
+        {
+            tHighscore.text = "HIGH SCORE: " + Highscore[1].ToString();
+        }
+        else if (currentGamemode == gamemodeNames[2])
+        {
+            tHighscore.text = "HIGH SCORE: " + Highscore[2].ToString();
+        }
+        else if (currentGamemode == gamemodeNames[3])
+        {
+            tHighscore.text = "HIGH SCORE: " + Highscore[3].ToString();
+        }
+        else
+        {
+            Debug.Log("Error in high score text setting");
+        }
+
     }
 
     IEnumerator AnimateButtonColours()
@@ -239,10 +264,18 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-
-    public void RestartGame()
+    
+    public void RestartGame(string gamemode)
     {
+        if (gamemode != "")
+        {
+            currentGamemode = gamemode;
+        }
+        else
+        {
+            //currentGamemode stays the same
+        }
+        Debug.Log(currentGamemode);
         //Disable Play Again and Return buttons
         endgameCanvas.enabled = false;
         sPatternAnswer = "";
@@ -271,6 +304,66 @@ public class GameManager : MonoBehaviour
     {
         buttonsPressed += 1;
         Save();
+    }
+
+    void CheckHighscore()
+    {
+        if (currentGamemode == gamemodeNames[0])
+        {
+            if (iPatternNumbers - 1 > Highscore[0]) //If new highscore
+            {
+                //New highscore!
+                Highscore[0] = iPatternNumbers - 1;
+                tAfterGame.text = "NEW HIGHSCORE!";
+            }
+            else
+            {
+                tAfterGame.text = "Game Over";
+            }
+        }
+        else if (currentGamemode == gamemodeNames[1])
+        {
+            if (iPatternNumbers - 1 > Highscore[1]) //If new highscore
+            {
+                //New highscore!
+                Highscore[1] = iPatternNumbers - 1;
+                tAfterGame.text = "NEW HIGHSCORE!";
+            }
+            else
+            {
+                tAfterGame.text = "Game Over";
+            }
+        }
+        else if (currentGamemode == gamemodeNames[2])
+        {
+            if (iPatternNumbers - 1 > Highscore[2]) //If new highscore
+            {
+                //New highscore!
+                Highscore[2] = iPatternNumbers - 1;
+                tAfterGame.text = "NEW HIGHSCORE!";
+            }
+            else
+            {
+                tAfterGame.text = "Game Over";
+            }
+        }
+        else if (currentGamemode == gamemodeNames[3])
+        {
+            if (iPatternNumbers - 1 > Highscore[3]) //If new highscore
+            {
+                //New highscore!
+                Highscore[3] = iPatternNumbers - 1;
+                tAfterGame.text = "NEW HIGHSCORE!";
+            }
+            else
+            {
+                tAfterGame.text = "Game Over";
+            }
+        }
+        else
+        {
+            Debug.Log("Error - invalid gamemode");
+        }
     }
 
 

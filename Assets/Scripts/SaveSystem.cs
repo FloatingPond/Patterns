@@ -8,7 +8,7 @@ public class SaveSystem : MonoBehaviour
     public static void SaveGame(GameManager gm)
     {
         BinaryFormatter bf = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/dev01Patt.ern";
+        string path = Application.persistentDataPath + "/dev03Patt.ern";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData data = new PlayerData(gm);
@@ -19,7 +19,7 @@ public class SaveSystem : MonoBehaviour
     }
     public static PlayerData LoadGame()
     {
-        string path = Application.persistentDataPath + "/dev01Patt.ern";
+        string path = Application.persistentDataPath + "/dev03Patt.ern";
         if (File.Exists(path))
         {
             BinaryFormatter bf = new BinaryFormatter();

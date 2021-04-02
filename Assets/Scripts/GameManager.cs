@@ -101,10 +101,23 @@ public class GameManager : MonoBehaviour
         
 
     }
+    void NextRound()
+    {
+        //Clear answer
+        sPatternAnswer = "";
+        EnableButtons(false);
+        //GenerateRandomPattern();
+        if (currentGamemode == gamemodeNames[0])
+            ClassicAddToExistingPattern();
+        if (currentGamemode == gamemodeNames[1])
+            RandomGenerateRandomPattern();
+        CheckHighscore();
+        SetTextScore();
+
+    }
     void RandomGenerateRandomPattern()
     {
         iPatternNumbers++;
-        SetTextScore();
         sPatternNumbers = "";
         for (int i = 0; i < iPatternNumbers; i++)
         {
@@ -117,7 +130,7 @@ public class GameManager : MonoBehaviour
     void ClassicAddToExistingPattern()
     {
         iPatternNumbers++;
-        SetTextScore();
+ 
         //sPatternNumbers = "";
         int number = Random.Range(1, 9);
         sPatternNumbers += number.ToString();
@@ -159,18 +172,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void NextRound()
-    {
-        //Clear answer
-        sPatternAnswer = "";
-        EnableButtons(false);
-        //GenerateRandomPattern();
-        if (currentGamemode == gamemodeNames[0])
-        ClassicAddToExistingPattern();
-        if (currentGamemode == gamemodeNames[1])
-            RandomGenerateRandomPattern();
-
-    }
+    
     void EndGame()
     {
         EnableButtons(false);
@@ -179,7 +181,7 @@ public class GameManager : MonoBehaviour
 
         //Maybe also play a sound
         CheckHighscore();
-        
+        EndGameText();
         //Save highscore regardless
         Save();
         //Show score
@@ -314,6 +316,48 @@ public class GameManager : MonoBehaviour
             {
                 //New highscore!
                 Highscore[0] = iPatternNumbers - 1;
+            }
+            
+        }
+        else if (currentGamemode == gamemodeNames[1])
+        {
+            if (iPatternNumbers - 1 > Highscore[1]) //If new highscore
+            {
+                //New highscore!
+                Highscore[1] = iPatternNumbers - 1;
+            }
+            
+        }
+        else if (currentGamemode == gamemodeNames[2])
+        {
+            if (iPatternNumbers - 1 > Highscore[2]) //If new highscore
+            {
+                //New highscore!
+                Highscore[2] = iPatternNumbers - 1;
+            }
+            
+        }
+        else if (currentGamemode == gamemodeNames[3])
+        {
+            if (iPatternNumbers - 1 > Highscore[3]) //If new highscore
+            {
+                //New highscore!
+                Highscore[3] = iPatternNumbers - 1;
+            }
+            
+        }
+        else
+        {
+            Debug.Log("Error - invalid gamemode");
+        }
+    }
+    void EndGameText()
+    {
+        if (currentGamemode == gamemodeNames[0])
+        {
+            if (iPatternNumbers - 1 > Highscore[0]) //If new highscore
+            {
+                
                 tAfterGame.text = "NEW HIGHSCORE!";
             }
             else
@@ -325,8 +369,7 @@ public class GameManager : MonoBehaviour
         {
             if (iPatternNumbers - 1 > Highscore[1]) //If new highscore
             {
-                //New highscore!
-                Highscore[1] = iPatternNumbers - 1;
+                
                 tAfterGame.text = "NEW HIGHSCORE!";
             }
             else
@@ -338,8 +381,7 @@ public class GameManager : MonoBehaviour
         {
             if (iPatternNumbers - 1 > Highscore[2]) //If new highscore
             {
-                //New highscore!
-                Highscore[2] = iPatternNumbers - 1;
+                
                 tAfterGame.text = "NEW HIGHSCORE!";
             }
             else
@@ -351,8 +393,7 @@ public class GameManager : MonoBehaviour
         {
             if (iPatternNumbers - 1 > Highscore[3]) //If new highscore
             {
-                //New highscore!
-                Highscore[3] = iPatternNumbers - 1;
+                
                 tAfterGame.text = "NEW HIGHSCORE!";
             }
             else

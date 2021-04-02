@@ -22,12 +22,12 @@ public class PlayerData
 
     public PlayerData(GameManager gm)
     {
-        fileVersion = "dev02";
+        fileVersion = "dev03";
         highscores = new int[4];
-        highscores[0] = gm.Highscore; //Standard
-        highscores[1] = 0; //Random
-        highscores[2] = 1; //Game 3
-        highscores[3] = 2; //Game 4
+        highscores[0] = gm.Highscore[0]; //Classic
+        highscores[1] = gm.Highscore[1]; ; //Random
+        highscores[2] = gm.Highscore[2]; //Game 3
+        highscores[3] = gm.Highscore[3]; //Game 4
         secondsPlayed = gm.fGameTime; //FOR NOW, SECONDS
 
         gamesplayed = new int[4];

@@ -9,12 +9,15 @@ using Sirenix.OdinInspector;
 
 public class GameManager : MonoBehaviour
 {
-    public string[] gamemodeNames = { "classic", "random", "Game3", "Game4" };
+    public string[] gamemodeNames = { "classic", "random", "Game3", "timedround" };
     public int iPatternNumbers = 0;
     public int[] Highscore = new int[4];
     bool newHighscoreThisGame = false;
     
     public float fGameTime; //Seconds for now
+    public float fTimedRoundTimer;
+    public float fTimedRoundLength = 60;
+
     public int buttonsPressed;
     public string sPatternNumbers;
     public string sPatternAnswer;
@@ -96,12 +99,29 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        gamemodeNames = new string[]{ "classic", "random", "Game3", "timedround" };
         Highscore = new int[4];
         Highscore[0] = 0;
         Highscore[1] = 0;
         Highscore[2] = 0;
         Highscore[3] = 0;
         LoadGame();
+    }
+
+    private void Update()
+    {
+        if (currentGamemode == gamemodeNames[3])
+        {
+            if (fTimedRoundTimer > 0)
+            { 
+            fTimedRoundTimer -= Time.deltaTime;
+            }
+            else
+            {
+                EndGame();
+            }
+
+        }
     }
     void LoadGame()
     {
@@ -110,7 +130,10 @@ public class GameManager : MonoBehaviour
         { 
             Highscore[0] = data.highscores[0];
             Highscore[1] = data.highscores[1];
-        
+            Highscore[2] = data.highscores[2];
+            Highscore[3] = data.highscores[3];
+
+
             fGameTime = data.secondsPlayed;
             buttonsPressed = data.buttonsPressed;
             SetGameStreak(data.gameStreak, data.gameStreakHighscore);
@@ -145,41 +168,78 @@ public class GameManager : MonoBehaviour
         //Animate
         StartCoroutine(AnimateButtonColours());
     }
+    void TimedRoundCallNextNumber()
+    {
+        iPatternNumbers++;
+        CheckHighscore();
+        SetTextScore();
+
+        sPatternNumbers = "";
+        int number = Random.Range(1, 9);
+        sPatternNumbers += number.ToString();
+
+        StartCoroutine(AnimateButtonColours());
+
+    }
     //Call on every button press
     public void CheckAnswer()
     {
-        ////Check if whole thing is correct
-        if (sPatternAnswer == sPatternNumbers) //Correct!
-        {
-            NextRound();
-        }
-        else //Either partially or not correct
-        {
-            //Check if length is less than the actual answer 
+        if ((currentGamemode == gamemodeNames[0]) || (currentGamemode == gamemodeNames[1]))
+        { 
+            ////Check if whole thing is correct
+            if (sPatternAnswer == sPatternNumbers) //Correct!
+            {
+                NextRound();
+            }
+            else //Either partially or not correct
+            {
+                //Check if length is less than the actual answer 
 
-            if (sPatternAnswer.Length < sPatternNumbers.Length) //Answer is not 
-            { 
-                //Potentiallly partially correct
-                for (int i = 0; i < sPatternAnswer.Length; i++)
-                {
-                    if (sPatternAnswer[i] == sPatternNumbers[i])
+                if (sPatternAnswer.Length < sPatternNumbers.Length) //Answer is not 
+                { 
+                    //Potentiallly partially correct
+                    for (int i = 0; i < sPatternAnswer.Length; i++)
                     {
-                        continue;
-                    }
-                    else
-                    {
-                        EndGame();
-                        return;
+                        if (sPatternAnswer[i] == sPatternNumbers[i])
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            EndGame();
+                            return;
+                        }
                     }
                 }
-            }
-            else //Oh no. Answer is either equal to or more, but somehow here. Bad
-            {
-                EndGame();
+                else //Oh no. Answer is either equal to or more, but somehow here. Bad
+                {
+                    EndGame();
+                }
             }
         }
-    }
+        else if (currentGamemode == gamemodeNames[2])
+        {
 
+        }
+        else if (currentGamemode == gamemodeNames[3])
+        {
+            if (sPatternAnswer == sPatternNumbers) //Correct!
+            {
+                NextRound();
+            }
+            else
+            {
+                sPatternAnswer = "";
+                //Try again
+            }
+        }
+        else
+        {
+            //Error
+        }
+    }
+    
+    //Called when the criteria has been met for a gamemode
     void NextRound()
     {
         //Clear answer
@@ -190,8 +250,13 @@ public class GameManager : MonoBehaviour
             ClassicAddToExistingPattern();
         if (currentGamemode == gamemodeNames[1])
             RandomGenerateRandomPattern();
+        if (currentGamemode == gamemodeNames[3])
+            TimedRoundCallNextNumber();
+        
 
     }
+
+    //Called when the gamemode criteria has been failed
     void EndGame()
     {
         EnableButtons(false);
@@ -199,7 +264,7 @@ public class GameManager : MonoBehaviour
         //Show "GAME OVER" TEXT
 
         //Maybe also play a sound
-        CheckHighscoreAtEndOfGame2();
+        CheckHighscoreAtEndOfGame();
         
         //Save highscore regardless
         Save();
@@ -288,13 +353,9 @@ public class GameManager : MonoBehaviour
     public void RestartGame(string gamemode)
     {
         
-        if (gamemode != "")
+        if (gamemode != "") //Used when game has been chosen for the first time
         {
             currentGamemode = gamemode;
-        }
-        else
-        {
-            //currentGamemode stays the same
         }
         Debug.Log(currentGamemode);
         //Disable Play Again and Return buttons
@@ -305,7 +366,14 @@ public class GameManager : MonoBehaviour
         tAfterGame.text = "";
         newHighscoreThisGame = false;
         AddToButtonPressed();
+        Debug.Log(currentGamemode + "," + gamemodeNames[3]);
+
+        if (currentGamemode == gamemodeNames[3])
+        {
+            fTimedRoundTimer = fTimedRoundLength;
+        }
         NextRound();
+
     }
 
     public void AddToGameTime(float time)
@@ -325,12 +393,14 @@ public class GameManager : MonoBehaviour
     public void AddToButtonPressed()
     {
         buttonsPressed += 1;
+        //Saves to increase buttonPressed each time
         Save();
     }
 
+    //Used midgame to check whether a highscore has been exceeded
     void CheckHighscore()
     {
-        if (currentGamemode == gamemodeNames[0])
+        if (currentGamemode == gamemodeNames[0]) //Classic
         {
             if (iPatternNumbers - 1 > Highscore[0]) //If new highscore
             {
@@ -340,7 +410,7 @@ public class GameManager : MonoBehaviour
             }
             
         }
-        else if (currentGamemode == gamemodeNames[1])
+        else if (currentGamemode == gamemodeNames[1]) //Random
         {
             if (iPatternNumbers - 1 > Highscore[1]) //If new highscore
             {
@@ -350,7 +420,7 @@ public class GameManager : MonoBehaviour
             }
             
         }
-        else if (currentGamemode == gamemodeNames[2])
+        else if (currentGamemode == gamemodeNames[2]) //Game 3
         {
             if (iPatternNumbers - 1 > Highscore[2]) //If new highscore
             {
@@ -360,7 +430,7 @@ public class GameManager : MonoBehaviour
             }
             
         }
-        else if (currentGamemode == gamemodeNames[3])
+        else if (currentGamemode == gamemodeNames[3]) //Timed Round
         {
             if (iPatternNumbers - 1 > Highscore[3]) //If new highscore
             {
@@ -376,66 +446,8 @@ public class GameManager : MonoBehaviour
             newHighscoreThisGame = false;
         }
     }
+    //Used to add the AfterGame text depending on if the user has achieved a new highscore
     void CheckHighscoreAtEndOfGame()
-    {
-        if (currentGamemode == gamemodeNames[0])
-        {
-            if (iPatternNumbers - 1 > Highscore[0]) //If new highscore
-            {
-                //New highscore!
-                Highscore[0] = iPatternNumbers - 1;
-                tAfterGame.text = "NEW HIGHSCORE!";
-            }
-            else
-            {
-                tAfterGame.text = "Game Over";
-            }
-        }
-        else if (currentGamemode == gamemodeNames[1])
-        {
-            if (iPatternNumbers - 1 > Highscore[1]) //If new highscore
-            {
-                //New highscore!
-                Highscore[1] = iPatternNumbers - 1;
-                tAfterGame.text = "NEW HIGHSCORE!";
-            }
-            else
-            {
-                tAfterGame.text = "Game Over";
-            }
-        }
-        else if (currentGamemode == gamemodeNames[2])
-        {
-            if (iPatternNumbers - 1 > Highscore[2]) //If new highscore
-            {
-                //New highscore!
-                Highscore[2] = iPatternNumbers - 1;
-                tAfterGame.text = "NEW HIGHSCORE!";
-            }
-            else
-            {
-                tAfterGame.text = "Game Over";
-            }
-        }
-        else if (currentGamemode == gamemodeNames[3])
-        {
-            if (iPatternNumbers - 1 > Highscore[3]) //If new highscore
-            {
-                //New highscore!
-                Highscore[3] = iPatternNumbers - 1;
-                tAfterGame.text = "NEW HIGHSCORE!";
-            }
-            else
-            {
-                tAfterGame.text = "Game Over";
-            }
-        }
-        else
-        {
-            Debug.Log("Error - invalid gamemode");
-        }
-    }
-    void CheckHighscoreAtEndOfGame2()
     {
         if (newHighscoreThisGame == true)
         {

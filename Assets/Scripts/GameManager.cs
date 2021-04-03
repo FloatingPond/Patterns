@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Android;
 using Unity.Notifications.Android;
+using Sirenix.OdinInspector;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,8 +29,26 @@ public class GameManager : MonoBehaviour
     //Used to enable/disable user able to press buttons - mainly when showing patterns and when not in-game
     public bool isGameButtonsDisabled = false;
 
+    [HideIf("isGameButtonsDisabled")]
+    [HorizontalGroup("Split/right")]
+    [Button(ButtonSizes.Large), GUIColor(0, 1, 0)]
+    private void isGameButtonsDisabledIsTrue()
+    {
+        this.isGameButtonsDisabled = !this.isGameButtonsDisabled;
+    }
+
+    [ShowIf("isGameButtonsDisabled")]
+    [HorizontalGroup("Split/right")]
+    [Button(ButtonSizes.Large), GUIColor(1, 0, 0)]
+    private void isGameButtonsDisabledIsFalse()
+    {
+        this.isGameButtonsDisabled = !this.isGameButtonsDisabled;
+    }
+
     //Button Animation
+    [ProgressBar(0.1f, 2f)]
     public float time_buttonsAreColour = 0.5f;
+    [ProgressBar(0.1f, 5f)]
     public float time_buttonsTimeBetween = 0.25f;
 
     //Game Streak

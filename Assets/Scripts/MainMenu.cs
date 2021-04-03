@@ -116,6 +116,16 @@ public class MainMenu : MonoBehaviour
                 tStreakDesc.GetComponent<TextMeshProUGUI>().text = "EastEnders";
             }
         }
+        else
+        {
+            tClassicHighscore.GetComponent<TextMeshProUGUI>().text = "High Score: 0";
+            tRandomHighscore.GetComponent<TextMeshProUGUI>().text = "High Score: 0";
+            tGame3Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: 0";
+            tGame4Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: 0";
+
+            tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of 0 days";
+            tStreakDesc.GetComponent<TextMeshProUGUI>().text = "";
+        }
 
     }
     void DisplayStats()

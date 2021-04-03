@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public string sPatternAnswer;
     string currentGamemode;
 
-    public TMP_Text tScore, tHighscore, tAfterGame;
+    public TMP_Text tScore, tHighscore, tAfterGame, tTimedRoundsTimer;
 
     ////Buttons
     //Game buttons
@@ -115,9 +115,11 @@ public class GameManager : MonoBehaviour
             if (fTimedRoundTimer > 0)
             { 
             fTimedRoundTimer -= Time.deltaTime;
+                tTimedRoundsTimer.text = fTimedRoundTimer.ToString("F0");
             }
             else
             {
+                tTimedRoundsTimer.text = "";
                 EndGame();
             }
 

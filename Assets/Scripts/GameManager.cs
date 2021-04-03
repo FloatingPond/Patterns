@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public string[] gamemodeNames = { "classic", "random", "Game3", "Game4" };
     public int iPatternNumbers = 0;
     public int[] Highscore = new int[4];
+    bool newHighscoreThisGame = false;
     
     public float fGameTime; //Seconds for now
     public int buttonsPressed;
@@ -101,9 +102,6 @@ public class GameManager : MonoBehaviour
         Highscore[2] = 0;
         Highscore[3] = 0;
         LoadGame();
-        //Game no longer automatically starts as that is now controlled by MainMenu
-        //GenerateRandomPattern();
-        //RestartGame();
     }
     void LoadGame()
     {
@@ -130,12 +128,16 @@ public class GameManager : MonoBehaviour
             int number = Random.Range(1, 9);
             sPatternNumbers += number.ToString();
         }
+        //Check and set highscore text
+        CheckHighscore();
+        SetTextScore();
         //Animate
         StartCoroutine(AnimateButtonColours());
     }
     void ClassicAddToExistingPattern()
     {
         iPatternNumbers++;
+        CheckHighscore();
         SetTextScore();
         //sPatternNumbers = "";
         int number = Random.Range(1, 9);
@@ -185,7 +187,7 @@ public class GameManager : MonoBehaviour
         EnableButtons(false);
         //GenerateRandomPattern();
         if (currentGamemode == gamemodeNames[0])
-        ClassicAddToExistingPattern();
+            ClassicAddToExistingPattern();
         if (currentGamemode == gamemodeNames[1])
             RandomGenerateRandomPattern();
 
@@ -197,7 +199,7 @@ public class GameManager : MonoBehaviour
         //Show "GAME OVER" TEXT
 
         //Maybe also play a sound
-        CheckHighscore();
+        CheckHighscoreAtEndOfGame2();
         
         //Save highscore regardless
         Save();
@@ -211,7 +213,6 @@ public class GameManager : MonoBehaviour
     //Called when a button is pressed
     public void ButtonPressed(int number)
     {
-        
         if (!isGameButtonsDisabled)
         {
             AddToButtonPressed();
@@ -286,6 +287,7 @@ public class GameManager : MonoBehaviour
     
     public void RestartGame(string gamemode)
     {
+        
         if (gamemode != "")
         {
             currentGamemode = gamemode;
@@ -301,6 +303,7 @@ public class GameManager : MonoBehaviour
         sPatternNumbers = "";
         iPatternNumbers = 0;
         tAfterGame.text = "";
+        newHighscoreThisGame = false;
         AddToButtonPressed();
         NextRound();
     }
@@ -326,6 +329,54 @@ public class GameManager : MonoBehaviour
     }
 
     void CheckHighscore()
+    {
+        if (currentGamemode == gamemodeNames[0])
+        {
+            if (iPatternNumbers - 1 > Highscore[0]) //If new highscore
+            {
+                //New highscore!
+                Highscore[0] = iPatternNumbers - 1;
+                newHighscoreThisGame = true;
+            }
+            
+        }
+        else if (currentGamemode == gamemodeNames[1])
+        {
+            if (iPatternNumbers - 1 > Highscore[1]) //If new highscore
+            {
+                //New highscore!
+                Highscore[1] = iPatternNumbers - 1;
+                newHighscoreThisGame = true;
+            }
+            
+        }
+        else if (currentGamemode == gamemodeNames[2])
+        {
+            if (iPatternNumbers - 1 > Highscore[2]) //If new highscore
+            {
+                //New highscore!
+                Highscore[2] = iPatternNumbers - 1;
+                newHighscoreThisGame = true;
+            }
+            
+        }
+        else if (currentGamemode == gamemodeNames[3])
+        {
+            if (iPatternNumbers - 1 > Highscore[3]) //If new highscore
+            {
+                //New highscore!
+                Highscore[3] = iPatternNumbers - 1;
+                newHighscoreThisGame = true;
+            }
+            
+        }
+        else
+        {
+            Debug.Log("Error - invalid gamemode");
+            newHighscoreThisGame = false;
+        }
+    }
+    void CheckHighscoreAtEndOfGame()
     {
         if (currentGamemode == gamemodeNames[0])
         {
@@ -384,6 +435,19 @@ public class GameManager : MonoBehaviour
             Debug.Log("Error - invalid gamemode");
         }
     }
+    void CheckHighscoreAtEndOfGame2()
+    {
+        if (newHighscoreThisGame == true)
+        {
+           //New highscore!
+            tAfterGame.text = "NEW HIGHSCORE!";
+        }
+        else
+        {
+            tAfterGame.text = "Game Over";
+        }
+    }
+    
 
 
 

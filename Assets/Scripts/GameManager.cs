@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     public int iPatternNumbers = 0;
     public int[] Highscore = new int[4];
     bool newHighscoreThisGame = false;
-    
+
+    private IEnumerator coroutine;
     public float fGameTime; //Seconds for now
     public float fTimedRoundTimer;
     public float fTimedRoundLength = 60;
@@ -162,7 +163,8 @@ public class GameManager : MonoBehaviour
         CheckHighscore();
         SetTextScore();
         //Animate
-        StartCoroutine(AnimateButtonColours());
+        coroutine = AnimateButtonColours();
+        StartCoroutine(coroutine);
     }
     void ClassicAddToExistingPattern() //Game 2
     {
@@ -174,7 +176,8 @@ public class GameManager : MonoBehaviour
         int number = Random.Range(1, 9);
         sPatternNumbers += number.ToString();
         //Animate
-        StartCoroutine(AnimateButtonColours());
+        coroutine = AnimateButtonColours();
+        StartCoroutine(coroutine);
     }
     void MatchPattern() //Game 3
     {
@@ -201,7 +204,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        StartCoroutine(AnimateButtonColours());
+        coroutine = AnimateButtonColours();
+        StartCoroutine(coroutine);
 
     }
     //Call on every button press
@@ -248,6 +252,7 @@ public class GameManager : MonoBehaviour
         {
             if (sPatternAnswer == sPatternNumbers) //Correct!
             {
+                StopCoroutine(coroutine);
                 NextRound();
             }
             else

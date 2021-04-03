@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "RFCMA01238V",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 28294,
+        "processId": 9983,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -114,6 +114,12 @@
             "deviceId": "RFCMA01238V",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 28294,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 9983,
             "exited": false
         },
         {

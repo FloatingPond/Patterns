@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public int buttonsPressed;
     public string sPatternNumbers;
     public string sPatternAnswer;
-    string currentGamemode;
+    public string currentGamemode;
 
     public TMP_Text tScore, tHighscore, tAfterGame, tTimedRoundsTimer;
 
@@ -119,7 +119,9 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+
                 tTimedRoundsTimer.text = "";
+
                 EndGame();
             }
 

@@ -44,6 +44,7 @@ public class MainMenu : MonoBehaviour
     }
     public void ReturnToMainMenu()
     {
+        gm.currentGamemode = "";
         //To display those sweet new high scores
         DisplayHighScoresAndStreak();
         SwitchToCanvas("mainmenu");

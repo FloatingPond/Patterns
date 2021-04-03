@@ -34,6 +34,11 @@ public class MainMenu : MonoBehaviour
         {
             gm.AddToGameTime(Time.deltaTime);
         }
+        if (MainMenuCanvas.enabled == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                Application.Quit();
+        }
     }
 
     private void SwitchToGameCanvas(bool state)

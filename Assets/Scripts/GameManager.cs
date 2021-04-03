@@ -178,9 +178,20 @@ public class GameManager : MonoBehaviour
         CheckHighscore();
         SetTextScore();
 
-        sPatternNumbers = "";
-        int number = Random.Range(1, 9);
-        sPatternNumbers += number.ToString();
+        string oldnumber = sPatternNumbers;
+        while (oldnumber == sPatternNumbers)
+        { 
+            int number = Random.Range(1, 9);
+            sPatternNumbers = number.ToString();
+            if (oldnumber == sPatternNumbers)
+            {
+                Debug.Log("STILL THE SAME - "+ sPatternNumbers);
+            }
+            else
+            {
+                Debug.Log("we out - " + sPatternNumbers);
+            }
+        }
 
         StartCoroutine(AnimateButtonColours());
 

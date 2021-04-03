@@ -9,6 +9,7 @@ using Sirenix.OdinInspector;
 
 public class GameManager : MonoBehaviour
 {
+    //Gamemode names - NEEDS TO BE CHANGED IN START METHOD IF CHANGED (because it sometimes doesn't change
     public string[] gamemodeNames = { "classic", "random", "Game3", "timedround" };
     public int iPatternNumbers = 0;
     public int[] Highscore = new int[4];
@@ -70,6 +71,7 @@ public class GameManager : MonoBehaviour
     {
         return gameStreakHighscore;
     }
+ 
 
     //Used when loading in from Save data
     void SetGameStreak(int gs, int gshs)

@@ -147,8 +147,9 @@ public class GameManager : MonoBehaviour
         
 
     }
-    void RandomGenerateRandomPattern()
+    void RandomGenerateRandomPattern() //Game 1
     {
+        EnableButtons(false);
         iPatternNumbers++;
         SetTextScore();
         sPatternNumbers = "";
@@ -163,8 +164,9 @@ public class GameManager : MonoBehaviour
         //Animate
         StartCoroutine(AnimateButtonColours());
     }
-    void ClassicAddToExistingPattern()
+    void ClassicAddToExistingPattern() //Game 2
     {
+        EnableButtons(false);
         iPatternNumbers++;
         CheckHighscore();
         SetTextScore();
@@ -174,7 +176,11 @@ public class GameManager : MonoBehaviour
         //Animate
         StartCoroutine(AnimateButtonColours());
     }
-    void TimedRoundCallNextNumber()
+    void MatchPattern() //Game 3
+    {
+        EnableButtons(false); 
+    }
+    void TimedRoundCallNextNumber() //Game 4
     {
         iPatternNumbers++;
         CheckHighscore();
@@ -261,12 +267,14 @@ public class GameManager : MonoBehaviour
     {
         //Clear answer
         sPatternAnswer = "";
-        EnableButtons(false);
+        
         //GenerateRandomPattern();
         if (currentGamemode == gamemodeNames[0])
             ClassicAddToExistingPattern();
         if (currentGamemode == gamemodeNames[1])
             RandomGenerateRandomPattern();
+        if (currentGamemode == gamemodeNames[2])
+            MatchPattern();
         if (currentGamemode == gamemodeNames[3])
             TimedRoundCallNextNumber();
         
@@ -339,9 +347,16 @@ public class GameManager : MonoBehaviour
             int number = int.Parse(sPatternNumbers[i].ToString()) - 1;
             //Colour button
             Buttons[number].GetComponent<Button>().image.color = Color.red;
+            if (currentGamemode == gamemodeNames[3])
+            {
+                EnableButtons(true);
+                Buttons[number].GetComponent<Button>().image.color = Color.red;
+            }
+
             yield return new WaitForSeconds(time_buttonsAreColour);
             //Uncolour button
-            Buttons[number].GetComponent<Button>().image.color = Color.grey;
+            if (currentGamemode != gamemodeNames[3])
+                Buttons[number].GetComponent<Button>().image.color = Color.grey;
         }
         
         EnableButtons(true);

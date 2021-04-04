@@ -185,6 +185,11 @@ public class GameManager : MonoBehaviour
         ResetMatchTileCounters();
         EnableButtons(false);
         SetTextScore();
+        SetMatchButtons();
+        StartCoroutine(HideMatchButtons());
+    }
+    void SetMatchButtons()
+    {
         bool[] buttonIsSet = new bool[9];
         for (int i = 0; i < 9; i++)
         {
@@ -234,6 +239,14 @@ public class GameManager : MonoBehaviour
                         break;
                 }
             }
+        }
+    }
+    IEnumerator HideMatchButtons()
+    {
+        yield return new WaitForSeconds(2f);
+        for (int i = 0; i < 9; i++)
+        {
+            Buttons[i].GetComponent<Image>().color = Color.white;
         }
     }
     void TimedRoundCallNextNumber() //Game 4

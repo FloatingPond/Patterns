@@ -10,7 +10,7 @@ using Sirenix.OdinInspector;
 public class GameManager : MonoBehaviour
 {
     //Gamemode names - NEEDS TO BE CHANGED IN START METHOD IF CHANGED (because it sometimes doesn't change
-    public string[] gamemodeNames = { "classic", "random", "Game3", "timedround" };
+    public string[] gamemodeNames = { "classic", "random", "match", "timedround" };
     public int iPatternNumbers = 0;
     public int[] Highscore = new int[4];
     bool newHighscoreThisGame = false;
@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public TMP_Text tScore, tHighscore, tAfterGame, tTimedRoundsTimer;
 
+    private int matchA, matchB, matchC, matchD, matchBomb;
     ////Buttons
     //Game buttons
     public List<GameObject> Buttons = new List<GameObject>();
@@ -102,7 +103,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        gamemodeNames = new string[]{ "classic", "random", "Game3", "timedround" };
+        gamemodeNames = new string[]{ "classic", "random", "match", "timedround" };
         Highscore = new int[4];
         Highscore[0] = 0;
         Highscore[1] = 0;
@@ -181,7 +182,50 @@ public class GameManager : MonoBehaviour
     }
     void MatchPattern() //Game 3
     {
-        EnableButtons(false); 
+        ResetMatchTileCounters();
+        EnableButtons(false);
+        SetTextScore();
+        for (int i = 0; i < 9; i++)
+        {
+            switch (Random.Range(1, 5))
+            {
+                case 1:
+                    if (matchA < 2) 
+                    {
+                        Buttons[i].GetComponent<Image>().color = Color.green;
+                        matchA++;
+                    }
+                    break;
+                case 2:
+                    if (matchB < 2)
+                    {
+                        Buttons[i].GetComponent<Image>().color = Color.red;
+                        matchB++;
+                    }
+                    break;
+                case 3:
+                    if (matchC < 2)
+                    {
+                        Buttons[i].GetComponent<Image>().color = Color.yellow;
+                        matchC++;
+                    }
+                    break;
+                case 4:
+                    if (matchD < 2)
+                    {
+                        Buttons[i].GetComponent<Image>().color = Color.cyan;
+                        matchD++;
+                    }
+                    break;
+                case 5:
+                    if (matchBomb < 1)
+                    {
+                        Buttons[i].GetComponent<Image>().color = Color.black;
+                        matchBomb++;
+                    }
+                    break;
+            }
+        }
     }
     void TimedRoundCallNextNumber() //Game 4
     {
@@ -207,6 +251,14 @@ public class GameManager : MonoBehaviour
         coroutine = AnimateButtonColours();
         StartCoroutine(coroutine);
 
+    }
+    void ResetMatchTileCounters()
+    {
+        matchA = 0;
+        matchB = 0;
+        matchC = 0;
+        matchD = 0;
+        matchBomb = 0;
     }
     //Call on every button press
     public void CheckAnswer()

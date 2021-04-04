@@ -1,10 +1,10 @@
 {
-    "m_SelectedDeviceId": "RFCMA01238V",
+    "m_SelectedDeviceId": "d6ea2c80",
     "m_SelectedPackage": {
-        "deviceId": "RFCMA01238V",
+        "deviceId": "d6ea2c80",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 29388,
-        "exited": true
+        "processId": 10293,
+        "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -123,66 +123,6 @@
             "exited": false
         },
         {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 11644,
-            "exited": false
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 23320,
-            "exited": true
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 25586,
-            "exited": false
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 25773,
-            "exited": true
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 26444,
-            "exited": false
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 26892,
-            "exited": true
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 27030,
-            "exited": false
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 27406,
-            "exited": true
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 27900,
-            "exited": false
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 29388,
-            "exited": true
-        },
-        {
             "deviceId": "d6ea2c80",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 15142,
@@ -192,6 +132,12 @@
             "deviceId": "d6ea2c80",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 15145,
+            "exited": false
+        },
+        {
+            "deviceId": "d6ea2c80",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 10293,
             "exited": false
         }
     ],

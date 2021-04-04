@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     public TMP_Text tScore, tHighscore, tAfterGame, tTimedRoundsTimer;
 
-    private int matchA, matchB, matchC, matchD, matchBomb;
+    public int matchA, matchB, matchC, matchD, matchBomb;
     ////Buttons
     //Game buttons
     public List<GameObject> Buttons = new List<GameObject>();
@@ -185,45 +185,54 @@ public class GameManager : MonoBehaviour
         ResetMatchTileCounters();
         EnableButtons(false);
         SetTextScore();
+        bool[] buttonIsSet = new bool[9];
         for (int i = 0; i < 9; i++)
         {
-            switch (Random.Range(1, 5))
+            while (buttonIsSet[i] == false)
             {
-                case 1:
-                    if (matchA < 2) 
-                    {
-                        Buttons[i].GetComponent<Image>().color = Color.green;
-                        matchA++;
-                    }
-                    break;
-                case 2:
-                    if (matchB < 2)
-                    {
-                        Buttons[i].GetComponent<Image>().color = Color.red;
-                        matchB++;
-                    }
-                    break;
-                case 3:
-                    if (matchC < 2)
-                    {
-                        Buttons[i].GetComponent<Image>().color = Color.yellow;
-                        matchC++;
-                    }
-                    break;
-                case 4:
-                    if (matchD < 2)
-                    {
-                        Buttons[i].GetComponent<Image>().color = Color.cyan;
-                        matchD++;
-                    }
-                    break;
-                case 5:
-                    if (matchBomb < 1)
-                    {
-                        Buttons[i].GetComponent<Image>().color = Color.black;
-                        matchBomb++;
-                    }
-                    break;
+                switch (Random.Range(1, 6))
+                {
+                    case 1:
+                        if (matchA < 2)
+                        {
+                            Buttons[i].GetComponent<Image>().color = Color.green;
+                            matchA++;
+                            buttonIsSet[i] = true;
+                        }
+                        break;
+                    case 2:
+                        if (matchB < 2)
+                        {
+                            Buttons[i].GetComponent<Image>().color = Color.red;
+                            matchB++;
+                            buttonIsSet[i] = true;
+                        }
+                        break;
+                    case 3:
+                        if (matchC < 2)
+                        {
+                            Buttons[i].GetComponent<Image>().color = Color.yellow;
+                            matchC++;
+                            buttonIsSet[i] = true;
+                        }
+                        break;
+                    case 4:
+                        if (matchD < 2)
+                        {
+                            Buttons[i].GetComponent<Image>().color = Color.cyan;
+                            matchD++;
+                            buttonIsSet[i] = true;
+                        }
+                        break;
+                    case 5:
+                        if (matchBomb < 1)
+                        {
+                            Buttons[i].GetComponent<Image>().color = Color.black;
+                            matchBomb++;
+                            buttonIsSet[i] = true;
+                        }
+                        break;
+                }
             }
         }
     }

@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     private bool bMatchA, bMatchB, bMatchC, bMatchD, bMatchBomb;
     public string matchComparison;
     public int matchComparisonNumber;
+    public int newMCnumber;
+    public int newNumber;
     ////Buttons
     //Game buttons
     public List<GameObject> Buttons = new List<GameObject>();
@@ -415,55 +417,57 @@ public class GameManager : MonoBehaviour
     {
         //This corrects the number comparison due to there being a difference in the keypad shown to the player and the array
         //Ie array starts at 0 and keypad starts at 1
-        int newnumber;
-        if (number != 1)
+
+        if (number > 0)
         {
-            newnumber = number - 1;
+            newNumber = number - 1;
         }
         else
         {
-            newnumber = 1;
+            newNumber = 0;
         }
         //If player clicks bomb, lose game
-        if (Buttons[newnumber].tag == "MatchBomb")
+        if (Buttons[newNumber].tag == "MatchBomb")
         {
             matchComparisonNumber = 0;
             matchComparison = "";
+            Debug.Log("BOOM!");
             EndGame();
-        }
-        if (matchComparison == "")
-        {
-            matchComparison = Buttons[newnumber].tag;
-            matchComparisonNumber = number;
-            Debug.Log(matchComparison + " stored.");
         }
         else
         {
-            if (matchComparison == Buttons[newnumber].tag)
+            if (matchComparison == "")
             {
-                int newMCnumber;
-                Debug.Log("Matched!");
-                if (matchComparisonNumber != 1)
-                {
-                    newMCnumber = matchComparisonNumber - 1;
-                }
-                else
-                {
-                    newMCnumber = 1;
-                }
-                Buttons[newnumber].GetComponent<Image>().color = Color.grey;
-                Buttons[newnumber].GetComponent<Button>().interactable = false;
-                Buttons[newMCnumber].GetComponent<Image>().color = Color.grey;
-                Buttons[newMCnumber].GetComponent<Button>().interactable = false;
-                matchComparisonNumber = 0;
-                matchComparison = "";
+                matchComparison = Buttons[newNumber].tag;
+                matchComparisonNumber = number;
+                Debug.Log(matchComparison + " stored.");
             }
             else
             {
-                Debug.Log("Not matched! :(");
-                matchComparisonNumber = 0;
-                matchComparison = "";
-                EndGame();
+                if (matchComparison == Buttons[newNumber].tag)
+                {
+                    //int newMCnumber;
+                    Debug.Log("Matched!");
+                    if (matchComparisonNumber > 0)
+                    {
+                        newMCnumber = matchComparisonNumber - 1;
+                    }
+                    Buttons[newMCnumber].GetComponent<Image>().color = Color.grey;
+                    Buttons[newMCnumber].GetComponent<Button>().interactable = false;
+                    Debug.Log("Disable " + newMCnumber);
+                    Buttons[newNumber].GetComponent<Image>().color = Color.grey;
+                    Buttons[newNumber].GetComponent<Button>().interactable = false;
+                    Debug.Log("Disable " + newNumber);
+                    matchComparisonNumber = 0;
+                    matchComparison = "";
+                }
+                else
+                {
+                    Debug.Log("Not matched! :(");
+                    matchComparisonNumber = 0;
+                    matchComparison = "";
+                    EndGame();
+                }
             }
         }
     }

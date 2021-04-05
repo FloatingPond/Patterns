@@ -17,8 +17,10 @@ public class PlayerData
 
     //Streak
     public int gameStreak;
+    public int[] dateLastPlayed; //HH,MM,DD,MM,YYYY
+
     public int gameStreakHighscore;
-    public int[] lastDateTimePlayed; //HH,MM,DD,MM,YYYY
+    public int[] dateGameStreakHighscoreAcquired;
 
     public PlayerData(GameManager gm)
     {
@@ -35,7 +37,7 @@ public class PlayerData
         buttonsPressed = gm.buttonsPressed;
 
         //Streak stuff
-        lastDateTimePlayed = new int[5]; //HH,MM,DD,MM,YYYY
+        dateLastPlayed = new int[5]; //HH,MM,DD,MM,YYYY
 
         gameStreak = gm.GetGameStreak();
         gameStreakHighscore = gm.GetGameStreakHighscore();

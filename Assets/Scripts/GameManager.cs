@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public string matchComparison;
     public int matchComparisonNumber;
     public int newMCnumber;
-    public int newNumber;
+    public int newNumber, matchCounter = 0;
     ////Buttons
     //Game buttons
     public List<GameObject> Buttons = new List<GameObject>();
@@ -454,12 +454,16 @@ public class GameManager : MonoBehaviour
                     }
                     Buttons[newMCnumber].GetComponent<Image>().color = Color.grey;
                     Buttons[newMCnumber].GetComponent<Button>().interactable = false;
-                    Debug.Log("Disable " + newMCnumber);
                     Buttons[newNumber].GetComponent<Image>().color = Color.grey;
                     Buttons[newNumber].GetComponent<Button>().interactable = false;
-                    Debug.Log("Disable " + newNumber);
                     matchComparisonNumber = 0;
                     matchComparison = "";
+                    matchCounter++;
+                    if (matchCounter == 4)
+                    {
+                        matchCounter = 0;
+                        NextRound();
+                    }
                 }
                 else
                 {

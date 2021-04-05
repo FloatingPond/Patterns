@@ -27,7 +27,8 @@ public class GameManager : MonoBehaviour
 
     public TMP_Text tScore, tHighscore, tAfterGame, tTimedRoundsTimer;
 
-    public int matchA, matchB, matchC, matchD, matchBomb;
+    private int matchA, matchB, matchC, matchD, matchBomb;
+    private bool bMatchA, bMatchB, bMatchC, bMatchD, bMatchBomb;
     ////Buttons
     //Game buttons
     public List<GameObject> Buttons = new List<GameObject>();
@@ -184,6 +185,7 @@ public class GameManager : MonoBehaviour
     {
         ResetMatchTileCounters();
         EnableButtons(false);
+        CheckHighscore();
         SetTextScore();
         SetMatchButtons();
         StartCoroutine(HideMatchButtons());
@@ -202,6 +204,7 @@ public class GameManager : MonoBehaviour
                         {
                             Buttons[i].GetComponent<Image>().color = Color.green;
                             matchA++;
+                            Buttons[i].tag = "MatchA";
                             buttonIsSet[i] = true;
                         }
                         break;
@@ -210,6 +213,7 @@ public class GameManager : MonoBehaviour
                         {
                             Buttons[i].GetComponent<Image>().color = Color.red;
                             matchB++;
+                            Buttons[i].tag = "MatchB";
                             buttonIsSet[i] = true;
                         }
                         break;
@@ -218,6 +222,7 @@ public class GameManager : MonoBehaviour
                         {
                             Buttons[i].GetComponent<Image>().color = Color.yellow;
                             matchC++;
+                            Buttons[i].tag = "MatchC";
                             buttonIsSet[i] = true;
                         }
                         break;
@@ -226,6 +231,7 @@ public class GameManager : MonoBehaviour
                         {
                             Buttons[i].GetComponent<Image>().color = Color.cyan;
                             matchD++;
+                            Buttons[i].tag = "MatchD";
                             buttonIsSet[i] = true;
                         }
                         break;
@@ -234,6 +240,7 @@ public class GameManager : MonoBehaviour
                         {
                             Buttons[i].GetComponent<Image>().color = Color.black;
                             matchBomb++;
+                            Buttons[i].tag = "MatchBomb";
                             buttonIsSet[i] = true;
                         }
                         break;
@@ -248,6 +255,7 @@ public class GameManager : MonoBehaviour
         {
             Buttons[i].GetComponent<Image>().color = Color.white;
         }
+        EnableButtons(true);
     }
     void TimedRoundCallNextNumber() //Game 4
     {
@@ -386,10 +394,33 @@ public class GameManager : MonoBehaviour
         {
             AddToButtonPressed();
             sPatternAnswer += number.ToString();
-            CheckAnswer();
+            if (currentGamemode != gamemodeNames[2])
+            {
+                CheckAnswer();
+            }
+            else if (currentGamemode == gamemodeNames[2])
+            {
+                CheckMatchAnswer(number);
+            }
         }
     }
 
+    void CheckMatchAnswer(int number)
+    {
+        int newnumber;
+        if (number != 1)
+        {
+            newnumber = number - 1;
+        }
+        else
+        {
+            newnumber = 1;
+        }
+        if (Buttons[newnumber].tag == "MatchBomb")
+        {
+            EndGame();
+        }
+    }
     //Sets the text object's score
     void SetTextScore()
     {

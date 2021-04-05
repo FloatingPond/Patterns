@@ -378,6 +378,7 @@ public class GameManager : MonoBehaviour
     //Called when the gamemode criteria has been failed
     public void EndGame()
     {
+        StopAllCoroutines();
         EnableButtons(false);
         endgameCanvas.enabled = true;
         //Show "GAME OVER" TEXT

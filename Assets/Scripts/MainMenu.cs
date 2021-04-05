@@ -53,6 +53,7 @@ public class MainMenu : MonoBehaviour
         gm.fTimedRoundTimer = 60;
         gm.tTimedRoundsTimer.text = "";
         gm.EndGame();
+        gm.MakeButtonsInteractable();
         //To display those sweet new high scores
         DisplayHighScoresAndStreak();
         SwitchToCanvas("mainmenu");

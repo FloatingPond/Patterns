@@ -393,7 +393,14 @@ public class GameManager : MonoBehaviour
         //Enable Play Again and Return buttons
 
     }
-    
+    public void MakeButtonsInteractable()
+    {
+        foreach (GameObject button in Buttons)
+        {
+            button.GetComponent<Button>().interactable = true;
+            button.GetComponent<Image>().color = Color.white;
+        }
+    }
     //Called when a button is pressed
     public void ButtonPressed(int number)
     {

@@ -50,6 +50,9 @@ public class MainMenu : MonoBehaviour
     public void ReturnToMainMenu()
     {
         gm.currentGamemode = "";
+        gm.fTimedRoundTimer = 60;
+        gm.tTimedRoundsTimer.text = "";
+        gm.EndGame();
         //To display those sweet new high scores
         DisplayHighScoresAndStreak();
         SwitchToCanvas("mainmenu");

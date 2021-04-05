@@ -376,7 +376,7 @@ public class GameManager : MonoBehaviour
     }
 
     //Called when the gamemode criteria has been failed
-    void EndGame()
+    public void EndGame()
     {
         EnableButtons(false);
         endgameCanvas.enabled = true;

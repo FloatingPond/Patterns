@@ -466,6 +466,7 @@ public class GameManager : MonoBehaviour
                 {
                     matchComparisonNumber = 0;
                     matchComparison = "";
+                    matchCounter = 0;
                     EndGame();
                 }
             }

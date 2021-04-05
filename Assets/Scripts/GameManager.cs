@@ -185,6 +185,10 @@ public class GameManager : MonoBehaviour
     }
     void MatchPattern() //Game 3
     {
+        foreach (GameObject button in Buttons)
+        {
+            button.GetComponent<Button>().interactable = true;
+        }
         ResetMatchTileCounters();
         EnableButtons(false);
         CheckHighscore();
@@ -420,6 +424,13 @@ public class GameManager : MonoBehaviour
         {
             newnumber = 1;
         }
+        //If player clicks bomb, lose game
+        if (Buttons[newnumber].tag == "MatchBomb")
+        {
+            matchComparisonNumber = 0;
+            matchComparison = "";
+            EndGame();
+        }
         if (matchComparison == "")
         {
             matchComparison = Buttons[newnumber].tag;
@@ -441,9 +452,10 @@ public class GameManager : MonoBehaviour
                     newMCnumber = 1;
                 }
                 Buttons[newnumber].GetComponent<Image>().color = Color.grey;
+                Buttons[newnumber].GetComponent<Button>().interactable = false;
                 Buttons[newMCnumber].GetComponent<Image>().color = Color.grey;
+                Buttons[newMCnumber].GetComponent<Button>().interactable = false;
                 matchComparisonNumber = 0;
-                newMCnumber = 0;
                 matchComparison = "";
             }
             else
@@ -453,13 +465,6 @@ public class GameManager : MonoBehaviour
                 matchComparison = "";
                 EndGame();
             }
-        }
-        //If player clicks bomb, lose game
-        if (Buttons[newnumber].tag == "MatchBomb")
-        {
-            matchComparisonNumber = 0;
-            matchComparison = "";
-            EndGame();
         }
     }
     //Sets the text object's score
@@ -535,7 +540,6 @@ public class GameManager : MonoBehaviour
     
     public void RestartGame(string gamemode)
     {
-        
         if (gamemode != "") //Used when game has been chosen for the first time
         {
             currentGamemode = gamemode;

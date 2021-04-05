@@ -17,7 +17,8 @@ public class MainMenu : MonoBehaviour
     public GameObject tTimePlayed, tButtonsPressed;
     public void Start()
     {
-        DisplayHighScoresAndStreak();
+        DisplayHighScores();
+        DisplayStreak();
     }
 
     public void Start_Gamemode(string gamemode)
@@ -55,7 +56,7 @@ public class MainMenu : MonoBehaviour
         gm.EndGame();
         gm.MakeButtonsInteractable();
         //To display those sweet new high scores
-        DisplayHighScoresAndStreak();
+        DisplayHighScores();
         SwitchToCanvas("mainmenu");
         gm.AddToButtonPressed();
     }
@@ -63,7 +64,8 @@ public class MainMenu : MonoBehaviour
     public void ReturnToMainMenuFromStats()
     {
         //To display those sweet new high scores
-        DisplayHighScoresAndStreak();
+        DisplayHighScores();
+        DisplayStreak();
         SwitchToCanvas("mainmenu");
     }
     public void ShowStats()
@@ -100,7 +102,7 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    void DisplayHighScoresAndStreak()
+    void DisplayHighScores()
     {
         PlayerData data = SaveSystem.LoadGame();
 
@@ -135,6 +137,23 @@ public class MainMenu : MonoBehaviour
             tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of 0 days";
             tStreakDesc.GetComponent<TextMeshProUGUI>().text = "";
         }
+
+    }
+    void DisplayStreak()
+    {
+        int streak = SaveSystem.GetStreak();
+
+        if (streak > 1)
+        {
+            tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + streak + " days!";
+            tStreakDesc.GetComponent<TextMeshProUGUI>().text = "Woo!";
+        }
+        else
+        {
+            tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + streak + " day";
+            tStreakDesc.GetComponent<TextMeshProUGUI>().text = "EastEnders";
+        }
+
 
     }
     void DisplayStats()

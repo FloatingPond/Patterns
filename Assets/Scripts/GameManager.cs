@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     private int matchA, matchB, matchC, matchD, matchBomb;
     private bool bMatchA, bMatchB, bMatchC, bMatchD, bMatchBomb;
+    public string matchComparison;
+    public int matchComparisonNumber;
     ////Buttons
     //Game buttons
     public List<GameObject> Buttons = new List<GameObject>();
@@ -407,6 +409,8 @@ public class GameManager : MonoBehaviour
 
     void CheckMatchAnswer(int number)
     {
+        //This corrects the number comparison due to there being a difference in the keypad shown to the player and the array
+        //Ie array starts at 0 and keypad starts at 1
         int newnumber;
         if (number != 1)
         {
@@ -416,8 +420,45 @@ public class GameManager : MonoBehaviour
         {
             newnumber = 1;
         }
+        if (matchComparison == "")
+        {
+            matchComparison = Buttons[newnumber].tag;
+            matchComparisonNumber = number;
+            Debug.Log(matchComparison + " stored.");
+        }
+        else
+        {
+            if (matchComparison == Buttons[newnumber].tag)
+            {
+                int newMCnumber;
+                Debug.Log("Matched!");
+                if (matchComparisonNumber != 1)
+                {
+                    newMCnumber = matchComparisonNumber - 1;
+                }
+                else
+                {
+                    newMCnumber = 1;
+                }
+                Buttons[newnumber].GetComponent<Image>().color = Color.grey;
+                Buttons[newMCnumber].GetComponent<Image>().color = Color.grey;
+                matchComparisonNumber = 0;
+                newMCnumber = 0;
+                matchComparison = "";
+            }
+            else
+            {
+                Debug.Log("Not matched! :(");
+                matchComparisonNumber = 0;
+                matchComparison = "";
+                EndGame();
+            }
+        }
+        //If player clicks bomb, lose game
         if (Buttons[newnumber].tag == "MatchBomb")
         {
+            matchComparisonNumber = 0;
+            matchComparison = "";
             EndGame();
         }
     }

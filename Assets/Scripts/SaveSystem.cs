@@ -38,23 +38,19 @@ public class SaveSystem : MonoBehaviour
             return null;
         }
     }
-
+    //Streak
     public static int GetStreak()
     {
-        string path = filepath;
-        if (File.Exists(path))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
-            PlayerData data = bf.Deserialize(stream) as PlayerData;
-            stream.Close();
-            return data.gameStreak;
+        PlayerData pd = LoadGame();
 
+        if (pd != null)
+        {
+            return pd.gameStreak;
         }
         else
         {
-            Debug.LogError("No File found at " + path);
-            return 1;
+            return 0;
         }
+
     }
 }

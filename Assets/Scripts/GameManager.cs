@@ -193,6 +193,7 @@ public class GameManager : MonoBehaviour
         }
         ResetMatchTileCounters();
         EnableButtons(false);
+        iPatternNumbers++;
         CheckHighscore();
         SetTextScore();
         SetMatchButtons();
@@ -372,8 +373,6 @@ public class GameManager : MonoBehaviour
             MatchPattern();
         if (currentGamemode == gamemodeNames[3])
             TimedRoundCallNextNumber();
-        
-
     }
 
     //Called when the gamemode criteria has been failed
@@ -459,6 +458,7 @@ public class GameManager : MonoBehaviour
                     matchComparisonNumber = 0;
                     matchComparison = "";
                     matchCounter++;
+                    //ROUND WIN CONDITION: If there have been 4 matches, move to the next round
                     if (matchCounter == 4)
                     {
                         matchCounter = 0;

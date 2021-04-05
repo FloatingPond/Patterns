@@ -430,7 +430,6 @@ public class GameManager : MonoBehaviour
         {
             matchComparisonNumber = 0;
             matchComparison = "";
-            Debug.Log("BOOM!");
             EndGame();
         }
         else
@@ -439,14 +438,11 @@ public class GameManager : MonoBehaviour
             {
                 matchComparison = Buttons[newNumber].tag;
                 matchComparisonNumber = number;
-                Debug.Log(matchComparison + " stored.");
             }
             else
             {
                 if (matchComparison == Buttons[newNumber].tag)
                 {
-                    //int newMCnumber;
-                    Debug.Log("Matched!");
                     if (matchComparisonNumber > 0)
                     {
                         newMCnumber = matchComparisonNumber - 1;
@@ -467,7 +463,6 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Not matched! :(");
                     matchComparisonNumber = 0;
                     matchComparison = "";
                     EndGame();

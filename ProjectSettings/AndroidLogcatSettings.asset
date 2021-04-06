@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "d6ea2c80",
+    "m_SelectedDeviceId": "RFCMA01238V",
     "m_SelectedPackage": {
-        "deviceId": "d6ea2c80",
-        "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 10301,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -47,80 +47,44 @@
         {
             "deviceId": "RFCMA01238V",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 10519,
-            "exited": true
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 1586,
-            "exited": true
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 9529,
-            "exited": true
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 4054,
-            "exited": true
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 11904,
-            "exited": true
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.teslacoilsw.launcher",
-            "processId": 10191,
-            "exited": false
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 26615,
-            "exited": false
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 7217,
-            "exited": true
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 13009,
-            "exited": true
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 32223,
-            "exited": false
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 29999,
-            "exited": false
-        },
-        {
-            "deviceId": "RFCMA01238V",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 28294,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "RFCMA01238V",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 9983,
+            "exited": true
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 11509,
+            "exited": true
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.teslacoilsw.launcher",
+            "processId": 7044,
+            "exited": true
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.teslacoilsw.launcher",
+            "processId": 1346,
             "exited": false
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.facebook.orca",
+            "processId": 24098,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.FloatingPond.Patterns",
+            "processId": 29353,
+            "exited": true
         },
         {
             "deviceId": "d6ea2c80",

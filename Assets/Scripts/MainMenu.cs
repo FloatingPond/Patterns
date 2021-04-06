@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
     [Title("Managers")]
     public GameManager gm;
 
-    //public AdManager am; 
+    public AdManager am; 
 
     public GameObject tClassicHighscore, tRandomHighscore, tGame3Highscore, tGame4Highscore;
     //Streak main menu
@@ -53,7 +53,7 @@ public class MainMenu : MonoBehaviour
 
     void QuitGame()
     {
-        //am.CloseBannerAd();
+        am.CloseBannerAd();
         Application.Quit();
     }
 

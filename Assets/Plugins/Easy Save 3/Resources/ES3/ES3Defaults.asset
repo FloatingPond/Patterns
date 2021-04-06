@@ -33,11 +33,9 @@ MonoBehaviour:
     - Cinemachine
     - Assembly-CSharp
     - Sirenix.OdinInspector.CompatibilityLayer
-    - GoogleMobileAds
     - Sirenix.OdinInspector.CompatibilityLayer.Editor
     - PsdPlugin
     - Sirenix.OdinInspector.Modules.UnityMathematics
-    - GoogleMobileAds.Editor
     showAdvancedSettings: 1
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1

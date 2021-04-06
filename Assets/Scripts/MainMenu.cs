@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Sirenix.OdinInspector;
 
 public class MainMenu : MonoBehaviour
 {
+    [Title("Canvases")]
+    public int test = 1;
+
     public Canvas Gameplay, MainMenuCanvas, Endgame,StatsSound;
+    
+    [Title("Managers")]
     public GameManager gm;
+
+    public AdManager am; 
 
     public GameObject tClassicHighscore, tRandomHighscore, tGame3Highscore, tGame4Highscore;
     //Streak main menu
@@ -38,8 +46,15 @@ public class MainMenu : MonoBehaviour
         if (MainMenuCanvas.enabled == true)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-                Application.Quit();
+                QuitGame();
+                
         }
+    }
+
+    void QuitGame()
+    {
+        am.CloseBannerAd();
+        Application.Quit();
     }
 
     private void SwitchToGameCanvas(bool state)

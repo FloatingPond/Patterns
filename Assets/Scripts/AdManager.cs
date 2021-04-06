@@ -33,8 +33,8 @@ public class AdManager : MonoBehaviour
         adBannerBottom = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
     }
 
-void Update()
+    public void CloseBannerAd()
     {
-        
+        adBannerBottom.Destroy();
     }
 }

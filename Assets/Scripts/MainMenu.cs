@@ -49,11 +49,16 @@ public class MainMenu : MonoBehaviour
                 QuitGame();
                 
         }
+        else if (StatsSound.enabled == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                ReturnToMainMenuFromStats();
+        }
     }
 
     void QuitGame()
     {
-        am.CloseBannerAd();
+        //am.CloseBannerAd();
         Application.Quit();
     }
 

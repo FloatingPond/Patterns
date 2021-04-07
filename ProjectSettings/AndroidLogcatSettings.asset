@@ -3,8 +3,8 @@
     "m_SelectedPackage": {
         "deviceId": "RFCMA01238V",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 12796,
-        "exited": true
+        "processId": 16729,
+        "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -163,6 +163,30 @@
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 12796,
             "exited": true
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 13405,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 14381,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 15655,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 16729,
+            "exited": false
         },
         {
             "deviceId": "d6ea2c80",

@@ -38,13 +38,7 @@ public class AdManager : MonoBehaviour
 
         adBannerBottom.LoadAd(requestForBanner);
 
-        //Reward - IS NOT WORKING
-
-        //adReward = new RewardedAd(adUnitId2);
-
-        //requestForReward = new AdRequest.Builder().Build();
-
-        //adReward.LoadAd(requestForReward);
+        
 
         
 
@@ -80,6 +74,7 @@ public class AdManager : MonoBehaviour
         rewardedAd.LoadAd(request);
     }
 
+
     private void RequestBanner()
     {
         
@@ -90,6 +85,17 @@ public class AdManager : MonoBehaviour
     private void RequestReward()
     {
         Debug.Log("Reward Ad Made");
+
+        requestForReward = new AdRequest.Builder().Build();
+
+        adReward.LoadAd(requestForReward);
+    }
+
+    public void RequestReward2()
+    {
+        //Reward - IS NOT WORKING
+        Debug.Log("BUTTON PRESSED");
+        adReward = new RewardedAd(adUnitId2);
 
         requestForReward = new AdRequest.Builder().Build();
 

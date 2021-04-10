@@ -7402,7 +7402,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1893154943}
-        m_MethodName: TutorialStuffThatDidntWork
+        m_MethodName: TutorialRewardAdWORKS
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8400,6 +8400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8019d1e3cb830664d9c794f2bd16ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mm: {fileID: 994137742}
 --- !u!1 &1900725046
 GameObject:
   m_ObjectHideFlags: 0

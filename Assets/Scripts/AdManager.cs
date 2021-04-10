@@ -22,6 +22,8 @@ public class AdManager : MonoBehaviour
 
     RewardedAd rewardedAd;
 
+    public MainMenu mm;
+
     [Button(ButtonSizes.Large)]
 
     private void BigButton()
@@ -39,18 +41,18 @@ public class AdManager : MonoBehaviour
 
         //Banner
 
-        //RequestBanner();
+        RequestBanner();
 
-        //requestForBanner = new AdRequest.Builder().Build();
+        requestForBanner = new AdRequest.Builder().Build();
 
-        //adBannerBottom.LoadAd(requestForBanner);
+        adBannerBottom.LoadAd(requestForBanner);
 
         //Reward
 
         // adRbva = RewardBasedVideoAd.Instance;
     }
 
-    public void TutorialStuffThatDidntWork()
+    public void TutorialRewardAdWORKS() //WORKS
     {
         //TUTORIAL REWARDS
         string adUnitId;
@@ -64,6 +66,7 @@ public class AdManager : MonoBehaviour
 
         rewardedAd = new RewardedAd(adUnitId);
 
+        
         List<string> testids = new List<string>();
         testids.Add("21B75031C51D44C92C2561822796725B");
         RequestConfiguration config = new RequestConfiguration.Builder().SetTestDeviceIds(testids).build();
@@ -71,13 +74,11 @@ public class AdManager : MonoBehaviour
 
         // Called when an ad request has successfully loaded.
         rewardedAd.OnAdLoaded += HandleOnRewardAdLoaded;
-
         // Called when an ad request failed to load.
         rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
-
         // Called when the user should be rewarded for interacting with the ad.
         rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
-
+        
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder()
                          .AddTestDevice("34343")
@@ -95,7 +96,7 @@ public class AdManager : MonoBehaviour
         adBannerBottom = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
     }
 
-    private void RequestReward()
+    private void RequestReward() //DOES NOT WORK
     {
         Debug.Log("Reward Ad Made");
 
@@ -104,7 +105,7 @@ public class AdManager : MonoBehaviour
         adReward.LoadAd(requestForReward);
     }
 
-    public void RequestReward2()
+    public void RequestReward2() //DOES NOT WORK
     {
         //Reward - IS NOT WORKING
         Debug.Log("BUTTON PRESSED");
@@ -123,7 +124,7 @@ public class AdManager : MonoBehaviour
         adReward.Show();
     }
 
-    public void RequestReward3()
+    public void RequestReward3() //DOES NOT WORK
     {
         //RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("21B75031C51D44C92C2561822796725B"));
         List<string> testids = new List<string>();
@@ -154,6 +155,7 @@ public class AdManager : MonoBehaviour
         string type = args.Type;
         double amount = args.Amount;
         MonoBehaviour.print("HandleRewardedAdRewarded event received for " + amount.ToString() + " " + type);
+        mm.test += 1;
     }
 
     public void HandleOnRewardAdLoaded(object sender, EventArgs args)
@@ -175,6 +177,8 @@ public class AdManager : MonoBehaviour
             "HandleRewardedAdFailedToLoad event received with message: "
                              + args.Message);
     }
+
+
 
 
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
+using System;
+using UnityEngine.UI;
 using Sirenix.OdinInspector;
 
 
@@ -16,34 +18,36 @@ public class AdManager : MonoBehaviour
     private RewardedAd adReward;
     private AdRequest requestForReward;
 
+    private RewardBasedVideoAd adRbva;
+
+    RewardedAd rewardedAd;
+
     [Button(ButtonSizes.Large)]
 
     private void BigButton()
     {
         RequestReward();
     }
-
-
+    
     void Start()
     {
         //Always needs to be called
         MobileAds.Initialize(initStatus => { });
-        Debug.Log("AdManager initialised.");
+
+        //TutorialStuffThatDidntWork();
+
 
         //Banner
 
-        RequestBanner();
+        //RequestBanner();
 
-        requestForBanner = new AdRequest.Builder().Build();
+        //requestForBanner = new AdRequest.Builder().Build();
 
-        adBannerBottom.LoadAd(requestForBanner);
+        //adBannerBottom.LoadAd(requestForBanner);
 
-        
+        //Reward
 
-        
-
-        
-
+        // adRbva = RewardBasedVideoAd.Instance;
     }
 
     public void TutorialStuffThatDidntWork()
@@ -58,7 +62,15 @@ public class AdManager : MonoBehaviour
                             adUnitId = "unexpected_platform";
         #endif
 
-        RewardedAd rewardedAd = new RewardedAd(adUnitId);
+        rewardedAd = new RewardedAd(adUnitId);
+
+        List<string> testids = new List<string>();
+        testids.Add("21B75031C51D44C92C2561822796725B");
+        RequestConfiguration config = new RequestConfiguration.Builder().SetTestDeviceIds(testids).build();
+        MobileAds.SetRequestConfiguration(config);
+
+        // Called when an ad request has successfully loaded.
+        rewardedAd.OnAdLoaded += HandleOnRewardAdLoaded;
 
         // Called when an ad request failed to load.
         rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
@@ -72,9 +84,10 @@ public class AdManager : MonoBehaviour
                          .Build();
         // Load the rewarded ad with the request.
         rewardedAd.LoadAd(request);
+
+        
     }
-
-
+    
     private void RequestBanner()
     {
         
@@ -95,11 +108,39 @@ public class AdManager : MonoBehaviour
     {
         //Reward - IS NOT WORKING
         Debug.Log("BUTTON PRESSED");
+
+        List<string> testids = new List<string>();
+        testids.Add("21B75031C51D44C92C2561822796725B");
+        RequestConfiguration config = new RequestConfiguration.Builder().SetTestDeviceIds(testids).build();
+        MobileAds.SetRequestConfiguration(config);
+
         adReward = new RewardedAd(adUnitId2);
 
         requestForReward = new AdRequest.Builder().Build();
 
         adReward.LoadAd(requestForReward);
+
+        adReward.Show();
+    }
+
+    public void RequestReward3()
+    {
+        //RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("21B75031C51D44C92C2561822796725B"));
+        List<string> testids = new List<string>();
+        testids.Add("21B75031C51D44C92C2561822796725B");
+        RequestConfiguration config = new RequestConfiguration.Builder().SetTestDeviceIds(testids).build();
+        MobileAds.SetRequestConfiguration(config);
+
+
+        requestForReward = new AdRequest.Builder().Build();
+        
+        string test = "";
+        adRbva.LoadAd(requestForReward, test);
+        
+        adRbva.OnAdLoaded += this.HandleOnRewardAdLoaded;
+
+        // Called when an ad request failed to load.
+        //adRbva.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
     }
 
     public void CloseBannerAd()
@@ -115,12 +156,24 @@ public class AdManager : MonoBehaviour
         MonoBehaviour.print("HandleRewardedAdRewarded event received for " + amount.ToString() + " " + type);
     }
 
+    public void HandleOnRewardAdLoaded(object sender, EventArgs args)
+    {
+        if (rewardedAd.IsLoaded())
+            rewardedAd.Show();
+    }
+
+    public void HandleRewardedAdLoaded(object sender, EventArgs args)
+    {
+        rewardedAd.Show();
+        MonoBehaviour.print("HandleRewardedAdLoaded event received");
+
+    }
+
     public void HandleRewardedAdFailedToLoad(object sender, AdErrorEventArgs args)
     {
         MonoBehaviour.print(
             "HandleRewardedAdFailedToLoad event received with message: "
                              + args.Message);
-        Debug.Log("ERROR NO AD");
     }
 
 

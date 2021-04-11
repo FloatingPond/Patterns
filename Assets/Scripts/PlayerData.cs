@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [System.Serializable]
 public class PlayerData
@@ -15,12 +16,26 @@ public class PlayerData
     public int buttonsPressed;
     //Total high scores - could either save it or calculate it on loaded data
 
-    //Streak
-    public int gameStreak;
-    public int[] dateLastPlayed; //HH,MM,DD,MM,YYYY
+    //Streak stuff
 
-    public int gameStreakHighscore;
-    public int[] dateGameStreakHighscoreAcquired;
+    //Main integer
+    public int gameStreak;
+    //Used and specified at the DateTime when the user acquires a new number
+    //Also used to be compared against as to whether:
+    //  If not long enough since last time before can give a new streak
+    //  If has been enough time
+    //  If has been too long since player played
+    public string dateLastAcquiredStreak; //yyyy-MM-dd HH:mm tt
+
+    //Last Streak
+    public int gameStreakLast;
+    public string dateLastAcquiredStreakLast; //yyyy-MM-dd HH:mm tt
+
+    //Best ever streak highscore
+    public int gameStreakHighscore; 
+    //Date acquired gsHighscore - set to DateTime of gameStreak if gs is same as gsh
+    //Else is the date of the last highest streak
+    public int[] dateGameStreakHighscoreAcquired; //yyyy-MM-dd HH:mm tt
 
 
 
@@ -39,8 +54,6 @@ public class PlayerData
         buttonsPressed = gm.buttonsPressed;
 
         //Streak stuff
-        dateLastPlayed = new int[5]; //HH,MM,DD,MM,YYYY
-
         gameStreak = gm.GetGameStreak();
         gameStreakHighscore = gm.GetGameStreakHighscore();
     }

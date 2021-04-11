@@ -68,7 +68,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int gameStreak;
     [SerializeField]
+    private int gameStreakLast;
+    [SerializeField]
     private int gameStreakHighscore;
+
+
 
     //DateTime stuff
 
@@ -102,43 +106,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(GetSetDateTimeNow());
     }
 
-
-    public int GetGameStreak()
-    {
-        return gameStreak;
-    }
-    public int GetGameStreakHighscore()
-    {
-        return gameStreakHighscore;
-    }
- 
-
-    //Used when loading in from Save data
-    void SetGameStreak(int gs, int gshs)
-    {
-        gameStreak = gs;
-        gameStreakHighscore = gshs;
-    }
-
-    public void AddToGameStreak()
-    {
-        gameStreak++;
-        ChangeGameStreakHighscore();
-    }
-    public void ResetGameStreak()
-    {
-        gameStreak = 1;
-    }
-
-    //Called after gameStreak changes
-    public void ChangeGameStreakHighscore()
-    {
-        if (gameStreak > gameStreakHighscore)
-        {
-            gameStreakHighscore = gameStreak;
-        }
-    }
-    
     private void Update()
     {
         if (currentGamemode == gamemodeNames[3])
@@ -437,6 +404,7 @@ public class GameManager : MonoBehaviour
         SetTextScore();
         //Play again?
         //Enable Play Again and Return buttons
+        CheckGameStreak();
 
     }
     public void MakeButtonsInteractable()
@@ -704,7 +672,78 @@ public class GameManager : MonoBehaviour
             tAfterGame.text = "Game Over";
         }
     }
-    
+
+    //Game Streak Stuff
+    public int GetGameStreak()
+    {
+        return gameStreak;
+    }
+
+    public int GetGameStreakHighscore()
+    {
+        return gameStreakHighscore;
+    }
+
+    //Used when loading in from Save data
+    void SetGameStreak(int gs, int gshs)
+    {
+        gameStreak = gs;
+        gameStreakHighscore = gshs;
+    }
+
+    public void AddToGameStreak()
+    {
+        gameStreak++;
+        ChangeGameStreakHighscore();
+    }
+
+    public void ResetGameStreak()
+    {
+        gameStreak = 1;
+    }
+
+    //Called after gameStreak changes
+    public void ChangeGameStreakHighscore()
+    {
+        if (gameStreak > gameStreakHighscore)
+        {
+            gameStreakHighscore = gameStreak;
+        }
+    }
+
+    //Called when game is opened to check streak
+    public void CheckGameStreak()
+    {
+        //Time between now and last acquired streak is X
+
+        //If X is less than 6 hours AND day is 1 apart
+        //  Come back in X
+        
+        //Else if X is more than 6 hours AND day is 1 apart
+        //  PLAY A GAME TO GET YOUR STREAK
+        
+        //Else if is 2 days apart
+        //  SAVE STREAK AS LAST STREAK
+        //  OFFER CHANCE TO RECLAIM STREAK
+        
+        //Else if is more than 2 days apart
+        //  Too late
+        //  Save streak as last streak
+        //  No chance to reclaim
+        //  Streak reset to zero
+
+        
+
+        
+    }
+
+    //Called when a game has been played
+    public void ChangeGameStreak()
+    {
+        //If time between now and last acquired streak is less than 6 hours
+        //Can ignore
+        //Else If time between
+    }
 
 
 

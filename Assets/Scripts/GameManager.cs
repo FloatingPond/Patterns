@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.Android;
 using Unity.Notifications.Android;
 using Sirenix.OdinInspector;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -69,6 +70,38 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int gameStreakHighscore;
 
+    //DateTime stuff
+
+    public DateTime dt,dtnew, dtnew2;
+    public string dtString2 = "2005-10-05 22:12 PM";
+    public string dtString3 = "2005-10-05 22:12 PM";
+
+
+    [Button(ButtonSizes.Small)]
+    private void ParseStringToDateTime()
+    {
+        StringToDateTime();
+    }
+
+    /// <summary>
+    /// Code
+    /// </summary>
+    /// <returns></returns>
+    /// 
+
+    void Start()
+    {
+        gamemodeNames = new string[] { "classic", "random", "match", "timedround" };
+        Highscore = new int[4];
+        Highscore[0] = 0;
+        Highscore[1] = 0;
+        Highscore[2] = 0;
+        Highscore[3] = 0;
+        LoadGame();
+        dt = DateTime.Now;
+        StartCoroutine(GetSetDateTimeNow());
+    }
+
 
     public int GetGameStreak()
     {
@@ -105,18 +138,7 @@ public class GameManager : MonoBehaviour
             gameStreakHighscore = gameStreak;
         }
     }
-
-    void Start()
-    {
-        gamemodeNames = new string[]{ "classic", "random", "match", "timedround" };
-        Highscore = new int[4];
-        Highscore[0] = 0;
-        Highscore[1] = 0;
-        Highscore[2] = 0;
-        Highscore[3] = 0;
-        LoadGame();
-    }
-
+    
     private void Update()
     {
         if (currentGamemode == gamemodeNames[3])
@@ -135,6 +157,7 @@ public class GameManager : MonoBehaviour
             }
 
         }
+
     }
     void LoadGame()
     {
@@ -162,7 +185,7 @@ public class GameManager : MonoBehaviour
         sPatternNumbers = "";
         for (int i = 0; i < iPatternNumbers; i++)
         {
-            int number = Random.Range(1, 9);
+            int number = UnityEngine.Random.Range(1, 9);
             sPatternNumbers += number.ToString();
         }
         //Check and set highscore text
@@ -179,7 +202,7 @@ public class GameManager : MonoBehaviour
         CheckHighscore();
         SetTextScore();
         //sPatternNumbers = "";
-        int number = Random.Range(1, 9);
+        int number = UnityEngine.Random.Range(1, 9);
         sPatternNumbers += number.ToString();
         //Animate
         coroutine = AnimateButtonColours();
@@ -206,7 +229,7 @@ public class GameManager : MonoBehaviour
         {
             while (buttonIsSet[i] == false)
             {
-                switch (Random.Range(1, 6))
+                switch (UnityEngine.Random.Range(1, 6))
                 {
                     case 1:
                         if (matchA < 2)
@@ -266,6 +289,28 @@ public class GameManager : MonoBehaviour
         }
         EnableButtons(true);
     }
+
+    IEnumerator GetSetDateTimeNow()
+    {
+        while(true)
+        {
+            dt = DateTime.Now;
+            Debug.Log(dt);
+            yield return new WaitForSeconds(60f);
+        }
+    }
+
+    void StringToDateTime()
+    {
+        dtnew = DateTime.ParseExact(dtString2, "yyyy-MM-dd HH:mm tt", null);
+        dtnew2 = DateTime.ParseExact(dtString3, "yyyy-MM-dd HH:mm tt", null);
+        TimeSpan TimeBetween = dtnew2.Subtract(dtnew);
+        Debug.Log(TimeBetween);
+        Debug.Log(TimeBetween.Hours);
+
+        Debug.Log(dtnew);
+    
+}
     void TimedRoundCallNextNumber() //Game 4
     {
         iPatternNumbers++;
@@ -275,7 +320,7 @@ public class GameManager : MonoBehaviour
         string oldnumber = sPatternNumbers;
         while (oldnumber == sPatternNumbers)
         { 
-            int number = Random.Range(1, 9);
+            int number = UnityEngine.Random.Range(1, 9);
             sPatternNumbers = number.ToString();
             if (oldnumber == sPatternNumbers)
             {

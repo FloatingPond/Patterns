@@ -73,19 +73,27 @@ public class GameManager : MonoBehaviour
     private int gameStreakHighscore;
 
     public DateTime dateLastAcquiredStreak;
-
+    public DateTime dateLastAcquiredStreakLast;
 
     //DateTime stuff
 
     public DateTime dt,dtnew, dtnew2;
     public string dtString2 = "2005-10-05 22:12 PM";
     public string dtString3 = "2005-10-05 22:12 PM";
+    public string dtString4 = "2021-10-05 22:12 PM";
+
 
 
     [Button(ButtonSizes.Small)]
     private void ParseStringToDateTime()
     {
         StringToDateTime();
+    }
+
+    [Button(ButtonSizes.Small)]
+    private void ChangeDateLastAcquiredStreak()
+    {
+        dateLastAcquiredStreak = DateTime.ParseExact(dtString4, "yyyy-MM-dd HH:mm tt", null);
     }
 
     /// <summary>
@@ -758,11 +766,42 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log((DateTime.Now - dateLastAcquiredStreak).Days);
-            if ((DateTime.Now - dateLastAcquiredStreak).Days < 2)
+            int hours = (int)(DateTime.Now - dateLastAcquiredStreak).TotalHours;
+            int days = (int)(DateTime.Now - dateLastAcquiredStreak).TotalDays;
+            int minutes = (DateTime.Now - dateLastAcquiredStreak).Minutes;
+            Debug.Log("Total hours:" + hours + ", Total Days:" + days);
+            //Debug.Log(hours + "," + days + "," + minutes);
+
+            if (days < 2) //If Days are less than 2
             {
-                //Streak not lost
+                if (hours < 6)
+                {
+                    Debug.Log("No new streak, too few hours. Come back later");
+                    //come back later
+                }
+                else if (hours > 6 && days > 0)
+                {
+                    Debug.Log("NEW STREAK!");
+                    gameStreak++;
+                    dateLastAcquiredStreak = DateTime.Now;
+                }
+                else
+                {
+                    //NEED TO CHECK IF THE LOCAL DATE IS DIFFERENT
+                    //Right now it does not check 15th vs 14th, only if it has been one
+                    //day since last recorded
+                    //Needs to check date, not time between
+                    //Currently is just a stopgap
+                }
             }
+            else
+            {
+                Debug.Log("sTREAK LOST");
+                gameStreakLast = gameStreak;
+                dateLastAcquiredStreakLast = dateLastAcquiredStreak;
+                gameStreak = 0;
+            }
+            
         }
         //If time between now and last acquired streak is less than 6 hours
         //Can ignore

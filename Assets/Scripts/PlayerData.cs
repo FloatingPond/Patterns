@@ -56,6 +56,7 @@ public class PlayerData
         //Streak stuff
         gameStreak = gm.GetGameStreak();
         gameStreakHighscore = gm.GetGameStreakHighscore();
+        dateLastAcquiredStreak = gm.dateLastAcquiredStreak.ToString("yyyy-MM-dd HH:mm tt");
     }
 
 

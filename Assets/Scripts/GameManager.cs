@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int gameStreakHighscore;
 
+    public DateTime dateLastAcquiredStreak;
 
 
     //DateTime stuff
@@ -102,8 +103,8 @@ public class GameManager : MonoBehaviour
         Highscore[2] = 0;
         Highscore[3] = 0;
         LoadGame();
-        dt = DateTime.Now;
-        StartCoroutine(GetSetDateTimeNow());
+        //dt = DateTime.Now;
+        //StartCoroutine(GetSetDateTimeNow());
     }
 
     private void Update()
@@ -140,6 +141,9 @@ public class GameManager : MonoBehaviour
             fGameTime = data.secondsPlayed;
             buttonsPressed = data.buttonsPressed;
             SetGameStreak(data.gameStreak, data.gameStreakHighscore);
+            Debug.Log(data.dateLastAcquiredStreak);
+            dateLastAcquiredStreak = DateTime.ParseExact(data.dateLastAcquiredStreak, "yyyy-MM-dd HH:mm tt", null);
+            Debug.Log(dateLastAcquiredStreak);
         }
         
 
@@ -390,6 +394,9 @@ public class GameManager : MonoBehaviour
     //Called when the gamemode criteria has been failed
     public void EndGame()
     {
+        //FOR NOW
+        ChangeGameStreak();
+        //Anyway
         StopAllCoroutines();
         EnableButtons(false);
         endgameCanvas.enabled = true;
@@ -742,6 +749,17 @@ public class GameManager : MonoBehaviour
     //Called when a game has been played
     public void ChangeGameStreak()
     {
+        if(gameStreak == 0)
+        {
+            gameStreak = 1;
+            dateLastAcquiredStreak = DateTime.Now;
+            Debug.Log(dateLastAcquiredStreak);
+            Save();
+        }
+        else
+        {
+
+        }
         //If time between now and last acquired streak is less than 6 hours
         //Can ignore
         //Else If time between

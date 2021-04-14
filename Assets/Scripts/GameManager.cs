@@ -460,6 +460,8 @@ public class GameManager : MonoBehaviour
             {
                 matchComparison = Buttons[newNumber].tag;
                 matchComparisonNumber = number;
+                Buttons[newNumber].GetComponent<Image>().color = Color.grey;
+                Buttons[newNumber].GetComponent<Button>().interactable = false;
             }
             else
             {

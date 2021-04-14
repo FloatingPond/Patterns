@@ -758,7 +758,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-
+            Debug.Log((DateTime.Now - dateLastAcquiredStreak).Days);
+            if ((DateTime.Now - dateLastAcquiredStreak).Days < 2)
+            {
+                //Streak not lost
+            }
         }
         //If time between now and last acquired streak is less than 6 hours
         //Can ignore

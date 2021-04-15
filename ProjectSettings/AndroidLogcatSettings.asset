@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "RFCMA01238V",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 21275,
+        "processId": 23356,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -276,6 +276,18 @@
             "deviceId": "RFCMA01238V",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 21275,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 21483,
+            "exited": false
+        },
+        {
+            "deviceId": "RFCMA01238V",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 23356,
             "exited": false
         },
         {

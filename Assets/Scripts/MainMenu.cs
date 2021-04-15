@@ -27,8 +27,11 @@ public class MainMenu : MonoBehaviour
     public void Start()
     {
         DisplayHighScores();
+        //gm.LoadGame();
         DisplayStreak();
     }
+
+    
 
     public void Start_Gamemode(string gamemode)
     {
@@ -171,6 +174,7 @@ public class MainMenu : MonoBehaviour
     }
     void DisplayStreak()
     {
+        //15-04-2021 - currently it displays so fast that it screws up the tStreakDescription because it does not acquire the times until after it is loaded
         int streak = SaveSystem.GetStreak();
 
         int hours = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalHours;

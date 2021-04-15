@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
         Highscore[1] = 0;
         Highscore[2] = 0;
         Highscore[3] = 0;
-        //LoadGame();
+        LoadGame();
         //dt = DateTime.Now;
         //StartCoroutine(GetSetDateTimeNow());
     }

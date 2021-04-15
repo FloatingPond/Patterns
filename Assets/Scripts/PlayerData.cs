@@ -41,7 +41,7 @@ public class PlayerData
 
     public PlayerData(GameManager gm)
     {
-        fileVersion = "dev03";
+        fileVersion = "dev05";
         highscores = new int[4];
         highscores[0] = gm.Highscore[0]; //Classic
         highscores[1] = gm.Highscore[1]; ; //Random

@@ -8605,7 +8605,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 12, y: -80}
-  m_SizeDelta: {x: 800, y: 100}
+  m_SizeDelta: {x: 948.28, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1868794147
 MonoBehaviour:
@@ -8826,6 +8826,7 @@ MonoBehaviour:
   gameStreakHighscore: 0
   dtString2: 2005-05-05 22:12 PM
   dtString3: 2005-10-05 22:12 PM
+  dtString4: 2021-04-14 22:12 PM
 --- !u!114 &1893154943
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Sirenix.OdinInspector;
+using System;
 
 public class MainMenu : MonoBehaviour
 {
@@ -135,16 +136,25 @@ public class MainMenu : MonoBehaviour
             tGame4Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[3].ToString();
             //Streak
 
-        
+            int hours = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalHours;
+            int days = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalDays;
+            int minutes = (DateTime.Now - gm.dateLastAcquiredStreak).Minutes;
+            string textstuff = "";
+            if (gm.dateLastAcquiredStreak != null)
+            {
+                textstuff = "M:" + minutes.ToString() + ",H:" + hours.ToString() + ",D:" + days.ToString();
+            }
             if (data.gameStreak > 1)
             {
                 tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + data.gameStreak.ToString() + " days!";
-                tStreakDesc.GetComponent<TextMeshProUGUI>().text = "Woo!";
+                //tStreakDesc.GetComponent<TextMeshProUGUI>().text = "Woo!";
+                tStreakDesc.GetComponent<TextMeshProUGUI>().text = textstuff;
             }
             else
             {
                 tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + data.gameStreak.ToString() + " day";
-                tStreakDesc.GetComponent<TextMeshProUGUI>().text = "EastEnders";
+                //tStreakDesc.GetComponent<TextMeshProUGUI>().text = "EastEnders";
+                tStreakDesc.GetComponent<TextMeshProUGUI>().text = textstuff;
             }
         }
         else
@@ -163,15 +173,25 @@ public class MainMenu : MonoBehaviour
     {
         int streak = SaveSystem.GetStreak();
 
+        int hours = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalHours;
+        int days = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalDays;
+        int minutes = (DateTime.Now - gm.dateLastAcquiredStreak).Minutes;
+        string textstuff = "";
+
+        if (gm.dateLastAcquiredStreak != null)
+        {
+            textstuff = "M:" + minutes.ToString() + ",H:" + hours.ToString() + ",D:" + days.ToString();
+        }
+
         if (streak > 1)
         {
             tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + streak + " days!";
-            tStreakDesc.GetComponent<TextMeshProUGUI>().text = "Woo!";
+            tStreakDesc.GetComponent<TextMeshProUGUI>().text = textstuff;
         }
         else
         {
             tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + streak + " day";
-            tStreakDesc.GetComponent<TextMeshProUGUI>().text = "EastEnders";
+            tStreakDesc.GetComponent<TextMeshProUGUI>().text = textstuff;
         }
 
 

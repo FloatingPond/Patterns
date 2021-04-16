@@ -23,7 +23,11 @@ public class MainMenu : MonoBehaviour
     public GameObject tStreak, tStreakDesc;
 
     //Stats
-    public GameObject tTimePlayed, tButtonsPressed;
+    [Title("Statistics Objects")]
+    public GameObject tTimePlayed;
+    public GameObject tButtonsPressed;
+    public GameObject tadRewards;
+
     public void Start()
     {
         DisplayHighScores();
@@ -134,6 +138,7 @@ public class MainMenu : MonoBehaviour
             { 
             //High scores
             tClassicHighscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[0].ToString();
+            
             tRandomHighscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[1].ToString();
             tGame3Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[2].ToString();
             tGame4Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[3].ToString();
@@ -177,38 +182,58 @@ public class MainMenu : MonoBehaviour
         //15-04-2021 - currently it displays so fast that it screws up the tStreakDescription because it does not acquire the times until after it is loaded
         int streak = SaveSystem.GetStreak();
 
-        int hours = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalHours;
-        int days = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalDays;
-        int minutes = (DateTime.Now - gm.dateLastAcquiredStreak).Minutes;
-        string textstuff = "";
+        if(streak != 0)
+        { 
+            int hours = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalHours;
+            int days = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalDays;
+            int minutes = (DateTime.Now - gm.dateLastAcquiredStreak).Minutes;
+            string textstuff = "";
 
-        if (gm.dateLastAcquiredStreak != null)
-        {
-            textstuff = "M:" + minutes.ToString() + ",H:" + hours.ToString() + ",D:" + days.ToString();
-        }
+            if (gm.dateLastAcquiredStreak != null)
+            {
+                textstuff = "M:" + minutes.ToString() + ",H:" + hours.ToString() + ",D:" + days.ToString();
+            }
 
-        if (streak > 1)
-        {
-            tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + streak + " days!";
-            tStreakDesc.GetComponent<TextMeshProUGUI>().text = textstuff;
+            if (streak > 1)
+            {
+                tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + streak + " days!";
+                tStreakDesc.GetComponent<TextMeshProUGUI>().text = textstuff;
+            }
+            else
+            {
+                tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + streak + " day";
+                tStreakDesc.GetComponent<TextMeshProUGUI>().text = textstuff;
+            }
         }
         else
         {
-            tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + streak + " day";
-            tStreakDesc.GetComponent<TextMeshProUGUI>().text = textstuff;
+            //Streak is zero, so either:
+            //  New file, so no other data
+            //  User has lost streak
+            tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + streak + " days";
+            tStreakDesc.GetComponent<TextMeshProUGUI>().text = "Get a new streak today!";
         }
 
-
     }
-    void DisplayStats()
+    public void DisplayStats()
     {
         PlayerData data = SaveSystem.LoadGame();
+        if (data != null)
+        { 
+            float hours = Mathf.FloorToInt((data.secondsPlayed / 60) / 60);
+            float minutes = Mathf.FloorToInt(data.secondsPlayed / 60);
+            float seconds = Mathf.FloorToInt(data.secondsPlayed % 60);
 
-        float hours = Mathf.FloorToInt((data.secondsPlayed / 60) / 60);
-        float minutes = Mathf.FloorToInt(data.secondsPlayed / 60);
-        float seconds = Mathf.FloorToInt(data.secondsPlayed % 60);
-
-        tTimePlayed.GetComponent<TextMeshProUGUI>().text = "Time played: " + string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
-        tButtonsPressed.GetComponent<TextMeshProUGUI>().text = "Buttons Pressed: " + data.buttonsPressed.ToString();
+            tTimePlayed.GetComponent<TextMeshProUGUI>().text = "Time played: " + string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
+            tButtonsPressed.GetComponent<TextMeshProUGUI>().text = "Buttons Pressed: " + data.buttonsPressed.ToString();
+            tadRewards.GetComponent<TextMeshProUGUI>().text = "Reward Ads Watched: " + data.adsRewardsWatched;
+        }
+        else
+        {
+            //No data, likely because no file exists.
+            tTimePlayed.GetComponent<TextMeshProUGUI>().text = "Time played: 00:00:00";
+            tButtonsPressed.GetComponent<TextMeshProUGUI>().text = "Buttons Pressed: 0";
+            tadRewards.GetComponent<TextMeshProUGUI>().text = "Reward Ads Watched: 0";
+        }
     }
 }

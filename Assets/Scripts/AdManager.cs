@@ -22,13 +22,20 @@ public class AdManager : MonoBehaviour
 
     RewardedAd rewardedAd;
 
+    [Title("Counter")]
+    [SerializeField]
+    private int adsRewardsWatched;
+
+    [Title("Managers")]
     public MainMenu mm;
+    
+    public GameManager gm;
 
     [Button(ButtonSizes.Large)]
 
     private void BigButton()
     {
-        RequestReward();
+        TutorialRewardAdWORKS();
     }
     
     void Start()
@@ -156,6 +163,9 @@ public class AdManager : MonoBehaviour
         double amount = args.Amount;
         MonoBehaviour.print("HandleRewardedAdRewarded event received for " + amount.ToString() + " " + type);
         mm.test += 1;
+        adsRewardsWatched++;
+        gm.Save();
+        mm.DisplayStats();
     }
 
     public void HandleOnRewardAdLoaded(object sender, EventArgs args)
@@ -176,6 +186,16 @@ public class AdManager : MonoBehaviour
         MonoBehaviour.print(
             "HandleRewardedAdFailedToLoad event received with message: "
                              + args.Message);
+    }
+
+    public int GetadsRewardsWatched()
+    {
+        return adsRewardsWatched;
+    }
+
+    public void SetadsRewardsWatched(int number)
+    {
+        adsRewardsWatched = number;
     }
 
 

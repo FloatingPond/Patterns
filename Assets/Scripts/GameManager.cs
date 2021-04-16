@@ -82,6 +82,20 @@ public class GameManager : MonoBehaviour
         dateLastAcquiredStreak = DateTime.ParseExact(dtString4, "yyyy-MM-dd HH:mm tt", null);
     }
 
+    [Button(ButtonSizes.Small)]
+    private void ChangeDlasAndDisplay()
+    {
+        dateLastAcquiredStreak = DateTime.ParseExact(dtString4, "yyyy-MM-dd HH:mm tt", null);
+        ChangeGameStreak();
+    }
+
+    [Button(ButtonSizes.Small)]
+    private void GetDateLastAcquiredStreak()
+    {
+        dtString4 = dateLastAcquiredStreak.ToString("yyyy-MM-dd HH:mm tt");
+    }
+
+
     /// <summary>
     /// Code
     /// </summary>
@@ -733,10 +747,13 @@ public class GameManager : MonoBehaviour
     //Called when game is opened to check streak
     public void CheckGameStreak()
     {
-        //Time between now and last acquired streak is X
-        int hours = (int)(DateTime.Now - dateLastAcquiredStreak).TotalHours;
-        int days = (int)(DateTime.Now - dateLastAcquiredStreak).TotalDays;
-        int minutes = (DateTime.Now - dateLastAcquiredStreak).Minutes;
+        //For hours
+        DateTime dLastAcquired = dateLastAcquiredStreak;
+        //For days
+        DateTime dLastAcquiredDateOnly = dLastAcquired.Date;
+        int minutes = (DateTime.Now - dLastAcquired).Minutes;
+        int hours = (int)(DateTime.Now - dLastAcquired).TotalHours;
+        int days = (int)(DateTime.Now.Date - dLastAcquiredDateOnly).TotalDays;
         Debug.Log("Total hours:" + hours + ", Total Days:" + days);
         //If X is less than 6 hours AND day is 1 apart
         //  Come back in X
@@ -799,9 +816,13 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            int hours = (int)(DateTime.Now - dateLastAcquiredStreak).TotalHours;
-            int days = (int)(DateTime.Now - dateLastAcquiredStreak).TotalDays;
-            int minutes = (DateTime.Now - dateLastAcquiredStreak).Minutes;
+            //For hours
+            DateTime dLastAcquired = dateLastAcquiredStreak;
+            //For days
+            DateTime dLastAcquiredDateOnly = dLastAcquired.Date;
+            int minutes = (DateTime.Now - dLastAcquired).Minutes;
+            int hours = (int)(DateTime.Now - dLastAcquired).TotalHours;
+            int days = (int)(DateTime.Now.Date - dLastAcquiredDateOnly).TotalDays;
             Debug.Log("Total hours:" + hours + ", Total Days:" + days);
             //Debug.Log(hours + "," + days + "," + minutes);
 
@@ -827,7 +848,14 @@ public class GameManager : MonoBehaviour
                     //Currently is just a stopgap
                 }
             }
-            else
+            else if (days > 1)
+            {
+                Debug.Log("Streak lost but reclaim-able");
+                gameStreakLast = gameStreak;
+                dateLastAcquiredStreakLast = dateLastAcquiredStreak;
+                gameStreak = 0;
+            }
+            else if (days > 2)
             {
                 Debug.Log("sTREAK LOST");
                 gameStreakLast = gameStreak;

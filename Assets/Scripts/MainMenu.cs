@@ -177,16 +177,19 @@ public class MainMenu : MonoBehaviour
         }
 
     }
-    void DisplayStreak()
+    void DisplayStreak() //Called when game starts and when player returns to main menu
     {
-        //15-04-2021 - currently it displays so fast that it screws up the tStreakDescription because it does not acquire the times until after it is loaded
         int streak = SaveSystem.GetStreak();
 
         if(streak != 0)
-        { 
-            int hours = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalHours;
-            int days = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalDays;
-            int minutes = (DateTime.Now - gm.dateLastAcquiredStreak).Minutes;
+        {
+            //For hours
+            DateTime dLastAcquired = gm.dateLastAcquiredStreak;
+            //For days
+            DateTime dLastAcquiredDateOnly = dLastAcquired.Date;
+            int minutes = (DateTime.Now - dLastAcquired).Minutes;
+            int hours = (int)(DateTime.Now - dLastAcquired).TotalHours;
+            int days = (int)(DateTime.Now.Date - dLastAcquiredDateOnly).TotalDays;
             string textstuff = "";
 
             if (gm.dateLastAcquiredStreak != null)

@@ -16,8 +16,7 @@ public class PlayerData
     public int buttonsPressed;
     //Total high scores - could either save it or calculate it on loaded data
 
-    //Streak stuff
-
+    ////Streak stuff
     //Main integer
     public int gameStreak;
     //Used and specified at the DateTime when the user acquires a new number
@@ -37,11 +36,13 @@ public class PlayerData
     //Else is the date of the last highest streak
     public int[] dateGameStreakHighscoreAcquired; //yyyy-MM-dd HH:mm tt
 
-
+    ////Ads
+    //Reward Ads Watched
+    public int adsRewardsWatched;
 
     public PlayerData(GameManager gm)
     {
-        fileVersion = "dev05";
+        fileVersion = "dev08";
         highscores = new int[4];
         highscores[0] = gm.Highscore[0]; //Classic
         highscores[1] = gm.Highscore[1]; ; //Random
@@ -61,6 +62,8 @@ public class PlayerData
 
         dateLastAcquiredStreakLast = gm.dateLastAcquiredStreakLast.ToString("yyyy-MM-dd HH:mm tt");
 
+        //Ads
+        adsRewardsWatched = gm.am.GetadsRewardsWatched();
     }
 
 

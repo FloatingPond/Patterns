@@ -41,23 +41,7 @@ public class GameManager : MonoBehaviour
     public Canvas endgameCanvas;
     //Used to enable/disable user able to press buttons - mainly when showing patterns and when not in-game
     public bool isGameButtonsDisabled = false;
-
-    [HideIf("isGameButtonsDisabled")]
-    [HorizontalGroup("Split/right")]
-    [Button(ButtonSizes.Large), GUIColor(0, 1, 0)]
-    private void isGameButtonsDisabledIsTrue()
-    {
-        this.isGameButtonsDisabled = !this.isGameButtonsDisabled;
-    }
-
-    [ShowIf("isGameButtonsDisabled")]
-    [HorizontalGroup("Split/right")]
-    [Button(ButtonSizes.Large), GUIColor(1, 0, 0)]
-    private void isGameButtonsDisabledIsFalse()
-    {
-        this.isGameButtonsDisabled = !this.isGameButtonsDisabled;
-    }
-
+    
     //Button Animation
     [ProgressBar(0.1f, 2f)]
     public float time_buttonsAreColour = 0.5f;
@@ -82,6 +66,8 @@ public class GameManager : MonoBehaviour
     public string dtString3 = "2005-10-05 22:12 PM";
     public string dtString4 = "2021-10-05 22:12 PM";
 
+    //Ad Manager
+    public AdManager am;
 
 
     [Button(ButtonSizes.Small)]
@@ -102,7 +88,7 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     /// 
 
-    void Start()
+    void Awake()
     {
         gamemodeNames = new string[] { "classic", "random", "match", "timedround" };
         Highscore = new int[4];
@@ -152,9 +138,26 @@ public class GameManager : MonoBehaviour
             Debug.Log(data.dateLastAcquiredStreak);
             dateLastAcquiredStreak = DateTime.ParseExact(data.dateLastAcquiredStreak, "yyyy-MM-dd HH:mm tt", null);
             Debug.Log(dateLastAcquiredStreak);
+            
+            am.SetadsRewardsWatched(data.adsRewardsWatched);
         }
-        
+        else
+        {
+            Highscore[0] = 0;
+            Highscore[1] = 0;
+            Highscore[2] = 0;
+            Highscore[3] = 0;
 
+            fGameTime = 0;
+            buttonsPressed = 0;
+
+            gameStreak = 0;
+            gameStreakHighscore = 0;
+        }
+    }
+    public void Save()
+    {
+        SaveSystem.SaveGame(this);
     }
     void RandomGenerateRandomPattern() //Game 1
     {
@@ -290,6 +293,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(dtnew);
     
 }
+
     void TimedRoundCallNextNumber() //Game 4
     {
         iPatternNumbers++;
@@ -422,6 +426,7 @@ public class GameManager : MonoBehaviour
         CheckGameStreak();
 
     }
+
     public void MakeButtonsInteractable()
     {
         foreach (GameObject button in Buttons)
@@ -561,6 +566,7 @@ public class GameManager : MonoBehaviour
         EnableButtons(true);
         yield return new WaitForSeconds(0.0f);
     }
+
     public void EnableButtons(bool state)
     {
         if (state == true)
@@ -610,14 +616,10 @@ public class GameManager : MonoBehaviour
     {
         fGameTime += time;
     }
+
     public float GetGameTime()
     {
         return fGameTime;
-    }
-
-    public void Save()
-    {
-        SaveSystem.SaveGame(this);
     }
     
     public void AddToButtonPressed()
@@ -732,26 +734,57 @@ public class GameManager : MonoBehaviour
     public void CheckGameStreak()
     {
         //Time between now and last acquired streak is X
-
+        int hours = (int)(DateTime.Now - dateLastAcquiredStreak).TotalHours;
+        int days = (int)(DateTime.Now - dateLastAcquiredStreak).TotalDays;
+        int minutes = (DateTime.Now - dateLastAcquiredStreak).Minutes;
+        Debug.Log("Total hours:" + hours + ", Total Days:" + days);
         //If X is less than 6 hours AND day is 1 apart
         //  Come back in X
-        
-        //Else if X is more than 6 hours AND day is 1 apart
-        //  PLAY A GAME TO GET YOUR STREAK
-        
-        //Else if is 2 days apart
-        //  SAVE STREAK AS LAST STREAK
-        //  OFFER CHANCE TO RECLAIM STREAK
-        
-        //Else if is more than 2 days apart
-        //  Too late
-        //  Save streak as last streak
-        //  No chance to reclaim
-        //  Streak reset to zero
+        if (days < 2) //If Days are less than 2
+        {
+            if (hours < 6)
+            {
+                Debug.Log("No new streak, too few hours. Come back later");
+                //come back later
+            }
+            else if (hours > 6 && days > 0)
+            {
+                //Else if X is more than 6 hours AND day is 1 apart
+                //  PLAY A GAME TO GET YOUR STREAK
+                Debug.Log("PLAY NOW TO GET A STREAK");
+            }
+        }
+        else if (days > 1)
+        {
+            //  SAVE STREAK AS LAST STREAK
+            gameStreakLast = gameStreak;
+            dateLastAcquiredStreakLast = dateLastAcquiredStreak;
+            //  Streak reset to zero
+            gameStreak = 0;
+            //  OFFER CHANCE TO RECLAIM STREAK
+        }
+        else if (days > 2)
+        {
+            //  Too late
+            //  Save streak as last streak
+            gameStreakLast = gameStreak;
+            dateLastAcquiredStreakLast = dateLastAcquiredStreak;
+
+            //  No chance to reclaim
+            //  Streak reset to zero
+            gameStreak = 0;
+        }
+
 
         
 
+
         
+
+
+
+
+
     }
 
     //Called when a game has been played

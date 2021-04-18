@@ -188,13 +188,28 @@ public class MainMenu : MonoBehaviour
             //For days
             DateTime dLastAcquiredDateOnly = dLastAcquired.Date;
             int minutes = (DateTime.Now - dLastAcquired).Minutes;
-            int hours = (int)(DateTime.Now - dLastAcquired).TotalHours;
+            int hoursSinceLastStreak = (int)(DateTime.Now - dLastAcquired).TotalHours;
             int days = (int)(DateTime.Now.Date - dLastAcquiredDateOnly).TotalDays;
             string textstuff = "";
 
+            //Until can get another streak
+
+            //Old
             if (gm.dateLastAcquiredStreak != null)
             {
-                textstuff = "M:" + minutes.ToString() + ",H:" + hours.ToString() + ",D:" + days.ToString();
+                //Old - still works but old
+                //textstuff = "M:" + minutes.ToString() + ",H:" + hoursSinceLastStreak.ToString() + ",D:" + days.ToString();
+            }
+            if (gm.dateLastAcquiredStreak != null)
+            {
+                if (days < 1)
+                {
+                    textstuff = "Come back tomorrow!";
+                }
+                else if (hoursSinceLastStreak < 6)
+                {
+                    textstuff = "Come back in " + (6 - hoursSinceLastStreak).ToString() + " hours.";
+                }
             }
 
             if (streak > 1)

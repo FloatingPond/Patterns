@@ -1604,6 +1604,28 @@ MonoBehaviour:
           m_StringArgument: random
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: LoadAudioClip_SFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cute GUI Sound Set/Start
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: PlaySFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &160416984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2739,6 +2761,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: LoadAudioClip_SFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cute GUI Sound Set/Back
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: PlaySFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &468635120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3088,6 +3132,28 @@ MonoBehaviour:
           m_StringArgument: timedround
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: LoadAudioClip_SFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cute GUI Sound Set/Start
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: PlaySFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &503867489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3342,6 +3408,28 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 994137742}
         m_MethodName: ReturnToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: LoadAudioClip_SFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cute GUI Sound Set/Close
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: PlaySFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4287,6 +4375,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: LoadAudioClip_SFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cute GUI Sound Set/Select
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: PlaySFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &682079989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4447,6 +4557,28 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 994137742}
         m_MethodName: ReturnToMainMenuFromStats
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: LoadAudioClip_SFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cute GUI Sound Set/Close
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: PlaySFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6643,6 +6775,28 @@ MonoBehaviour:
           m_StringArgument: match
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: LoadAudioClip_SFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cute GUI Sound Set/Start
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: PlaySFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1284653762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7835,6 +7989,28 @@ MonoBehaviour:
           m_StringArgument: classic
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: LoadAudioClip_SFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cute GUI Sound Set/Start
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: PlaySFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1662565396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7995,6 +8171,28 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1893154943}
         m_MethodName: TutorialRewardAdWORKS
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: LoadAudioClip_SFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cute GUI Sound Set/Notification
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: PlaySFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8395,6 +8593,28 @@ MonoBehaviour:
       - m_Target: {fileID: 1893154942}
         m_MethodName: RestartGame
         m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: LoadAudioClip_SFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Cute GUI Sound Set/Start
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175238941}
+        m_MethodName: PlaySFX
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

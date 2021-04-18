@@ -7,20 +7,26 @@ public class SoundManager : MonoBehaviour
     public AudioSource Music, SFX, Voice;
     public AudioClip audioClip_SFX, audioClip_Music, audioClip_Voice;
 
+
+    private void Start()
+    {
+        LoadAudioClip_Music("Funky Chill loop");
+        PlayMusic();
+    }
     public void LoadAudioClip_SFX(string clipPath)
     {
         //Load an AudioClip (Assets/Resources/Audio/audioClip01.mp3)
-        audioClip_SFX = Resources.Load<AudioClip>("Sounds/" + clipPath);
+        audioClip_SFX = Resources.Load<AudioClip>("Sounds/SFX/" + clipPath);
     }
     public void LoadAudioClip_Music(string clipPath)
     {
         //Load an AudioClip (Assets/Resources/Audio/audioClip01.mp3)
-        audioClip_Music = Resources.Load<AudioClip>("Sounds/" + clipPath);
+        audioClip_Music = Resources.Load<AudioClip>("Sounds/Music/" + clipPath);
     }
     public void LoadAudioClip_Voice(string clipPath)
     {
         //Load an AudioClip (Assets/Resources/Audio/audioClip01.mp3)
-        audioClip_Voice = Resources.Load<AudioClip>("Sounds/" + clipPath);
+        audioClip_Voice = Resources.Load<AudioClip>("Sounds/Voice/" + clipPath);
     }
     public void PlaySFX()
     {

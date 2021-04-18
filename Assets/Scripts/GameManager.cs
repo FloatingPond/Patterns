@@ -472,7 +472,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    //USED FOR MATCH GAME MODE
     void CheckMatchAnswer(int number)
     {
         //This corrects the number comparison due to there being a difference in the keypad shown to the player and the array
@@ -496,41 +496,45 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            //IF THE PLAYER HAS NOT CLICKED A BUTTON YET/DOES NOT HAVE A TILE STORED TO COMPARE
             if (matchComparison == "")
             {
                 matchComparison = Buttons[newNumber].tag;
                 matchComparisonNumber = number;
+                //DISABLES BUTTON SO PLAYER CANNOT MATCH THE SAME BUTTON THEY JUST CLICKED
                 Buttons[newNumber].GetComponent<Image>().color = Color.grey;
                 Buttons[newNumber].GetComponent<Button>().interactable = false;
             }
             else
             {
+                //IF IS A MATCH
                 if (matchComparison == Buttons[newNumber].tag)
                 {
                     if (matchComparisonNumber > 0)
                     {
                         newMCnumber = matchComparisonNumber - 1;
                     }
+                    //DISABLES BUTTONS THAT HAVE JUST BEEN MATCHED
                     Buttons[newMCnumber].GetComponent<Image>().color = Color.grey;
                     Buttons[newMCnumber].GetComponent<Button>().interactable = false;
                     Buttons[newNumber].GetComponent<Image>().color = Color.grey;
                     Buttons[newNumber].GetComponent<Button>().interactable = false;
                     matchComparisonNumber = 0;
-                    matchComparison = "";
-                    matchCounter++;
-                    sm.LoadAudioClip_SFX("SFX/match3_1a");
+                    matchComparison = ""; //TAKES OUT CURRENTLY STORED TILE FOR COMPARISON
+                    matchCounter++; //INCREMENTS TRACKER OF HOW MANY MATCHES THERE HAVE BEEN
+                    sm.LoadAudioClip_SFX("Cute GUI Sound Set/Correct");
                     sm.PlaySFX();
-                    Debug.Log("MATCH");
                     //ROUND WIN CONDITION: If there have been 4 matches, move to the next round
                     if (matchCounter == 4)
                     {
-                        Debug.Log("ROUND WIN");
                         matchCounter = 0;
                         NextRound();
                     }
                 }
                 else
                 {
+                    sm.LoadAudioClip_SFX("Cute GUI Sound Set/Wrong");
+                    sm.PlaySFX();
                     matchComparisonNumber = 0;
                     matchComparison = "";
                     matchCounter = 0;

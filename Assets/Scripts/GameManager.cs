@@ -154,6 +154,9 @@ public class GameManager : MonoBehaviour
             Debug.Log(dateLastAcquiredStreak);
             
             am.SetadsRewardsWatched(data.adsRewardsWatched);
+
+            //Check Streak
+            CheckGameStreak();
         }
         else
         {
@@ -791,17 +794,7 @@ public class GameManager : MonoBehaviour
             //  Streak reset to zero
             gameStreak = 0;
         }
-
-
-        
-
-
-        
-
-
-
-
-
+        Save();
     }
 
     //Called when a game has been played
@@ -862,8 +855,8 @@ public class GameManager : MonoBehaviour
                 dateLastAcquiredStreakLast = dateLastAcquiredStreak;
                 gameStreak = 0;
             }
-            
         }
+        Save();
         //If time between now and last acquired streak is less than 6 hours
         //Can ignore
         //Else If time between

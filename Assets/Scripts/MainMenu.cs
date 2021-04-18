@@ -127,6 +127,7 @@ public class MainMenu : MonoBehaviour
             StatsSound.enabled = false;
             SoundSettings.enabled = false;
         }
+        // This is so that you can open/close the sound settings from any canvas
         if (canvas == "soundsettings")
         {
             SoundSettings.enabled = true;

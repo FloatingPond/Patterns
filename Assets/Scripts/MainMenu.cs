@@ -210,6 +210,10 @@ public class MainMenu : MonoBehaviour
                 {
                     textstuff = "Come back in " + (6 - hoursSinceLastStreak).ToString() + " hours.";
                 }
+                else if (days > 0 && days < 2)
+                {
+                    textstuff = "Play now to keep the streak!";
+                }
             }
 
             if (streak > 1)

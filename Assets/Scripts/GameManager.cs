@@ -69,6 +69,9 @@ public class GameManager : MonoBehaviour
     //Ad Manager
     public AdManager am;
 
+    //Sound manager
+    public SoundManager sm;
+
 
     [Button(ButtonSizes.Small)]
     private void ParseStringToDateTime()
@@ -515,9 +518,13 @@ public class GameManager : MonoBehaviour
                     matchComparisonNumber = 0;
                     matchComparison = "";
                     matchCounter++;
+                    sm.LoadAudioClip_SFX("SFX/match3_1a");
+                    sm.PlaySFX();
+                    Debug.Log("MATCH");
                     //ROUND WIN CONDITION: If there have been 4 matches, move to the next round
                     if (matchCounter == 4)
                     {
+                        Debug.Log("ROUND WIN");
                         matchCounter = 0;
                         NextRound();
                     }

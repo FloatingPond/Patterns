@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     [Title("Canvases")]
     public int test = 1;
 
-    public Canvas Gameplay, MainMenuCanvas, Endgame,StatsSound;
+    public Canvas Gameplay, MainMenuCanvas, Endgame, StatsSound, SoundSettings;
     
     [Title("Managers")]
     public GameManager gm;
@@ -101,7 +101,7 @@ public class MainMenu : MonoBehaviour
         DisplayStats();
         SwitchToCanvas("stats");
     }
-    private void SwitchToCanvas(string canvas)
+    public void SwitchToCanvas(string canvas)
     {
         if (canvas == "mainmenu")
         {
@@ -109,6 +109,7 @@ public class MainMenu : MonoBehaviour
             Endgame.enabled = false;
             MainMenuCanvas.enabled = true;
             StatsSound.enabled = false;
+            SoundSettings.enabled = false;
         }
         else if (canvas == "stats")
         {
@@ -116,6 +117,7 @@ public class MainMenu : MonoBehaviour
             Endgame.enabled = false;
             MainMenuCanvas.enabled = false;
             StatsSound.enabled = true;
+            SoundSettings.enabled = false;
         }
         else if (canvas == "game")
         {
@@ -123,10 +125,15 @@ public class MainMenu : MonoBehaviour
             Endgame.enabled = true;
             MainMenuCanvas.enabled = false;
             StatsSound.enabled = false;
+            SoundSettings.enabled = false;
+        }
+        if (canvas == "soundsettings")
+        {
+            SoundSettings.enabled = true;
         }
         else
         {
-            //wut
+            SoundSettings.enabled = false;
         }
     }
 

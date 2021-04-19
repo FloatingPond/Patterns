@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        LoadAudioClip_Music("Funky Chill loop");
+        LoadAudioClip_Music("Chill Funky loop");
         PlayMusic();
     }
     public void LoadAudioClip_SFX(string clipPath)

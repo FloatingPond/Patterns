@@ -34,9 +34,7 @@ public class MainMenu : MonoBehaviour
         //gm.LoadGame();
         DisplayStreak();
     }
-
     
-
     public void Start_Gamemode(string gamemode)
     {
         SwitchToCanvas("game");
@@ -76,6 +74,7 @@ public class MainMenu : MonoBehaviour
         Endgame.enabled = state;
         MainMenuCanvas.enabled = !state;
     }
+
     public void ReturnToMainMenu()
     {
         gm.currentGamemode = "";
@@ -96,11 +95,13 @@ public class MainMenu : MonoBehaviour
         DisplayStreak();
         SwitchToCanvas("mainmenu");
     }
+
     public void ShowStats()
     {
         DisplayStats();
         SwitchToCanvas("stats");
     }
+
     public void SwitchToCanvas(string canvas)
     {
         if (canvas == "mainmenu")
@@ -141,7 +142,7 @@ public class MainMenu : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadGame();
 
-        if (data  != null)
+        if (data  != null) //Data exists
             { 
             //High scores
             tClassicHighscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[0].ToString();
@@ -149,46 +150,49 @@ public class MainMenu : MonoBehaviour
             tRandomHighscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[1].ToString();
             tGame3Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[2].ToString();
             tGame4Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[3].ToString();
+            
+            //No longer handled in here. Fuck knows why it was
             //Streak
 
-            int hours = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalHours;
-            int days = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalDays;
-            int minutes = (DateTime.Now - gm.dateLastAcquiredStreak).Minutes;
-            string textstuff = "";
-            if (gm.dateLastAcquiredStreak != null)
-            {
-                textstuff = "M:" + minutes.ToString() + ",H:" + hours.ToString() + ",D:" + days.ToString();
-            }
-            if (data.gameStreak > 1)
-            {
-                tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + data.gameStreak.ToString() + " days!";
-                //tStreakDesc.GetComponent<TextMeshProUGUI>().text = "Woo!";
-                tStreakDesc.GetComponent<TextMeshProUGUI>().text = textstuff;
-            }
-            else
-            {
-                tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + data.gameStreak.ToString() + " day";
-                //tStreakDesc.GetComponent<TextMeshProUGUI>().text = "EastEnders";
-                tStreakDesc.GetComponent<TextMeshProUGUI>().text = textstuff;
-            }
+            //int hours = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalHours;
+            //int days = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalDays;
+            //int minutes = (DateTime.Now - gm.dateLastAcquiredStreak).Minutes;
+            //string textstuff = "";
+            //if (gm.dateLastAcquiredStreak != null)
+            //{
+            //    textstuff = "M:" + minutes.ToString() + ",H:" + hours.ToString() + ",D:" + days.ToString();
+            //}
+            //if (data.gameStreak > 1)
+            //{
+            //    tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + data.gameStreak.ToString() + " days!";
+            //    //tStreakDesc.GetComponent<TextMeshProUGUI>().text = "Woo!";
+            //    tStreakDesc.GetComponent<TextMeshProUGUI>().text = textstuff;
+            //}
+            //else
+            //{
+            //    tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + data.gameStreak.ToString() + " day";
+            //    //tStreakDesc.GetComponent<TextMeshProUGUI>().text = "EastEnders";
+             //   tStreakDesc.GetComponent<TextMeshProUGUI>().text = textstuff;
+            //}
         }
-        else
+        else //NO DATA
         {
             tClassicHighscore.GetComponent<TextMeshProUGUI>().text = "High Score: 0";
             tRandomHighscore.GetComponent<TextMeshProUGUI>().text = "High Score: 0";
             tGame3Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: 0";
             tGame4Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: 0";
-
-            tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of 0 days";
-            tStreakDesc.GetComponent<TextMeshProUGUI>().text = "";
+        //
+        //    tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of 0 days";
+        //    tStreakDesc.GetComponent<TextMeshProUGUI>().text = "";
         }
 
     }
-    void DisplayStreak() //Called when game starts and when player returns to main menu
+
+    void DisplayStreak() //Called when game starts and when player returns to main menu from game or stats or anything else
     {
         int streak = SaveSystem.GetStreak();
 
-        if(streak != 0)
+        if(streak != 0) //Actually has a streak
         {
             //For hours
             DateTime dLastAcquired = gm.dateLastAcquiredStreak;
@@ -196,7 +200,7 @@ public class MainMenu : MonoBehaviour
             DateTime dLastAcquiredDateOnly = dLastAcquired.Date;
             int minutes = (DateTime.Now - dLastAcquired).Minutes;
             int hoursSinceLastStreak = (int)(DateTime.Now - dLastAcquired).TotalHours;
-            int days = (int)(DateTime.Now.Date - dLastAcquiredDateOnly).TotalDays;
+            int daysViaDate = (int)(DateTime.Now.Date - dLastAcquiredDateOnly).TotalDays;
             string textstuff = "";
 
             //Until can get another streak
@@ -209,17 +213,29 @@ public class MainMenu : MonoBehaviour
             }
             if (gm.dateLastAcquiredStreak != null)
             {
-                if (days < 1)
+                if (daysViaDate == 0) //Less than one day
                 {
                     textstuff = "Come back tomorrow!";
                 }
-                else if (hoursSinceLastStreak < 6)
+                else if (daysViaDate == 1) //If equals 1
                 {
-                    textstuff = "Come back in " + (6 - hoursSinceLastStreak).ToString() + " hours.";
-                }
-                else if (days > 0 && days < 2)
-                {
+                    if (hoursSinceLastStreak < 6) //Less than 6 hours
+                    {
+                        textstuff = "Come back in " + (6 - hoursSinceLastStreak).ToString() + " hours.";
+                    }
+                    else
+                    { 
                     textstuff = "Play now to keep the streak!";
+                    }
+                }
+                else if (daysViaDate > 1)
+                {
+                    //Bad, shouldn't be displayed
+                    textstuff = "Why is this displaying?";
+                }
+                else if (daysViaDate < 0) //Date last required is in the future
+                {
+                    textstuff = "Calm down, time-traveller";
                 }
             }
 

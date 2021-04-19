@@ -89,7 +89,8 @@ public class GameManager : MonoBehaviour
     private void ChangeDlasAndDisplay()
     {
         dateLastAcquiredStreak = DateTime.ParseExact(dtString4, "yyyy-MM-dd HH:mm tt", null);
-        ChangeGameStreak();
+        //ChangeGameStreak();
+        CheckGameStreak();
     }
 
     [Button(ButtonSizes.Small)]

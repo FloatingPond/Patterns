@@ -1925,6 +1925,15 @@ MonoBehaviour:
   audioClip_SFX: {fileID: 0}
   audioClip_Music: {fileID: 0}
   audioClip_Voice: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: ab54c1215c9930a429a9f66c6fef702f, type: 2}
+  masterFloat: 0
+  musicFloat: 0
+  SFX_Float: 0
+  voiceFloat: 0
+  masterSlider: {fileID: 0}
+  musicSlider: {fileID: 971482536}
+  SFX_slider: {fileID: 1631276981}
+  voiceSlider: {fileID: 1295519046}
 --- !u!224 &175238942
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6853,13 +6862,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 1456166434}
   m_HandleRect: {fileID: 1514266670}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MinValue: -80
+  m_MaxValue: 0
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 175238941}
+        m_MethodName: SetMusicVolume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &980447913
 GameObject:
   m_ObjectHideFlags: 0
@@ -8429,13 +8449,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 1420662281}
   m_HandleRect: {fileID: 2142359686}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MinValue: -80
+  m_MaxValue: 0
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 175238941}
+        m_MethodName: SetVoiceVolume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1310954341
 GameObject:
   m_ObjectHideFlags: 0
@@ -10063,13 +10094,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 1059637530}
   m_HandleRect: {fileID: 1545287050}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MinValue: -90
+  m_MaxValue: 0
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 175238941}
+        m_MethodName: SetSFXVolume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1662565393
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,6 +40,9 @@ public class PlayerData
     //Reward Ads Watched
     public int adsRewardsWatched;
 
+    //Sound settings
+    public float master, music, sfx, voice;
+
     public PlayerData(GameManager gm)
     {
         fileVersion = "dev08";
@@ -65,6 +68,4 @@ public class PlayerData
         //Ads
         adsRewardsWatched = gm.am.GetadsRewardsWatched();
     }
-
-
 }

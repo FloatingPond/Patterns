@@ -8,11 +8,14 @@ using System;
 
 public class MainMenu : MonoBehaviour
 {
-    [Title("Canvases")]
+    [Title("Canvas")]
+    public Canvas canvas;
+
+    [Title("Panels")]
     public int test = 1;
 
-    public Canvas Gameplay, MainMenuCanvas, Endgame, StatsSound, SoundSettings;
-    
+    public GameObject  MainMenuPanel, Gameplay, Endgame, Stats, SoundSettings;
+
     [Title("Managers")]
     public GameManager gm;
 
@@ -39,23 +42,23 @@ public class MainMenu : MonoBehaviour
     {
         SwitchToCanvas("game");
         //AddToButton not needed as that is in RestartGame method below
-        Gameplay.enabled = true;
+        Gameplay.SetActive(true);
         //No longer used
         gm.RestartGame(gamemode);
     }
     public void Update()
     {
-        if (Gameplay.enabled == true)
+        if (Gameplay.activeInHierarchy)
         {
             gm.AddToGameTime(Time.deltaTime);
         }
-        if (MainMenuCanvas.enabled == true)
+        if (MainMenuPanel.activeInHierarchy)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
                 QuitGame();
                 
         }
-        else if (StatsSound.enabled == true)
+        else if (Stats.activeInHierarchy)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
                 ReturnToMainMenuFromStats();
@@ -70,9 +73,9 @@ public class MainMenu : MonoBehaviour
 
     private void SwitchToGameCanvas(bool state)
     {
-        Gameplay.enabled = state;
-        Endgame.enabled = state;
-        MainMenuCanvas.enabled = !state;
+        Gameplay.SetActive(state);
+        Endgame.SetActive(state);
+        MainMenuPanel.SetActive(!state);
     }
 
     public void ReturnToMainMenu()
@@ -106,36 +109,36 @@ public class MainMenu : MonoBehaviour
     {
         if (canvas == "mainmenu")
         {
-            Gameplay.enabled = false;
-            Endgame.enabled = false;
-            MainMenuCanvas.enabled = true;
-            StatsSound.enabled = false;
-            SoundSettings.enabled = false;
+            Gameplay.SetActive(false);
+            Endgame.SetActive(false);
+            MainMenuPanel.SetActive(true);
+            Stats.SetActive(false);
+            SoundSettings.SetActive(true);
         }
         else if (canvas == "stats")
         {
-            Gameplay.enabled = false;
-            Endgame.enabled = false;
-            MainMenuCanvas.enabled = false;
-            StatsSound.enabled = true;
-            SoundSettings.enabled = false;
+            Gameplay.SetActive(false);
+            Endgame.SetActive(false);
+            MainMenuPanel.SetActive(false);
+            Stats.SetActive(true);
+            SoundSettings.SetActive(false);
         }
         else if (canvas == "game")
         {
-            Gameplay.enabled = true;
-            Endgame.enabled = true;
-            MainMenuCanvas.enabled = false;
-            StatsSound.enabled = false;
-            SoundSettings.enabled = false;
+            Gameplay.SetActive(true);
+            Endgame.SetActive(true);
+            MainMenuPanel.SetActive(false);
+            Stats.SetActive(false);
+            SoundSettings.SetActive(false);
         }
         // This is so that you can open/close the sound settings from any canvas
         if (canvas == "soundsettings")
         {
-            SoundSettings.enabled = true;
+            SoundSettings.SetActive(true);
         }
         else
         {
-            SoundSettings.enabled = false;
+            SoundSettings.SetActive(false);
         }
     }
 

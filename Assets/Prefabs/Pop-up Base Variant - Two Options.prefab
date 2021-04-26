@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -260,10 +260,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5625617627889920322, guid: 34a29bd966be8754596b16a4648b6c26,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5770363534575675827, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875040144417476468, guid: 34a29bd966be8754596b16a4648b6c26,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8500490703333019547, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}
@@ -274,6 +284,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500490703333019547, guid: 34a29bd966be8754596b16a4648b6c26,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8871064528229213152, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}

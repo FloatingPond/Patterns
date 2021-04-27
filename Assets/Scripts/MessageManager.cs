@@ -6,7 +6,7 @@ public class MessageManager : MonoBehaviour
 {
     //This script is for managing the message box(s)
 
-    public GameObject MainMessageBox;
+    public PopUpMessage MainMessageBox;
     public GameObject FallenStreakMessageBox;
 
 
@@ -15,11 +15,18 @@ public class MessageManager : MonoBehaviour
         //Hides both
     }
 
-    public void DisplayFirstWelcomeMessage()
+    public void DisplayWelcomeMessage()
+    {
+        PopulateButton("1", "2", "3");
+    }
+
+    void PopulateButton(string title, string body, string button)
     {
 
         //Set title to 'Welcome'
-        //Set text to 'Something'
+        //Set body to 'Something'
+        //Set body to 'Something'
+
     }
 
 

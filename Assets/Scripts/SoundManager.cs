@@ -15,7 +15,7 @@ public class SoundManager : MonoBehaviour
     public Slider masterSlider, musicSlider, SFX_slider, voiceSlider;
     private void Start()
     {
-        LoadAudioClip_Music("Chill Funky loop");
+        LoadAudioClip_Music("Funky Funky loop");
         PlayMusic();
         masterSlider.value = masterFloat;
         SetMasterVolume(masterFloat);

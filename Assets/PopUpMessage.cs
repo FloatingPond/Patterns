@@ -7,6 +7,8 @@ public class PopUpMessage : MonoBehaviour
 {
     public TextMeshProUGUI tTitle;
     public TextMeshProUGUI tBody;
+    public TextMeshProUGUI tButton;
+
 
 
 }

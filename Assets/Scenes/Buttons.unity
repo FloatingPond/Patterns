@@ -9471,41 +9471,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 61888530}
     m_Modifications:
-    - target: {fileID: 1132481743742203024, guid: 34a29bd966be8754596b16a4648b6c26,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5875040144417476468, guid: 34a29bd966be8754596b16a4648b6c26,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5875040144417476468, guid: 34a29bd966be8754596b16a4648b6c26,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5875040144417476468, guid: 34a29bd966be8754596b16a4648b6c26,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5875040144417476468, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1893154944}
-    - target: {fileID: 5875040144417476468, guid: 34a29bd966be8754596b16a4648b6c26,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseMessage
-      objectReference: {fileID: 0}
-    - target: {fileID: 5875040144417476468, guid: 34a29bd966be8754596b16a4648b6c26,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 8871064528229213152, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9610,21 +9580,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871064528229213152, guid: 34a29bd966be8754596b16a4648b6c26,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871064528229213152, guid: 34a29bd966be8754596b16a4648b6c26,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 8871064528229213152, guid: 34a29bd966be8754596b16a4648b6c26,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 9135219778196587036, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}

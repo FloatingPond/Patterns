@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class MessageManager : MonoBehaviour
 {
-    //This script is for managing the message box(s)
+    //This script is for managing the message box(es)
 
     public PopUpMessage MainMessageBox;
-    public GameObject FallenStreakMessageBox;
+    public GameObject FallenStreakMessageBox, popUpBase;
 
 
     public void CloseMessage()
     {
-        //Hides both
+        popUpBase.GetComponent<Animator>().SetTrigger("Close");
     }
-
+    public void OpenMessage()
+    {
+        popUpBase.GetComponent<Animator>().SetTrigger("Open");
+    }
     public void DisplayWelcomeMessage()
     {
         PopulateButton("1", "2", "3");

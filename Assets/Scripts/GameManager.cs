@@ -782,6 +782,7 @@ public class GameManager : MonoBehaviour
             if (hours < 6)
             {
                 Debug.Log("No new streak, too few hours. Come back later");
+                mm.DisplayDailyMessageAbleToGetStreak("Welcome back", "PLAY UNTIL FINGERS HURT", "Wicked");
                 //come back later
             }
             else if (hours > 6 && days > 0)

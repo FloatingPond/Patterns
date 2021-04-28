@@ -14,11 +14,6 @@ public class MessageManager : MonoBehaviour
     //Not yet used
     public PopUpMessage FallenStreakMessageBox;
 
-    
-    
-    
-
-
     public void CloseMessage()
     {
         popUpBase.GetComponent<Animator>().SetTrigger("Close");
@@ -35,7 +30,6 @@ public class MessageManager : MonoBehaviour
 
     void PopulateButton(string title, string body, string button)
     {
-
         //Set title to 'Welcome'
         MainMessageBox.tTitle.text = title;
 
@@ -45,7 +39,7 @@ public class MessageManager : MonoBehaviour
         //Set body to 'Something'
         MainMessageBox.tButton.text = button;
 
-
+        OpenMessage();
     }
 
 

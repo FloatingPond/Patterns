@@ -87,6 +87,7 @@ public class MainMenu : MonoBehaviour
         gm.MakeButtonsInteractable();
         //To display those sweet new high scores
         DisplayHighScores();
+        DisplayStreak();
         SwitchToCanvas("mainmenu");
         gm.AddToButtonPressed();
     }

@@ -28,6 +28,12 @@ public class MessageManager : MonoBehaviour
         PopulateButton("WELCOME", "Welcome first-timer. Time to waste your life.", "Letz g0");
     }
 
+    public void DisplayDailyMessageAbleToGetStreak(string title, string text, string button)
+    {
+        PopulateButton(title, text, button);
+    }
+
+
     void PopulateButton(string title, string body, string button)
     {
         //Set title to 'Welcome'

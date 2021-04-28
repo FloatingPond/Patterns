@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
     {
         dateLastAcquiredStreak = DateTime.ParseExact(dtString4, "yyyy-MM-dd HH:mm tt", null);
         //ChangeGameStreak();
-        CheckGameStreak();
+        CheckGameStreak(false);
     }
 
     [Button(ButtonSizes.Small)]
@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
         Highscore[2] = 0;
         Highscore[3] = 0;
         LoadGame();
-        mm.DisplayWelcomeMessage();
+        
         //dt = DateTime.Now;
         //StartCoroutine(GetSetDateTimeNow());
     }
@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
             am.SetadsRewardsWatched(data.adsRewardsWatched);
 
             //Check Streak
-            CheckGameStreak();
+            CheckGameStreak(true);
         }
         else
         {
@@ -178,6 +178,7 @@ public class GameManager : MonoBehaviour
 
             gameStreak = 0;
             gameStreakHighscore = 0;
+            mm.DisplayWelcomeMessage();
         }
     }
     public void Save()
@@ -448,7 +449,7 @@ public class GameManager : MonoBehaviour
         SetTextScore();
         //Play again?
         //Enable Play Again and Return buttons
-        CheckGameStreak();
+        CheckGameStreak(false);
 
     }
 
@@ -764,7 +765,7 @@ public class GameManager : MonoBehaviour
     }
 
     //Called when game is opened to check streak
-    public void CheckGameStreak()
+    public void CheckGameStreak(bool gameOpened)
     {
         //For hours
         DateTime dLastAcquired = dateLastAcquiredStreak;
@@ -788,18 +789,11 @@ public class GameManager : MonoBehaviour
                 //Else if X is more than 6 hours AND day is 1 apart
                 //  PLAY A GAME TO GET YOUR STREAK
                 Debug.Log("PLAY NOW TO GET A STREAK");
+                if(gameOpened) //Game just opened
+                mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "GO GET STREAK", "Yes dad");
             }
         }
-        else if (days > 1)
-        {
-            //  SAVE STREAK AS LAST STREAK
-            gameStreakLast = gameStreak;
-            dateLastAcquiredStreakLast = dateLastAcquiredStreak;
-            //  Streak reset to zero
-            gameStreak = 0;
-            //  OFFER CHANCE TO RECLAIM STREAK
-        }
-        else if (days > 2)
+        else if (days > 2) //Too late
         {
             //  Too late
             //  Save streak as last streak
@@ -809,6 +803,17 @@ public class GameManager : MonoBehaviour
             //  No chance to reclaim
             //  Streak reset to zero
             gameStreak = 0;
+            if (gameOpened) //Game just opened
+                mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "You lost streak " + days.ToString() + " ago.", "I am shit");
+        }
+        else if (days > 1) //Can still reclaim streak
+        {
+            //  SAVE STREAK AS LAST STREAK
+            gameStreakLast = gameStreak;
+            dateLastAcquiredStreakLast = dateLastAcquiredStreak;
+            //  Streak reset to zero
+            gameStreak = 0;
+            //  OFFER CHANCE TO RECLAIM STREAK
         }
         Save();
     }

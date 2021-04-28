@@ -66,11 +66,14 @@ public class GameManager : MonoBehaviour
     public string dtString3 = "2005-10-05 22:12 PM";
     public string dtString4 = "2021-10-05 22:12 PM";
 
+    [Title("Managers")]
     //Ad Manager
     public AdManager am;
 
     //Sound manager
     public SoundManager sm;
+
+    public MessageManager mm;
 
 
     [Button(ButtonSizes.Small)]
@@ -115,6 +118,7 @@ public class GameManager : MonoBehaviour
         Highscore[2] = 0;
         Highscore[3] = 0;
         LoadGame();
+        mm.DisplayWelcomeMessage();
         //dt = DateTime.Now;
         //StartCoroutine(GetSetDateTimeNow());
     }

@@ -864,13 +864,7 @@ public class GameManager : MonoBehaviour
                     //Currently is just a stopgap
                 }
             }
-            else if (days > 1)
-            {
-                Debug.Log("Streak lost but reclaim-able");
-                gameStreakLast = gameStreak;
-                dateLastAcquiredStreakLast = dateLastAcquiredStreak;
-                gameStreak = 0;
-            }
+            //These two methods shouldn't necessarily be called because they will be called when game is opened.
             else if (days > 2)
             {
                 Debug.Log("sTREAK LOST");
@@ -878,6 +872,14 @@ public class GameManager : MonoBehaviour
                 dateLastAcquiredStreakLast = dateLastAcquiredStreak;
                 gameStreak = 0;
             }
+            else if (days > 1)
+            {
+                Debug.Log("Streak lost but reclaim-able");
+                gameStreakLast = gameStreak;
+                dateLastAcquiredStreakLast = dateLastAcquiredStreak;
+                gameStreak = 0;
+            }
+            
         }
         Save();
         //If time between now and last acquired streak is less than 6 hours

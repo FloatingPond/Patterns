@@ -2001,10 +2001,10 @@ MonoBehaviour:
   audioClip_Music: {fileID: 0}
   audioClip_Voice: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: ab54c1215c9930a429a9f66c6fef702f, type: 2}
-  masterFloat: 0
-  musicFloat: 0
-  SFX_Float: 0
-  voiceFloat: 0
+  masterFloat: -80
+  musicFloat: -80
+  SFX_Float: -80
+  voiceFloat: -80
   masterSlider: {fileID: 1403291693}
   musicSlider: {fileID: 971482536}
   SFX_slider: {fileID: 1631276981}

@@ -675,11 +675,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 892789780}
-  - {fileID: 844985209}
   - {fileID: 658574886}
   - {fileID: 2033224258}
   - {fileID: 1087801795}
   - {fileID: 563555762}
+  - {fileID: 844985209}
   m_Father: {fileID: 994137741}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4002,7 +4002,7 @@ RectTransform:
   m_Children:
   - {fileID: 73761993}
   m_Father: {fileID: 61888530}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4757,7 +4757,7 @@ RectTransform:
   - {fileID: 468635117}
   - {fileID: 79521360}
   m_Father: {fileID: 61888530}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7150,7 +7150,7 @@ RectTransform:
   - {fileID: 1675457367}
   - {fileID: 1768048759}
   m_Father: {fileID: 61888530}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9483,6 +9483,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 61888530}
     m_Modifications:
+    - target: {fileID: 3001589696705223597, guid: 34a29bd966be8754596b16a4648b6c26,
+        type: 3}
+      propertyPath: m_Name
+      value: Top Raycast Blocker
+      objectReference: {fileID: 0}
     - target: {fileID: 5875040144417476468, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -9526,7 +9531,7 @@ PrefabInstance:
     - target: {fileID: 8871064528229213152, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8871064528229213152, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}
@@ -9592,6 +9597,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003408406851011398, guid: 34a29bd966be8754596b16a4648b6c26,
+        type: 3}
+      propertyPath: m_Name
+      value: Bot Raycast Blocker
       objectReference: {fileID: 0}
     - target: {fileID: 9135219778196587036, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}
@@ -12662,7 +12672,7 @@ RectTransform:
   - {fileID: 532319329}
   - {fileID: 441222606}
   m_Father: {fileID: 61888530}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

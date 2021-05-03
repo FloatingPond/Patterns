@@ -67,5 +67,12 @@ public class PlayerData
 
         //Ads
         adsRewardsWatched = gm.am.GetadsRewardsWatched();
+
+        //Sound
+        master = gm.sm.masterFloat;
+        music = gm.sm.musicFloat;
+        sfx = gm.sm.SFX_Float;
+        voice = gm.sm.voiceFloat;
+
     }
 }

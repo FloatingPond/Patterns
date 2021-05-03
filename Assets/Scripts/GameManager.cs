@@ -163,6 +163,11 @@ public class GameManager : MonoBehaviour
             
             am.SetadsRewardsWatched(data.adsRewardsWatched);
 
+            sm.masterFloat = data.master;
+            sm.musicFloat = data.music;
+            sm.SFX_Float = data.sfx;
+            sm.voiceFloat = data.voice;
+
             //Check Streak
             CheckGameStreak(true);
         }
@@ -179,7 +184,12 @@ public class GameManager : MonoBehaviour
             gameStreak = 0;
             gameStreakHighscore = 0;
             mm.DisplayWelcomeMessage();
+            sm.masterFloat = 0;
+            sm.musicFloat = 0;
+            sm.SFX_Float = 0;
+            sm.voiceFloat = 0;
         }
+        sm.LoadSliders();
     }
     public void Save()
     {

@@ -13,17 +13,23 @@ public class SoundManager : MonoBehaviour
     public float masterFloat, musicFloat, SFX_Float, voiceFloat;
 
     public Slider masterSlider, musicSlider, SFX_slider, voiceSlider;
-    private void Start()
+    private void Awake()
     {
         LoadAudioClip_Music("Funky Funky loop");
         PlayMusic();
+        
+    }
+
+    public void LoadSliders()
+    {
         masterSlider.value = masterFloat;
-        SetMasterVolume(masterFloat);
         musicSlider.value = musicFloat;
-        SetMusicVolume(musicFloat);
         SFX_slider.value = SFX_Float;
-        SetSFXVolume(SFX_Float);
         voiceSlider.value = voiceFloat;
+
+        SetMasterVolume(masterFloat);
+        SetMusicVolume(musicFloat);
+        SetSFXVolume(SFX_Float);
         SetVoiceVolume(voiceFloat);
     }
 

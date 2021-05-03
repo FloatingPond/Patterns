@@ -184,10 +184,10 @@ public class GameManager : MonoBehaviour
             gameStreak = 0;
             gameStreakHighscore = 0;
             mm.DisplayWelcomeMessage();
-            sm.masterFloat = 0;
-            sm.musicFloat = 0;
-            sm.SFX_Float = 0;
-            sm.voiceFloat = 0;
+            sm.masterFloat = 1;
+            sm.musicFloat = 1;
+            sm.SFX_Float = 1;
+            sm.voiceFloat = 1;
         }
         sm.LoadSliders();
     }

@@ -10,47 +10,50 @@ public class SoundManager : MonoBehaviour
     public AudioClip audioClip_SFX, audioClip_Music, audioClip_Voice;
 
     public AudioMixer audioMixer;
-    public float masterFloat, musicFloat, SFX_Float, voiceFloat;
+    public float masterFloat = 1, musicFloat = 1, SFX_Float = 1, voiceFloat = 1;
 
     public Slider masterSlider, musicSlider, SFX_slider, voiceSlider;
     private void Awake()
     {
         LoadAudioClip_Music("Funky Funky loop");
         PlayMusic();
-        
     }
 
     public void LoadSliders()
     {
-        masterSlider.value = masterFloat;
-        musicSlider.value = musicFloat;
-        SFX_slider.value = SFX_Float;
-        voiceSlider.value = voiceFloat;
-
         SetMasterVolume(masterFloat);
         SetMusicVolume(musicFloat);
         SetSFXVolume(SFX_Float);
         SetVoiceVolume(voiceFloat);
+
+        masterSlider.value = masterFloat;
+        musicSlider.value = musicFloat;
+        SFX_slider.value = SFX_Float;
+        voiceSlider.value = voiceFloat;
     }
 
     public void SetMusicVolume(float volume)
     {
-        audioMixer.SetFloat("Music_Volume", volume);
+        audioMixer.SetFloat("Music_Volume", Mathf.Log(volume) * 20);
+        musicFloat = volume;
         //ES3.Save<float>("Music_Volume", volume, "settings.data");
     }
     public void SetSFXVolume(float volume)
     {
-        audioMixer.SetFloat("SFX_Volume", volume);
+        audioMixer.SetFloat("SFX_Volume", Mathf.Log(volume) * 20);
+        SFX_Float = volume;
         //ES3.Save<float>("SFX_Volume", volume, "settings.data");
     }
     public void SetVoiceVolume(float volume)
     {
-        audioMixer.SetFloat("Voice_Volume", volume);
+        audioMixer.SetFloat("Voice_Volume", Mathf.Log(volume) * 20);
+        voiceFloat = volume;
         //ES3.Save<float>("SFX_Volume", volume, "settings.data");
     }
     public void SetMasterVolume(float volume)
     {
-        audioMixer.SetFloat("Master_Volume", volume);
+        audioMixer.SetFloat("Master_Volume", Mathf.Log(volume) * 20);
+        masterFloat = volume;
         //ES3.Save<float>("SFX_Volume", volume, "settings.data");
     }
     public void LoadAudioClip_SFX(string clipPath)

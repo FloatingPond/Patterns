@@ -782,6 +782,7 @@ public class GameManager : MonoBehaviour
             if (hours < 6)
             {
                 Debug.Log("No new streak, too few hours. Come back later");
+                if (gameOpened) //Game just opened
                 mm.DisplayDailyMessageAbleToGetStreak("Welcome back", "PLAY UNTIL FINGERS HURT", "Wicked");
                 //come back later
             }
@@ -805,7 +806,7 @@ public class GameManager : MonoBehaviour
             //  Streak reset to zero
             gameStreak = 0;
             if (gameOpened) //Game just opened
-                mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "You lost streak " + days.ToString() + " ago.", "I am shit");
+                mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "You lost streak " + days.ToString() + " days ago.", "I am shit");
         }
         else if (days > 1) //Can still reclaim streak
         {

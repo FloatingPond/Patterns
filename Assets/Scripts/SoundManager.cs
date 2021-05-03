@@ -21,7 +21,7 @@ public class SoundManager : MonoBehaviour
 
     public void LoadSliders()
     {
-        SetMasterVolume(masterFloat);
+        /*SetMasterVolume(masterFloat);
         SetMusicVolume(musicFloat);
         SetSFXVolume(SFX_Float);
         SetVoiceVolume(voiceFloat);
@@ -29,31 +29,39 @@ public class SoundManager : MonoBehaviour
         masterSlider.value = masterFloat;
         musicSlider.value = musicFloat;
         SFX_slider.value = SFX_Float;
-        voiceSlider.value = voiceFloat;
+        voiceSlider.value = voiceFloat;*/
+    }
+    private void Start()
+    {
+        masterSlider.value = PlayerPrefs.GetFloat("Master_Volume", 1);
+        musicSlider.value = PlayerPrefs.GetFloat("Music_Volume", 1);
+        SFX_slider.value = PlayerPrefs.GetFloat("SFX_Volume", 1);
+        voiceSlider.value = PlayerPrefs.GetFloat("Voice_Volume", 1);
     }
 
     public void SetMusicVolume(float volume)
     {
         audioMixer.SetFloat("Music_Volume", Mathf.Log(volume) * 20);
-        musicFloat = volume;
+        PlayerPrefs.SetFloat("Music_Volume", volume);
+        //musicFloat = volume;
         //ES3.Save<float>("Music_Volume", volume, "settings.data");
     }
     public void SetSFXVolume(float volume)
     {
         audioMixer.SetFloat("SFX_Volume", Mathf.Log(volume) * 20);
-        SFX_Float = volume;
+        PlayerPrefs.SetFloat("SFX_Volume", volume);
         //ES3.Save<float>("SFX_Volume", volume, "settings.data");
     }
     public void SetVoiceVolume(float volume)
     {
         audioMixer.SetFloat("Voice_Volume", Mathf.Log(volume) * 20);
-        voiceFloat = volume;
+        PlayerPrefs.SetFloat("Voice_Volume", volume);
         //ES3.Save<float>("SFX_Volume", volume, "settings.data");
     }
     public void SetMasterVolume(float volume)
     {
         audioMixer.SetFloat("Master_Volume", Mathf.Log(volume) * 20);
-        masterFloat = volume;
+        PlayerPrefs.SetFloat("Master_Volume", volume);
         //ES3.Save<float>("SFX_Volume", volume, "settings.data");
     }
     public void LoadAudioClip_SFX(string clipPath)

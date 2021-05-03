@@ -157,9 +157,9 @@ public class GameManager : MonoBehaviour
             fGameTime = data.secondsPlayed;
             buttonsPressed = data.buttonsPressed;
             SetGameStreak(data.gameStreak, data.gameStreakHighscore);
-            Debug.Log(data.dateLastAcquiredStreak);
+            //Debug.Log(data.dateLastAcquiredStreak);
             dateLastAcquiredStreak = DateTime.ParseExact(data.dateLastAcquiredStreak, "yyyy-MM-dd HH:mm tt", null);
-            Debug.Log(dateLastAcquiredStreak);
+            //Debug.Log(dateLastAcquiredStreak);
             
             am.SetadsRewardsWatched(data.adsRewardsWatched);
 
@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
             sm.voiceFloat = data.voice;
 
             //Check Streak
-            CheckGameStreak(true);
+            CheckGameStreak(false);
         }
         else
         {
@@ -184,6 +184,7 @@ public class GameManager : MonoBehaviour
             gameStreak = 0;
             gameStreakHighscore = 0;
             mm.DisplayWelcomeMessage();
+
             sm.masterFloat = 0;
             sm.musicFloat = 0;
             sm.SFX_Float = 0;
@@ -313,7 +314,7 @@ public class GameManager : MonoBehaviour
         while(true)
         {
             dt = DateTime.Now;
-            Debug.Log(dt);
+            //Debug.Log(dt);
             yield return new WaitForSeconds(60f);
         }
     }
@@ -323,10 +324,10 @@ public class GameManager : MonoBehaviour
         dtnew = DateTime.ParseExact(dtString2, "yyyy-MM-dd HH:mm tt", null);
         dtnew2 = DateTime.ParseExact(dtString3, "yyyy-MM-dd HH:mm tt", null);
         TimeSpan TimeBetween = dtnew2.Subtract(dtnew);
-        Debug.Log(TimeBetween);
-        Debug.Log(TimeBetween.Hours);
+        //Debug.Log(TimeBetween);
+        //Debug.Log(TimeBetween.Hours);
 
-        Debug.Log(dtnew);
+        //Debug.Log(dtnew);
     
 }
 
@@ -343,11 +344,11 @@ public class GameManager : MonoBehaviour
             sPatternNumbers = number.ToString();
             if (oldnumber == sPatternNumbers)
             {
-                Debug.Log("STILL THE SAME - "+ sPatternNumbers);
+                //Debug.Log("STILL THE SAME - "+ sPatternNumbers);
             }
             else
             {
-                Debug.Log("we out - " + sPatternNumbers);
+               // Debug.Log("we out - " + sPatternNumbers);
             }
         }
 
@@ -581,7 +582,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Error in high score text setting");
+           // Debug.Log("Error in high score text setting");
         }
 
     }
@@ -637,7 +638,7 @@ public class GameManager : MonoBehaviour
         {
             currentGamemode = gamemode;
         }
-        Debug.Log(currentGamemode);
+        //Debug.Log(currentGamemode);
         //Disable Play Again and Return buttons
         endgamePanel.SetActive(false);
         sPatternAnswer = "";
@@ -646,7 +647,7 @@ public class GameManager : MonoBehaviour
         tAfterGame.text = "";
         newHighscoreThisGame = false;
         AddToButtonPressed();
-        Debug.Log(currentGamemode + "," + gamemodeNames[3]);
+        //Debug.Log(currentGamemode + "," + gamemodeNames[3]);
 
         if (currentGamemode == gamemodeNames[3])
         {
@@ -718,7 +719,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Error - invalid gamemode");
+           // Debug.Log("Error - invalid gamemode");
             newHighscoreThisGame = false;
         }
     }
@@ -784,14 +785,14 @@ public class GameManager : MonoBehaviour
         int minutes = (DateTime.Now - dLastAcquired).Minutes;
         int hours = (int)(DateTime.Now - dLastAcquired).TotalHours;
         int days = (int)(DateTime.Now.Date - dLastAcquiredDateOnly).TotalDays;
-        Debug.Log("Total hours:" + hours + ", Total Days:" + days);
+        //Debug.Log("Total hours:" + hours + ", Total Days:" + days);
         //If X is less than 6 hours AND day is 1 apart
         //  Come back in X
         if (days < 2) //If Days are less than 2
         {
             if (hours < 6)
             {
-                Debug.Log("No new streak, too few hours. Come back later");
+                //Debug.Log("No new streak, too few hours. Come back later");
                 if (gameOpened) //Game just opened
                 mm.DisplayDailyMessageAbleToGetStreak("Welcome back", "PLAY UNTIL FINGERS HURT", "Wicked");
                 //come back later
@@ -800,7 +801,7 @@ public class GameManager : MonoBehaviour
             {
                 //Else if X is more than 6 hours AND day is 1 apart
                 //  PLAY A GAME TO GET YOUR STREAK
-                Debug.Log("PLAY NOW TO GET A STREAK");
+                //Debug.Log("PLAY NOW TO GET A STREAK");
                 if(gameOpened) //Game just opened
                 mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "GO GET STREAK", "Yes dad");
             }
@@ -837,7 +838,7 @@ public class GameManager : MonoBehaviour
         {
             gameStreak = 1;
             dateLastAcquiredStreak = DateTime.Now;
-            Debug.Log(dateLastAcquiredStreak);
+            //Debug.Log(dateLastAcquiredStreak);
             Save();
         }
         else
@@ -849,19 +850,19 @@ public class GameManager : MonoBehaviour
             int minutes = (DateTime.Now - dLastAcquired).Minutes;
             int hours = (int)(DateTime.Now - dLastAcquired).TotalHours;
             int days = (int)(DateTime.Now.Date - dLastAcquiredDateOnly).TotalDays;
-            Debug.Log("Total hours:" + hours + ", Total Days:" + days);
+            //Debug.Log("Total hours:" + hours + ", Total Days:" + days);
             //Debug.Log(hours + "," + days + "," + minutes);
 
             if (days < 2) //If Days are less than 2
             {
                 if (hours < 6)
                 {
-                    Debug.Log("No new streak, too few hours. Come back later");
+                    //Debug.Log("No new streak, too few hours. Come back later");
                     //come back later
                 }
                 else if (hours > 6 && days > 0)
                 {
-                    Debug.Log("NEW STREAK!");
+                    //Debug.Log("NEW STREAK!");
                     gameStreak++;
                     dateLastAcquiredStreak = DateTime.Now;
                 }
@@ -877,14 +878,14 @@ public class GameManager : MonoBehaviour
             //These two methods shouldn't necessarily be called because they will be called when game is opened.
             else if (days > 2)
             {
-                Debug.Log("sTREAK LOST");
+                //Debug.Log("sTREAK LOST");
                 gameStreakLast = gameStreak;
                 dateLastAcquiredStreakLast = dateLastAcquiredStreak;
                 gameStreak = 0;
             }
             else if (days > 1)
             {
-                Debug.Log("Streak lost but reclaim-able");
+                //Debug.Log("Streak lost but reclaim-able");
                 gameStreakLast = gameStreak;
                 dateLastAcquiredStreakLast = dateLastAcquiredStreak;
                 gameStreak = 0;

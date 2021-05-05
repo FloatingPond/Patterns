@@ -1,12 +1,5 @@
 {
   "dependencies": {
-    "com.google.android.appbundle": {
-      "version": "1.4.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://unityregistry-pa.googleapis.com"
-    },
     "com.unity.2d.animation": {
       "version": "3.2.6",
       "depth": 0,

@@ -48,16 +48,19 @@ public class MainMenu : MonoBehaviour
     }
     public void Update()
     {
+        //Counts when player is playing the game
         if (Gameplay.activeInHierarchy)
         {
             gm.AddToGameTime(Time.deltaTime);
         }
+        //Allows player to instantly quit game when escape button is pressed
         if (MainMenuPanel.activeInHierarchy)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
                 QuitGame();
                 
         }
+        //Returns player to main menu on escape button press
         else if (Stats.activeInHierarchy)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -65,13 +68,14 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    void QuitGame()
+    
+    void QuitGame() //Called from update
     {
         //am.CloseBannerAd();
         Application.Quit();
     }
-
-    private void SwitchToGameCanvas(bool state)
+    
+    private void SwitchToGameCanvas(bool state) //Main void for switching state of the game
     {
         Gameplay.SetActive(state);
         Endgame.SetActive(state);
@@ -265,7 +269,7 @@ public class MainMenu : MonoBehaviour
         }
 
     }
-    public void DisplayStats()
+    public void DisplayStats() //Called from DisplayStats - Displays statistics on statistics page
     {
         PlayerData data = SaveSystem.LoadGame();
         if (data != null)

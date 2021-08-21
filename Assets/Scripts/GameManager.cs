@@ -103,12 +103,6 @@ public class GameManager : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Code
-    /// </summary>
-    /// <returns></returns>
-    /// 
-
     void Awake()
     {
         gamemodeNames = new string[] { "classic", "random", "match", "timedround" };
@@ -143,7 +137,8 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    public void LoadGame()
+
+    public void LoadGame() //Called in Awake - loads data from load system and saves into memory
     {
         PlayerData data = SaveSystem.LoadGame();
         if (data != null)
@@ -191,7 +186,7 @@ public class GameManager : MonoBehaviour
         }
         sm.LoadSliders();
     }
-    public void Save()
+    public void Save() //Saves data into system
     {
         SaveSystem.SaveGame(this);
     }
@@ -240,7 +235,33 @@ public class GameManager : MonoBehaviour
         SetMatchButtons();
         StartCoroutine(HideMatchButtons());
     }
-    void SetMatchButtons()
+    void TimedRoundCallNextNumber() //Game 4
+    {
+        iPatternNumbers++;
+        CheckHighscore();
+        SetTextScore();
+
+        string oldnumber = sPatternNumbers;
+        while (oldnumber == sPatternNumbers)
+        {
+            int number = UnityEngine.Random.Range(1, 9);
+            sPatternNumbers = number.ToString();
+            if (oldnumber == sPatternNumbers)
+            {
+                Debug.Log("STILL THE SAME - " + sPatternNumbers);
+            }
+            else
+            {
+                Debug.Log("we out - " + sPatternNumbers);
+            }
+        }
+
+        coroutine = AnimateButtonColours();
+        StartCoroutine(coroutine);
+
+    }
+
+    void SetMatchButtons()  //Called from Game 3
     {
         bool[] buttonIsSet = new bool[9];
         for (int i = 0; i < 9; i++)
@@ -298,7 +319,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    IEnumerator HideMatchButtons()
+    IEnumerator HideMatchButtons() //Called from Game 3
     {
         yield return new WaitForSeconds(2f);
         for (int i = 0; i < 9; i++)
@@ -307,17 +328,7 @@ public class GameManager : MonoBehaviour
         }
         EnableButtons(true);
     }
-
-    IEnumerator GetSetDateTimeNow()
-    {
-        while(true)
-        {
-            dt = DateTime.Now;
-            Debug.Log(dt);
-            yield return new WaitForSeconds(60f);
-        }
-    }
-
+    
     void StringToDateTime()
     {
         dtnew = DateTime.ParseExact(dtString2, "yyyy-MM-dd HH:mm tt", null);
@@ -330,31 +341,7 @@ public class GameManager : MonoBehaviour
     
 }
 
-    void TimedRoundCallNextNumber() //Game 4
-    {
-        iPatternNumbers++;
-        CheckHighscore();
-        SetTextScore();
-
-        string oldnumber = sPatternNumbers;
-        while (oldnumber == sPatternNumbers)
-        { 
-            int number = UnityEngine.Random.Range(1, 9);
-            sPatternNumbers = number.ToString();
-            if (oldnumber == sPatternNumbers)
-            {
-                Debug.Log("STILL THE SAME - "+ sPatternNumbers);
-            }
-            else
-            {
-                Debug.Log("we out - " + sPatternNumbers);
-            }
-        }
-
-        coroutine = AnimateButtonColours();
-        StartCoroutine(coroutine);
-
-    }
+    
     void ResetMatchTileCounters()
     {
         matchA = 0;
@@ -673,8 +660,8 @@ public class GameManager : MonoBehaviour
         Save();
     }
 
-    //Used midgame to check whether a highscore has been exceeded
-    void CheckHighscore()
+    
+    void CheckHighscore() //Used midgame to check whether a highscore has been exceeded
     {
         if (currentGamemode == gamemodeNames[0]) //Classic
         {
@@ -722,8 +709,8 @@ public class GameManager : MonoBehaviour
             newHighscoreThisGame = false;
         }
     }
-    //Used to add the AfterGame text depending on if the user has achieved a new highscore
-    void CheckHighscoreAtEndOfGame()
+    
+    void CheckHighscoreAtEndOfGame() //Used to add the AfterGame text depending on if the user has achieved a new highscore
     {
         if (newHighscoreThisGame == true)
         {
@@ -736,7 +723,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //Game Streak Stuff
+    /////Game Streak Stuff
     public int GetGameStreak()
     {
         return gameStreak;
@@ -747,8 +734,8 @@ public class GameManager : MonoBehaviour
         return gameStreakHighscore;
     }
 
-    //Used when loading in from Save data
-    void SetGameStreak(int gs, int gshs)
+    
+    void SetGameStreak(int gs, int gshs) //Used when loading in from Save data
     {
         gameStreak = gs;
         gameStreakHighscore = gshs;
@@ -760,13 +747,12 @@ public class GameManager : MonoBehaviour
         ChangeGameStreakHighscore();
     }
 
-    public void ResetGameStreak()
+    public void ResetGameStreak() 
     {
         gameStreak = 1;
     }
 
-    //Called after gameStreak changes
-    public void ChangeGameStreakHighscore()
+    public void ChangeGameStreakHighscore() //Called after gameStreak changes
     {
         if (gameStreak > gameStreakHighscore)
         {
@@ -774,8 +760,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //Called when game is opened to check streak
-    public void CheckGameStreak(bool gameOpened)
+    public void CheckGameStreak(bool gameOpened) //Called when game is opened to check streak
     {
         //For hours
         DateTime dLastAcquired = dateLastAcquiredStreak;
@@ -830,10 +815,9 @@ public class GameManager : MonoBehaviour
         Save();
     }
 
-    //Called when a game has been played
-    public void ChangeGameStreak()
+    public void ChangeGameStreak() //Called when a game has been played
     {
-        if(gameStreak == 0)
+        if(gameStreak == 0) //Commonly when game is played for the first time
         {
             gameStreak = 1;
             dateLastAcquiredStreak = DateTime.Now;

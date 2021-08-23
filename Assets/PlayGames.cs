@@ -23,7 +23,7 @@ public class PlayGames : MonoBehaviour
 
     void Start()
     {
-        if (platform == null)
+        if (platform == null) //Makes a platform if does not exist
         {
             PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
             PlayGamesPlatform.InitializeInstance(config);
@@ -59,6 +59,14 @@ public class PlayGames : MonoBehaviour
         }
     }
 
+    public void UnlockAchievement()
+    {
+        if (Social.Active.localUser.authenticated)
+        {
+            Social.ReportProgress(achievementID, 100f, success => { });
+        }
+    }
+
     public void ShowLeaderboard()
     {
         if (Social.Active.localUser.authenticated)
@@ -75,11 +83,5 @@ public class PlayGames : MonoBehaviour
         }
     }
 
-    public void UnlockAchievement()
-    {
-        if (Social.Active.localUser.authenticated)
-        {
-            Social.ReportProgress(achievementID, 100f, success => { });
-        }
-    }
+    
 }

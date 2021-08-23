@@ -1,15 +1,25 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
+using TMPro;
+using Sirenix.OdinInspector;
 
 
 public class PlayGames : MonoBehaviour
 {
     public int playerScore;
-    string leaderboardID = "";
-    string achievementID = "";
+    public TextMeshProUGUI textScore;
+    string leaderboardID = "CgkI3M-O2b8NEAIQAg";
+    string achievementID = "CgkI3M-O2b8NEAIQAA";
     public static PlayGamesPlatform platform;
+    [Button(ButtonSizes.Small)]
+    [PropertyOrder(1)]
+    private void SetScoreFromText()
+    {
+        SetScore();
+    }
 
     void Start()
     {
@@ -35,10 +45,16 @@ public class PlayGames : MonoBehaviour
         UnlockAchievement();
     }
 
+    public void SetScore()
+    {
+        playerScore = int.Parse(textScore.text);
+    }
+
     public void AddScoreToLeaderboard()
     {
         if (Social.Active.localUser.authenticated)
         {
+
             Social.ReportScore(playerScore, leaderboardID, success => { });
         }
     }
@@ -55,7 +71,7 @@ public class PlayGames : MonoBehaviour
     {
         if (Social.Active.localUser.authenticated)
         {
-            paltform.ShowAchievementsUI();
+            platform.ShowAchievementsUI();
         }
     }
 

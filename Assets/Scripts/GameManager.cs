@@ -62,8 +62,10 @@ public class GameManager : MonoBehaviour
     //DateTime stuff
 
     public DateTime dt,dtnew, dtnew2;
+    [PropertyOrder(1)]
     public string dtString2 = "2005-10-05 22:12 PM";
     public string dtString3 = "2005-10-05 22:12 PM";
+    [PropertyOrder(2)]
     public string dtString4 = "2021-10-05 22:12 PM";
 
     [Title("Managers")]
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour
 
 
     [Button(ButtonSizes.Small)]
+    [PropertyOrder(1)]
     private void ParseStringToDateTime()
     {
         StringToDateTime();
@@ -89,14 +92,16 @@ public class GameManager : MonoBehaviour
     }
 
     [Button(ButtonSizes.Small)]
+    [PropertyOrder(3)]
     private void ChangeDlasAndDisplay()
     {
         dateLastAcquiredStreak = DateTime.ParseExact(dtString4, "yyyy-MM-dd HH:mm tt", null);
         //ChangeGameStreak();
-        CheckGameStreak(false);
+        CheckGameStreak(true);
     }
 
     [Button(ButtonSizes.Small)]
+    [PropertyOrder(2)]
     private void GetDateLastAcquiredStreak()
     {
         dtString4 = dateLastAcquiredStreak.ToString("yyyy-MM-dd HH:mm tt");
@@ -112,9 +117,6 @@ public class GameManager : MonoBehaviour
         Highscore[2] = 0;
         Highscore[3] = 0;
         LoadGame();
-        
-        //dt = DateTime.Now;
-        //StartCoroutine(GetSetDateTimeNow());
     }
 
     private void Update()
@@ -123,25 +125,21 @@ public class GameManager : MonoBehaviour
         {
             if (fTimedRoundTimer > 0)
             { 
-            fTimedRoundTimer -= Time.deltaTime;
+                fTimedRoundTimer -= Time.deltaTime;
                 tTimedRoundsTimer.text = fTimedRoundTimer.ToString("F0");
             }
             else
             {
-
                 tTimedRoundsTimer.text = "";
-
                 EndGame();
             }
-
         }
-
     }
 
     public void LoadGame() //Called in Awake - loads data from load system and saves into memory
     {
         PlayerData data = SaveSystem.LoadGame();
-        if (data != null)
+        if (data != null) //Date exists
         { 
             Highscore[0] = data.highscores[0];
             Highscore[1] = data.highscores[1];
@@ -166,7 +164,7 @@ public class GameManager : MonoBehaviour
             //Check Streak
             CheckGameStreak(true);
         }
-        else
+        else //No file exists, so populate variables
         {
             Highscore[0] = 0;
             Highscore[1] = 0;
@@ -340,7 +338,6 @@ public class GameManager : MonoBehaviour
         Debug.Log(dtnew);
     
 }
-
     
     void ResetMatchTileCounters()
     {
@@ -733,7 +730,6 @@ public class GameManager : MonoBehaviour
     {
         return gameStreakHighscore;
     }
-
     
     void SetGameStreak(int gs, int gshs) //Used when loading in from Save data
     {
@@ -769,25 +765,29 @@ public class GameManager : MonoBehaviour
         int minutes = (DateTime.Now - dLastAcquired).Minutes;
         int hours = (int)(DateTime.Now - dLastAcquired).TotalHours;
         int days = (int)(DateTime.Now.Date - dLastAcquiredDateOnly).TotalDays;
-        Debug.Log("Total hours:" + hours + ", Total Days:" + days);
+        //Debug.Log("Total hours:" + hours + ", Total Days:" + days);
         //If X is less than 6 hours AND day is 1 apart
         //  Come back in X
         if (days < 2) //If Days are less than 2
         {
             if (hours < 6)
             {
-                Debug.Log("No new streak, too few hours. Come back later");
+                //Debug.Log("No new streak, too few hours. Come back later");
                 if (gameOpened) //Game just opened
-                mm.DisplayDailyMessageAbleToGetStreak("Welcome back", "PLAY UNTIL FINGERS HURT", "Wicked");
+                { 
+                    mm.DisplayDailyMessageAbleToGetStreak("Welcome back", "PLAY UNTIL FINGERS HURT", "Wicked");
+                }
                 //come back later
             }
             else if (hours > 6 && days > 0)
             {
                 //Else if X is more than 6 hours AND day is 1 apart
                 //  PLAY A GAME TO GET YOUR STREAK
-                Debug.Log("PLAY NOW TO GET A STREAK");
+                //Debug.Log("PLAY NOW TO GET A STREAK");
                 if(gameOpened) //Game just opened
-                mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "GO GET STREAK", "Yes dad");
+                { 
+                    mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "GO GET STREAK", "Yes dad");
+                }
             }
         }
         else if (days > 2) //Too late
@@ -801,7 +801,9 @@ public class GameManager : MonoBehaviour
             //  Streak reset to zero
             gameStreak = 0;
             if (gameOpened) //Game just opened
+            { 
                 mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "You lost streak " + days.ToString() + " days ago.", "I am shit");
+            }
         }
         else if (days > 1) //Can still reclaim streak
         {

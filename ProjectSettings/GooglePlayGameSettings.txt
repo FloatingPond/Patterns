@@ -1,5 +1,5 @@
-lastUpgrade=01012
-proj.pluginVersion=0.10.12
+lastUpgrade=00964
+proj.pluginVersion=0.9.64
 proj.AppId=463774918620
 and.BundleId=io.floatingpond.com
 proj.classDir=Assets

@@ -7581,8 +7581,9 @@ MonoBehaviour:
   Endgame: {fileID: 2033224257}
   Stats: {fileID: 1087801794}
   SoundSettings: {fileID: 563555761}
+  Premium: {fileID: 1723409099}
   gm: {fileID: 1893154942}
-  am: {fileID: 0}
+  am: {fileID: 1893154943}
   tClassicHighscore: {fileID: 812369572}
   tRandomHighscore: {fileID: 844202561}
   tGame3Highscore: {fileID: 1245878256}
@@ -13833,7 +13834,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 994137742}
-        m_MethodName: ShowStats
+        m_MethodName: ShowPremium
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

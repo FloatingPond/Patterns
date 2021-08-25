@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
     [Title("Panels")]
     public int test = 1;
 
-    public GameObject  MainMenuPanel, Gameplay, Endgame, Stats, SoundSettings;
+    public GameObject  MainMenuPanel, Gameplay, Endgame, Stats, SoundSettings, Premium;
 
     [Title("Managers")]
     public GameManager gm;
@@ -110,6 +110,11 @@ public class MainMenu : MonoBehaviour
         SwitchToCanvas("stats");
     }
 
+    public void ShowPremium()
+    {
+        SwitchToCanvas("premium");
+    }
+
     public void SwitchToCanvas(string canvas)
     {
         if (canvas == "mainmenu")
@@ -119,6 +124,7 @@ public class MainMenu : MonoBehaviour
             MainMenuPanel.SetActive(true);
             Stats.SetActive(false);
             SoundSettings.SetActive(true);
+            Premium.SetActive(false);
         }
         else if (canvas == "stats")
         {
@@ -127,6 +133,7 @@ public class MainMenu : MonoBehaviour
             MainMenuPanel.SetActive(false);
             Stats.SetActive(true);
             SoundSettings.SetActive(false);
+            Premium.SetActive(false);
         }
         else if (canvas == "game")
         {
@@ -135,6 +142,17 @@ public class MainMenu : MonoBehaviour
             MainMenuPanel.SetActive(false);
             Stats.SetActive(false);
             SoundSettings.SetActive(false);
+            Premium.SetActive(false);
+        }
+        else if (canvas == "premium")
+        {
+            Gameplay.SetActive(false);
+            Endgame.SetActive(false);
+            MainMenuPanel.SetActive(false);
+            Stats.SetActive(false);
+            SoundSettings.SetActive(false);
+            Premium.SetActive(true);
+
         }
         // This is so that you can open/close the sound settings from any canvas
         if (canvas == "soundsettings")

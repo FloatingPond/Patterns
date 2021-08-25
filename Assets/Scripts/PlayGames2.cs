@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System;
-//using GooglePlayGames;
-//using GooglePlayGames.BasicApi;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
 using TMPro;
 using Sirenix.OdinInspector;
 
@@ -10,10 +10,12 @@ using Sirenix.OdinInspector;
 public class PlayGames2 : MonoBehaviour
 {
     public int playerScore;
-    //public TextMeshProUGUI textScore;
+    public TextMeshProUGUI textScore;
+    public TextMeshProUGUI textStatus;
+
     string leaderboardID = "CgkI3M-O2b8NEAIQAg";
     string achievementID = "CgkI3M-O2b8NEAIQAA";
-    //public static PlayGamesPlatform platform;
+    public static PlayGamesPlatform platform;
     [Button(ButtonSizes.Small)]
     [PropertyOrder(1)]
     private void SetScoreFromText()
@@ -24,22 +26,24 @@ public class PlayGames2 : MonoBehaviour
     void Start()
     {
         Debug.Log("START OF GOOGLE PLAY GAMES");
-        //if (platform == null) //Makes a platform if does not exist
+        if (platform == null) //Makes a platform if does not exist
         {
-            //PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
-            //PlayGamesPlatform.InitializeInstance(config);
-            //PlayGamesPlatform.DebugLogEnabled = true;
-            //platform = PlayGamesPlatform.Activate();
+            PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
+            PlayGamesPlatform.InitializeInstance(config);
+            PlayGamesPlatform.DebugLogEnabled = true;
+            platform = PlayGamesPlatform.Activate();
         }
 
         Social.Active.localUser.Authenticate(success =>
         {
             if (success)
             {
+                textStatus.text = "Success";
                 Debug.Log("Logged in successfully");
             }
             else
             {
+                textStatus.text = "Failed";
                 Debug.Log("Login Failed");
             }
         });
@@ -72,7 +76,7 @@ public class PlayGames2 : MonoBehaviour
     {
         if (Social.Active.localUser.authenticated)
         {
-            //platform.ShowLeaderboardUI();
+            platform.ShowLeaderboardUI();
         }
     }
 
@@ -80,7 +84,7 @@ public class PlayGames2 : MonoBehaviour
     {
         if (Social.Active.localUser.authenticated)
         {
-            //platform.ShowAchievementsUI();
+            platform.ShowAchievementsUI();
         }
     }
 

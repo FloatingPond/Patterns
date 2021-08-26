@@ -3,17 +3,11 @@
     "m_SelectedPackage": {
         "deviceId": "JJN6R18413000466",
         "name": "io.floatingpond.com",
-        "processId": 14030,
+        "processId": 17414,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "JJN6R18413000466",
-            "name": "io.floatingpond.com",
-            "processId": 10696,
-            "exited": true
-        },
         {
             "deviceId": "JJN6R18413000466",
             "name": "io.floatingpond.com",
@@ -24,18 +18,42 @@
             "deviceId": "JJN6R18413000466",
             "name": "io.floatingpond.com",
             "processId": 12762,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "JJN6R18413000466",
             "name": "io.floatingpond.com",
             "processId": 13620,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "JJN6R18413000466",
             "name": "io.floatingpond.com",
             "processId": 14030,
+            "exited": true
+        },
+        {
+            "deviceId": "JJN6R18413000466",
+            "name": "com.huawei.android.launcher",
+            "processId": 1790,
+            "exited": false
+        },
+        {
+            "deviceId": "JJN6R18413000466",
+            "name": "io.floatingpond.com",
+            "processId": 14586,
+            "exited": true
+        },
+        {
+            "deviceId": "JJN6R18413000466",
+            "name": "com.android.settings",
+            "processId": 14282,
+            "exited": false
+        },
+        {
+            "deviceId": "JJN6R18413000466",
+            "name": "io.floatingpond.com",
+            "processId": 17414,
             "exited": false
         }
     ],

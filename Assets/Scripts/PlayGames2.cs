@@ -34,6 +34,13 @@ public class PlayGames2 : MonoBehaviour
             platform = PlayGamesPlatform.Activate();
         }
 
+        AuthenticateGoogleV2();
+
+        //UnlockAchievement();
+    }
+
+    private void AuthenticateGoogleV1()
+    {
         Social.Active.localUser.Authenticate(success =>
         {
             if (success)
@@ -47,7 +54,24 @@ public class PlayGames2 : MonoBehaviour
                 Debug.Log("Login Failed");
             }
         });
-        //UnlockAchievement();
+    }
+
+    private void AuthenticateGoogleV2()
+    {
+        platform.Authenticate(SignInInteractivity.CanPromptOnce, (result) =>
+        {
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    textStatus.text = "Success";
+                    Debug.Log("Logged in successfully");
+                    break;
+                default:
+                    textStatus.text = "Failed";
+                    Debug.Log("Login Failed");
+                    break;
+            }
+        });
     }
 
     public void SetScore()

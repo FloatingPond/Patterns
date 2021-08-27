@@ -56,17 +56,16 @@ public class GameManager : MonoBehaviour
 
     //Game Streak
     [SerializeField]
-    private int gameStreak;
+    private int gameStreak; //Loaded from file
     [SerializeField]
-    private int gameStreakLast;
+    private int gameStreakLast; //Streak had before current
     [SerializeField]
-    private int gameStreakHighscore;
+    private int gameStreakHighscore; //Highest achieved streak
 
     public DateTime dateLastAcquiredStreak;
+
     public DateTime dateLastAcquiredStreakLast;
-
     
-
     [Title("Managers")]
     //Ad Manager
     public AdManager am;
@@ -127,7 +126,7 @@ public class GameManager : MonoBehaviour
         Highscore[1] = 0;
         Highscore[2] = 0;
         Highscore[3] = 0;
-        LoadGame();
+        LoadGame(); //After variables are declared with numbers in case Load doesn't work, LoadGame is 
     }
 
     private void Update()
@@ -339,7 +338,7 @@ public class GameManager : MonoBehaviour
         EnableButtons(true);
     }
     
-    void StringToDateTime()
+    void StringToDateTime() //Used to calculate the time between two datetimes
     {
         dtnew = DateTime.ParseExact(dtString2, "yyyy-MM-dd HH:mm tt", null);
         dtnew2 = DateTime.ParseExact(dtString3, "yyyy-MM-dd HH:mm tt", null);
@@ -351,7 +350,7 @@ public class GameManager : MonoBehaviour
     
 }
     
-    void ResetMatchTileCounters()
+    void ResetMatchTileCounters() 
     {
         matchA = 0;
         matchB = 0;
@@ -359,8 +358,8 @@ public class GameManager : MonoBehaviour
         matchD = 0;
         matchBomb = 0;
     }
-    //Call on every button press
-    public void CheckAnswer()
+    
+    public void CheckAnswer() //Call on every button press when game is playing
     {
         if ((currentGamemode == gamemodeNames[0]) || (currentGamemode == gamemodeNames[1]))
         { 
@@ -749,7 +748,7 @@ public class GameManager : MonoBehaviour
         gameStreakHighscore = gshs;
     }
 
-    public void AddToGameStreak()
+    public void AddToGameStreak() //Increments the streak
     {
         gameStreak++;
         ChangeGameStreakHighscore();

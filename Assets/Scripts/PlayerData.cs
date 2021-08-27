@@ -37,8 +37,7 @@ public class PlayerData
     public int[] dateGameStreakHighscoreAcquired; //yyyy-MM-dd HH:mm tt
 
     ////Ads
-    //Reward Ads Watched
-    public int adsRewardsWatched;
+    public int adsRewardsWatched; //Reward Ads Watched
 
     //Sound settings
     public float master, music, sfx, voice;
@@ -66,8 +65,7 @@ public class PlayerData
         dateLastAcquiredStreakLast = gm.dateLastAcquiredStreakLast.ToString("yyyy-MM-dd HH:mm tt");
 
         //Ads
-        //SC - Commented out
-        //adsRewardsWatched = gm.am.GetadsRewardsWatched();
+        adsRewardsWatched = gm.am.GetadsRewardsWatched();
 
         //Sound
         master = gm.sm.masterFloat;

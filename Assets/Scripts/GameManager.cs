@@ -160,20 +160,17 @@ public class GameManager : MonoBehaviour
             fGameTime = data.secondsPlayed;
             buttonsPressed = data.buttonsPressed;
             SetGameStreak(data.gameStreak, data.gameStreakHighscore);
-            //Debug.Log(data.dateLastAcquiredStreak);
             dateLastAcquiredStreak = DateTime.ParseExact(data.dateLastAcquiredStreak, "yyyy-MM-dd HH:mm tt", null);
-            //Debug.Log(dateLastAcquiredStreak);
             
-            //SC - Commented out
-            //am.SetadsRewardsWatched(data.adsRewardsWatched);
+            am.SetadsRewardsWatched(data.adsRewardsWatched);
 
             sm.masterFloat = data.master;
             sm.musicFloat = data.music;
             sm.SFX_Float = data.sfx;
             sm.voiceFloat = data.voice;
 
-            //Check Streak
-            CheckGameStreak(true);
+            
+            CheckGameStreak(true); //Check Streak
         }
         else //No file exists, so populate variables
         {

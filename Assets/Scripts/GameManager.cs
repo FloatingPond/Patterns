@@ -782,20 +782,17 @@ public class GameManager : MonoBehaviour
         //  Come back in X
         if (days < 2) //If Days are less than 2
         {
-            if (hours < 6)
+            if (hours < 6) //Player has returned to play
             {
                 //Debug.Log("No new streak, too few hours. Come back later");
                 if (gameOpened) //Game just opened
                 { 
-                    mm.DisplayDailyMessageAbleToGetStreak("Welcome back", "PLAY UNTIL FINGERS HURT", "Wicked");
+                    mm.DisplayDailyMessageAbleToGetStreak("Welcome back", "Play to beat your scores!", "Wicked");
                 }
                 //come back later
             }
-            else if (hours > 6 && days > 0)
+            else if (hours > 6 && days > 0) //Player can play and acquire a streak
             {
-                //Else if X is more than 6 hours AND day is 1 apart
-                //  PLAY A GAME TO GET YOUR STREAK
-                //Debug.Log("PLAY NOW TO GET A STREAK");
                 if(gameOpened) //Game just opened
                 { 
                     mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "GO GET STREAK", "Yes dad");

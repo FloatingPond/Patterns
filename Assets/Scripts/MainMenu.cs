@@ -19,7 +19,8 @@ public class MainMenu : MonoBehaviour
     [Title("Managers")]
     public GameManager gm;
 
-    public AdManager am; 
+    //SC - Commented out
+    //public AdManager am; 
 
     public GameObject tClassicHighscore, tRandomHighscore, tGame3Highscore, tGame4Highscore;
     //Streak main menu

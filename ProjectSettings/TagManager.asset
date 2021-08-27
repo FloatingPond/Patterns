@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - MatchA
-  - MatchB
-  - MatchC
-  - MatchD
-  - MatchBomb
+  tags: []
   layers:
   - Default
   - TransparentFX

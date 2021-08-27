@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Android;
-using Unity.Notifications.Android;
 using Sirenix.OdinInspector;
 using System;
 
 public class GameManager : MonoBehaviour
 {
     //Gamemode names - NEEDS TO BE CHANGED IN START METHOD IF CHANGED (because it sometimes doesn't change
+
+    [Title("Variables")]
+
     public string[] gamemodeNames = { "classic", "random", "match", "timedround" };
     public int iPatternNumbers = 0;
     public int[] Highscore = new int[4];
@@ -26,7 +28,11 @@ public class GameManager : MonoBehaviour
     public string sPatternAnswer;
     public string currentGamemode;
 
-    public TMP_Text tScore, tHighscore, tAfterGame, tTimedRoundsTimer;
+    //Button Animation
+    [ProgressBar(0.1f, 2f)]
+    public float time_buttonsAreColour = 0.5f;
+    [ProgressBar(0.1f, 5f)]
+    public float time_buttonsTimeBetween = 0.25f;
 
     private int matchA, matchB, matchC, matchD, matchBomb;
     private bool bMatchA, bMatchB, bMatchC, bMatchD, bMatchBomb;
@@ -34,19 +40,19 @@ public class GameManager : MonoBehaviour
     public int matchComparisonNumber;
     public int newMCnumber;
     public int newNumber, matchCounter = 0;
+
+    [Title("Objects")]
+    public List<GameObject> Buttons = new List<GameObject>();
+    public TMP_Text tScore, tHighscore, tAfterGame, tTimedRoundsTimer;
     ////Buttons
     //Game buttons
-    public List<GameObject> Buttons = new List<GameObject>();
+    
     //Panel containing endgame buttons (Return, Restart)
     public GameObject endgamePanel;
     //Used to enable/disable user able to press buttons - mainly when showing patterns and when not in-game
     public bool isGameButtonsDisabled = false;
     
-    //Button Animation
-    [ProgressBar(0.1f, 2f)]
-    public float time_buttonsAreColour = 0.5f;
-    [ProgressBar(0.1f, 5f)]
-    public float time_buttonsTimeBetween = 0.25f;
+    
 
     //Game Streak
     [SerializeField]
@@ -59,14 +65,7 @@ public class GameManager : MonoBehaviour
     public DateTime dateLastAcquiredStreak;
     public DateTime dateLastAcquiredStreakLast;
 
-    //DateTime stuff
-
-    public DateTime dt,dtnew, dtnew2;
-    [PropertyOrder(1)]
-    public string dtString2 = "2005-10-05 22:12 PM";
-    public string dtString3 = "2005-10-05 22:12 PM";
-    [PropertyOrder(2)]
-    public string dtString4 = "2021-10-05 22:12 PM";
+    
 
     [Title("Managers")]
     //Ad Manager
@@ -74,9 +73,21 @@ public class GameManager : MonoBehaviour
 
     //Sound manager
     public SoundManager sm;
-
+    
     public MessageManager mm;
 
+    [Title("Buttons and Debug")]
+
+    //DateTime stuff
+
+    public DateTime dt;
+    public DateTime dtnew, dtnew2;
+    [PropertyOrder(1)]
+    public string dtString2 = "2005-10-05 22:12 PM";
+    [PropertyOrder(1)]
+    public string dtString3 = "2005-10-05 22:12 PM";
+    [PropertyOrder(2)]
+    public string dtString4 = "2021-10-05 22:12 PM";
 
     [Button(ButtonSizes.Small)]
     [PropertyOrder(1)]
@@ -150,11 +161,12 @@ public class GameManager : MonoBehaviour
             fGameTime = data.secondsPlayed;
             buttonsPressed = data.buttonsPressed;
             SetGameStreak(data.gameStreak, data.gameStreakHighscore);
-            Debug.Log(data.dateLastAcquiredStreak);
+            //Debug.Log(data.dateLastAcquiredStreak);
             dateLastAcquiredStreak = DateTime.ParseExact(data.dateLastAcquiredStreak, "yyyy-MM-dd HH:mm tt", null);
-            Debug.Log(dateLastAcquiredStreak);
+            //Debug.Log(dateLastAcquiredStreak);
             
-            am.SetadsRewardsWatched(data.adsRewardsWatched);
+            //SC - Commented out
+            //am.SetadsRewardsWatched(data.adsRewardsWatched);
 
             sm.masterFloat = data.master;
             sm.musicFloat = data.music;

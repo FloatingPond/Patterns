@@ -4,7 +4,6 @@ using System;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using TMPro;
-using Sirenix.OdinInspector;
 
 
 public class PlayGames2 : MonoBehaviour
@@ -16,12 +15,7 @@ public class PlayGames2 : MonoBehaviour
     string leaderboardID = "CgkI3M-O2b8NEAIQAg";
     string achievementID = "CgkI3M-O2b8NEAIQAA";
     public static PlayGamesPlatform platform;
-    [Button(ButtonSizes.Small)]
-    [PropertyOrder(1)]
-    private void SetScoreFromText()
-    {
-        SetScore();
-    }
+    
 
     void Start()
     {
@@ -74,11 +68,6 @@ public class PlayGames2 : MonoBehaviour
         });
     }
 
-    public void SetScore()
-    {
-        //playerScore = int.Parse(textScore.text);
-    }
-
     public void AddScoreToLeaderboard()
     {
         if (Social.Active.localUser.authenticated)
@@ -110,6 +99,11 @@ public class PlayGames2 : MonoBehaviour
         {
             platform.ShowAchievementsUI();
         }
+    }
+    public void UpScore()
+    {
+        playerScore++;
+        textScore.text = playerScore.ToString();
     }
 
     

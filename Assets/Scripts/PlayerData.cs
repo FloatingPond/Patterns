@@ -66,7 +66,8 @@ public class PlayerData
         dateLastAcquiredStreakLast = gm.dateLastAcquiredStreakLast.ToString("yyyy-MM-dd HH:mm tt");
 
         //Ads
-        adsRewardsWatched = gm.am.GetadsRewardsWatched();
+        //SC - Commented out
+        //adsRewardsWatched = gm.am.GetadsRewardsWatched();
 
         //Sound
         master = gm.sm.masterFloat;

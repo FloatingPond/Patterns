@@ -812,7 +812,77 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CheckGameStreak(bool gameOpened) //Called when game is opened to check streak
+    public void CheckGameStreak(bool gameOpened) //Called in LoadGame when game is opened to check streak
+    {
+        //For hours
+        DateTime dLastAcquired = dateLastAcquiredStreak;
+        //For days
+        DateTime dLastAcquiredDateOnly = dLastAcquired.Date;
+        int minutes = (DateTime.Now - dLastAcquired).Minutes;
+        int hours = (int)(DateTime.Now - dLastAcquired).TotalHours;
+        int days = (int)(DateTime.Now.Date - dLastAcquiredDateOnly).TotalDays;
+
+        if (days > 2) //Too late
+        {
+            //  Too late
+            //  Save streak as last streak
+            Debug.Log("Too late, even to save the streak");
+            gameStreakLast = gameStreak; //Sets the player's last streak as the current streak before it is reset
+            dateLastAcquiredStreakLast = dateLastAcquiredStreak; //Sets the date as the date the player acquired their last streak
+            //  No chance to reclaim
+            //  Streak reset to zero
+            gameStreak = 0;
+
+            if (gameOpened) //Game just opened
+            {
+                mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "You lost your streak " + days.ToString() + " days ago.", "A shame");
+            }
+        }
+        else if (days > 1) //Can still reclaim streak
+        {
+            Debug.Log("Streak lost but time to reclaim");
+            //  SAVE STREAK AS LAST STREAK
+            gameStreakLast = gameStreak; //Sets the player's last streak as the current streak before it is reset
+            dateLastAcquiredStreakLast = dateLastAcquiredStreak; //Sets the date as the date the player acquired their last streak
+            //  Streak reset to zero
+            gameStreak = 0;
+            //  OFFER CHANCE TO RECLAIM STREAK
+            
+        }
+        else if (days == 1 && hours >= 6) //Can get streak
+        {
+            Debug.Log("Play to acquire streak");
+
+            if (gameOpened) //Game just opened
+            {
+                mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "Play to increase your streak!", "On it");
+            }
+
+        }
+        else if (days < 1) //Day early
+        {
+            Debug.Log("Come back tomorrow for streak");
+
+            if (gameOpened) //Game just opened
+            {
+                mm.DisplayDailyMessageAbleToGetStreak("Welcome back", "Play to beat your scores!", "Okay");
+            }
+        }
+        else if (hours < 6) //Needs to wait longer
+        {
+            Debug.Log("come back later for streak.");
+        }
+        //Time traveller
+        else if (hours < 0 || minutes < 0)
+        {
+            Debug.Log("begone time traveller");
+            return;
+        }
+
+        Save();
+    }
+
+    public void CheckGameStreakOriginal(bool gameOpened) //Called in LoadGame when game is opened to check streak
     {
         //For hours
         DateTime dLastAcquired = dateLastAcquiredStreak;
@@ -831,7 +901,7 @@ public class GameManager : MonoBehaviour
                 //Debug.Log("No new streak, too few hours. Come back later");
                 if (gameOpened) //Game just opened
                 { 
-                    mm.DisplayDailyMessageAbleToGetStreak("Welcome back", "Play to beat your scores!", "Wicked");
+                    mm.DisplayDailyMessageAbleToGetStreak("Welcome back", "Play to beat your scores!", "Okay");
                 }
                 //come back later
             }
@@ -839,7 +909,7 @@ public class GameManager : MonoBehaviour
             {
                 if(gameOpened) //Game just opened
                 { 
-                    mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "GO GET STREAK", "Yes dad");
+                    mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "Play to increase your streak!", "On it");
                 }
             }
         }

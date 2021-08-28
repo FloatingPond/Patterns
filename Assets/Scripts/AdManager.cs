@@ -25,6 +25,7 @@ public class AdManager : MonoBehaviour
     private RewardedAd adReward;
     private AdRequest requestForReward;
     public DateTime dtLastTimeRewardAdWatched;
+    public GameObject buttonRewardAd;
 
     [Title("Counter")]
     [SerializeField]
@@ -76,14 +77,50 @@ public class AdManager : MonoBehaviour
         //Loads a bottom banner ad if this is not the first time the player has played
         //To later be more advanced should the player use a reward ad or buy premium
         if (!firstTime) 
-        { 
-            adBannerBottom.LoadAd(requestForBanner);
+        {
+            if (CkeckIfPlayerHasPremium() == true)
+            {
+                EnableRewardAdButton(false);
+            }
+            else
+            {
+                adBannerBottom.LoadAd(requestForBanner);
+            }
+            
+        }
+        
+        if (CkeckIfPlayerHasPremium() == false)
+        {
+            EnableRewardAdButton(true);
         }
 
         //Reward
 
         // adRbva = RewardBasedVideoAd.Instance;
     }
+
+    public bool CkeckIfPlayerHasPremium()
+    {
+        //if has bought premium
+        //return true
+        //if has been less than 7 days since last watched reward ad
+        int days = (int)(DateTime.Now.Date - dtLastTimeRewardAdWatched).TotalDays;
+        if (days <= 7)
+        {
+            return true;
+        }
+        //return true
+        //else
+        //return false
+        return false;
+    }
+
+    private void EnableRewardAdButton(bool state)
+    {
+        buttonRewardAd.SetActive(state);
+    }
+
+
 
     public void TutorialRewardAdWORKS() //WORKS
     {
@@ -193,6 +230,10 @@ public class AdManager : MonoBehaviour
 
         dtLastTimeRewardAdWatched = DateTime.Now; //Sets last time user watched reward ad to now
         //If we make it - set the "Watched 1 reward ad" achievement to acquired
+
+        CkeckIfPlayerHasPremium(); //Used to disable ads
+        EnableRewardAdButton(false);
+
         gm.Save();
         mm.DisplayStats();
     }

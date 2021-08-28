@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
             sm.SFX_Float = data.sfx;
             sm.voiceFloat = data.voice;
 
-            
+            am.dtLastTimeRewardAdWatched = DateTime.ParseExact(data.dateLastRewardAdWatched, "yyyy-MM-dd HH:mm tt", null);
             CheckGameStreak(true); //Check Streak
             sm.LoadSliders();
             return false;
@@ -189,7 +189,7 @@ public class GameManager : MonoBehaviour
 
             gameStreak = 0;
             gameStreakHighscore = 0;
-            am.dtLastTimeRewardAdWatched = DateTime.ParseExact("2001-01-01 12:00 PM", "yyyy-MM-dd HH:mm tt", null);
+            am.dtLastTimeRewardAdWatched = DateTime.ParseExact("2001-01-01 12:00 PM", "yyyy-MM-dd HH:mm tt", null); //Set far into the past
             mm.DisplayWelcomeMessage();
             sm.masterFloat = 1;
             sm.musicFloat = 1;

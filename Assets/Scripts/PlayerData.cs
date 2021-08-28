@@ -70,7 +70,7 @@ public class PlayerData
 
         //Ads
         adsRewardsWatched = gm.am.GetadsRewardsWatched();
-
+        dateLastRewardAdWatched = gm.am.dtLastTimeRewardAdWatched.ToString("yyyy-MM-dd HH:mm tt");
         //Sound
         master = gm.sm.masterFloat;
         music = gm.sm.musicFloat;

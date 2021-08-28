@@ -882,64 +882,6 @@ public class GameManager : MonoBehaviour
         Save();
     }
 
-    public void CheckGameStreakOriginal(bool gameOpened) //Called in LoadGame when game is opened to check streak
-    {
-        //For hours
-        DateTime dLastAcquired = dateLastAcquiredStreak;
-        //For days
-        DateTime dLastAcquiredDateOnly = dLastAcquired.Date;
-        int minutes = (DateTime.Now - dLastAcquired).Minutes;
-        int hours = (int)(DateTime.Now - dLastAcquired).TotalHours;
-        int days = (int)(DateTime.Now.Date - dLastAcquiredDateOnly).TotalDays;
-        //Debug.Log("Total hours:" + hours + ", Total Days:" + days);
-        //If X is less than 6 hours AND day is 1 apart
-        //  Come back in X
-        if (days < 2) //If Days are less than 2
-        {
-            if (hours < 6 || days == 0) //Player has returned to play
-            {
-                //Debug.Log("No new streak, too few hours. Come back later");
-                if (gameOpened) //Game just opened
-                { 
-                    mm.DisplayDailyMessageAbleToGetStreak("Welcome back", "Play to beat your scores!", "Okay");
-                }
-                //come back later
-            }
-            else if (hours > 6 && days > 0) //Player can play and acquire a streak
-            {
-                if(gameOpened) //Game just opened
-                { 
-                    mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "Play to increase your streak!", "On it");
-                }
-            }
-        }
-        else if (days > 2) //Too late
-        {
-            //  Too late
-            //  Save streak as last streak
-            gameStreakLast = gameStreak;
-            dateLastAcquiredStreakLast = dateLastAcquiredStreak;
-
-            //  No chance to reclaim
-            //  Streak reset to zero
-            gameStreak = 0;
-            if (gameOpened) //Game just opened
-            { 
-                mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "You lost streak " + days.ToString() + " days ago.", "I am shit");
-            }
-        }
-        else if (days > 1) //Can still reclaim streak
-        {
-            //  SAVE STREAK AS LAST STREAK
-            gameStreakLast = gameStreak;
-            dateLastAcquiredStreakLast = dateLastAcquiredStreak;
-            //  Streak reset to zero
-            gameStreak = 0;
-            //  OFFER CHANCE TO RECLAIM STREAK
-        }
-        Save();
-    }
-
     public void ChangeGameStreak() //Called when a game has been played
     {
         if(gameStreak == 0) //Commonly when game is played for the first time

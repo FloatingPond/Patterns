@@ -6198,7 +6198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &892789780
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7741,7 +7741,6 @@ RectTransform:
   - {fileID: 1695036726}
   - {fileID: 89173358}
   - {fileID: 689470466}
-  - {fileID: 1675457367}
   - {fileID: 1768048759}
   m_Father: {fileID: 61888530}
   m_RootOrder: 3
@@ -10315,7 +10314,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 288, y: -720}
+  m_AnchoredPosition: {x: 288, y: -507}
   m_SizeDelta: {x: 300, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1501102074
@@ -11755,7 +11754,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1931668028}
-  m_Father: {fileID: 1087801795}
+  m_Father: {fileID: 1723409100}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -12117,7 +12116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1723409100
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12133,6 +12132,7 @@ RectTransform:
   - {fileID: 920112805}
   - {fileID: 1076413502}
   - {fileID: 1501102073}
+  - {fileID: 1675457367}
   - {fileID: 1872457677}
   m_Father: {fileID: 61888530}
   m_RootOrder: 5
@@ -12381,7 +12381,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1087801795}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13197,7 +13197,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1723409100}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13435,6 +13435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63bf09ce4c697d45896b54127421998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonRewardAd: {fileID: 1675457366}
   adsRewardsWatched: 0
   mm: {fileID: 994137742}
   gm: {fileID: 1893154942}

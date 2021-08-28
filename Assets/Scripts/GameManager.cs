@@ -75,8 +75,9 @@ public class GameManager : MonoBehaviour
     
     public MessageManager mm;
 
-    [Title("Buttons and Debug")]
 
+    [Title("Buttons and Debug")]
+    
     //DateTime stuff
 
     public DateTime dt;
@@ -117,6 +118,44 @@ public class GameManager : MonoBehaviour
         dtString4 = dateLastAcquiredStreak.ToString("yyyy-MM-dd HH:mm tt");
     }
 
+    //Newest debugging for streak stuff
+    [Title("Buttons and Debug")]
+    [PropertyOrder(4)]
+    public string sTestOne;
+    [PropertyOrder(4)]
+    public string sTestTwo;
+
+    public DateTime dtTestOne;
+    public DateTime dtTestTwo;
+
+    [PropertyOrder(4)]
+
+    [Button(ButtonSizes.Small)]
+    private void SetdtTestOneToNow()
+    {
+        sTestOne = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
+    }
+    [PropertyOrder(4)]
+
+    [Button(ButtonSizes.Small)]
+    private void SetdtTestTwoToNow()
+    {
+        sTestTwo = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
+    }
+    [PropertyOrder(4)]
+
+    [Button(ButtonSizes.Small)]
+    private void TestCheckStreakButton()
+    {
+        dtTestOne = StringToDateTime(sTestOne);
+        dtTestTwo = StringToDateTime(sTestTwo);
+
+        TestCheckStreak(dtTestOne, dtTestTwo);
+    }
+    [PropertyOrder(4)]
+
+
+    //End of variables and buttons
 
     void Awake() //Called before MainMenu's Start method
     {
@@ -128,8 +167,6 @@ public class GameManager : MonoBehaviour
         Highscore[3] = 0;
         bool playerFirstTime = LoadGame(); //After variables are declared with numbers in case Load doesn't work, LoadGame is 
         am.SetupOnStart(playerFirstTime);
-
-
     }
 
     private void Update()
@@ -369,7 +406,7 @@ public class GameManager : MonoBehaviour
     
     public void CheckAnswer() //Call on every button press when game is playing
     {
-        if ((currentGamemode == gamemodeNames[0]) || (currentGamemode == gamemodeNames[1]))
+        if ((currentGamemode == gamemodeNames[0]) || (currentGamemode == gamemodeNames[1])) //If Game 1 or 2
         { 
             ////Check if whole thing is correct
             if (sPatternAnswer == sPatternNumbers) //Correct!
@@ -402,7 +439,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        else if (currentGamemode == gamemodeNames[2])
+        else if (currentGamemode == gamemodeNames[2]) //Not used in Match game 
         {
 
         }
@@ -789,7 +826,7 @@ public class GameManager : MonoBehaviour
         //  Come back in X
         if (days < 2) //If Days are less than 2
         {
-            if (hours < 6) //Player has returned to play
+            if (hours < 6 || days == 0) //Player has returned to play
             {
                 //Debug.Log("No new streak, too few hours. Come back later");
                 if (gameOpened) //Game just opened
@@ -856,7 +893,7 @@ public class GameManager : MonoBehaviour
 
             if (days < 2) //If Days are less than 2
             {
-                if (hours < 6)
+                if (hours < 6) // If less than 6 hours
                 {
                     Debug.Log("No new streak, too few hours. Come back later");
                     //come back later
@@ -877,27 +914,135 @@ public class GameManager : MonoBehaviour
                 }
             }
             //These two methods shouldn't necessarily be called because they will be called when game is opened.
-            else if (days > 2)
+            else if (days > 2) //More than 2 days
             {
                 Debug.Log("sTREAK LOST");
                 gameStreakLast = gameStreak;
                 dateLastAcquiredStreakLast = dateLastAcquiredStreak;
                 gameStreak = 0;
             }
-            else if (days > 1)
+            else if (days > 1) 
             {
                 Debug.Log("Streak lost but reclaim-able");
                 gameStreakLast = gameStreak;
                 dateLastAcquiredStreakLast = dateLastAcquiredStreak;
                 gameStreak = 0;
             }
-            
         }
         Save();
         //If time between now and last acquired streak is less than 6 hours
         //Can ignore
         //Else If time between
     }
+
+    //TESTINF FOR STREAK
+    public void TestCheckStreak(DateTime dtTestNow, DateTime dtTestLastAcquired)
+    {
+        //For hours
+        DateTime dLastAcquired = dtTestLastAcquired;
+        //For days
+        DateTime dLastAcquiredDateOnly = dtTestLastAcquired.Date;
+
+        int minutes = (dtTestNow - dLastAcquired).Minutes;
+        int hours = (int)(dtTestNow - dLastAcquired).TotalHours;
+        int days = (int)(dtTestNow - dLastAcquiredDateOnly).TotalDays;
+        Debug.Log("Days: " + days + ", hours: " + hours + ", minutes: " + minutes);
+
+
+        if (days > 2) //Too late
+        {
+            //  Too late
+            //  Save streak as last streak
+            Debug.Log("Too late, even to save the streak");
+            //  No chance to reclaim
+            //  Streak reset to zero
+
+        }
+        else if (days > 1) //Can still reclaim streak
+        {
+            //  SAVE STREAK AS LAST STREAK
+            //  Streak reset to zero
+            //  OFFER CHANCE TO RECLAIM STREAK
+            Debug.Log("Streak lost but time to reclaim");
+        }
+        else if (days == 1 && hours >= 6) //Can get streak
+        {
+            Debug.Log("Play to acquire streak");
+        }
+        else if (days < 1) //Day early
+        {
+            Debug.Log("Come back tomorrow");
+        }
+        else if (hours < 6) //Needs to wait longer
+        {
+            Debug.Log("come back later - " + hours + " hours, " + days + " days");
+        }
+        //Time traveller
+        else if (hours < 0 || minutes < 0)
+        {
+            Debug.Log("begone time traveller");
+            return;
+        }
+        
+        
+    }
+
+    public void TestCheckStreak2(DateTime dtTestNow, DateTime dtTestLastAcquired)
+    {
+        //For hours
+        DateTime dLastAcquired = dtTestLastAcquired;
+        //For days
+        DateTime dLastAcquiredDateOnly = dtTestLastAcquired.Date;
+
+        int minutes = (dtTestNow - dLastAcquired).Minutes;
+        int hours = (int)(dtTestNow - dLastAcquired).TotalHours;
+        int days = (int)(dtTestNow - dLastAcquiredDateOnly).TotalDays;
+        Debug.Log("Days: " + days + ", hours: " + hours + ", minutes: " + minutes);
+
+        //Time traveller
+        if (hours < 0 || minutes < 0)
+        {
+            Debug.Log("begone time traveller");
+            return;
+        }
+
+        if (days < 2) //If Days are less than 2
+        {
+            if (hours < 6 || days == 0) //Player has returned to play
+            {
+                //come back later
+                Debug.Log("come back later - " + hours + " hours, "+days+" days");
+            }
+            else if (hours >= 6 && days > 0) //Player can play and acquire a streak
+            {
+                //Player can play and acquire a streak
+                Debug.Log("Play to acquire streak");
+            }
+        }
+        else if (days > 2) //Too late
+        {
+            //  Too late
+            //  Save streak as last streak
+            Debug.Log("Too late, even to save the streak");
+            //  No chance to reclaim
+            //  Streak reset to zero
+
+        }
+        else if (days > 1) //Can still reclaim streak
+        {
+            //  SAVE STREAK AS LAST STREAK
+            //  Streak reset to zero
+            //  OFFER CHANCE TO RECLAIM STREAK
+            Debug.Log("Streak lost but time to reclaim");
+        }
+    }
+
+    public DateTime StringToDateTime(String sDateTime)
+    {
+        DateTime dt = DateTime.ParseExact(sDateTime, "yyyy-MM-dd HH:mm tt", null); //Set far into the past
+        return dt;
+    }
+
 
 
 

@@ -13391,8 +13391,8 @@ MonoBehaviour:
   sPatternNumbers: 
   sPatternAnswer: 
   currentGamemode: 
-  time_buttonsAreColour: 0.5
-  time_buttonsTimeBetween: 0.25
+  time_buttonsAreColour: 0.31807086
+  time_buttonsTimeBetween: 0.28846163
   matchComparison: 
   matchComparisonNumber: 0
   newMCnumber: 0
@@ -13423,6 +13423,8 @@ MonoBehaviour:
   dtString2: 2005-10-05 22:12 PM
   dtString3: 2005-10-05 22:12 PM
   dtString4: 2021-10-05 22:12 PM
+  sTestOne: 
+  sTestTwo: 
 --- !u!114 &1893154943
 MonoBehaviour:
   m_ObjectHideFlags: 0

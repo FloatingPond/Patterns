@@ -10,12 +10,11 @@ public class PlayerData
     public int[] highscores;
     
     public float secondsPlayed; //NEEDS TO BE CHANGED TO MINUTES OR HOURS PRIOR TO RELEASE
-    //Games played per gametype []
-    public int[] gamesplayed;
-    //Buttons pressed
-    public int buttonsPressed;
-    //Total high scores - could either save it or calculate it on loaded data
-
+    
+    public int[] gamesplayed; //Games played per gametype []
+    
+    public int buttonsPressed; //Buttons pressed
+    
     ////Streak stuff
     //Main integer
     public int gameStreak;
@@ -38,6 +37,11 @@ public class PlayerData
 
     ////Ads
     public int adsRewardsWatched; //Reward Ads Watched
+
+    public string dateLastRewardAdWatched; //The datetime that a reward ad was last watched
+    //This is to be converted to a datettime on load
+    //When the first load fails for new player, a date far into the past will be saved so it can be rewritten when player watched a reward ad
+    //The saved datetime will be checked and if is less than X days (believe 7) then the reward button will not show, and banner ads will not be shown either
 
     //Sound settings
     public float master, music, sfx, voice;

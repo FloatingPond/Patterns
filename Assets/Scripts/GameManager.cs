@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void Awake()
+    void Awake() //Called before MainMenu's Start method
     {
         gamemodeNames = new string[] { "classic", "random", "match", "timedround" };
         Highscore = new int[4];
@@ -126,7 +126,10 @@ public class GameManager : MonoBehaviour
         Highscore[1] = 0;
         Highscore[2] = 0;
         Highscore[3] = 0;
-        LoadGame(); //After variables are declared with numbers in case Load doesn't work, LoadGame is 
+        bool playerFirstTime = LoadGame(); //After variables are declared with numbers in case Load doesn't work, LoadGame is 
+        am.SetupOnStart(playerFirstTime);
+
+
     }
 
     private void Update()
@@ -146,7 +149,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadGame() //Called in Awake - loads data from load system and saves into memory
+    public bool LoadGame() //Called in Awake - loads data from load system and saves into memory
     {
         PlayerData data = SaveSystem.LoadGame();
         if (data != null) //Date exists
@@ -171,6 +174,8 @@ public class GameManager : MonoBehaviour
 
             
             CheckGameStreak(true); //Check Streak
+            sm.LoadSliders();
+            return false;
         }
         else //No file exists, so populate variables
         {
@@ -184,13 +189,16 @@ public class GameManager : MonoBehaviour
 
             gameStreak = 0;
             gameStreakHighscore = 0;
+            am.dtLastTimeRewardAdWatched = DateTime.ParseExact("2001-01-01 12:00 PM", "yyyy-MM-dd HH:mm tt", null);
             mm.DisplayWelcomeMessage();
             sm.masterFloat = 1;
             sm.musicFloat = 1;
             sm.SFX_Float = 1;
             sm.voiceFloat = 1;
+            sm.LoadSliders();
+            return true;
         }
-        sm.LoadSliders();
+        
     }
     public void Save() //Saves data into system
     {

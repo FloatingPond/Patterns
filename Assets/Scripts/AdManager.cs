@@ -15,12 +15,16 @@ public class AdManager : MonoBehaviour
     private AdRequest requestForBanner;
     //Reward
     private string adUnitId2 = "ca-app-pub-3940256099942544/5224354917";
+    
+    
+
+    
+    //Reward Ad stuff
+    RewardedAd rewardedAd;
+    private RewardBasedVideoAd adRbva;
     private RewardedAd adReward;
     private AdRequest requestForReward;
-
-    private RewardBasedVideoAd adRbva;
-
-    RewardedAd rewardedAd;
+    public DateTime dtLastTimeRewardAdWatched;
 
     [Title("Counter")]
     [SerializeField]
@@ -31,6 +35,8 @@ public class AdManager : MonoBehaviour
 
     public GameManager gm;
 
+    
+
     [Button(ButtonSizes.Large)]
 
     private void BigButton()
@@ -40,19 +46,39 @@ public class AdManager : MonoBehaviour
 
     void Start()
     {
+        ////Always needs to be called
+        //MobileAds.Initialize(initStatus => { });
+
+        ////TutorialStuffThatDidntWork();
+
+
+        ////Banner
+
+        //RequestBanner();
+
+        //requestForBanner = new AdRequest.Builder().Build();
+
+        //adBannerBottom.LoadAd(requestForBanner);
+
+        ////Reward
+
+        //// adRbva = RewardBasedVideoAd.Instance;
+    }
+
+    public void SetupOnStart(bool firstTime)
+    {
         //Always needs to be called
         MobileAds.Initialize(initStatus => { });
-
-        //TutorialStuffThatDidntWork();
-
-
-        //Banner
 
         RequestBanner();
 
         requestForBanner = new AdRequest.Builder().Build();
-
-        adBannerBottom.LoadAd(requestForBanner);
+        //Loads a bottom banner ad if this is not the first time the player has played
+        //To later be more advanced should the player use a reward ad or buy premium
+        if (!firstTime) 
+        { 
+            adBannerBottom.LoadAd(requestForBanner);
+        }
 
         //Reward
 
@@ -157,13 +183,16 @@ public class AdManager : MonoBehaviour
         adBannerBottom.Destroy();
     }
 
-    public void HandleUserEarnedReward(object sender, Reward args)
+    public void HandleUserEarnedReward(object sender, Reward args) //Player has completed a Rewards Ad
     {
         string type = args.Type;
         double amount = args.Amount;
         MonoBehaviour.print("HandleRewardedAdRewarded event received for " + amount.ToString() + " " + type);
         mm.test += 1;
         adsRewardsWatched++;
+
+        dtLastTimeRewardAdWatched = DateTime.Now; //Sets last time user watched reward ad to now
+        //If we make it - set the "Watched 1 reward ad" achievement to acquired
         gm.Save();
         mm.DisplayStats();
     }

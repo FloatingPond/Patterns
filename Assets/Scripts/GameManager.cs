@@ -812,7 +812,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CheckGameStreak(bool gameOpened) //Called in LoadGame when game is opened to check streak
+    public void CheckGameStreak(bool showMessages) //Called in LoadGame when game is opened to check streak
     {
         //For hours
         DateTime dLastAcquired = dateLastAcquiredStreak;
@@ -833,7 +833,7 @@ public class GameManager : MonoBehaviour
             //  Streak reset to zero
             gameStreak = 0;
 
-            if (gameOpened) //Game just opened
+            if (showMessages) //Game just opened
             {
                 mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "You lost your streak " + days.ToString() + " days ago.", "A shame");
             }
@@ -853,7 +853,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Play to acquire streak");
 
-            if (gameOpened) //Game just opened
+            if (showMessages) //Game just opened
             {
                 mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "Play to increase your streak!", "On it");
             }
@@ -863,7 +863,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Come back tomorrow for streak");
 
-            if (gameOpened) //Game just opened
+            if (showMessages) //Game just opened
             {
                 mm.DisplayDailyMessageAbleToGetStreak("Welcome back", "Play to beat your scores!", "Okay");
             }

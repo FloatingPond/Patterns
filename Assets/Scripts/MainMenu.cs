@@ -68,7 +68,6 @@ public class MainMenu : MonoBehaviour
                 ReturnToMainMenuFromStats();
         }
     }
-
     
     void QuitGame() //Called from update
     {
@@ -83,7 +82,7 @@ public class MainMenu : MonoBehaviour
         MainMenuPanel.SetActive(!state);
     }
 
-    public void ReturnToMainMenu()
+    public void ReturnToMainMenu() //Used to return to the main menu from gaming
     {
         gm.currentGamemode = "";
         gm.fTimedRoundTimer = 60;
@@ -218,6 +217,9 @@ public class MainMenu : MonoBehaviour
 
     void DisplayStreak() //Called when game starts and when player returns to main menu from game or stats or anything else
     {
+        //No streak changing logic is present
+        //Merely displaying messages
+
         int streak = SaveSystem.GetStreak();
 
         if(streak != 0) //Actually has a streak
@@ -288,7 +290,7 @@ public class MainMenu : MonoBehaviour
         }
 
     }
-    public void DisplayStats() //Called from DisplayStats - Displays statistics on statistics page
+    public void DisplayStats() //Called from DisplayStats - Loads data and displays statistics on statistics page
     {
         PlayerData data = SaveSystem.LoadGame();
         if (data != null)

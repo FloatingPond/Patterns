@@ -136,15 +136,18 @@ public class GameManager : MonoBehaviour
     {
         if (currentGamemode == gamemodeNames[3])
         {
-            if (fTimedRoundTimer > 0)
+            if (endgamePanel.activeSelf == false)
             { 
-                fTimedRoundTimer -= Time.deltaTime;
-                tTimedRoundsTimer.text = fTimedRoundTimer.ToString("F0");
-            }
-            else
-            {
-                tTimedRoundsTimer.text = "";
-                EndGame();
+                if (fTimedRoundTimer > 0)
+                { 
+                    fTimedRoundTimer -= Time.deltaTime;
+                    tTimedRoundsTimer.text = fTimedRoundTimer.ToString("F0");
+                }
+                else
+                {
+                    tTimedRoundsTimer.text = "";
+                    EndGame();
+                }
             }
         }
     }

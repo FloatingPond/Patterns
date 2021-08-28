@@ -298,7 +298,7 @@ public class GameManager : MonoBehaviour
         string oldnumber = sPatternNumbers;
         while (oldnumber == sPatternNumbers)
         {
-            int number = UnityEngine.Random.Range(1, 9);
+            int number = UnityEngine.Random.Range(1, 9); //Returns random number between 1 and 9
             sPatternNumbers = number.ToString();
             if (oldnumber == sPatternNumbers)
             {
@@ -443,14 +443,14 @@ public class GameManager : MonoBehaviour
         {
 
         }
-        else if (currentGamemode == gamemodeNames[3])
+        else if (currentGamemode == gamemodeNames[3]) 
         {
             if (sPatternAnswer == sPatternNumbers) //Correct!
             {
                 StopCoroutine(coroutine);
                 NextRound();
             }
-            else
+            else //Nothing, game does not stop. Player has unlimited tries in this game mode
             {
                 sPatternAnswer = "";
                 //Try again
@@ -458,7 +458,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //Error
+            //Error - some reason the currentGamemode is not any of them or is an invalid one
         }
     }
     
@@ -630,7 +630,15 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < sPatternNumbers.Length; i++)
         {
-            yield return new WaitForSeconds(time_buttonsTimeBetween);
+            if (i == sPatternNumbers.Length - 1 && currentGamemode == "classic") //Last number in the length - shorter uncolouring time for quicker gameplay
+            {
+                Debug.Log("SHORTER TIME " + i);
+                yield return new WaitForSeconds(time_buttonsTimeBetween / 3); //Time between uncoloured button and coloured button
+            }
+            else
+            {
+                yield return new WaitForSeconds(time_buttonsTimeBetween); //Time between uncoloured button and coloured button
+            }
             //Get number for button
             int number = int.Parse(sPatternNumbers[i].ToString()) - 1;
             //Colour button
@@ -640,7 +648,6 @@ public class GameManager : MonoBehaviour
                 EnableButtons(true);
                 Buttons[number].GetComponent<Button>().image.color = Color.red;
             }
-
             yield return new WaitForSeconds(time_buttonsAreColour);
             //Uncolour button
             if (currentGamemode != gamemodeNames[3])
@@ -713,7 +720,6 @@ public class GameManager : MonoBehaviour
         Save();
     }
 
-    
     void CheckHighscore() //Used midgame to check whether a highscore has been exceeded
     {
         if (currentGamemode == gamemodeNames[0]) //Classic
@@ -801,7 +807,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetGameStreak() 
     {
-        gameStreak = 1;
+        gameStreak = 0;
     }
 
     public void ChangeGameStreakHighscore() //Called after gameStreak changes
@@ -884,7 +890,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeGameStreak() //Called when a game has been played
     {
-        if(gameStreak == 0) //Commonly when game is played for the first time
+        if(gameStreak == 0) //Commonly when game is played for the first time or player has lost streak
         {
             gameStreak = 1;
             dateLastAcquiredStreak = DateTime.Now;

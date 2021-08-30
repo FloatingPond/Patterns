@@ -803,6 +803,11 @@ public class GameManager : MonoBehaviour
         return gameStreak;
     }
 
+    public int GetGameStreakLast()
+    {
+        return gameStreakLast;
+    }
+
     public int GetGameStreakHighscore()
     {
         return gameStreakHighscore;

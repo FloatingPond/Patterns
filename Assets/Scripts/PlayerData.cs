@@ -33,7 +33,7 @@ public class PlayerData
     public int gameStreakHighscore; 
     //Date acquired gsHighscore - set to DateTime of gameStreak if gs is same as gsh
     //Else is the date of the last highest streak
-    public int[] dateGameStreakHighscoreAcquired; //yyyy-MM-dd HH:mm tt
+    public string dateGameStreakHighscoreAcquired; //yyyy-MM-dd HH:mm tt
 
     ////Ads
     public int adsRewardsWatched; //Reward Ads Watched
@@ -48,7 +48,7 @@ public class PlayerData
 
     public PlayerData(GameManager gm)
     {
-        fileVersion = "dev08";
+        fileVersion = "dev11";
         highscores = new int[4];
         highscores[0] = gm.Highscore[0]; //Classic
         highscores[1] = gm.Highscore[1]; ; //Random
@@ -65,7 +65,9 @@ public class PlayerData
         dateLastAcquiredStreak = gm.dateLastAcquiredStreak.ToString("yyyy-MM-dd HH:mm tt");
 
         gameStreakHighscore = gm.GetGameStreakHighscore();
+        dateGameStreakHighscoreAcquired = gm.dateStreakHighscore.ToString("yyyy-MM-dd HH:mm tt");
 
+        gameStreakLast = gm.GetGameStreakLast();
         dateLastAcquiredStreakLast = gm.dateLastAcquiredStreakLast.ToString("yyyy-MM-dd HH:mm tt");
 
         //Ads

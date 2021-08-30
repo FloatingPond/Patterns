@@ -6,7 +6,7 @@ public class SaveSystem : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public static string filepath = Application.persistentDataPath + "/dev10Patt.ern";
+    public static string filepath = Application.persistentDataPath + "/dev11Patt.ern";
 
     public static void SaveGame(GameManager gm)
     {
@@ -34,7 +34,8 @@ public class SaveSystem : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No File found at " + path);
+            //Debug.LogError("No File found at " + path);
+            Debug.Log("No File found at " + path);
             return null;
         }
     }

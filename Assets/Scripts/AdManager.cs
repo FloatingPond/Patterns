@@ -119,9 +119,7 @@ public class AdManager : MonoBehaviour
     {
         buttonRewardAd.SetActive(state);
     }
-
-
-
+    
     public void TutorialRewardAdWORKS() //WORKS
     {
         //TUTORIAL REWARDS

@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
     public DateTime dateLastAcquiredStreak;
 
     public DateTime dateLastAcquiredStreakLast;
+
+    public DateTime dateStreakHighscore;
     
     [Title("Managers")]
     //Ad Manager
@@ -194,16 +196,26 @@ public class GameManager : MonoBehaviour
         PlayerData data = SaveSystem.LoadGame();
         if (data != null) //Date exists
         { 
+            //Highscore
             Highscore[0] = data.highscores[0];
             Highscore[1] = data.highscores[1];
             Highscore[2] = data.highscores[2];
             Highscore[3] = data.highscores[3];
 
+            //Streak
+            SetGameStreak(data.gameStreak, data.gameStreakHighscore);
+            dateLastAcquiredStreak = DateTime.ParseExact(data.dateLastAcquiredStreak, "yyyy-MM-dd HH:mm tt", null);
+
+            gameStreakLast = data.gameStreakLast;
+            dateStreakHighscore = DateTime.ParseExact(data.dateLastAcquiredStreak, "yyyy-MM-dd HH:mm tt", null);
+
+            gameStreakHighscore = data.gameStreakHighscore;
+            dateLastAcquiredStreakLast = DateTime.ParseExact(data.dateLastAcquiredStreakLast, "yyyy-MM-dd HH:mm tt", null);
 
             fGameTime = data.secondsPlayed;
             buttonsPressed = data.buttonsPressed;
-            SetGameStreak(data.gameStreak, data.gameStreakHighscore);
-            dateLastAcquiredStreak = DateTime.ParseExact(data.dateLastAcquiredStreak, "yyyy-MM-dd HH:mm tt", null);
+            
+            
             
             am.SetadsRewardsWatched(data.adsRewardsWatched);
 
@@ -228,7 +240,10 @@ public class GameManager : MonoBehaviour
             buttonsPressed = 0;
 
             gameStreak = 0;
+            gameStreakLast = 0;
             gameStreakHighscore = 0;
+            
+
             am.dtLastTimeRewardAdWatched = DateTime.ParseExact("2001-01-01 12:00 PM", "yyyy-MM-dd HH:mm tt", null); //Set far into the past
             mm.DisplayWelcomeMessage();
             sm.masterFloat = 1;
@@ -848,7 +863,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("Streak lost but time to reclaim");
             //  SAVE STREAK AS LAST STREAK
             SaveFormerStreak();
-            
             //  Streak reset to zero
             gameStreak = 0;
             //  OFFER CHANCE TO RECLAIM STREAK
@@ -895,6 +909,16 @@ public class GameManager : MonoBehaviour
     {
         gameStreakLast = gameStreak; //Sets the player's last streak as the current streak before it is reset
         dateLastAcquiredStreakLast = dateLastAcquiredStreak; //Sets the date as the date the player acquired their last streak
+    }
+
+    private void CheckStreakHighscore(int streak, DateTime dt)
+    {
+        if (streak > gameStreakHighscore)
+        {
+            gameStreakHighscore = streak;
+            dateStreakHighscore = dt;
+            Save();
+        }
     }
 
     public void ChangeGameStreak() //Called when a game has been played

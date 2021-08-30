@@ -855,7 +855,7 @@ public class GameManager : MonoBehaviour
             //  OFFER CHANCE TO RECLAIM STREAK
             if (showMessages) //Game just opened
             {
-                //The double-option message to be called here
+                mm.DisplayAbleToWatchRewardAd("Want a free streak?", "Watch a reward ad to claim your streak back!", "Yes Please!", "No thanks!");
             }
 
         }

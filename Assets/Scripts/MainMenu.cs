@@ -285,7 +285,6 @@ public class MainMenu : MonoBehaviour
             //Streak is zero, so either:
             //  New file, so no other data
             //  User has lost streak
-            gm.mm.DisplayAbleToWatchRewardAd("Want a free streak?", "Watch a reward ad to claim your streak back!", "Yes Please!", "No thanks!");
             tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + streak + " days";
             tStreakDesc.GetComponent<TextMeshProUGUI>().text = "Get a new streak today!";
         }

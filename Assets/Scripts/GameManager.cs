@@ -853,7 +853,11 @@ public class GameManager : MonoBehaviour
             //  Streak reset to zero
             gameStreak = 0;
             //  OFFER CHANCE TO RECLAIM STREAK
-            
+            if (showMessages) //Game just opened
+            {
+                //The double-option message to be called here
+            }
+
         }
         else if (days == 1 && hours >= 6) //Can get streak
         {

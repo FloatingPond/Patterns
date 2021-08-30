@@ -260,6 +260,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2876611061900449268, guid: 34a29bd966be8754596b16a4648b6c26,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876611061900449268, guid: 34a29bd966be8754596b16a4648b6c26,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.63529414
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876611061900449268, guid: 34a29bd966be8754596b16a4648b6c26,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519558672260218234, guid: 34a29bd966be8754596b16a4648b6c26,
+        type: 3}
+      propertyPath: tButton2
+      value: 
+      objectReference: {fileID: 8216912054712085403}
     - target: {fileID: 5625617627889920322, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}
       propertyPath: m_RootOrder
@@ -268,12 +288,17 @@ PrefabInstance:
     - target: {fileID: 5770363534575675827, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5875040144417476468, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7111139319537888842, guid: 34a29bd966be8754596b16a4648b6c26,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8500490703333019547, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}

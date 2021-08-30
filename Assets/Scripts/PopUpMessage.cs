@@ -5,10 +5,8 @@ using TMPro;
 
 public class PopUpMessage : MonoBehaviour
 {
-    public TextMeshProUGUI tTitle;
-    public TextMeshProUGUI tBody;
-    public TextMeshProUGUI tButton;
+    public TextMeshProUGUI tTitle, tBody, tButton, tButton2;
 
-
+    //For the Variant, tButton is the positive, tButton2 is the negative
 
 }

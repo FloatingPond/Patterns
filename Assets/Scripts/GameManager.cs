@@ -833,8 +833,7 @@ public class GameManager : MonoBehaviour
             //  Too late
             //  Save streak as last streak
             Debug.Log("Too late, even to save the streak");
-            gameStreakLast = gameStreak; //Sets the player's last streak as the current streak before it is reset
-            dateLastAcquiredStreakLast = dateLastAcquiredStreak; //Sets the date as the date the player acquired their last streak
+            SaveFormerStreak();
             //  No chance to reclaim
             //  Streak reset to zero
             gameStreak = 0;
@@ -848,8 +847,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Streak lost but time to reclaim");
             //  SAVE STREAK AS LAST STREAK
-            gameStreakLast = gameStreak; //Sets the player's last streak as the current streak before it is reset
-            dateLastAcquiredStreakLast = dateLastAcquiredStreak; //Sets the date as the date the player acquired their last streak
+            SaveFormerStreak();
+            
             //  Streak reset to zero
             gameStreak = 0;
             //  OFFER CHANCE TO RECLAIM STREAK
@@ -890,6 +889,12 @@ public class GameManager : MonoBehaviour
         }
 
         Save();
+    }
+
+    private void SaveFormerStreak()
+    {
+        gameStreakLast = gameStreak; //Sets the player's last streak as the current streak before it is reset
+        dateLastAcquiredStreakLast = dateLastAcquiredStreak; //Sets the date as the date the player acquired their last streak
     }
 
     public void ChangeGameStreak() //Called when a game has been played

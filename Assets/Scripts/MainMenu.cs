@@ -16,6 +16,9 @@ public class MainMenu : MonoBehaviour
 
     public GameObject  MainMenuPanel, Gameplay, Endgame, Stats, SoundSettings, Premium;
 
+    [Title("Button")]
+    public TextMeshProUGUI bPremium;
+
     [Title("Managers")]
     public GameManager gm;
 
@@ -33,12 +36,28 @@ public class MainMenu : MonoBehaviour
     public GameObject tHighestStreak;
     public GameObject tStreakAchieved;
 
+    IEnumerator AnimatePremiumButton()
+    {
+        string p = "PREMIUM  ";
+        while (true)
+        {
+            bPremium.text = "";
+            for (int i = 0; i < 8; i++)
+            {
+                string pr = bPremium.text;
+                bPremium.text = pr + p[i];
+                yield return new WaitForSeconds(0.33f);
+            }
+            yield return new WaitForSeconds(1.5f);
+        }
+    }
 
     public void Start()
     {
         DisplayHighScores();
         //gm.LoadGame();
         DisplayStreak();
+        StartCoroutine(AnimatePremiumButton());
     }
     
     public void Start_Gamemode(string gamemode)

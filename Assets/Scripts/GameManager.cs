@@ -203,14 +203,14 @@ public class GameManager : MonoBehaviour
             Highscore[3] = data.highscores[3];
 
             //Streak
-            SetGameStreak(data.gameStreak, data.gameStreakHighscore);
+            gameStreak = data.gameStreak;
             dateLastAcquiredStreak = DateTime.ParseExact(data.dateLastAcquiredStreak, "yyyy-MM-dd HH:mm tt", null);
 
             gameStreakLast = data.gameStreakLast;
-            dateStreakHighscore = DateTime.ParseExact(data.dateLastAcquiredStreak, "yyyy-MM-dd HH:mm tt", null);
-
-            gameStreakHighscore = data.gameStreakHighscore;
             dateLastAcquiredStreakLast = DateTime.ParseExact(data.dateLastAcquiredStreakLast, "yyyy-MM-dd HH:mm tt", null);
+            
+            gameStreakHighscore = data.gameStreakHighscore;
+            dateStreakHighscore = DateTime.ParseExact(data.dateLastAcquiredStreak, "yyyy-MM-dd HH:mm tt", null);
 
             fGameTime = data.secondsPlayed;
             buttonsPressed = data.buttonsPressed;
@@ -243,6 +243,7 @@ public class GameManager : MonoBehaviour
             gameStreakLast = 0;
             gameStreakHighscore = 0;
             
+
 
             am.dtLastTimeRewardAdWatched = DateTime.ParseExact("2001-01-01 12:00 PM", "yyyy-MM-dd HH:mm tt", null); //Set far into the past
             mm.DisplayWelcomeMessage();
@@ -812,12 +813,6 @@ public class GameManager : MonoBehaviour
     {
         return gameStreakHighscore;
     }
-    
-    void SetGameStreak(int gs, int gshs) //Used when loading in from Save data
-    {
-        gameStreak = gs;
-        gameStreakHighscore = gshs;
-    }
 
     public void AddToGameStreak() //Increments the streak
     {
@@ -825,8 +820,7 @@ public class GameManager : MonoBehaviour
         dateLastAcquiredStreak = DateTime.Now;
         ChangeGameStreakHighscore();
     }
-
-
+    
     public void ChangeGameStreakHighscore() //Called after gameStreak changes
     {
         if (gameStreak > gameStreakHighscore)

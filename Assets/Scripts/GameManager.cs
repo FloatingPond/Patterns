@@ -976,28 +976,49 @@ public class GameManager : MonoBehaviour
             //  Too late
             //  Save streak as last streak
             Debug.Log("Too late, even to save the streak");
+            gameStreakLast = gameStreak; //Sets the player's last streak as the current streak before it is reset
+            dateLastAcquiredStreakLast = dateLastAcquiredStreak; //Sets the date as the date the player acquired their last streak
             //  No chance to reclaim
             //  Streak reset to zero
+            gameStreak = 0;
 
+            
+                mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "You lost your streak " + days.ToString() + " days ago.", "A shame");
+            
         }
         else if (days > 1) //Can still reclaim streak
         {
-            //  SAVE STREAK AS LAST STREAK
-            //  Streak reset to zero
-            //  OFFER CHANCE TO RECLAIM STREAK
             Debug.Log("Streak lost but time to reclaim");
+            //  SAVE STREAK AS LAST STREAK
+            gameStreakLast = gameStreak; //Sets the player's last streak as the current streak before it is reset
+            dateLastAcquiredStreakLast = dateLastAcquiredStreak; //Sets the date as the date the player acquired their last streak
+            //  Streak reset to zero
+            gameStreak = 0;
+            //  OFFER CHANCE TO RECLAIM STREAK
+            
+                mm.DisplayAbleToWatchRewardAd("Want a free streak?", "Watch a reward ad to claim your streak back!", "Yes Please!", "No thanks!");
+            
+
         }
         else if (days == 1 && hours >= 6) //Can get streak
         {
             Debug.Log("Play to acquire streak");
+
+            
+                mm.DisplayDailyMessageAbleToGetStreak("Streak: " + gameStreak.ToString(), "Play to increase your streak!", "On it");
+            
+
         }
         else if (days < 1) //Day early
         {
-            Debug.Log("Come back tomorrow");
+            Debug.Log("Come back tomorrow for streak");
+
+            mm.DisplayDailyMessageAbleToGetStreak("Welcome back", "Play to beat your scores!", "Okay");
+            
         }
         else if (hours < 6) //Needs to wait longer
         {
-            Debug.Log("come back later - " + hours + " hours, " + days + " days");
+            Debug.Log("come back later for streak.");
         }
         //Time traveller
         else if (hours < 0 || minutes < 0)
@@ -1005,8 +1026,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("begone time traveller");
             return;
         }
-        
-        
+
+
     }
 
     public void TestCheckStreak2(DateTime dtTestNow, DateTime dtTestLastAcquired)

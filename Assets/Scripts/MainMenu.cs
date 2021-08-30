@@ -19,8 +19,7 @@ public class MainMenu : MonoBehaviour
     [Title("Managers")]
     public GameManager gm;
 
-    //SC - Commented out
-    //public AdManager am; 
+    public AdManager am; 
 
     public GameObject tClassicHighscore, tRandomHighscore, tGame3Highscore, tGame4Highscore;
     //Streak main menu
@@ -31,6 +30,9 @@ public class MainMenu : MonoBehaviour
     public GameObject tTimePlayed;
     public GameObject tButtonsPressed;
     public GameObject tadRewards;
+    public GameObject tHighestStreak;
+    public GameObject tStreakAchieved;
+
 
     public void Start()
     {
@@ -302,6 +304,7 @@ public class MainMenu : MonoBehaviour
             tTimePlayed.GetComponent<TextMeshProUGUI>().text = "Time played: " + string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
             tButtonsPressed.GetComponent<TextMeshProUGUI>().text = "Buttons Pressed: " + data.buttonsPressed.ToString();
             tadRewards.GetComponent<TextMeshProUGUI>().text = "Reward Ads Watched: " + data.adsRewardsWatched;
+            tHighestStreak.GetComponent<TextMeshProUGUI>().text = "Highest Streak: " + data.gameStreakHighscore;
         }
         else
         {

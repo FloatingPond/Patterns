@@ -901,7 +901,9 @@ public class GameManager : MonoBehaviour
             Debug.Log("begone time traveller");
             return;
         }
-
+        CheckStreakHighscore(gameStreak, dateLastAcquiredStreak);
+        CheckStreakHighscore(gameStreakLast, dateLastAcquiredStreakLast);
+        //Ultimately save
         Save();
     }
 
@@ -917,7 +919,6 @@ public class GameManager : MonoBehaviour
         {
             gameStreakHighscore = streak;
             dateStreakHighscore = dt;
-            Save();
         }
     }
 

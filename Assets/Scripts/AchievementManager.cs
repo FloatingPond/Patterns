@@ -12,7 +12,9 @@ public class AchievementManager : MonoBehaviour
     public TextMeshProUGUI textStatus;
 
     string leaderboardID = "CgkI3M-O2b8NEAIQAg";
-    string achievementID = "CgkI3M-O2b8NEAIQAA";
+
+    string achievementID = "CgkI3M-O2b8NEAIQAA"; //First one
+    //
     public static PlayGamesPlatform platform;
     
 

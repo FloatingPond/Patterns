@@ -648,12 +648,13 @@ public class GameManager : MonoBehaviour
         {
             if (i == sPatternNumbers.Length - 1 && currentGamemode == "classic") //Last number in the length - shorter uncolouring time for quicker gameplay
             {
-                Debug.Log("SHORTER TIME " + i);
-                yield return new WaitForSeconds(time_buttonsTimeBetween / 3); //Time between uncoloured button and coloured button
+                yield return new WaitForSeconds(time_buttonsTimeBetween); //Time between uncoloured button and coloured button
             }
             else
             {
-                yield return new WaitForSeconds(time_buttonsTimeBetween); //Time between uncoloured button and coloured button
+                float timeAddedToRetract = sPatternNumbers.Length / 200f;
+                Debug.Log(timeAddedToRetract);
+                yield return new WaitForSeconds(time_buttonsTimeBetween - timeAddedToRetract); //Time between uncoloured button and coloured button
             }
             //Get number for button
             int number = int.Parse(sPatternNumbers[i].ToString()) - 1;
@@ -700,7 +701,6 @@ public class GameManager : MonoBehaviour
         {
             currentGamemode = gamemode;
         }
-        Debug.Log(currentGamemode);
         //Disable Play Again and Return buttons
         endgamePanel.SetActive(false);
         sPatternAnswer = "";
@@ -709,8 +709,7 @@ public class GameManager : MonoBehaviour
         tAfterGame.text = "";
         newHighscoreThisGame = false;
         AddToButtonPressed();
-        Debug.Log(currentGamemode + "," + gamemodeNames[3]);
-
+        
         if (currentGamemode == gamemodeNames[3])
         {
             fTimedRoundTimer = fTimedRoundLength;
@@ -940,48 +939,13 @@ public class GameManager : MonoBehaviour
             Debug.Log("Total hours:" + hours + ", Total Days:" + days);
             //Debug.Log(hours + "," + days + "," + minutes);
 
-            if (days < 2) //If Days are less than 2
+            if (hours > 6 && days == 1)
             {
-                if (hours < 6) // If less than 6 hours
-                {
-                    Debug.Log("No new streak, too few hours. Come back later");
-                    //come back later
-                }
-                else if (hours > 6 && days > 0)
-                {
-                    Debug.Log("NEW STREAK!");
-                    gameStreak++;
-                    dateLastAcquiredStreak = DateTime.Now;
-                }
-                else
-                {
-                    //NEED TO CHECK IF THE LOCAL DATE IS DIFFERENT
-                    //Right now it does not check 15th vs 14th, only if it has been one
-                    //day since last recorded
-                    //Needs to check date, not time between
-                    //Currently is just a stopgap
-                }
-            }
-            //These two methods shouldn't necessarily be called because they will be called when game is opened.
-            else if (days > 2) //More than 2 days
-            {
-                Debug.Log("sTREAK LOST");
-                gameStreakLast = gameStreak;
-                dateLastAcquiredStreakLast = dateLastAcquiredStreak;
-                gameStreak = 0;
-            }
-            else if (days > 1) 
-            {
-                Debug.Log("Streak lost but reclaim-able");
-                gameStreakLast = gameStreak;
-                dateLastAcquiredStreakLast = dateLastAcquiredStreak;
-                gameStreak = 0;
+                Debug.Log("NEW STREAK!");
+                AddToGameStreak();
             }
         }
         Save();
-        //If time between now and last acquired streak is less than 6 hours
-        //Can ignore
-        //Else If time between
     }
 
     //TESTING FOR STREAK

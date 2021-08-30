@@ -6,7 +6,7 @@ using GooglePlayGames.BasicApi;
 using TMPro;
 
 
-public class PlayGames3 : MonoBehaviour
+public class AchievementManager : MonoBehaviour
 {
     public int playerScore;
     public TextMeshProUGUI textStatus;

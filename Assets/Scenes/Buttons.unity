@@ -7479,6 +7479,7 @@ MonoBehaviour:
   Stats: {fileID: 1087801794}
   SoundSettings: {fileID: 563555761}
   Premium: {fileID: 1723409099}
+  bPremium: {fileID: 674515975}
   gm: {fileID: 1893154942}
   am: {fileID: 1893154943}
   tClassicHighscore: {fileID: 812369572}

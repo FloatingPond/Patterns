@@ -305,6 +305,7 @@ public class MainMenu : MonoBehaviour
             tButtonsPressed.GetComponent<TextMeshProUGUI>().text = "Buttons Pressed: " + data.buttonsPressed.ToString();
             tadRewards.GetComponent<TextMeshProUGUI>().text = "Reward Ads Watched: " + data.adsRewardsWatched;
             tHighestStreak.GetComponent<TextMeshProUGUI>().text = "Highest Streak: " + data.gameStreakHighscore;
+            tStreakAchieved.GetComponent<TextMeshProUGUI>().text = "Achieved @: " + data.dateGameStreakHighscoreAcquired;
         }
         else
         {

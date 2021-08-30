@@ -817,19 +817,17 @@ public class GameManager : MonoBehaviour
     public void AddToGameStreak() //Increments the streak
     {
         gameStreak++;
+        dateLastAcquiredStreak = DateTime.Now;
         ChangeGameStreakHighscore();
     }
 
-    public void ResetGameStreak() 
-    {
-        gameStreak = 0;
-    }
 
     public void ChangeGameStreakHighscore() //Called after gameStreak changes
     {
         if (gameStreak > gameStreakHighscore)
         {
             gameStreakHighscore = gameStreak;
+            dateStreakHighscore = dateLastAcquiredStreak;
         }
     }
 
@@ -907,7 +905,7 @@ public class GameManager : MonoBehaviour
         Save();
     }
 
-    private void SaveFormerStreak()
+    private void SaveFormerStreak() //Saves the current streak as the last streak aquired
     {
         gameStreakLast = gameStreak; //Sets the player's last streak as the current streak before it is reset
         dateLastAcquiredStreakLast = dateLastAcquiredStreak; //Sets the date as the date the player acquired their last streak
@@ -987,7 +985,7 @@ public class GameManager : MonoBehaviour
         //Else If time between
     }
 
-    //TESTINF FOR STREAK
+    //TESTING FOR STREAK
     public void TestCheckStreak(DateTime dtTestNow, DateTime dtTestLastAcquired)
     {
         //For hours

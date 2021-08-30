@@ -7446,7 +7446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99649a16be055ff4393bb948e38b28b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 61888533}
   test: 1
   MainMenuPanel: {fileID: 892789779}
   Gameplay: {fileID: 658574885}
@@ -10584,7 +10584,7 @@ PrefabInstance:
     - target: {fileID: 9135219778196587036, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34a29bd966be8754596b16a4648b6c26, type: 3}

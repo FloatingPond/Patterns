@@ -130,6 +130,23 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
+    public void UnlockAchievementStreak(GameManager gm) //Method used for any and all streak achievements
+    {
+        if (Social.Active.localUser.authenticated) //Ensure GPG is enabled an player logged in
+        {
+            //Get a Steak for 2 days "You returned!"
+            if (gm.GetGameStreak() == 2)
+            {
+                //-
+            }
+            //Get a streak for 7 days
+            if (gm.GetGameStreak() == 7)
+            {
+                //-
+            }
+        }
+    }
+
     public void ShowLeaderboard()
     {
         if (Social.Active.localUser.authenticated)

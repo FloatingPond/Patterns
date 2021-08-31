@@ -21,12 +21,12 @@ public class MessageManager : MonoBehaviour
     }
     public void OpenMessage()
     {
-        Debug.Log("Test open message");
+        //Debug.Log("Test open message");
         popUpBase.GetComponent<Animator>().SetTrigger("Open");
     }
     public void OpenVariantMessage()
     {
-        Debug.Log("Test open message");
+        //Debug.Log("Test open message");
         Variant.GetComponent<Animator>().SetTrigger("Open");
     }
     public void DisplayWelcomeMessage()

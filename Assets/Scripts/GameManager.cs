@@ -434,12 +434,13 @@ public class GameManager : MonoBehaviour
             ////Check if whole thing is correct
             if (sPatternAnswer == sPatternNumbers) //Correct!
             {
+                AddToButtonPressed();
                 NextRound();
             }
             else //Either partially or not correct
             {
+                AddToButtonPressed();
                 //Check if length is less than the actual answer 
-
                 if (sPatternAnswer.Length < sPatternNumbers.Length) //Answer is not 
                 { 
                     //Potentiallly partially correct
@@ -462,20 +463,22 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        else if (currentGamemode == gamemodeNames[2]) //Not used in Match game 
+        else if (currentGamemode == gamemodeNames[2]) //Counts button
         {
-
+            AddToButtonPressed();
         }
-        else if (currentGamemode == gamemodeNames[3]) 
+        else if (currentGamemode == gamemodeNames[3]) //Timed round
         {
             if (sPatternAnswer == sPatternNumbers) //Correct!
             {
                 StopCoroutine(coroutine);
+                AddToButtonPressed();
                 NextRound();
             }
             else //Nothing, game does not stop. Player has unlimited tries in this game mode
             {
                 sPatternAnswer = "";
+                //Does not count buttons pressed for wrong ones
                 iTimedRoundWrongButtonsPressed += 1; //Counts player pressing wrong button - used for achievement
                 //Try again
             }
@@ -516,9 +519,7 @@ public class GameManager : MonoBehaviour
 
         //Maybe also play a sound
         CheckHighscoreAtEndOfGame();
-
         
-
         //Save highscore regardless
         Save();
         //Show score
@@ -545,7 +546,6 @@ public class GameManager : MonoBehaviour
     {
         if (!isGameButtonsDisabled)
         {
-            AddToButtonPressed();
             sPatternAnswer += number.ToString();
             if (currentGamemode != gamemodeNames[2]) //If not matching game
             {
@@ -560,6 +560,7 @@ public class GameManager : MonoBehaviour
     //USED FOR MATCH GAME MODE
     void CheckMatchAnswer(int number)
     {
+        AddToButtonPressed();
         //This corrects the number comparison due to there being a difference in the keypad shown to the player and the array
         //Ie array starts at 0 and keypad starts at 1
 
@@ -648,7 +649,7 @@ public class GameManager : MonoBehaviour
         {
             tHighscore.text = "HIGH SCORE: " + Highscore[3].ToString();
         }
-        else
+        else //No currentGamemode - possibly due to EndGame is also called when Returning to main menu
         {
             Debug.Log("Error in high score text setting");
         }
@@ -722,7 +723,6 @@ public class GameManager : MonoBehaviour
         iTimedRoundWrongButtonsPressed = 0;
         tAfterGame.text = "";
         newHighscoreThisGame = false;
-        AddToButtonPressed();
         //Reset Stopwatch
         fGameStopwatch = 0;
         if (currentGamemode == gamemodeNames[3])

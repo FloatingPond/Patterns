@@ -71,7 +71,7 @@ public class MainMenu : MonoBehaviour
     public void Update()
     {
         //Counts when player is playing the game
-        if (Gameplay.activeInHierarchy)
+        if (Gameplay.activeInHierarchy && Endgame.activeInHierarchy == false)
         {
             gm.AddToGameTime(Time.deltaTime);
         }
@@ -105,16 +105,16 @@ public class MainMenu : MonoBehaviour
 
     public void ReturnToMainMenu() //Used to return to the main menu from gaming
     {
+        gm.EndGame();
         gm.currentGamemode = "";
         gm.fTimedRoundTimer = 60;
+        gm.fGameStopwatch = 0;
         gm.tTimedRoundsTimer.text = "";
-        gm.EndGame();
         gm.MakeButtonsInteractable();
         //To display those sweet new high scores
         DisplayHighScores();
         DisplayStreak();
         SwitchToCanvas("mainmenu");
-        gm.AddToButtonPressed();
     }
 
     public void ReturnToMainMenuFromStats()

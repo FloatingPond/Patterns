@@ -87,7 +87,7 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
-    public void UnlockGameplayAchievement(string gamemode, int score, float stopwatch)
+    public void UnlockGameplayAchievement(string gamemode, int score, float stopwatch, GameManager gm)
     {
         if (Social.Active.localUser.authenticated) //Ensure GPG is enabled an player logged in
         { 
@@ -111,6 +111,11 @@ public class AchievementManager : MonoBehaviour
             }
             //Achieve high score of 5 in Match
             if (gamemode == "match" && score >= 5)
+            {
+                //-
+            }
+            //In timed rounds, get a minimum score of 100 without pressing a single wrong button
+            if (gamemode == "timedround" && score >= 100 && gm.iTimedRoundWrongButtonsPressed == 0)
             {
                 //-
             }

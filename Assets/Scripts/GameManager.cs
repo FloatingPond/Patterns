@@ -21,8 +21,9 @@ public class GameManager : MonoBehaviour
     private IEnumerator coroutine;
     public float fGameTime; //Seconds for now
     public float fTimedRoundTimer; //Timer for Timed Rounds game (Game 3)
-    public float fGameStopwatch;
+    public float fGameStopwatch; //Stopwatch for all games
     public float fTimedRoundLength = 60;
+    public int iTimedRoundWrongButtonsPressed = 0;
 
     public int buttonsPressed;
     public string sPatternNumbers;
@@ -475,6 +476,7 @@ public class GameManager : MonoBehaviour
             else //Nothing, game does not stop. Player has unlimited tries in this game mode
             {
                 sPatternAnswer = "";
+                iTimedRoundWrongButtonsPressed += 1; //Counts player pressing wrong button - used for achievement
                 //Try again
             }
         }
@@ -545,11 +547,11 @@ public class GameManager : MonoBehaviour
         {
             AddToButtonPressed();
             sPatternAnswer += number.ToString();
-            if (currentGamemode != gamemodeNames[2])
+            if (currentGamemode != gamemodeNames[2]) //If not matching game
             {
                 CheckAnswer();
             }
-            else if (currentGamemode == gamemodeNames[2])
+            else if (currentGamemode == gamemodeNames[2]) //If is the matching game
             {
                 CheckMatchAnswer(number);
             }
@@ -717,6 +719,7 @@ public class GameManager : MonoBehaviour
         sPatternAnswer = "";
         sPatternNumbers = "";
         iPatternNumbers = 0;
+        iTimedRoundWrongButtonsPressed = 0;
         tAfterGame.text = "";
         newHighscoreThisGame = false;
         AddToButtonPressed();

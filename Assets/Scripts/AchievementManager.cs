@@ -79,11 +79,54 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
-    public void UnlockAchievement()
+    public void UnlockAchievement() //Basic from tutorial
     {
         if (Social.Active.localUser.authenticated)
         {
             Social.ReportProgress(achievementID, 100f, success => { });
+        }
+    }
+
+    public void UnlockGameplayAchievement(string gamemode, int score, float stopwatch)
+    {
+        if (Social.Active.localUser.authenticated) //Ensure GPG is enabled an player logged in
+        { 
+            //Unlock "Play one game of any game mode"
+            //-
+
+            //Achieve high score of 10 in Classic
+            if (gamemode == "classic" && score >= 10)
+            {
+                //-
+            }
+            //Achieve high score of 7 in random game
+            if (gamemode == "random" && score >= 7)
+            {
+                //-
+            }
+            //Achieve score of 90 in Timed Round
+            if (gamemode == "timedround" && score >= 90)
+            {
+                //-
+            }
+            //Achieve high score of 5 in Match
+            if (gamemode == "match" && score >= 5)
+            {
+                //-
+            }
+        }
+    }
+
+    public void UnlockAchievementPlayAllGamemodes(GameManager gm) //Method especially for '//Play all game modes'
+    {
+        if (Social.Active.localUser.authenticated) //Ensure GPG is enabled an player logged in
+        {
+            //If all 4 games have a high score higher than 1, the player has most likely played all the games
+            //They'll definitely be players who just press play and exit, but they'll need a score of at least 1Get
+            if (gm.Highscore[0] > 0 && gm.Highscore[1] > 0 && gm.Highscore[2] > 0 && gm.Highscore[3] > 0)
+            {
+                //-
+            }
         }
     }
 

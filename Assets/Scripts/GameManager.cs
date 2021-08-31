@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator coroutine;
     public float fGameTime; //Seconds for now
-    public float fTimedRoundTimer;
+    public float fTimedRoundTimer; //Timer for Timed Rounds game (Game 3)
+    public float fGameStopwatch;
     public float fTimedRoundLength = 60;
 
     public int buttonsPressed;
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
     
     //Panel containing endgame buttons (Return, Restart)
     public GameObject endgamePanel;
+    public GameObject gamePanel;
     //Used to enable/disable user able to press buttons - mainly when showing patterns and when not in-game
     public bool isGameButtonsDisabled = false;
     
@@ -173,7 +175,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (currentGamemode == gamemodeNames[3])
+        if (currentGamemode == gamemodeNames[3]) //Countdown timer
         {
             if (endgamePanel.activeSelf == false)
             { 
@@ -188,6 +190,10 @@ public class GameManager : MonoBehaviour
                     EndGame();
                 }
             }
+        }
+        if (endgamePanel.activeSelf == false && gamePanel.activeSelf == true)
+        {
+            fGameStopwatch += Time.deltaTime;
         }
     }
 
@@ -508,12 +514,17 @@ public class GameManager : MonoBehaviour
 
         //Maybe also play a sound
         CheckHighscoreAtEndOfGame();
+
         
+
         //Save highscore regardless
         Save();
         //Show score
         SetTextScore();
-        //Play again?
+
+        //Check achievements here
+        //Could pass in the gamemode, the score and the stopwatch
+
         //Enable Play Again and Return buttons
         CheckGameStreak(false);
 
@@ -709,7 +720,8 @@ public class GameManager : MonoBehaviour
         tAfterGame.text = "";
         newHighscoreThisGame = false;
         AddToButtonPressed();
-        
+        //Reset Stopwatch
+        fGameStopwatch = 0;
         if (currentGamemode == gamemodeNames[3])
         {
             fTimedRoundTimer = fTimedRoundLength;

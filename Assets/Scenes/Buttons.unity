@@ -13879,6 +13879,7 @@ MonoBehaviour:
   Highscore: 00000000000000000000000000000000
   fGameTime: 0
   fTimedRoundTimer: 0
+  fGameStopwatch: 0
   fTimedRoundLength: 60
   buttonsPressed: 0
   sPatternNumbers: 
@@ -13906,6 +13907,7 @@ MonoBehaviour:
   tAfterGame: {fileID: 960401614}
   tTimedRoundsTimer: {fileID: 1858993523}
   endgamePanel: {fileID: 2033224257}
+  gamePanel: {fileID: 658574885}
   isGameButtonsDisabled: 0
   gameStreak: 0
   gameStreakLast: 0

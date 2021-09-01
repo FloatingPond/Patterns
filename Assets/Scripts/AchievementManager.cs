@@ -29,7 +29,7 @@ public class AchievementManager : MonoBehaviour
             platform = PlayGamesPlatform.Activate();
         }
 
-        AuthenticateGoogleV2();
+        AuthenticateGoogleV3();
 
         //UnlockAchievement();
     }
@@ -51,7 +51,26 @@ public class AchievementManager : MonoBehaviour
         });
     }
 
-    private void AuthenticateGoogleV2()
+    public void AuthenticateGoogleV2()
+    {
+        String text1 = textStatus.text;
+        platform.Authenticate(SignInInteractivity.CanPromptAlways, (result) =>
+        {
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    textStatus.text = text1 + "Success";
+                    Debug.Log("Logged in successfully");
+                    break;
+                default:
+                    textStatus.text = text1 + "Failed";
+                    Debug.Log("Login Failed - " + result);
+                    break;
+            }
+        });
+    }
+
+    public void AuthenticateGoogleV3()
     {
         String text1 = textStatus.text;
         platform.Authenticate(SignInInteractivity.CanPromptOnce, (result) =>
@@ -64,7 +83,7 @@ public class AchievementManager : MonoBehaviour
                     break;
                 default:
                     textStatus.text = text1 + "Failed";
-                    Debug.Log("Login Failed");
+                    Debug.Log("Login Failed " + result);
                     break;
             }
         });
@@ -94,8 +113,8 @@ public class AchievementManager : MonoBehaviour
             //Unlock "Play one game of any game mode"
             //-
 
-            //Achieve high score of 10 in Classic
-            if (gamemode == "classic" && score >= 10)
+            //Achieve high score of 12 in Classic
+            if (gamemode == "classic" && score >= 12)
             {
                 //-
             }

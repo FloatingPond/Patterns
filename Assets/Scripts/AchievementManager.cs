@@ -11,9 +11,9 @@ public class AchievementManager : MonoBehaviour
     public int playerScore;
     public TextMeshProUGUI textStatus;
 
-    string leaderboardID = "CgkI3M-O2b8NEAIQAg";
+    string leaderboardID = "CgkIq77noacSEAIQAQ"; //Classic High Score
 
-    string achievementID = "CgkI3M-O2b8NEAIQAA"; //First one
+    string achievementID = "CgkIq77noacSEAIQAA"; //Play 1 of any Game mode
     //
     public static PlayGamesPlatform platform;
     

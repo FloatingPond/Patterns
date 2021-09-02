@@ -66,57 +66,70 @@ public class AdManager : MonoBehaviour
         //// adRbva = RewardBasedVideoAd.Instance;
     }
 
-    public void SetupOnStart(bool firstTime)
+    public void SetupOnStart(bool firstTime) //Called in GameManager's Awake
     {
         //Always needs to be called
+        requestForBanner = new AdRequest.Builder().Build();
         MobileAds.Initialize(initStatus => { });
 
-        RequestBanner();
-
-        requestForBanner = new AdRequest.Builder().Build();
-        //Loads a bottom banner ad if this is not the first time the player has played
-        //To later be more advanced should the player use a reward ad or buy premium
-        if (!firstTime) 
+        if (CkeckIfPlayerHasRewardAdPremium() == true) //Limited premium via player watching reward ad
         {
-            if (CkeckIfPlayerHasPremium() == true)
-            {
-                EnableRewardAdButton(false);
-            }
-            else
-            {
-                adBannerBottom.LoadAd(requestForBanner);
-            }
+            EnableRewardAdElements(false);
+        }
+        else if (CheckIfPlayerHasPremium()) //Paid Premium
+        {
+
+        }
+        else if (firstTime) //Delay ads by 3 minutes
+        {
+            EnableRewardAdElements(true);
+            StartCoroutine(WaitBeforeRequestingBanner());
+        }
+        
+        else //Initialise ads immediately on launch
+        {
+            EnableRewardAdElements(true);
+            //Banner ad stuff
+            RequestBanner();
+            adBannerBottom.LoadAd(requestForBanner);
             
         }
         
-        if (CkeckIfPlayerHasPremium() == false)
-        {
-            EnableRewardAdButton(true);
-        }
-
-        //Reward
-
-        // adRbva = RewardBasedVideoAd.Instance;
+        // adRbva = RewardBasedVideoAd.Instance; //Reward
     }
 
-    public bool CkeckIfPlayerHasPremium()
+    IEnumerator WaitBeforeRequestingBanner()
+    {
+        yield return new WaitForSeconds(60f);
+        RequestBanner();
+        adBannerBottom.LoadAd(requestForBanner);
+
+    }
+
+    public bool CkeckIfPlayerHasRewardAdPremium()
     {
         //if has bought premium
         //return true
-        //if has been less than 7 days since last watched reward ad
+        //if has been less than 3 days since last watched reward ad
         int days = (int)(DateTime.Now.Date - dtLastTimeRewardAdWatched).TotalDays;
-        if (days <= 7)
+        if (days <= 3)
         {
             return true;
         }
-        //return true
-        //else
-        //return false
+        return false;
+    }
+    public bool CheckIfPlayerHasPremium()
+    {
         return false;
     }
 
-    private void EnableRewardAdButton(bool state)
+    private void EnableRewardAdElements(bool state)
     {
+        if (state == true) //Has
+        {
+
+        }
+        else
         buttonRewardAd.SetActive(state);
     }
     
@@ -214,7 +227,7 @@ public class AdManager : MonoBehaviour
 
     public void CloseBannerAd()
     {
-        StopAllCoroutines();
+        //StopAllCoroutines(); //Not sure why this was here
         adBannerBottom.Destroy();
     }
 
@@ -229,8 +242,9 @@ public class AdManager : MonoBehaviour
         dtLastTimeRewardAdWatched = DateTime.Now; //Sets last time user watched reward ad to now
         //If we make it - set the "Watched 1 reward ad" achievement to acquired
 
-        CkeckIfPlayerHasPremium(); //Used to disable ads
-        EnableRewardAdButton(false);
+        CkeckIfPlayerHasRewardAdPremium(); //Used to disable ads
+        EnableRewardAdElements(false);
+        CloseBannerAd();
 
         gm.Save();
         mm.DisplayStats();

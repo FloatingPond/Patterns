@@ -2954,6 +2954,8 @@ MonoBehaviour:
     -no
     ad prompts
 
+    -lasts forever
+
     -support local devs'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f8576e512d37c746a40850ed2176a67, type: 2}
@@ -3699,7 +3701,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -7756,7 +7758,7 @@ MonoBehaviour:
   Stats: {fileID: 1087801794}
   SoundSettings: {fileID: 563555761}
   Premium: {fileID: 1723409099}
-  bPremium: {fileID: 674515975}
+  bMainMenuPremium: {fileID: 0}
   gm: {fileID: 1893154942}
   am: {fileID: 1893154943}
   tClassicHighscore: {fileID: 812369572}
@@ -7770,6 +7772,10 @@ MonoBehaviour:
   tadRewards: {fileID: 89173357}
   tHighestStreak: {fileID: 1298066567}
   tStreakAchieved: {fileID: 1724442473}
+  titleRewards: {fileID: 0}
+  descRewards: {fileID: 0}
+  titlePremium: {fileID: 0}
+  descPremium: {fileID: 0}
 --- !u!1 &1059637529
 GameObject:
   m_ObjectHideFlags: 0
@@ -7877,7 +7883,7 @@ RectTransform:
   m_Children:
   - {fileID: 2079980966}
   m_Father: {fileID: 1723409100}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10878,7 +10884,7 @@ GameObject:
   - component: {fileID: 1501102075}
   - component: {fileID: 1501102074}
   m_Layer: 5
-  m_Name: bBuy
+  m_Name: bBuyPremium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12536,7 +12542,7 @@ RectTransform:
   m_Children:
   - {fileID: 1931668028}
   m_Father: {fileID: 1723409100}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -13084,9 +13090,9 @@ RectTransform:
   - {fileID: 1234003104}
   - {fileID: 1874167902}
   - {fileID: 920112805}
-  - {fileID: 1076413502}
-  - {fileID: 1501102073}
   - {fileID: 1675457367}
+  - {fileID: 1501102073}
+  - {fileID: 1076413502}
   - {fileID: 1872457677}
   - {fileID: 1138403103}
   - {fileID: 418691681}

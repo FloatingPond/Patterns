@@ -12,11 +12,12 @@ public class AchievementManager : MonoBehaviour
     public TextMeshProUGUI textStatus;
 
     string leaderboardID = "CgkIq77noacSEAIQAQ"; //Classic High Score
-
+    //Achievements
     string achievementID = "CgkIq77noacSEAIQAA"; //Play 1 of any Game mode
     //
     public static PlayGamesPlatform platform;
-    
+
+    public GameObject bLogIn; //Disabled if game actually turns on
 
     void Start()
     {
@@ -61,10 +62,12 @@ public class AchievementManager : MonoBehaviour
                 case SignInStatus.Success:
                     textStatus.text = text1 + "Success";
                     Debug.Log("Logged in successfully");
+                    bLogIn.SetActive(false);
                     break;
                 default:
                     textStatus.text = text1 + "Failed";
                     Debug.Log("Login Failed - " + result);
+                    bLogIn.SetActive(true);
                     break;
             }
         });
@@ -80,10 +83,12 @@ public class AchievementManager : MonoBehaviour
                 case SignInStatus.Success:
                     textStatus.text = text1 + "Success";
                     Debug.Log("Logged in successfully");
+                    bLogIn.SetActive(false);
                     break;
                 default:
                     textStatus.text = text1 + "Failed";
                     Debug.Log("Login Failed " + result);
+                    bLogIn.SetActive(true);
                     break;
             }
         });

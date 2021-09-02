@@ -36,7 +36,7 @@ public class AdManager : MonoBehaviour
 
     public GameManager gm;
 
-    
+    [Title("Buttons")]
 
     [Button(ButtonSizes.Large)]
 

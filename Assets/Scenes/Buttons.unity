@@ -6476,7 +6476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &892789780
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7758,7 +7758,7 @@ MonoBehaviour:
   Stats: {fileID: 1087801794}
   SoundSettings: {fileID: 563555761}
   Premium: {fileID: 1723409099}
-  bMainMenuPremium: {fileID: 0}
+  bMainMenuPremium: {fileID: 674515975}
   gm: {fileID: 1893154942}
   am: {fileID: 1893154943}
   tClassicHighscore: {fileID: 812369572}
@@ -7772,10 +7772,10 @@ MonoBehaviour:
   tadRewards: {fileID: 89173357}
   tHighestStreak: {fileID: 1298066567}
   tStreakAchieved: {fileID: 1724442473}
-  titleRewards: {fileID: 0}
-  descRewards: {fileID: 0}
-  titlePremium: {fileID: 0}
-  descPremium: {fileID: 0}
+  titleRewards: {fileID: 1874167903}
+  descRewards: {fileID: 920112806}
+  titlePremium: {fileID: 1138403104}
+  descPremium: {fileID: 418691682}
 --- !u!1 &1059637529
 GameObject:
   m_ObjectHideFlags: 0
@@ -8399,7 +8399,7 @@ GameObject:
   - component: {fileID: 1138403105}
   - component: {fileID: 1138403104}
   m_Layer: 5
-  m_Name: tPremiumAdFree
+  m_Name: TitlePremiumAdfree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13075,7 +13075,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1723409100
 RectTransform:
   m_ObjectHideFlags: 0

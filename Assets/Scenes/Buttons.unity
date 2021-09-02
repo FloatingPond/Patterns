@@ -11846,7 +11846,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0.13
+  m_text: 0.14
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f8576e512d37c746a40850ed2176a67, type: 2}
   m_sharedMaterial: {fileID: 2642061803707850051, guid: 9f8576e512d37c746a40850ed2176a67,
@@ -12907,7 +12907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1695826296
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14704,6 +14704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScore: 0
   textStatus: {fileID: 1605667034}
+  bLogIn: {fileID: 1695826295}
 --- !u!1 &1900725046
 GameObject:
   m_ObjectHideFlags: 0

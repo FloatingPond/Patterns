@@ -664,6 +664,10 @@ public class GameManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(time_buttonsTimeBetween); //Time between uncoloured button and coloured button
             }
+            else if (currentGamemode == "timedround")
+            {
+                //Don't wait to uncolour
+            }
             else
             {
                 float timeAddedToRetract = sPatternNumbers.Length / 200f;

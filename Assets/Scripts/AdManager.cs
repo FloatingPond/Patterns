@@ -114,7 +114,7 @@ public class AdManager : MonoBehaviour
         //if has bought premium
         //return true
         //if has been less than 3 days since last watched reward ad
-        int hours = (int)(DateTime.Now.Date - dtLastTimeRewardAdWatched).TotalHours;
+        int hours = (int)(DateTime.Now - dtLastTimeRewardAdWatched).TotalHours;
         if (hours <= 72)
         {
             tRewardAdDate.SetActive(true);

@@ -13,7 +13,7 @@ public class AchievementManager : MonoBehaviour
 
     string leaderboardID = "CgkIq77noacSEAIQAQ"; //Classic High Score
     //Achievements
-    string achievementID = "CgkIq77noacSEAIQAA"; //Play 1 of any Game mode
+    string aIdOneGamePlayed = "CgkIq77noacSEAIQAA"; //Play 1 of any Game mode
     //
     public static PlayGamesPlatform platform;
 
@@ -107,16 +107,16 @@ public class AchievementManager : MonoBehaviour
     {
         if (Social.Active.localUser.authenticated)
         {
-            Social.ReportProgress(achievementID, 100f, success => { });
+            Social.ReportProgress(aIdOneGamePlayed, 100f, success => { });
         }
     }
 
     public void UnlockGameplayAchievement(string gamemode, int score, float stopwatch, GameManager gm)
     {
         if (Social.Active.localUser.authenticated) //Ensure GPG is enabled an player logged in
-        { 
+        {
             //Unlock "Play one game of any game mode"
-            //-
+            Social.ReportProgress(aIdOneGamePlayed, 100f, success => { });
 
             //Achieve high score of 12 in Classic
             if (gamemode == "classic" && score >= 12)

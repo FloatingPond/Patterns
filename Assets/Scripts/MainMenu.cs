@@ -112,7 +112,7 @@ public class MainMenu : MonoBehaviour
 
     public void ReturnToMainMenu() //Used to return to the main menu from gaming
     {
-        gm.EndGame();
+        //gm.EndGame(); //Not sure why called here
         gm.currentGamemode = "";
         gm.fTimedRoundTimer = 60;
         gm.fGameStopwatch = 0;

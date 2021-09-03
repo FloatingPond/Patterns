@@ -80,6 +80,8 @@ public class GameManager : MonoBehaviour
     
     public MessageManager mm;
 
+    public AchievementManager achm;
+
 
     [Title("Buttons and Debug")]
     
@@ -524,6 +526,7 @@ public class GameManager : MonoBehaviour
         SetTextScore();
 
         //Check achievements here
+        achm.UnlockGameplayAchievement(currentGamemode, iPatternNumbers - 1, fGameStopwatch, this);
         //Could pass in the gamemode, the score and the stopwatch
 
         //Enable Play Again and Return buttons

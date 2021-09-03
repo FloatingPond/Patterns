@@ -5,6 +5,7 @@ using GoogleMobileAds.Api;
 using System;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
+using TMPro;
 
 
 public class AdManager : MonoBehaviour
@@ -25,7 +26,9 @@ public class AdManager : MonoBehaviour
     private RewardedAd adReward;
     private AdRequest requestForReward;
     public DateTime dtLastTimeRewardAdWatched;
+
     public GameObject buttonRewardAd;
+    public GameObject tRewardAdDate;
 
     [Title("Counter")]
     [SerializeField]
@@ -106,16 +109,20 @@ public class AdManager : MonoBehaviour
 
     }
 
-    public bool CkeckIfPlayerHasRewardAdPremium()
+    public bool CkeckIfPlayerHasRewardAdPremium() //Called on start, when switching to canvas and on Reward
     {
         //if has bought premium
         //return true
         //if has been less than 3 days since last watched reward ad
-        int days = (int)(DateTime.Now.Date - dtLastTimeRewardAdWatched).TotalDays;
-        if (days <= 3)
+        int hours = (int)(DateTime.Now.Date - dtLastTimeRewardAdWatched).TotalHours;
+        if (hours <= 72)
         {
+            tRewardAdDate.SetActive(true);
+            TextMeshProUGUI tText = tRewardAdDate.GetComponent<TextMeshProUGUI>();
+            tText.text = "AD-free ends in " + (72 - hours) + " hours.";
             return true;
         }
+        tRewardAdDate.SetActive(false);
         return false;
     }
     public bool CheckIfPlayerHasPremium()
@@ -125,11 +132,6 @@ public class AdManager : MonoBehaviour
 
     private void EnableRewardAdElements(bool state)
     {
-        if (state == true) //Has
-        {
-
-        }
-        else
         buttonRewardAd.SetActive(state);
     }
     
@@ -242,8 +244,8 @@ public class AdManager : MonoBehaviour
         dtLastTimeRewardAdWatched = DateTime.Now; //Sets last time user watched reward ad to now
         //If we make it - set the "Watched 1 reward ad" achievement to acquired
 
-        CkeckIfPlayerHasRewardAdPremium(); //Used to disable ads
-        EnableRewardAdElements(false);
+        //CkeckIfPlayerHasRewardAdPremium(); //Used to disable ads
+        EnableRewardAdElements(!CkeckIfPlayerHasRewardAdPremium());
         CloseBannerAd();
 
         gm.Save();

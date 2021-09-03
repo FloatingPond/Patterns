@@ -138,9 +138,10 @@ public class MainMenu : MonoBehaviour
         SwitchToCanvas("stats");
     }
 
-    public void ShowPremium()
+    public void ShowPremium() //Opens the Premium Canvas
     {
         SwitchToCanvas("premium");
+        am.CkeckIfPlayerHasRewardAdPremium();
     }
 
     public void SwitchToCanvas(string canvas)

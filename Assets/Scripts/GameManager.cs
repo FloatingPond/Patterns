@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
     {
         dateLastAcquiredStreak = DateTime.ParseExact(dtString4, "yyyy-MM-dd HH:mm tt", null);
         //ChangeGameStreak();
-        CheckGameStreak(true);
+        CheckGameStreak(false);
     }
 
     [Button(ButtonSizes.Small)]
@@ -222,9 +222,7 @@ public class GameManager : MonoBehaviour
             fGameTime = data.secondsPlayed;
             buttonsPressed = data.buttonsPressed;
             
-            
-            
-            am.SetadsRewardsWatched(data.adsRewardsWatched);
+            am.SetadsRewardsWatched(data.adsRewardsWatched); 
 
             sm.masterFloat = data.master;
             sm.musicFloat = data.music;
@@ -883,6 +881,10 @@ public class GameManager : MonoBehaviour
             //  OFFER CHANCE TO RECLAIM STREAK
             if (showMessages) //Game just opened
             {
+                //IF HAS PREMIUM AD FREE
+                //Streak Saved
+                //Else
+                //Show this window
                 mm.DisplayAbleToWatchRewardAd("Want a free streak?", "Watch a reward ad to claim your streak back!", "Yes Please!", "No thanks!");
             }
 
@@ -908,7 +910,10 @@ public class GameManager : MonoBehaviour
         }
         else if (hours < 6) //Needs to wait longer
         {
-            Debug.Log("come back later for streak.");
+            if (showMessages) //Game just opened
+            {
+                mm.DisplayDailyMessageAbleToGetStreak("Welcome back", "Play to beat your scores!", "Okay");
+            }
         }
         //Time traveller
         else if (hours < 0 || minutes < 0)

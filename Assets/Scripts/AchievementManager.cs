@@ -15,6 +15,7 @@ public class AchievementManager : MonoBehaviour
     //Achievements
     string aIdOneGamePlayed = "CgkIq77noacSEAIQAA"; //Play 1 of any Game mode
     //
+    string aIdClassicMode12Score = "CgkIq77noacSEAIQAw"; //Achieve high score of 12 in Classic Mode
     public static PlayGamesPlatform platform;
 
     public GameObject bLogIn; //Disabled if game actually turns on
@@ -122,6 +123,7 @@ public class AchievementManager : MonoBehaviour
             if (gamemode == "classic" && score >= 12)
             {
                 //-
+                Social.ReportProgress(aIdClassicMode12Score, 100f, success => { });
             }
             //Achieve high score of 7 in random game
             if (gamemode == "random" && score >= 7)

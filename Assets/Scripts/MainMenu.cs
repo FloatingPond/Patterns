@@ -141,7 +141,7 @@ public class MainMenu : MonoBehaviour
     public void ShowPremium() //Opens the Premium Canvas
     {
         SwitchToCanvas("premium");
-        am.CkeckIfPlayerHasRewardAdPremium();
+        am.CheckIfPlayerHasRewardAdPremium();
     }
 
     public void SwitchToCanvas(string canvas)

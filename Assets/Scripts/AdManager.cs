@@ -75,7 +75,7 @@ public class AdManager : MonoBehaviour
         requestForBanner = new AdRequest.Builder().Build();
         MobileAds.Initialize(initStatus => { });
 
-        if (CkeckIfPlayerHasRewardAdPremium() == true) //Limited premium via player watching reward ad
+        if (CheckIfPlayerHasRewardAdPremium() == true) //Limited premium via player watching reward ad
         {
             EnableRewardAdElements(false);
         }
@@ -109,7 +109,7 @@ public class AdManager : MonoBehaviour
 
     }
 
-    public bool CkeckIfPlayerHasRewardAdPremium() //Called on start, when switching to canvas and on Reward
+    public bool CheckIfPlayerHasRewardAdPremium() //Called on start, when switching to canvas and on Reward
     {
         //if has bought premium
         //return true
@@ -245,7 +245,7 @@ public class AdManager : MonoBehaviour
         //If we make it - set the "Watched 1 reward ad" achievement to acquired
 
         //CkeckIfPlayerHasRewardAdPremium(); //Used to disable ads
-        EnableRewardAdElements(!CkeckIfPlayerHasRewardAdPremium());
+        //EnableRewardAdElements(!CheckIfPlayerHasRewardAdPremium());
         CloseBannerAd();
 
         gm.Save();

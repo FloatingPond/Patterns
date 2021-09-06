@@ -232,7 +232,7 @@ public class GameManager : MonoBehaviour
             sm.voiceFloat = data.voice;
 
             am.dtLastTimeRewardAdWatched = DateTime.ParseExact(data.dateLastRewardAdWatched, "yyyy-MM-dd HH:mm tt", null);
-            CheckGameStreak(true); //Check Streak
+            CheckGameStreak(true); //Check Streak and display message depending on said streak
             sm.LoadSliders();
             return false;
         }
@@ -250,9 +250,7 @@ public class GameManager : MonoBehaviour
             gameStreakLast = 0;
             gameStreakHighscore = 0;
             
-
-
-            am.dtLastTimeRewardAdWatched = DateTime.ParseExact("2001-01-01 12:00 PM", "yyyy-MM-dd HH:mm tt", null); //Set far into the past
+            am.dtLastTimeRewardAdWatched = DateTime.ParseExact("2001-01-01 12:00 PM", "yyyy-MM-dd HH:mm tt", null); //Set far into the past to ensure that it does not break later
             mm.DisplayWelcomeMessage();
             sm.masterFloat = 1;
             sm.musicFloat = 1;
@@ -859,7 +857,13 @@ public class GameManager : MonoBehaviour
         int hours = (int)(DateTime.Now - dLastAcquired).TotalHours;
         int days = (int)(DateTime.Now.Date - dLastAcquiredDateOnly).TotalDays;
 
-        if (days > 2) //Too late
+        String dtString = dLastAcquired.ToString("dd-MM-yyyy");
+        if (dtString.Contains("01-01-0001")) //First time playing - usually when player opens and closes game without getting streak
+        {
+            mm.DisplayWelcomeMessage();
+        }
+
+        else if (days > 2) //Too late
         {
             //  Too late
             //  Save streak as last streak

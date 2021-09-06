@@ -75,7 +75,7 @@ public class AdManager : MonoBehaviour
         requestForBanner = new AdRequest.Builder().Build();
         MobileAds.Initialize(initStatus => { });
 
-        if (CheckIfPlayerHasRewardAdPremium() == true) //Limited premium via player watching reward ad
+        if (CheckIfPlayerHasRewardAdPremiumBoolEdition())
         {
             EnableRewardAdElements(false);
         }
@@ -95,7 +95,6 @@ public class AdManager : MonoBehaviour
             //Banner ad stuff
             RequestBanner();
             adBannerBottom.LoadAd(requestForBanner);
-            
         }
         
         // adRbva = RewardBasedVideoAd.Instance; //Reward
@@ -117,19 +116,20 @@ public class AdManager : MonoBehaviour
     private void EnableRewardAdElements(bool state)
     {
         buttonRewardAd.SetActive(state);
+        //tRewardAdDate.SetActive(!state);
     }
     
     public void TutorialRewardAdWORKS() //WORKS
     {
         //TUTORIAL REWARDS
         string adUnitId;
-#if UNITY_ANDROID
+        #if UNITY_ANDROID
         adUnitId = "ca-app-pub-3940256099942544/5224354917";
-#elif UNITY_IPHONE
+        #elif UNITY_IPHONE
                             adUnitId = "ca-app-pub-3940256099942544/1712485313";
-#else
+        #else
                             adUnitId = "unexpected_platform";
-#endif
+        #endif
 
         rewardedAd = new RewardedAd(adUnitId);
 
@@ -158,7 +158,6 @@ public class AdManager : MonoBehaviour
 
     private void RequestBanner()
     {
-
         // Create a 320x50 banner at the top of the screen.
         adBannerBottom = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
     }
@@ -240,16 +239,14 @@ public class AdManager : MonoBehaviour
         //Method to disable ads
         CheckIfPlayerHasRewardAdPremium(); //Used to disable ads - DISABLED
 
-        //Disable showing reward ad button
-        EnableRewardAdElements(false);
-
+        
         //Closes ad if open
         CloseBannerAd();
 
         gm.Save();
         mm.DisplayStats();
     }
-    public void CheckIfPlayerHasRewardAdPremium() //Called on start, when switching to canvas and on Reward
+    public void CheckIfPlayerHasRewardAdPremium() //Called on Reward Win
     {
         //if has bought premium
         //return true
@@ -259,6 +256,8 @@ public class AdManager : MonoBehaviour
 
         if (hours <= 72)
         {
+            EnableRewardAdElements(false); //Disable showing reward ad button
+
             //tRewardAdDate.SetActive(true); //Shows the text
             //TextMeshProUGUI tText = tRewardAdDate.GetComponent<TextMeshProUGUI>(); //Gets the text component from the text
             //tText.text = "AD-free ends in " + (72 - hours) + " hours."; //Sets the text from the component above
@@ -266,6 +265,24 @@ public class AdManager : MonoBehaviour
         else
         { 
             tRewardAdDate.SetActive(false);
+            buttonRewardAd.SetActive(true);
+        }
+    }
+    public bool CheckIfPlayerHasRewardAdPremiumBoolEdition() //Called on start for checking stuff
+    {
+        //if has bought premium
+        //return true
+
+        //if has been less than 3 days since last watched reward ad
+        int hours = (int)(DateTime.Now - dtLastTimeRewardAdWatched).TotalHours;
+
+        if (hours <= 72)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 

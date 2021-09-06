@@ -238,7 +238,7 @@ public class AdManager : MonoBehaviour
         //-
 
         //Method to disable ads
-        //CheckIfPlayerHasRewardAdPremium(); //Used to disable ads - DISABLED
+        CheckIfPlayerHasRewardAdPremium(); //Used to disable ads - DISABLED
 
         //Disable showing reward ad button
         EnableRewardAdElements(false);
@@ -249,24 +249,23 @@ public class AdManager : MonoBehaviour
         gm.Save();
         mm.DisplayStats();
     }
-    public bool CheckIfPlayerHasRewardAdPremium() //Called on start, when switching to canvas and on Reward
+    public void CheckIfPlayerHasRewardAdPremium() //Called on start, when switching to canvas and on Reward
     {
         //if has bought premium
         //return true
 
         //if has been less than 3 days since last watched reward ad
         int hours = (int)(DateTime.Now - dtLastTimeRewardAdWatched).TotalHours;
+
         if (hours <= 72)
         {
-            tRewardAdDate.SetActive(true);
-            TextMeshProUGUI tText = tRewardAdDate.GetComponent<TextMeshProUGUI>();
-            tText.text = "AD-free ends in " + (72 - hours) + " hours.";
-            return true;
+            //tRewardAdDate.SetActive(true); //Shows the text
+            //TextMeshProUGUI tText = tRewardAdDate.GetComponent<TextMeshProUGUI>(); //Gets the text component from the text
+            //tText.text = "AD-free ends in " + (72 - hours) + " hours."; //Sets the text from the component above
         }
         else
         { 
             tRewardAdDate.SetActive(false);
-            return false;
         }
     }
 

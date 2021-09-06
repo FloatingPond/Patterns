@@ -749,9 +749,18 @@ public class GameManager : MonoBehaviour
         return fGameTime;
     }
     
-    public void AddToButtonPressed()
+    public void AddToButtonPressed() //A correct button press being counted then saved
     {
-        buttonsPressed += 1;
+        buttonsPressed += 1; //Increments
+        //If enough button presses, achievements!
+        if (buttonsPressed == 1000) //Checks from 1000
+        {
+            achm.UnlockButtonAchivement(buttonsPressed);
+        }
+        if (buttonsPressed == 9000) //Checks from 1000
+        {
+            achm.UnlockButtonAchivement(buttonsPressed);
+        }
         //Saves to increase buttonPressed each time
         Save();
     }

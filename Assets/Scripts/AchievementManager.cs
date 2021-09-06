@@ -29,7 +29,9 @@ public class AchievementManager : MonoBehaviour
 
     string aIdClassMode12Score120Seconds = "CgkIq77noacSEAIQCQ"; //Achieve high score of 101 in Timed Round Mode
 
+    string aIdButtons1000 = "CgkIq77noacSEAIQCw"; //Achieve high score of 101 in Timed Round Mode
 
+    string aIdButtons9000 = "CgkIq77noacSEAIQDA"; //Achieve high score of 101 in Timed Round Mode
 
 
     public static PlayGamesPlatform platform;
@@ -215,6 +217,21 @@ public class AchievementManager : MonoBehaviour
             if (gm.GetGameStreak() == 7)
             {
                 //-
+            }
+        }
+    }
+
+    public void UnlockButtonAchivement(int buttons)
+    {
+        if (Social.Active.localUser.authenticated) //Ensure GPG is enabled an player logged in
+        {
+            if (buttons > 1000)
+            {
+                Social.ReportProgress(aIdButtons1000, 100f, success => { });
+            }
+            if (buttons > 9000)
+            {
+                Social.ReportProgress(aIdButtons9000, 100f, success => { });
             }
         }
     }

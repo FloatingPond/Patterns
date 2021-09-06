@@ -14,14 +14,22 @@ public class AchievementManager : MonoBehaviour
     string leaderboardID = "CgkIq77noacSEAIQAQ"; //Classic High Score
     //Achievements
     string aIdOneGamePlayed = "CgkIq77noacSEAIQAA"; //Play 1 of any Game mode
-    
+
+    string aIdAllGameModesPlayed = "CgkIq77noacSEAIQCA"; //Play all game modes
+
+    string aIdOneGameZeroScore = "CgkIq77noacSEAIQCg"; //Play 1 game and get a score of zero
+
     string aIdClassicMode12Score = "CgkIq77noacSEAIQAw"; //Achieve high score of 12 in Classic Mode
 
-    string aIdRandom8Score = "CgkIq77noacSEAIQBQ";
+    string aIdRandom8Score = "CgkIq77noacSEAIQBQ"; //Achieve high score of 8 in Random Mode
 
-    string aIdMatch5Score = "CgkIq77noacSEAIQBg";
+    string aIdMatch5Score = "CgkIq77noacSEAIQBg"; //Achieve high score of 5 in Match Mode
 
-    string aIdTimedRound101Score = "CgkIq77noacSEAIQBg";
+    string aIdTimedRound101Score = "CgkIq77noacSEAIQBg"; //Achieve high score of 101 in Timed Round Mode
+
+    string aIdClassMode12Score120Seconds = "CgkIq77noacSEAIQCQ"; //Achieve high score of 101 in Timed Round Mode
+
+
 
 
     public static PlayGamesPlatform platform;
@@ -120,12 +128,23 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
-    public void UnlockGameplayAchievement(string gamemode, int score, float stopwatch, GameManager gm)
+    public void UnlockGameplayAchievement(string gamemode, int score, float stopwatch, GameManager gm) //Called at end of a game
     {
         if (Social.Active.localUser.authenticated) //Ensure GPG is enabled an player logged in
         {
             //Unlock "Play one game of any game mode"
             Social.ReportProgress(aIdOneGamePlayed, 100f, success => { });
+
+            //Check if all games have been played by seeing if player has high score of 1 in all
+            if (CheckIfAllGamemodesHaveBeenPlayed(gm))
+            {
+                Social.ReportProgress(aIdAllGameModesPlayed, 100f, success => { });
+            }
+
+            if (score == 0)
+            {
+                Social.ReportProgress(aIdOneGameZeroScore, 100f, success => { });
+            }
 
             //Achieve high score of 12 in Classic
             if (gamemode == "classic" && score >= 12)
@@ -148,25 +167,39 @@ public class AchievementManager : MonoBehaviour
             {
                 Social.ReportProgress(aIdMatch5Score, 100f, success => { });
             }
+            //MORE ADVANCED ACHIEVEMENTS 
+
             //In timed rounds, get a minimum score of 100 without pressing a single wrong button
             if (gamemode == "timedround" && score >= 100 && gm.iTimedRoundWrongButtonsPressed == 0)
             {
                 //-
             }
+            if (gm.Highscore[0] > 0 && gm.Highscore[1] > 0 && gm.Highscore[2] > 0 && gm.Highscore[3] > 0)
+            {
+                Social.ReportProgress(aIdAllGameModesPlayed, 100f, success => { });
+            }
         }
     }
 
-    public void UnlockAchievementPlayAllGamemodes(GameManager gm) //Method especially for '//Play all game modes'
+    public void UnlockGameplayAchievementDuringActiveGame(string gamemode, int score, float stopwatch, GameManager gm) //Called after a round win during gameplay
     {
         if (Social.Active.localUser.authenticated) //Ensure GPG is enabled an player logged in
         {
-            //If all 4 games have a high score higher than 1, the player has most likely played all the games
-            //They'll definitely be players who just press play and exit, but they'll need a score of at least 1Get
-            if (gm.Highscore[0] > 0 && gm.Highscore[1] > 0 && gm.Highscore[2] > 0 && gm.Highscore[3] > 0)
+            //In Classic, get a score of 13 in under x seconds
+            if (gamemode == "classic" && score >= 13 && stopwatch <= 120)
             {
-                //-
+                Social.ReportProgress(aIdClassMode12Score120Seconds, 100f, success => { });
             }
         }
+    }
+
+    private bool CheckIfAllGamemodesHaveBeenPlayed(GameManager gm) //Called within the UnlockGameplayAchievement method
+    {
+        if (gm.Highscore[0] > 0 && gm.Highscore[1] > 0 && gm.Highscore[2] > 0 && gm.Highscore[3] > 0)
+        {
+            return true;
+        }
+        return false;
     }
 
     public void UnlockAchievementStreak(GameManager gm) //Method used for any and all streak achievements

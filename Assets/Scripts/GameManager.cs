@@ -502,6 +502,9 @@ public class GameManager : MonoBehaviour
             MatchPattern();
         if (currentGamemode == gamemodeNames[3])
             TimedRoundCallNextNumber();
+        //Call Achievement Checker for achievements that have things such as timers
+        //Called here because after next round set up, numbers are most active
+        achm.UnlockGameplayAchievementDuringActiveGame(currentGamemode, iPatternNumbers - 1, fGameStopwatch, this);
     }
 
     //Called when the gamemode criteria has been failed
@@ -540,8 +543,8 @@ public class GameManager : MonoBehaviour
             button.GetComponent<Image>().color = Color.white;
         }
     }
-    //Called when a button is pressed
-    public void ButtonPressed(int number)
+    
+    public void ButtonPressed(int number) //Called when a button is pressed
     {
         if (!isGameButtonsDisabled)
         {
@@ -556,8 +559,8 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    //USED FOR MATCH GAME MODE
-    void CheckMatchAnswer(int number)
+    
+    void CheckMatchAnswer(int number) //USED FOR MATCH GAME MODE
     {
         AddToButtonPressed();
         //This corrects the number comparison due to there being a difference in the keypad shown to the player and the array

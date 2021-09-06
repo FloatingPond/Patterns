@@ -14,8 +14,16 @@ public class AchievementManager : MonoBehaviour
     string leaderboardID = "CgkIq77noacSEAIQAQ"; //Classic High Score
     //Achievements
     string aIdOneGamePlayed = "CgkIq77noacSEAIQAA"; //Play 1 of any Game mode
-    //
+    
     string aIdClassicMode12Score = "CgkIq77noacSEAIQAw"; //Achieve high score of 12 in Classic Mode
+
+    string aIdRandom8Score = "CgkIq77noacSEAIQBQ";
+
+    string aIdMatch5Score = "CgkIq77noacSEAIQBg";
+
+    string aIdTimedRound101Score = "CgkIq77noacSEAIQBg";
+
+
     public static PlayGamesPlatform platform;
 
     public GameObject bLogIn; //Disabled if game actually turns on
@@ -125,20 +133,20 @@ public class AchievementManager : MonoBehaviour
                 //-
                 Social.ReportProgress(aIdClassicMode12Score, 100f, success => { });
             }
-            //Achieve high score of 7 in random game
-            if (gamemode == "random" && score >= 7)
+            //Achieve high score of 8 in random game
+            if (gamemode == "random" && score >= 8)
             {
-                //-
+                Social.ReportProgress(aIdRandom8Score, 100f, success => { });
             }
-            //Achieve score of 90 in Timed Round
-            if (gamemode == "timedround" && score >= 90)
+            //Achieve score of 101 in Timed Round
+            if (gamemode == "timedround" && score >= 101)
             {
-                //-
+                Social.ReportProgress(aIdTimedRound101Score, 100f, success => { });
             }
             //Achieve high score of 5 in Match
             if (gamemode == "match" && score >= 5)
             {
-                //-
+                Social.ReportProgress(aIdMatch5Score, 100f, success => { });
             }
             //In timed rounds, get a minimum score of 100 without pressing a single wrong button
             if (gamemode == "timedround" && score >= 100 && gm.iTimedRoundWrongButtonsPressed == 0)

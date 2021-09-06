@@ -24,9 +24,16 @@
 
 public static class GPGSIds
 {
-        public const string achievement_achieve_high_score_of_12_in_classic_mode = "CgkIq77noacSEAIQAw"; // <GPGSID>
+        public const string achievement_new_beginnings = "CgkIq77noacSEAIQBA"; // <GPGSID>
+        public const string achievement_lose_a_game_without_getting_a_point = "CgkIq77noacSEAIQCg"; // <GPGSID>
+        public const string achievement_start_game = "CgkIq77noacSEAIQAA"; // <GPGSID>
+        public const string achievement_achieve_high_score_of_5_in_match = "CgkIq77noacSEAIQBw"; // <GPGSID>
         public const string leaderboard_classic_high_score = "CgkIq77noacSEAIQAQ"; // <GPGSID>
-        public const string achievement_play_1_of_any_game_mode = "CgkIq77noacSEAIQAA"; // <GPGSID>
+        public const string achievement_achieve_high_score_of_101_in_timed_round_mode = "CgkIq77noacSEAIQBg"; // <GPGSID>
+        public const string achievement_achieve_high_score_of_12_in_classic_mode = "CgkIq77noacSEAIQAw"; // <GPGSID>
+        public const string achievement_play_all_the_game_modes = "CgkIq77noacSEAIQCA"; // <GPGSID>
+        public const string achievement_achieve_a_score_of_13_in_classic_mode_in_under_120_seconds = "CgkIq77noacSEAIQCQ"; // <GPGSID>
+        public const string achievement_achieve_high_score_of_8_in_random_mode = "CgkIq77noacSEAIQBQ"; // <GPGSID>
 
 }
 

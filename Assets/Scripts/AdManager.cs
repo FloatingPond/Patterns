@@ -231,15 +231,14 @@ public class AdManager : MonoBehaviour
         MonoBehaviour.print("HandleRewardedAdRewarded event received for " + amount.ToString() + " " + type);
         mm.test += 1;
         adsRewardsWatched++;
-
-
+        
         dtLastTimeRewardAdWatched = DateTime.Now; //Sets last time user watched reward ad to now
         
         //If we make it - set the "Watched 1 reward ad" achievement to acquired
         //-
 
         //Method to disable ads
-        CheckIfPlayerHasRewardAdPremium(); //Used to disable ads
+        //CheckIfPlayerHasRewardAdPremium(); //Used to disable ads - DISABLED
 
         //Disable showing reward ad button
         EnableRewardAdElements(false);
@@ -254,6 +253,7 @@ public class AdManager : MonoBehaviour
     {
         //if has bought premium
         //return true
+
         //if has been less than 3 days since last watched reward ad
         int hours = (int)(DateTime.Now - dtLastTimeRewardAdWatched).TotalHours;
         if (hours <= 72)

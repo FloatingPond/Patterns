@@ -31,7 +31,7 @@ public class MessageManager : MonoBehaviour
     }
     public void DisplayWelcomeMessage()
     {
-        PopulateButton("WELCOME", "Welcome first-timer. Time to waste your life.", "Letz g0");
+        PopulateButton("WELCOME", "Welcome to Patterns. Choose a game mode.", "Alright!");
     }
 
     public void DisplayDailyMessageAbleToGetStreak(string title, string text, string button)

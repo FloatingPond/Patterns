@@ -108,23 +108,7 @@ public class AdManager : MonoBehaviour
         adBannerBottom.LoadAd(requestForBanner);
 
     }
-
-    public bool CheckIfPlayerHasRewardAdPremium() //Called on start, when switching to canvas and on Reward
-    {
-        //if has bought premium
-        //return true
-        //if has been less than 3 days since last watched reward ad
-        int hours = (int)(DateTime.Now - dtLastTimeRewardAdWatched).TotalHours;
-        if (hours <= 72)
-        {
-            tRewardAdDate.SetActive(true);
-            TextMeshProUGUI tText = tRewardAdDate.GetComponent<TextMeshProUGUI>();
-            tText.text = "AD-free ends in " + (72 - hours) + " hours.";
-            return true;
-        }
-        tRewardAdDate.SetActive(false);
-        return false;
-    }
+    
     public bool CheckIfPlayerHasPremium()
     {
         return false;
@@ -230,7 +214,14 @@ public class AdManager : MonoBehaviour
     public void CloseBannerAd()
     {
         //StopAllCoroutines(); //Not sure why this was here
-        adBannerBottom.Destroy();
+        if (adBannerBottom != null)
+        { 
+            adBannerBottom.Destroy();
+        }
+        else
+        {
+            Debug.LogError("Banner ad is trying to be destroyed but does not exist!");
+        }
     }
 
     public void HandleUserEarnedReward(object sender, Reward args) //Player has completed a Rewards Ad
@@ -241,15 +232,42 @@ public class AdManager : MonoBehaviour
         mm.test += 1;
         adsRewardsWatched++;
 
-        dtLastTimeRewardAdWatched = DateTime.Now; //Sets last time user watched reward ad to now
-        //If we make it - set the "Watched 1 reward ad" achievement to acquired
 
-        //CkeckIfPlayerHasRewardAdPremium(); //Used to disable ads
-        //EnableRewardAdElements(!CheckIfPlayerHasRewardAdPremium());
+        dtLastTimeRewardAdWatched = DateTime.Now; //Sets last time user watched reward ad to now
+        
+        //If we make it - set the "Watched 1 reward ad" achievement to acquired
+        //-
+
+        //Method to disable ads
+        CheckIfPlayerHasRewardAdPremium(); //Used to disable ads
+
+        //Disable showing reward ad button
+        EnableRewardAdElements(false);
+
+        //Closes ad if open
         CloseBannerAd();
 
         gm.Save();
         mm.DisplayStats();
+    }
+    public bool CheckIfPlayerHasRewardAdPremium() //Called on start, when switching to canvas and on Reward
+    {
+        //if has bought premium
+        //return true
+        //if has been less than 3 days since last watched reward ad
+        int hours = (int)(DateTime.Now - dtLastTimeRewardAdWatched).TotalHours;
+        if (hours <= 72)
+        {
+            tRewardAdDate.SetActive(true);
+            TextMeshProUGUI tText = tRewardAdDate.GetComponent<TextMeshProUGUI>();
+            tText.text = "AD-free ends in " + (72 - hours) + " hours.";
+            return true;
+        }
+        else
+        { 
+            tRewardAdDate.SetActive(false);
+            return false;
+        }
     }
 
     public void HandleOnRewardAdLoaded(object sender, EventArgs args)

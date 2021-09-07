@@ -35,6 +35,8 @@ public class AchievementManager : MonoBehaviour
 
     string aIdStreak2Days = "CgkIq77noacSEAIQDQ"; //It's coming home
 
+    string aIdStreak7Days = "CgkIq77noacSEAIQDg"; //A week of Patterns
+
     public static PlayGamesPlatform platform;
 
     public GameObject bLogIn; //Disabled if game actually turns on
@@ -208,7 +210,7 @@ public class AchievementManager : MonoBehaviour
             //Get a streak for 7 days
             if (gm.GetGameStreak() == 7)
             {
-                //-
+                Social.ReportProgress(aIdStreak7Days, 100f, success => { });
             }
         }
     }

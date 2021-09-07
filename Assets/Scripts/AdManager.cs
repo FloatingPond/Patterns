@@ -316,6 +316,14 @@ public class AdManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         tRewardAdDate.SetActive(showState);
+        
+        if (showState == true)
+        {
+            int hours2 = (int)(DateTime.Now - dtLastTimeRewardAdWatched).TotalHours;
+            //TextMeshProUGUI tText = tRewardAdDate.GetComponent<TextMeshProUGUI>(); //Gets the text component from the text
+            //tText.text = "AD-free ends in " + (72 - hours2) + " hours."; //Sets the text from the component above
+            tRewardAdDate.GetComponent<TextMeshProUGUI>().text = "AD-free ends in " + (72 - hours2) + " hours."; //Sets the text from the component above
+        }
     }
 
     

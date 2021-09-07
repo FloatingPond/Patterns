@@ -75,7 +75,7 @@ public class AdManager : MonoBehaviour
         requestForBanner = new AdRequest.Builder().Build();
         MobileAds.Initialize(initStatus => { });
 
-        if (CheckIfPlayerHasRewardAdPremiumBoolEdition())
+        if (CheckIfPlayerHasRewardAdPremiumBoolEdition()) //Returns true if the player has premium via reward ad
         {
             EnableRewardAdElements(false);
         }
@@ -116,7 +116,7 @@ public class AdManager : MonoBehaviour
     private void EnableRewardAdElements(bool state)
     {
         buttonRewardAd.SetActive(state);
-        //tRewardAdDate.SetActive(!state);
+        tRewardAdDate.SetActive(!state);
     }
     
     public void TutorialRewardAdWORKS() //WORKS
@@ -238,7 +238,6 @@ public class AdManager : MonoBehaviour
 
         //Method to disable ads
         CheckIfPlayerHasRewardAdPremium(); //Used to disable ads - DISABLED
-
         
         //Closes ad if open
         CloseBannerAd();
@@ -258,7 +257,7 @@ public class AdManager : MonoBehaviour
         {
             EnableRewardAdElements(false); //Disable showing reward ad button
 
-            //tRewardAdDate.SetActive(true); //Shows the text
+            tRewardAdDate.SetActive(true); //Shows the text
             //TextMeshProUGUI tText = tRewardAdDate.GetComponent<TextMeshProUGUI>(); //Gets the text component from the text
             //tText.text = "AD-free ends in " + (72 - hours) + " hours."; //Sets the text from the component above
         }
@@ -315,6 +314,8 @@ public class AdManager : MonoBehaviour
     {
         adsRewardsWatched = number;
     }
+
+    
 
 
 

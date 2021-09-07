@@ -23,7 +23,7 @@ public class AchievementManager : MonoBehaviour
 
     string aIdRandom8Score = "CgkIq77noacSEAIQBQ"; //Achieve high score of 8 in Random Mode
 
-    string aIdMatch5Score = "CgkIq77noacSEAIQBg"; //Achieve high score of 5 in Match Mode
+    string aIdMatch5Score = "CgkIq77noacSEAIQBw"; //Achieve high score of 5 in Match Mode //"I have no matches."
 
     string aIdTimedRound101Score = "CgkIq77noacSEAIQBg"; //Achieve high score of 101 in Timed Round Mode
 
@@ -113,7 +113,7 @@ public class AchievementManager : MonoBehaviour
         });
     }
 
-    public void AddScoreToLeaderboard()
+    public void AddScoreToLeaderboard() //Currently not used or implemented in main build
     {
         if (Social.Active.localUser.authenticated)
         {
@@ -122,7 +122,7 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
-    public void UnlockAchievement() //Basic from tutorial
+    public void UnlockAchievement() //Basic from tutorial and not used in main build
     {
         if (Social.Active.localUser.authenticated)
         {
@@ -169,8 +169,8 @@ public class AchievementManager : MonoBehaviour
             {
                 Social.ReportProgress(aIdMatch5Score, 100f, success => { });
             }
+            
             //MORE ADVANCED ACHIEVEMENTS 
-
             //In timed rounds, get a minimum score of 100 without pressing a single wrong button
             if (gamemode == "timedround" && score >= 100 && gm.iTimedRoundWrongButtonsPressed == 0)
             {

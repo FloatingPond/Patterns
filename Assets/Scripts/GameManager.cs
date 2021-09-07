@@ -335,7 +335,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(coroutine);
 
     }
-
     void SetMatchButtons()  //Called from Game 3
     {
         bool[] buttonIsSet = new bool[9];
@@ -528,7 +527,6 @@ public class GameManager : MonoBehaviour
 
         //Check achievements here
         achm.UnlockGameplayAchievement(currentGamemode, iPatternNumbers - 1, fGameStopwatch, this);
-        //Could pass in the gamemode, the score and the stopwatch
 
         //Enable Play Again and Return buttons
         CheckGameStreak(false);

@@ -853,6 +853,7 @@ public class GameManager : MonoBehaviour
         gameStreak++;
         dateLastAcquiredStreak = DateTime.Now;
         ChangeGameStreakHighscore();
+        achm.UnlockAchievementStreak(this);
     }
     
     public void ChangeGameStreakHighscore() //Called after gameStreak changes

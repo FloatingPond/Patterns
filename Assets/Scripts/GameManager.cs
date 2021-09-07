@@ -751,16 +751,23 @@ public class GameManager : MonoBehaviour
     {
         buttonsPressed += 1; //Increments
         //If enough button presses, achievements!
-        if (buttonsPressed == 1000) //Checks from 1000
+        if (buttonsPressed >= 1000) //Checks from 1000
         {
             achm.UnlockButtonAchivement(buttonsPressed);
         }
-        if (buttonsPressed == 9000) //Checks from 1000
+        if (buttonsPressed >= 9000) //Checks from 1000
         {
             achm.UnlockButtonAchivement(buttonsPressed);
         }
         //Saves to increase buttonPressed each time
         Save();
+    }
+    public void DebugAdd50ButtonPresses()
+    {
+        for (int i = 0; i < 50; i++)
+        {
+            AddToButtonPressed();
+        }
     }
 
     void CheckHighscore() //Used midgame to check whether a highscore has been exceeded

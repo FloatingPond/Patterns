@@ -17,9 +17,6 @@ public class AdManager : MonoBehaviour
     //Reward
     private string adUnitId2 = "ca-app-pub-3940256099942544/5224354917";
     
-    
-
-    
     //Reward Ad stuff
     RewardedAd rewardedAd;
     private RewardBasedVideoAd adRbva;
@@ -116,7 +113,7 @@ public class AdManager : MonoBehaviour
     private void EnableRewardAdElements(bool state)
     {
         buttonRewardAd.SetActive(state);
-        tRewardAdDate.SetActive(!state);
+        StartCoroutine(DelayEnableRewardTextEndDate(!state));
     }
     
     public void TutorialRewardAdWORKS() //WORKS
@@ -257,7 +254,7 @@ public class AdManager : MonoBehaviour
         {
             EnableRewardAdElements(false); //Disable showing reward ad button
 
-            tRewardAdDate.SetActive(true); //Shows the text
+            //tRewardAdDate.SetActive(true); //Shows the text
             //TextMeshProUGUI tText = tRewardAdDate.GetComponent<TextMeshProUGUI>(); //Gets the text component from the text
             //tText.text = "AD-free ends in " + (72 - hours) + " hours."; //Sets the text from the component above
         }
@@ -313,6 +310,12 @@ public class AdManager : MonoBehaviour
     public void SetadsRewardsWatched(int number)
     {
         adsRewardsWatched = number;
+    }
+
+    IEnumerator DelayEnableRewardTextEndDate(bool showState)
+    {
+        yield return new WaitForSeconds(2f);
+        tRewardAdDate.SetActive(showState);
     }
 
     

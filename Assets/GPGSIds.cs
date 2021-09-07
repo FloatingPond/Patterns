@@ -26,6 +26,7 @@ public static class GPGSIds
 {
         public const string achievement_i_have_no_matches = "CgkIq77noacSEAIQBw"; // <GPGSID>
         public const string achievement_9000_great_taps = "CgkIq77noacSEAIQDA"; // <GPGSID>
+        public const string achievement_a_week_of_patterns = "CgkIq77noacSEAIQDg"; // <GPGSID>
         public const string achievement_you_are_speed = "CgkIq77noacSEAIQCQ"; // <GPGSID>
         public const string achievement_its_coming_home = "CgkIq77noacSEAIQDQ"; // <GPGSID>
         public const string achievement_so_many_dogs = "CgkIq77noacSEAIQBg"; // <GPGSID>

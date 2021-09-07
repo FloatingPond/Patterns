@@ -27,11 +27,11 @@ public class AchievementManager : MonoBehaviour
 
     string aIdTimedRound101Score = "CgkIq77noacSEAIQBg"; //Achieve high score of 101 in Timed Round Mode
 
-    string aIdClassMode12Score120Seconds = "CgkIq77noacSEAIQCQ"; //Achieve high score of 101 in Timed Round Mode
+    string aIdClassMode13Score120Seconds = "CgkIq77noacSEAIQCQ"; //Achieve high score of 13 in Classic in under 120 seconds
 
-    string aIdButtons1000 = "CgkIq77noacSEAIQCw"; //Achieve high score of 101 in Timed Round Mode
+    string aIdButtons1000 = "CgkIq77noacSEAIQCw"; //Press button 1000 times
 
-    string aIdButtons9000 = "CgkIq77noacSEAIQDA"; //Achieve high score of 101 in Timed Round Mode
+    string aIdButtons9000 = "CgkIq77noacSEAIQDA"; //Press button 9000 times
 
     string aIdStreak2Days = "CgkIq77noacSEAIQDQ"; //It's coming home
 
@@ -193,7 +193,7 @@ public class AchievementManager : MonoBehaviour
             //In Classic, get a score of 13 in under x seconds
             if (gamemode == "classic" && score >= 13 && stopwatch <= 120)
             {
-                Social.ReportProgress(aIdClassMode12Score120Seconds, 100f, success => { });
+                Social.ReportProgress(aIdClassMode13Score120Seconds, 100f, success => { });
             }
         }
     }

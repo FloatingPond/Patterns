@@ -33,6 +33,7 @@ public class AchievementManager : MonoBehaviour
 
     string aIdButtons9000 = "CgkIq77noacSEAIQDA"; //Achieve high score of 101 in Timed Round Mode
 
+    string aIdStreak2Days = "CgkIq77noacSEAIQDQ"; //It's coming home
 
     public static PlayGamesPlatform platform;
 
@@ -195,23 +196,14 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
-    private bool CheckIfAllGamemodesHaveBeenPlayed(GameManager gm) //Called within the UnlockGameplayAchievement method
-    {
-        if (gm.Highscore[0] > 0 && gm.Highscore[1] > 0 && gm.Highscore[2] > 0 && gm.Highscore[3] > 0)
-        {
-            return true;
-        }
-        return false;
-    }
-
     public void UnlockAchievementStreak(GameManager gm) //Method used for any and all streak achievements
     {
         if (Social.Active.localUser.authenticated) //Ensure GPG is enabled an player logged in
         {
             //Get a Steak for 2 days "You returned!"
-            if (gm.GetGameStreak() == 2)
+            if (gm.GetGameStreak() >= 2)
             {
-                //-
+                Social.ReportProgress(aIdStreak2Days, 100f, success => { });
             }
             //Get a streak for 7 days
             if (gm.GetGameStreak() == 7)
@@ -221,6 +213,16 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
+    private bool CheckIfAllGamemodesHaveBeenPlayed(GameManager gm) //Called within the UnlockGameplayAchievement method
+    {
+        if (gm.Highscore[0] > 0 && gm.Highscore[1] > 0 && gm.Highscore[2] > 0 && gm.Highscore[3] > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    
     public void UnlockButtonAchivement(int buttons)
     {
         if (Social.Active.localUser.authenticated) //Ensure GPG is enabled an player logged in

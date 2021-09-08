@@ -13,6 +13,8 @@ public class AchievementManager : MonoBehaviour
 
     string leaderboardID = "CgkIq77noacSEAIQAQ"; //Classic High Score
     //Achievements
+    string aIdFirstTimeOpen = "CgkIq77noacSEAIQAA"; //Start Game
+
     string aIdOneGamePlayed = "CgkIq77noacSEAIQAA"; //Play 1 of any Game mode
 
     string aIdAllGameModesPlayed = "CgkIq77noacSEAIQCA"; //Play all game modes
@@ -53,8 +55,7 @@ public class AchievementManager : MonoBehaviour
         }
 
         AuthenticateGoogleV3();
-
-        //UnlockAchievement();
+        
     }
     public void AuthenticateGoogleV2()
     {
@@ -88,6 +89,7 @@ public class AchievementManager : MonoBehaviour
                     textStatus.text = text1 + "Success";
                     Debug.Log("Logged in successfully");
                     bLogIn.SetActive(false);
+                    UnlockAchievement(); 
                     break;
                 default:
                     textStatus.text = text1 + "Failed";
@@ -107,11 +109,12 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
-    public void UnlockAchievement() //Basic from tutorial and not used in main build
+    public void UnlockAchievement() //Basic from tutorial but used for first time open achievement 'Start Game'
     {
+        //
         if (Social.Active.localUser.authenticated)
         {
-            Social.ReportProgress(aIdOneGamePlayed, 100f, success => { });
+            Social.ReportProgress(aIdFirstTimeOpen, 100f, success => { });
         }
     }
 

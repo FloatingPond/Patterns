@@ -56,24 +56,6 @@ public class AchievementManager : MonoBehaviour
 
         //UnlockAchievement();
     }
-
-    private void AuthenticateGoogleV1()
-    {
-        Social.Active.localUser.Authenticate(success =>
-        {
-            if (success)
-            {
-                textStatus.text = "Success";
-                Debug.Log("Logged in successfully");
-            }
-            else
-            {
-                textStatus.text = "Failed";
-                Debug.Log("Login Failed");
-            }
-        });
-    }
-
     public void AuthenticateGoogleV2()
     {
         String text1 = textStatus.text;
@@ -224,7 +206,6 @@ public class AchievementManager : MonoBehaviour
         return false;
     }
 
-    
     public void UnlockButtonAchivement(int buttons)
     {
         if (Social.Active.localUser.authenticated) //Ensure GPG is enabled an player logged in

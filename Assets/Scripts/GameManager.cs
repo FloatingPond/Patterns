@@ -769,6 +769,11 @@ public class GameManager : MonoBehaviour
             AddToButtonPressed();
         }
     }
+    public void AddToGameTime()
+    {
+        fGameTime += 600;
+        Save();
+    }
 
     void CheckHighscore() //Used midgame to check whether a highscore has been exceeded
     {

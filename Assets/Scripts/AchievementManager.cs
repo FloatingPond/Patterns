@@ -25,13 +25,15 @@ public class AchievementManager : MonoBehaviour
 
     string aIdRandom8Score = "CgkIq77noacSEAIQBQ"; //Achieve high score of 8 in Random Mode
 
-    string aIdMatch5Score = "CgkIq77noacSEAIQBw"; //Achieve high score of 7 in Match Mode //"I have no matches."
+    string aIdMatch7Score = "CgkIq77noacSEAIQBw"; //Achieve high score of 7 in Match Mode //"I have no matches."
 
     string aIdTimedRound101Score = "CgkIq77noacSEAIQBg"; //Achieve high score of 101 in Timed Round Mode
 
     string aIdClassMode13Score120Seconds = "CgkIq77noacSEAIQCQ"; //Achieve high score of 13 in Classic in under 120 seconds
 
-    string aIdTimedRound120NoError = "CgkIq77noacSEAIQDw"; //120 in Match no errors
+    string aIdTimedRound120NoError = "CgkIq77noacSEAIQDw"; //120 in Timed Round no errors
+
+    string aIdMatch20Score = "CgkIq77noacSEAIQEA";
 
     string aIdButtons1000 = "CgkIq77noacSEAIQCw"; //Press button 1000 times
 
@@ -157,15 +159,21 @@ public class AchievementManager : MonoBehaviour
             //Achieve high score of 5 in Match
             if (gamemode == "match" && score >= 7)
             {
-                Social.ReportProgress(aIdMatch5Score, 100f, success => { });
+                Social.ReportProgress(aIdMatch7Score, 100f, success => { });
             }
             
             //MORE ADVANCED ACHIEVEMENTS 
-            //In timed rounds, get a minimum score of 100 without pressing a single wrong button
-            if (gamemode == "timedround" && score >= 100 && gm.iTimedRoundWrongButtonsPressed == 0)
+            //In timed rounds, get a minimum score of 120 without pressing a single wrong button
+            if (gamemode == "timedround" && score >= 120 && gm.iTimedRoundWrongButtonsPressed == 0)
             {
-                //-
+                Social.ReportProgress(aIdTimedRound120NoError, 100f, success => { });
             }
+            //In Matches, get a high score of 20
+            if (gamemode == "match" && score >= 20)
+            {
+                Social.ReportProgress(aIdMatch20Score, 100f, success => { });
+            }
+            //All game modes played
             if (gm.Highscore[0] > 0 && gm.Highscore[1] > 0 && gm.Highscore[2] > 0 && gm.Highscore[3] > 0)
             {
                 Social.ReportProgress(aIdAllGameModesPlayed, 100f, success => { });

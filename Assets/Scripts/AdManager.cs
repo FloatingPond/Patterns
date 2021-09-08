@@ -10,6 +10,9 @@ using TMPro;
 
 public class AdManager : MonoBehaviour
 {
+    //Reward Ad Constant
+    private const float RewardAdNoAdsHours = 48;
+
     //Banner
     private BannerView adBannerBottom;
     private string adUnitId = "ca-app-pub-3940256099942544/6300978111";
@@ -250,7 +253,7 @@ public class AdManager : MonoBehaviour
         //if has been less than 3 days since last watched reward ad
         int hours = (int)(DateTime.Now - dtLastTimeRewardAdWatched).TotalHours;
 
-        if (hours <= 72)
+        if (hours <= RewardAdNoAdsHours)
         {
             EnableRewardAdElements(false); //Disable showing reward ad button
 
@@ -322,7 +325,7 @@ public class AdManager : MonoBehaviour
             int hours2 = (int)(DateTime.Now - dtLastTimeRewardAdWatched).TotalHours;
             //TextMeshProUGUI tText = tRewardAdDate.GetComponent<TextMeshProUGUI>(); //Gets the text component from the text
             //tText.text = "AD-free ends in " + (72 - hours2) + " hours."; //Sets the text from the component above
-            tRewardAdDate.GetComponent<TextMeshProUGUI>().text = "AD-free ends in " + (72 - hours2) + " hours."; //Sets the text from the component above
+            tRewardAdDate.GetComponent<TextMeshProUGUI>().text = "AD-free ends in " + (RewardAdNoAdsHours - hours2) + " hours."; //Sets the text from the component above
         }
     }
 

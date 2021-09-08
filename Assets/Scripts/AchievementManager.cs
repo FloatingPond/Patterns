@@ -13,6 +13,8 @@ public class AchievementManager : MonoBehaviour
 
     string leaderboardID = "CgkIq77noacSEAIQAQ"; //Classic High Score
     //Achievements
+    string aIdFirstTimeOpen = "CgkIq77noacSEAIQAA"; //Start Game
+
     string aIdOneGamePlayed = "CgkIq77noacSEAIQAA"; //Play 1 of any Game mode
 
     string aIdAllGameModesPlayed = "CgkIq77noacSEAIQCA"; //Play all game modes
@@ -23,11 +25,15 @@ public class AchievementManager : MonoBehaviour
 
     string aIdRandom8Score = "CgkIq77noacSEAIQBQ"; //Achieve high score of 8 in Random Mode
 
-    string aIdMatch5Score = "CgkIq77noacSEAIQBw"; //Achieve high score of 5 in Match Mode //"I have no matches."
+    string aIdMatch7Score = "CgkIq77noacSEAIQBw"; //Achieve high score of 7 in Match Mode //"I have no matches."
 
     string aIdTimedRound101Score = "CgkIq77noacSEAIQBg"; //Achieve high score of 101 in Timed Round Mode
 
     string aIdClassMode13Score120Seconds = "CgkIq77noacSEAIQCQ"; //Achieve high score of 13 in Classic in under 120 seconds
+
+    string aIdTimedRound120NoError = "CgkIq77noacSEAIQDw"; //120 in Timed Round no errors
+
+    string aIdMatch20Score = "CgkIq77noacSEAIQEA";
 
     string aIdButtons1000 = "CgkIq77noacSEAIQCw"; //Press button 1000 times
 
@@ -53,27 +59,8 @@ public class AchievementManager : MonoBehaviour
         }
 
         AuthenticateGoogleV3();
-
-        //UnlockAchievement();
+        
     }
-
-    private void AuthenticateGoogleV1()
-    {
-        Social.Active.localUser.Authenticate(success =>
-        {
-            if (success)
-            {
-                textStatus.text = "Success";
-                Debug.Log("Logged in successfully");
-            }
-            else
-            {
-                textStatus.text = "Failed";
-                Debug.Log("Login Failed");
-            }
-        });
-    }
-
     public void AuthenticateGoogleV2()
     {
         String text1 = textStatus.text;
@@ -106,6 +93,7 @@ public class AchievementManager : MonoBehaviour
                     textStatus.text = text1 + "Success";
                     Debug.Log("Logged in successfully");
                     bLogIn.SetActive(false);
+                    UnlockAchievement(); 
                     break;
                 default:
                     textStatus.text = text1 + "Failed";
@@ -125,11 +113,12 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
-    public void UnlockAchievement() //Basic from tutorial and not used in main build
+    public void UnlockAchievement() //Basic from tutorial but used for first time open achievement 'Start Game'
     {
+        //
         if (Social.Active.localUser.authenticated)
         {
-            Social.ReportProgress(aIdOneGamePlayed, 100f, success => { });
+            Social.ReportProgress(aIdFirstTimeOpen, 100f, success => { });
         }
     }
 
@@ -168,17 +157,23 @@ public class AchievementManager : MonoBehaviour
                 Social.ReportProgress(aIdTimedRound101Score, 100f, success => { });
             }
             //Achieve high score of 5 in Match
-            if (gamemode == "match" && score >= 5)
+            if (gamemode == "match" && score >= 7)
             {
-                Social.ReportProgress(aIdMatch5Score, 100f, success => { });
+                Social.ReportProgress(aIdMatch7Score, 100f, success => { });
             }
             
             //MORE ADVANCED ACHIEVEMENTS 
-            //In timed rounds, get a minimum score of 100 without pressing a single wrong button
-            if (gamemode == "timedround" && score >= 100 && gm.iTimedRoundWrongButtonsPressed == 0)
+            //In timed rounds, get a minimum score of 120 without pressing a single wrong button
+            if (gamemode == "timedround" && score >= 120 && gm.iTimedRoundWrongButtonsPressed == 0)
             {
-                //-
+                Social.ReportProgress(aIdTimedRound120NoError, 100f, success => { });
             }
+            //In Matches, get a high score of 20
+            if (gamemode == "match" && score >= 20)
+            {
+                Social.ReportProgress(aIdMatch20Score, 100f, success => { });
+            }
+            //All game modes played
             if (gm.Highscore[0] > 0 && gm.Highscore[1] > 0 && gm.Highscore[2] > 0 && gm.Highscore[3] > 0)
             {
                 Social.ReportProgress(aIdAllGameModesPlayed, 100f, success => { });
@@ -224,7 +219,6 @@ public class AchievementManager : MonoBehaviour
         return false;
     }
 
-    
     public void UnlockButtonAchivement(int buttons)
     {
         if (Social.Active.localUser.authenticated) //Ensure GPG is enabled an player logged in

@@ -878,7 +878,10 @@ public class GameManager : MonoBehaviour
         String dtString = dLastAcquired.ToString("dd-MM-yyyy");
         if (dtString.Contains("01-01-0001")) //First time playing - usually when player opens and closes game without getting streak
         {
-            mm.DisplayWelcomeMessage();
+            if (showMessages) //Game just opened
+            {
+                mm.DisplayWelcomeMessage();
+            }
         }
 
         else if (days > 2) //Too late

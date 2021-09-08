@@ -323,10 +323,13 @@ public class MainMenu : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadGame();
         if (data != null)
-        { 
-            float hours = Mathf.FloorToInt((data.secondsPlayed / 60) / 60);
-            float minutes = Mathf.FloorToInt(data.secondsPlayed / 60);
-            float seconds = Mathf.FloorToInt(data.secondsPlayed % 60);
+        {
+            float tempSecondsPlayed = data.secondsPlayed;
+            float hours = Mathf.FloorToInt((tempSecondsPlayed / 60) / 60);
+            tempSecondsPlayed = tempSecondsPlayed - (3600 * hours);
+            float minutes = Mathf.FloorToInt(tempSecondsPlayed / 60);
+            tempSecondsPlayed = tempSecondsPlayed - (60 * minutes);
+            float seconds = Mathf.FloorToInt(tempSecondsPlayed % 60);
 
             tTimePlayed.GetComponent<TextMeshProUGUI>().text = "Time played: " + string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
             tButtonsPressed.GetComponent<TextMeshProUGUI>().text = "Buttons Pressed: " + data.buttonsPressed.ToString();

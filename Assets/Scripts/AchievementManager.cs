@@ -13,35 +13,38 @@ public class AchievementManager : MonoBehaviour
 
     string leaderboardID = "CgkIq77noacSEAIQAQ"; //Classic High Score
     //Achievements
+    //1
     string aIdFirstTimeOpen = "CgkIq77noacSEAIQAA"; //Start Game
-
+    //2
     string aIdOneGamePlayed = "CgkIq77noacSEAIQAA"; //Play 1 of any Game mode
-
+    //3
     string aIdAllGameModesPlayed = "CgkIq77noacSEAIQCA"; //Play all game modes
-
+    //4
     string aIdOneGameZeroScore = "CgkIq77noacSEAIQCg"; //Play 1 game and get a score of zero
-
+    //5
     string aIdClassicMode12Score = "CgkIq77noacSEAIQAw"; //Achieve high score of 12 in Classic Mode
-
+    //6
     string aIdRandom8Score = "CgkIq77noacSEAIQBQ"; //Achieve high score of 8 in Random Mode
-
+    //7
     string aIdMatch7Score = "CgkIq77noacSEAIQBw"; //Achieve high score of 7 in Match Mode //"I have no matches."
-
+    //8
     string aIdTimedRound101Score = "CgkIq77noacSEAIQBg"; //Achieve high score of 101 in Timed Round Mode
-
+    //9
     string aIdClassMode13Score120Seconds = "CgkIq77noacSEAIQCQ"; //Achieve high score of 13 in Classic in under 120 seconds
-
+    //10
     string aIdTimedRound120NoError = "CgkIq77noacSEAIQDw"; //120 in Timed Round no errors
-
+    //11
     string aIdMatch20Score = "CgkIq77noacSEAIQEA";
-
+    //12
     string aIdButtons1000 = "CgkIq77noacSEAIQCw"; //Press button 1000 times
-
+    //13
     string aIdButtons9000 = "CgkIq77noacSEAIQDA"; //Press button 9000 times
-
+    //14
     string aIdStreak2Days = "CgkIq77noacSEAIQDQ"; //It's coming home
-
+    //15
     string aIdStreak7Days = "CgkIq77noacSEAIQDg"; //A week of Patterns
+    //16
+    string aIdPlayTime1Hour = "CgkIq77noacSEAIQEQ"; //Play for 1 hour
 
     public static PlayGamesPlatform platform;
 
@@ -177,6 +180,10 @@ public class AchievementManager : MonoBehaviour
             if (gm.Highscore[0] > 0 && gm.Highscore[1] > 0 && gm.Highscore[2] > 0 && gm.Highscore[3] > 0)
             {
                 Social.ReportProgress(aIdAllGameModesPlayed, 100f, success => { });
+            }
+            if (gm.GetGameTime() >= 3600) //Player has played over an hour
+            {
+                Social.ReportProgress(aIdPlayTime1Hour, 100f, success => { });
             }
         }
     }

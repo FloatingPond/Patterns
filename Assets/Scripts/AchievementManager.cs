@@ -25,11 +25,13 @@ public class AchievementManager : MonoBehaviour
 
     string aIdRandom8Score = "CgkIq77noacSEAIQBQ"; //Achieve high score of 8 in Random Mode
 
-    string aIdMatch5Score = "CgkIq77noacSEAIQBw"; //Achieve high score of 5 in Match Mode //"I have no matches."
+    string aIdMatch5Score = "CgkIq77noacSEAIQBw"; //Achieve high score of 7 in Match Mode //"I have no matches."
 
     string aIdTimedRound101Score = "CgkIq77noacSEAIQBg"; //Achieve high score of 101 in Timed Round Mode
 
     string aIdClassMode13Score120Seconds = "CgkIq77noacSEAIQCQ"; //Achieve high score of 13 in Classic in under 120 seconds
+
+    string aIdTimedRound120NoError = "CgkIq77noacSEAIQDw"; //120 in Match no errors
 
     string aIdButtons1000 = "CgkIq77noacSEAIQCw"; //Press button 1000 times
 
@@ -153,7 +155,7 @@ public class AchievementManager : MonoBehaviour
                 Social.ReportProgress(aIdTimedRound101Score, 100f, success => { });
             }
             //Achieve high score of 5 in Match
-            if (gamemode == "match" && score >= 5)
+            if (gamemode == "match" && score >= 7)
             {
                 Social.ReportProgress(aIdMatch5Score, 100f, success => { });
             }

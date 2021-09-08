@@ -32,8 +32,11 @@ public static class GPGSIds
         public const string achievement_so_many_dogs = "CgkIq77noacSEAIQBg"; // <GPGSID>
         public const string achievement_on_the_12th_day = "CgkIq77noacSEAIQAw"; // <GPGSID>
         public const string leaderboard_classic_high_score = "CgkIq77noacSEAIQAQ"; // <GPGSID>
+        public const string achievement_not_a_single_error = "CgkIq77noacSEAIQDw"; // <GPGSID>
         public const string achievement_new_beginnings = "CgkIq77noacSEAIQBA"; // <GPGSID>
+        public const string achievement_finest_hour = "CgkIq77noacSEAIQEQ"; // <GPGSID>
         public const string achievement_a_humble_defeat = "CgkIq77noacSEAIQCg"; // <GPGSID>
+        public const string achievement_luck_of_the_irish = "CgkIq77noacSEAIQEA"; // <GPGSID>
         public const string achievement_play_all_the_game_modes = "CgkIq77noacSEAIQCA"; // <GPGSID>
         public const string achievement_start_game = "CgkIq77noacSEAIQAA"; // <GPGSID>
         public const string achievement_a_slanted_grate = "CgkIq77noacSEAIQBQ"; // <GPGSID>

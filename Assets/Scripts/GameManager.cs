@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Android;
+using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using System;
 
@@ -54,9 +55,9 @@ public class GameManager : MonoBehaviour
     public GameObject gamePanel;
     //Used to enable/disable user able to press buttons - mainly when showing patterns and when not in-game
     public bool isGameButtonsDisabled = false;
-    
-    
 
+    public Image TimerColour;
+    
     //Game Streak
     [SerializeField]
     private int gameStreak; //Loaded from file
@@ -81,8 +82,7 @@ public class GameManager : MonoBehaviour
     public MessageManager mm;
 
     public AchievementManager achm;
-
-
+    
     [Title("Buttons and Debug")]
     
     //DateTime stuff
@@ -178,17 +178,21 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (currentGamemode == gamemodeNames[3]) //Countdown timer
+        if (currentGamemode == gamemodeNames[3] || currentGamemode == gamemodeNames[0] || currentGamemode == gamemodeNames[1]) //Countdown timer
         {
             if (endgamePanel.activeSelf == false)
             { 
                 if (fTimedRoundTimer > 0)
-                { 
+                {
+                    
                     fTimedRoundTimer -= Time.deltaTime;
                     tTimedRoundsTimer.text = fTimedRoundTimer.ToString("F0");
+                    //TimerColour.fillAmount += Time.deltaTime / 60;
+                    TimerColour.fillAmount = 1 - (fTimedRoundTimer / 60);
                 }
                 else
                 {
+                    TimerColour.fillAmount = 1;
                     tTimedRoundsTimer.text = "";
                     EndGame();
                 }
@@ -265,7 +269,7 @@ public class GameManager : MonoBehaviour
     {
         SaveSystem.SaveGame(this);
     }
-    void RandomGenerateRandomPattern() //Game 1
+    void RandomGenerateRandomPattern() //Game 2
     {
         EnableButtons(false);
         iPatternNumbers++;
@@ -275,7 +279,9 @@ public class GameManager : MonoBehaviour
         {
             int number = UnityEngine.Random.Range(1, 9);
             sPatternNumbers += number.ToString();
+            fTimedRoundTimer += i;
         }
+        fTimedRoundTimer += 5;
         //Check and set highscore text
         CheckHighscore();
         SetTextScore();
@@ -283,12 +289,13 @@ public class GameManager : MonoBehaviour
         coroutine = AnimateButtonColours();
         StartCoroutine(coroutine);
     }
-    void ClassicAddToExistingPattern() //Game 2
+    void ClassicAddToExistingPattern() //Game 1
     {
         EnableButtons(false);
         iPatternNumbers++;
         CheckHighscore();
         SetTextScore();
+        fTimedRoundTimer += 5;
         //sPatternNumbers = "";
         int number = UnityEngine.Random.Range(1, 9);
         sPatternNumbers += number.ToString();
@@ -727,11 +734,16 @@ public class GameManager : MonoBehaviour
         iTimedRoundWrongButtonsPressed = 0;
         tAfterGame.text = "";
         newHighscoreThisGame = false;
+        TimerColour.fillAmount = 0;
         //Reset Stopwatch
         fGameStopwatch = 0;
         if (currentGamemode == gamemodeNames[3])
         {
             fTimedRoundTimer = fTimedRoundLength;
+        }
+        else if (currentGamemode != gamemodeNames[0] || currentGamemode != gamemodeNames[1])
+        {
+            fTimedRoundTimer = 30;
         }
         NextRound();
 

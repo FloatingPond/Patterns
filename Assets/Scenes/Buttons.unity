@@ -6776,7 +6776,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
@@ -11411,7 +11411,7 @@ PrefabInstance:
     - target: {fileID: 9135219778196587036, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34a29bd966be8754596b16a4648b6c26, type: 3}
@@ -12091,7 +12091,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0.22
+  m_text: 0.23
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f8576e512d37c746a40850ed2176a67, type: 2}
   m_sharedMaterial: {fileID: 2642061803707850051, guid: 9f8576e512d37c746a40850ed2176a67,
@@ -12645,7 +12645,7 @@ PrefabInstance:
     - target: {fileID: 3541667263780780476, guid: f0ce55a4b613f4c47bf64eb12beca632,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3817940122954111040, guid: f0ce55a4b613f4c47bf64eb12beca632,
         type: 3}
@@ -14932,6 +14932,7 @@ MonoBehaviour:
   endgamePanel: {fileID: 2033224257}
   gamePanel: {fileID: 658574885}
   isGameButtonsDisabled: 0
+  TimerColour: {fileID: 904782814}
   gameStreak: 0
   gameStreakLast: 0
   gameStreakHighscore: 0

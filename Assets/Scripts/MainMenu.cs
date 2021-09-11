@@ -307,7 +307,14 @@ public class MainMenu : MonoBehaviour
             tTimePlayed.GetComponent<TextMeshProUGUI>().text = "Time played: " + string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
             tButtonsPressed.GetComponent<TextMeshProUGUI>().text = "Buttons Pressed: " + data.buttonsPressed.ToString();
             tadRewards.GetComponent<TextMeshProUGUI>().text = "Reward Ads Watched: " + data.adsRewardsWatched;
-            tHighestStreak.GetComponent<TextMeshProUGUI>().text = "Highest Streak: " + data.gameStreakHighscore;
+            if (data.gameStreakHighscore == 1)
+            {
+                tHighestStreak.GetComponent<TextMeshProUGUI>().text = "Longest Streak: " + data.gameStreakHighscore + " DAY"; //Highest streak the player has ever got
+            }
+            else
+            { 
+                tHighestStreak.GetComponent<TextMeshProUGUI>().text = "Longest Streak: " + data.gameStreakHighscore + " DAYS"; //Highest streak the player has ever got
+            }
             tStreakAchieved.GetComponent<TextMeshProUGUI>().text = "Achieved @: " + data.dateGameStreakHighscoreAcquired;
         }
         else
@@ -316,6 +323,7 @@ public class MainMenu : MonoBehaviour
             tTimePlayed.GetComponent<TextMeshProUGUI>().text = "Time played: 00:00:00";
             tButtonsPressed.GetComponent<TextMeshProUGUI>().text = "Buttons Pressed: 0";
             tadRewards.GetComponent<TextMeshProUGUI>().text = "Reward Ads Watched: 0";
+            tHighestStreak.GetComponent<TextMeshProUGUI>().text = "Longest Streak: 0 DAYS"; //Highest streak the player has ever got
         }
     }
 }

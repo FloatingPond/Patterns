@@ -21,9 +21,9 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator coroutine;
     public float fGameTime; //Seconds for now
-    public float fTimedRoundTimer; //Timer for Timed Rounds game (Game 3)
+    public float fGameplayTimer; //Timer for Timed Rounds game (Game 3)
     public float fGameStopwatch; //Stopwatch for all games
-    public float fTimedRoundLength = 60;
+    public float fGameplayTimerMax; //
     public int iTimedRoundWrongButtonsPressed = 0;
 
     public int buttonsPressed;
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     [Title("Objects")]
     public List<GameObject> Buttons = new List<GameObject>();
-    public TMP_Text tScore, tHighscore, tAfterGame, tTimedRoundsTimer;
+    public TMP_Text tScore, tHighscore, tAfterGame, tStopwatch;
     ////Buttons
     //Game buttons
     
@@ -178,29 +178,37 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (currentGamemode == gamemodeNames[3] || currentGamemode == gamemodeNames[0] || currentGamemode == gamemodeNames[1]) //Countdown timer
+        if (currentGamemode != "") //Countdown timer
         {
             if (endgamePanel.activeSelf == false && !isGameButtonsDisabled && !AreAnyMessageBoxesOpen())
-            { 
-                if (fTimedRoundTimer > 0)
+            {
+                if (fGameplayTimer > 0)
                 {
+                    fGameplayTimer -= Time.deltaTime;
                     
-                    fTimedRoundTimer -= Time.deltaTime;
-                    tTimedRoundsTimer.text = fTimedRoundTimer.ToString("F0");
                     //TimerColour.fillAmount += Time.deltaTime / 60;
-                    TimerColour.fillAmount = 1 - (fTimedRoundTimer / 60);
+                    TimerColour.fillAmount = 1 - (fGameplayTimer / fGameplayTimerMax);
                 }
                 else
                 {
                     TimerColour.fillAmount = 1;
-                    tTimedRoundsTimer.text = "";
+                    tStopwatch.text = "";
                     EndGame();
                 }
             }
+            if (endgamePanel.activeSelf == false)
+            {
+                tStopwatch.text = fGameStopwatch.ToString("F0");
+            }
         }
-        if (endgamePanel.activeSelf == false && gamePanel.activeSelf == true)
+        if (endgamePanel.activeSelf == false && gamePanel.activeSelf == true && !AreAnyMessageBoxesOpen())
         {
             fGameStopwatch += Time.deltaTime;
+        }
+        //Counts when player is playing the game
+        if (gamePanel.activeSelf && endgamePanel.activeSelf == false && !AreAnyMessageBoxesOpen())
+        {
+            AddToGameTime(Time.deltaTime);
         }
     }
 
@@ -290,7 +298,8 @@ public class GameManager : MonoBehaviour
             sPatternNumbers += number.ToString();
             //fTimedRoundTimer += i / 10;
         }
-        fTimedRoundTimer += 3;
+        fGameplayTimer += 3;
+        fGameplayTimerMax = fGameplayTimer; //Sets to max so visual timer fill is at maximum
         //Check and set highscore text
         CheckHighscore();
         SetTextScore();
@@ -304,7 +313,8 @@ public class GameManager : MonoBehaviour
         iPatternNumbers++;
         CheckHighscore();
         SetTextScore();
-        fTimedRoundTimer += 3;
+        fGameplayTimer += 3;
+        fGameplayTimerMax = fGameplayTimer; //Sets to max so visual timer fill is at maximum
         //sPatternNumbers = "";
         int number = UnityEngine.Random.Range(1, 9);
         sPatternNumbers += number.ToString();
@@ -320,6 +330,8 @@ public class GameManager : MonoBehaviour
         }
         ResetMatchTileCounters();
         EnableButtons(false);
+        fGameplayTimer += 4f - (iPatternNumbers * 0.1f);
+        fGameplayTimerMax = fGameplayTimer; //Sets to max so visual timer fill is at maximum
         iPatternNumbers++;
         CheckHighscore();
         SetTextScore();
@@ -454,12 +466,14 @@ public class GameManager : MonoBehaviour
 
     IEnumerator HideMatchButtons() //Used in Match
     {
-        yield return new WaitForSeconds(Time.deltaTime * 2);
+        yield return new WaitForSeconds(0.17f);
         while (AreAnyMessageBoxesOpen()) //Stops buttons being animated whilst any window is open e.g Tutorial window
         {
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        yield return new WaitForSeconds(2f);
+        float NextTime = 4f - (iPatternNumbers * 0.1f);
+        Debug.Log("Deducted time = " + NextTime);
+        yield return new WaitForSeconds(NextTime); //Time waiting prior to hiding
         for (int i = 0; i < 9; i++)
         {
             Buttons[i].GetComponent<Image>().color = Color.white;
@@ -719,9 +733,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
     
-
     public void EnableButtons(bool state)
     {
         if (state == true)
@@ -747,14 +759,13 @@ public class GameManager : MonoBehaviour
         if (gamemode != "") //Used when game has been chosen for the first time
         {
             currentGamemode = gamemode;
-            if (ReturnScoreOfGamemode() == 0)
+            if (ReturnScoreOfGamemode() == 0) //If the high score of the current gamemode is 0
             {
                 mm.DisplayTutorialMessage(this);
                 //Show Tutorial message
             }
         }
-        //Disable Play Again and Return buttons
-        endgamePanel.SetActive(false);
+        endgamePanel.SetActive(false); //Disable Play Again and Return buttons
         sPatternAnswer = "";
         sPatternNumbers = "";
         iPatternNumbers = 0;
@@ -766,14 +777,15 @@ public class GameManager : MonoBehaviour
         fGameStopwatch = 0;
         if (currentGamemode == gamemodeNames[3])
         {
-            fTimedRoundTimer = fTimedRoundLength;
+            fGameplayTimer = 60;
+            fGameplayTimerMax = fGameplayTimer; //Sets to max so visual timer fill is at maximum
         }
-        else if (currentGamemode != gamemodeNames[0] || currentGamemode != gamemodeNames[1])
+        else if (currentGamemode == gamemodeNames[0] || currentGamemode == gamemodeNames[1] || currentGamemode == gamemodeNames[2])
         {
-            fTimedRoundTimer = 30;
+            fGameplayTimer = 30;
+            fGameplayTimerMax = fGameplayTimer; //Sets to max so visual timer fill is at maximum
         }
         NextRound();
-
     }
 
     public void AddToGameTime(float time)
@@ -1203,8 +1215,5 @@ public class GameManager : MonoBehaviour
         DateTime dt = DateTime.ParseExact(sDateTime, "yyyy-MM-dd HH:mm tt", null); //Set far into the past
         return dt;
     }
-
-
-
-
+    
 }

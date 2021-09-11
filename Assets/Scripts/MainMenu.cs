@@ -76,11 +76,7 @@ public class MainMenu : MonoBehaviour
     }
     public void Update()
     {
-        //Counts when player is playing the game
-        if (Gameplay.activeInHierarchy && Endgame.activeInHierarchy == false)
-        {
-            gm.AddToGameTime(Time.deltaTime);
-        }
+        
         //Allows player to instantly quit game when escape button is pressed
         if (MainMenuPanel.activeInHierarchy)
         {
@@ -113,9 +109,9 @@ public class MainMenu : MonoBehaviour
     {
         //gm.EndGame(); //Not sure why called here
         gm.currentGamemode = "";
-        gm.fGameTimer = 60;
+        gm.fGameplayTimer = 60;
         gm.fGameStopwatch = 0;
-        gm.tTimedRoundsTimer.text = "";
+        gm.tStopwatch.text = "";
         gm.MakeButtonsInteractable();
         //To display those sweet new high scores
         DisplayHighScores();

@@ -780,9 +780,14 @@ public class GameManager : MonoBehaviour
             fGameplayTimer = 60;
             fGameplayTimerMax = fGameplayTimer; //Sets to max so visual timer fill is at maximum
         }
-        else if (currentGamemode == gamemodeNames[0] || currentGamemode == gamemodeNames[1] || currentGamemode == gamemodeNames[2])
+        else if (currentGamemode == gamemodeNames[0] || currentGamemode == gamemodeNames[1])
         {
-            fGameplayTimer = 30;
+            fGameplayTimer = 20;
+            fGameplayTimerMax = fGameplayTimer; //Sets to max so visual timer fill is at maximum
+        }
+        else if (currentGamemode == gamemodeNames[2])
+        {
+            fGameplayTimer = 25;
             fGameplayTimerMax = fGameplayTimer; //Sets to max so visual timer fill is at maximum
         }
         NextRound();

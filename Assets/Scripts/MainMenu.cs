@@ -113,7 +113,7 @@ public class MainMenu : MonoBehaviour
     {
         //gm.EndGame(); //Not sure why called here
         gm.currentGamemode = "";
-        gm.fTimedRoundTimer = 60;
+        gm.fGameTimer = 60;
         gm.fGameStopwatch = 0;
         gm.tTimedRoundsTimer.text = "";
         gm.MakeButtonsInteractable();

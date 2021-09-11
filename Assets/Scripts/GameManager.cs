@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentGamemode == gamemodeNames[3] || currentGamemode == gamemodeNames[0] || currentGamemode == gamemodeNames[1]) //Countdown timer
         {
-            if (endgamePanel.activeSelf == false && !isGameButtonsDisabled)
+            if (endgamePanel.activeSelf == false && !isGameButtonsDisabled && !AreAnyMessageBoxesOpen())
             { 
                 if (fTimedRoundTimer > 0)
                 {
@@ -202,6 +202,15 @@ public class GameManager : MonoBehaviour
         {
             fGameStopwatch += Time.deltaTime;
         }
+    }
+
+    private bool AreAnyMessageBoxesOpen()
+    {
+        if (mm.MainMessageBox.transform.localScale.x > 0 || mm.VariantMessageBox.transform.localScale.x > 0)
+        {
+            return true;
+        }
+        return false;
     }
 
     public bool LoadGame() //Called in Awake - loads data from load system and saves into memory
@@ -665,6 +674,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator AnimateButtonColours()
     {
+        while (AreAnyMessageBoxesOpen()) //Stops buttons being animated whilst any window is open e.g Tutorial window
+        {
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
         for (int i = 0; i < sPatternNumbers.Length; i++)
         {
             if (i == sPatternNumbers.Length - 1 && currentGamemode == "classic") //Last number in the length - shorter uncolouring time for quicker gameplay

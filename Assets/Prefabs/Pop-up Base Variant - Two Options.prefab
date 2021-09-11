@@ -285,6 +285,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5625617627889920322, guid: 34a29bd966be8754596b16a4648b6c26,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 550
+      objectReference: {fileID: 0}
     - target: {fileID: 5770363534575675827, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}
       propertyPath: m_RootOrder
@@ -419,6 +424,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9066708433188379209, guid: 34a29bd966be8754596b16a4648b6c26,
+        type: 3}
+      propertyPath: m_text
+      value: Some text and some more text and some more text
       objectReference: {fileID: 0}
     - target: {fileID: 9135219778196587036, guid: 34a29bd966be8754596b16a4648b6c26,
         type: 3}

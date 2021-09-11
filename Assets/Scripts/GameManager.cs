@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentGamemode == gamemodeNames[3] || currentGamemode == gamemodeNames[0] || currentGamemode == gamemodeNames[1]) //Countdown timer
         {
-            if (endgamePanel.activeSelf == false)
+            if (endgamePanel.activeSelf == false && !isGameButtonsDisabled)
             { 
                 if (fTimedRoundTimer > 0)
                 {

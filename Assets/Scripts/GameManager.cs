@@ -206,7 +206,7 @@ public class GameManager : MonoBehaviour
 
     private bool AreAnyMessageBoxesOpen()
     {
-        if (mm.MainMessageBox.transform.localScale.x > 0 || mm.VariantMessageBox.transform.localScale.x > 0)
+        if (mm.MainMessageBox.transform.localScale.x > 0 || mm.VariantMessageBox.transform.localScale.x > 0 || mm.TutorialMessageBox.transform.localScale.x > 0)
         {
             return true;
         }
@@ -409,8 +409,56 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    IEnumerator HideMatchButtons() //Called from Game 3
+
+    IEnumerator AnimateButtonColours() //Used for Classic, Random and Timed Round
     {
+        yield return new WaitForSeconds(0.17f);
+        while (AreAnyMessageBoxesOpen()) //Stops buttons being animated whilst any window is open e.g Tutorial window
+        {
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        for (int i = 0; i < sPatternNumbers.Length; i++)
+        {
+            if (i == sPatternNumbers.Length - 1 && currentGamemode == "classic") //Last number in the length - shorter uncolouring time for quicker gameplay
+            {
+                yield return new WaitForSeconds(time_buttonsTimeBetween); //Time between uncoloured button and coloured button
+            }
+            else if (currentGamemode == "timedround")
+            {
+                //Don't wait to uncolour
+            }
+            else
+            {
+                float timeAddedToRetract = sPatternNumbers.Length / 200f;
+                Debug.Log(timeAddedToRetract);
+                yield return new WaitForSeconds(time_buttonsTimeBetween - timeAddedToRetract); //Time between uncoloured button and coloured button
+            }
+            //Get number for button
+            int number = int.Parse(sPatternNumbers[i].ToString()) - 1;
+            //Colour button
+            Buttons[number].GetComponent<Button>().image.color = Color.red;
+            if (currentGamemode == gamemodeNames[3])
+            {
+                EnableButtons(true);
+                Buttons[number].GetComponent<Button>().image.color = Color.red;
+            }
+            yield return new WaitForSeconds(time_buttonsAreColour);
+            //Uncolour button
+            if (currentGamemode != gamemodeNames[3])
+                Buttons[number].GetComponent<Button>().image.color = Color.grey;
+        }
+
+        EnableButtons(true);
+        yield return new WaitForSeconds(0.0f);
+    }
+
+    IEnumerator HideMatchButtons() //Used in Match
+    {
+        yield return new WaitForSeconds(Time.deltaTime * 2);
+        while (AreAnyMessageBoxesOpen()) //Stops buttons being animated whilst any window is open e.g Tutorial window
+        {
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
         yield return new WaitForSeconds(2f);
         for (int i = 0; i < 9; i++)
         {
@@ -672,46 +720,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    IEnumerator AnimateButtonColours()
-    {
-        while (AreAnyMessageBoxesOpen()) //Stops buttons being animated whilst any window is open e.g Tutorial window
-        {
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-        for (int i = 0; i < sPatternNumbers.Length; i++)
-        {
-            if (i == sPatternNumbers.Length - 1 && currentGamemode == "classic") //Last number in the length - shorter uncolouring time for quicker gameplay
-            {
-                yield return new WaitForSeconds(time_buttonsTimeBetween); //Time between uncoloured button and coloured button
-            }
-            else if (currentGamemode == "timedround")
-            {
-                //Don't wait to uncolour
-            }
-            else
-            {
-                float timeAddedToRetract = sPatternNumbers.Length / 200f;
-                Debug.Log(timeAddedToRetract);
-                yield return new WaitForSeconds(time_buttonsTimeBetween - timeAddedToRetract); //Time between uncoloured button and coloured button
-            }
-            //Get number for button
-            int number = int.Parse(sPatternNumbers[i].ToString()) - 1;
-            //Colour button
-            Buttons[number].GetComponent<Button>().image.color = Color.red;
-            if (currentGamemode == gamemodeNames[3])
-            {
-                EnableButtons(true);
-                Buttons[number].GetComponent<Button>().image.color = Color.red;
-            }
-            yield return new WaitForSeconds(time_buttonsAreColour);
-            //Uncolour button
-            if (currentGamemode != gamemodeNames[3])
-                Buttons[number].GetComponent<Button>().image.color = Color.grey;
-        }
-        
-        EnableButtons(true);
-        yield return new WaitForSeconds(0.0f);
-    }
+    
 
     public void EnableButtons(bool state)
     {
@@ -738,6 +747,11 @@ public class GameManager : MonoBehaviour
         if (gamemode != "") //Used when game has been chosen for the first time
         {
             currentGamemode = gamemode;
+            if (ReturnScoreOfGamemode() == 0)
+            {
+                mm.DisplayTutorialMessage(this);
+                //Show Tutorial message
+            }
         }
         //Disable Play Again and Return buttons
         endgamePanel.SetActive(false);
@@ -798,6 +812,27 @@ public class GameManager : MonoBehaviour
     {
         fGameTime += 600;
         Save();
+    }
+
+    int ReturnScoreOfGamemode()
+    {
+        if (currentGamemode == gamemodeNames[0]) //Classic
+        {
+            return Highscore[0];
+        }
+        if (currentGamemode == gamemodeNames[1]) //Random
+        {
+            return Highscore[1];
+        }
+        if (currentGamemode == gamemodeNames[2]) //Match
+        {
+            return Highscore[2];
+        }
+        if (currentGamemode == gamemodeNames[3]) //Timed
+        {
+            return Highscore[3];
+        }
+        return 0;
     }
 
     void CheckHighscore() //Used midgame to check whether a highscore has been exceeded

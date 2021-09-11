@@ -66,7 +66,7 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(AnimatePremiumButton());
     }
     
-    public void Start_Gamemode(string gamemode)
+    public void Start_Gamemode(string gamemode) //Called via Main Menu Gamemode buttons to open specified game
     {
         SwitchToCanvas("game");
         //AddToButton not needed as that is in RestartGame method below

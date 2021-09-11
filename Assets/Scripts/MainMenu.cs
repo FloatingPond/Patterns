@@ -12,7 +12,6 @@ public class MainMenu : MonoBehaviour
     public Canvas canvas;
 
     [Title("Panels")]
-    public int test = 1;
 
     public GameObject  MainMenuPanel, Gameplay, Endgame, Stats, SoundSettings, Premium;
 
@@ -207,29 +206,6 @@ public class MainMenu : MonoBehaviour
             tGame3Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[2].ToString();
             tGame4Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: " + data.highscores[3].ToString();
             
-            //No longer handled in here. Fuck knows why it was
-            //Streak
-
-            //int hours = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalHours;
-            //int days = (int)(DateTime.Now - gm.dateLastAcquiredStreak).TotalDays;
-            //int minutes = (DateTime.Now - gm.dateLastAcquiredStreak).Minutes;
-            //string textstuff = "";
-            //if (gm.dateLastAcquiredStreak != null)
-            //{
-            //    textstuff = "M:" + minutes.ToString() + ",H:" + hours.ToString() + ",D:" + days.ToString();
-            //}
-            //if (data.gameStreak > 1)
-            //{
-            //    tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + data.gameStreak.ToString() + " days!";
-            //    //tStreakDesc.GetComponent<TextMeshProUGUI>().text = "Woo!";
-            //    tStreakDesc.GetComponent<TextMeshProUGUI>().text = textstuff;
-            //}
-            //else
-            //{
-            //    tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of " + data.gameStreak.ToString() + " day";
-            //    //tStreakDesc.GetComponent<TextMeshProUGUI>().text = "EastEnders";
-             //   tStreakDesc.GetComponent<TextMeshProUGUI>().text = textstuff;
-            //}
         }
         else //NO DATA
         {
@@ -237,14 +213,11 @@ public class MainMenu : MonoBehaviour
             tRandomHighscore.GetComponent<TextMeshProUGUI>().text = "High Score: 0";
             tGame3Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: 0";
             tGame4Highscore.GetComponent<TextMeshProUGUI>().text = "High Score: 0";
-        //
-        //    tStreak.GetComponent<TextMeshProUGUI>().text = "Streak of 0 days";
-        //    tStreakDesc.GetComponent<TextMeshProUGUI>().text = "";
         }
 
     }
 
-    void DisplayStreak() //Called when game starts and when player returns to main menu from game or stats or anything else
+    public void DisplayStreak() //Called when game starts and when player returns to main menu from game or stats or anything else
     {
         //No streak changing logic is present
         //Merely displaying messages

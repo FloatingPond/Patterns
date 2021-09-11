@@ -12091,7 +12091,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0.23
+  m_text: 0.24
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f8576e512d37c746a40850ed2176a67, type: 2}
   m_sharedMaterial: {fileID: 2642061803707850051, guid: 9f8576e512d37c746a40850ed2176a67,
@@ -12600,7 +12600,7 @@ PrefabInstance:
     - target: {fileID: 2191005075930248404, guid: f0ce55a4b613f4c47bf64eb12beca632,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: TutorialRewardAdWORKS
+      value: RewardAdReclaimStreak
       objectReference: {fileID: 0}
     - target: {fileID: 2191005075930248404, guid: f0ce55a4b613f4c47bf64eb12beca632,
         type: 3}
@@ -12857,7 +12857,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1893154943}
-        m_MethodName: TutorialRewardAdWORKS
+        m_MethodName: RewardAdNoBanners
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

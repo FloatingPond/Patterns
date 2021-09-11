@@ -279,9 +279,9 @@ public class GameManager : MonoBehaviour
         {
             int number = UnityEngine.Random.Range(1, 9);
             sPatternNumbers += number.ToString();
-            fTimedRoundTimer += i;
+            //fTimedRoundTimer += i / 10;
         }
-        fTimedRoundTimer += 5;
+        fTimedRoundTimer += 3;
         //Check and set highscore text
         CheckHighscore();
         SetTextScore();
@@ -295,7 +295,7 @@ public class GameManager : MonoBehaviour
         iPatternNumbers++;
         CheckHighscore();
         SetTextScore();
-        fTimedRoundTimer += 5;
+        fTimedRoundTimer += 3;
         //sPatternNumbers = "";
         int number = UnityEngine.Random.Range(1, 9);
         sPatternNumbers += number.ToString();
@@ -974,8 +974,18 @@ public class GameManager : MonoBehaviour
 
     private void SaveFormerStreak() //Saves the current streak as the last streak aquired
     {
-        gameStreakLast = gameStreak; //Sets the player's last streak as the current streak before it is reset
-        dateLastAcquiredStreakLast = dateLastAcquiredStreak; //Sets the date as the date the player acquired their last streak
+        if (gameStreakLast < gameStreak)
+        { 
+            gameStreakLast = gameStreak; //Sets the player's last streak as the current streak before it is reset
+            dateLastAcquiredStreakLast = dateLastAcquiredStreak; //Sets the date as the date the player acquired their last streak
+        }
+    }
+
+    public void ReclaimStreak()
+    {
+        gameStreak = gameStreakLast;
+        dateLastAcquiredStreak = DateTime.Now;
+        dateLastAcquiredStreak.AddDays(-1);
     }
 
     private void CheckStreakHighscore(int streak, DateTime dt)

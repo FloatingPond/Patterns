@@ -56,19 +56,19 @@ public class MessageManager : MonoBehaviour
     {
         if (gm.currentGamemode == gm.gamemodeNames[0]) //Classic
         {
-            PopulateTutorial("Tutorial: Classic", "Press buttons lol.", "Start");
+            PopulateTutorial("Tutorial: Classic", "Press buttons in pattern shown. Remember the pattern.", "Start");
         }
         if (gm.currentGamemode == gm.gamemodeNames[1]) //Random
         {
-            PopulateTutorial("Tutorial: Random", "Press buttons lol.", "Start");
+            PopulateTutorial("Tutorial: Random", "Press buttons in pattern shown. Pattern will be random each time.", "Start");
         }
         if (gm.currentGamemode == gm.gamemodeNames[2]) //Match
         {
-            PopulateTutorial("Tutorial: Match", "Press buttons lol.", "Start");
+            PopulateTutorial("Tutorial: Match", "Match each colour to its partner. Don't touch the bomb!", "Start");
         }
         if (gm.currentGamemode == gm.gamemodeNames[3]) //Timed
         {
-            PopulateTutorial("Tutorial: Timed Round", "Press buttons lol.", "Start");
+            PopulateTutorial("Tutorial: Timed Round", "HIT the shown tiles as quickly as possible!", "HIT");
         }
     }
 

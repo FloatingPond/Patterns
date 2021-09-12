@@ -1028,7 +1028,7 @@ public class GameManager : MonoBehaviour
         //Time traveller
         else if (hours < 0 || minutes < 0)
         {
-            Debug.Log("begone time traveller");
+            Debug.Log("Player's hours and minutes are minus");
             return;
         }
         CheckStreakHighscore(gameStreak, dateLastAcquiredStreak);

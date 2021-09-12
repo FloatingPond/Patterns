@@ -56,11 +56,11 @@ public class MessageManager : MonoBehaviour
     {
         if (gm.currentGamemode == gm.gamemodeNames[0]) //Classic
         {
-            PopulateTutorial("Tutorial: Classic", "Press buttons in pattern shown. Remember the pattern.", "Start");
+            PopulateTutorial("Tutorial: Classic", "Remember the pattern. Press buttons in pattern shown.", "Start");
         }
         if (gm.currentGamemode == gm.gamemodeNames[1]) //Random
         {
-            PopulateTutorial("Tutorial: Random", "Press buttons in pattern shown. Pattern will be random each time.", "Start");
+            PopulateTutorial("Tutorial: Random", "Pattern will be random each time. Press buttons in pattern shown.", "Start");
         }
         if (gm.currentGamemode == gm.gamemodeNames[2]) //Match
         {

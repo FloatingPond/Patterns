@@ -686,7 +686,7 @@ public class GameManager : MonoBehaviour
                     matchComparisonNumber = 0;
                     matchComparison = ""; //TAKES OUT CURRENTLY STORED TILE FOR COMPARISON
                     matchCounter++; //INCREMENTS TRACKER OF HOW MANY MATCHES THERE HAVE BEEN
-                    sm.LoadAudioClip_SFX("Cute GUI Sound Set/Correct");
+                    sm.LoadAudioClip_SFX("match3_1a");
                     sm.PlaySFX();
                     //ROUND WIN CONDITION: If there have been 4 matches, move to the next round
                     if (matchCounter == 4)
@@ -697,7 +697,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    sm.LoadAudioClip_SFX("Cute GUI Sound Set/Wrong");
+                    sm.LoadAudioClip_SFX("misc_negative_06");
                     sm.PlaySFX();
                     matchComparisonNumber = 0;
                     matchComparison = "";
@@ -905,7 +905,9 @@ public class GameManager : MonoBehaviour
     {
         if (newHighscoreThisGame == true)
         {
-           //New highscore!
+            //New highscore!
+            sm.LoadAudioClip_SFX("High Score");
+            sm.PlaySFX();
             tAfterGame.text = "NEW HIGHSCORE!";
         }
         else

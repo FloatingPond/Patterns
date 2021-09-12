@@ -912,6 +912,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            sm.LoadAudioClip_SFX("misc_negative_06");
+            sm.PlaySFX();
             tAfterGame.text = "Game Over";
         }
     }

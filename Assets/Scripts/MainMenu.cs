@@ -72,7 +72,6 @@ public class MainMenu : MonoBehaviour
         //AddToButton not needed as that is in RestartGame method below
         Gameplay.SetActive(true);
         //No longer used
-
         gm.RestartGame(gamemode);
     }
     public void Update()

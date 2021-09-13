@@ -854,7 +854,7 @@ public class GameManager : MonoBehaviour
     
     public void RestartGame(string gamemode)
     {
-        if (gamemode != "match")
+        if (gamemode != "match" && gamemode != "")
         {
             SetUpButtonAnimsForGamemodes();
         }

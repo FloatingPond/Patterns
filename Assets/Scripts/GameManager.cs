@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     [Title("Objects")]
     public List<GameObject> Buttons = new List<GameObject>();
+    public List<GameObject> buttonAnims = new List<GameObject>();
     public TMP_Text tScore, tHighscore, tAfterGame, tStopwatch;
     ////Buttons
     //Game buttons
@@ -375,6 +376,8 @@ public class GameManager : MonoBehaviour
                         if (matchA < 2)
                         {
                             Buttons[i].GetComponent<Image>().color = Color.green;
+                            buttonAnims[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            buttonAnims[i].GetComponent<Animator>().Play("green_gem");
                             matchA++;
                             Buttons[i].tag = "MatchA";
                             buttonIsSet[i] = true;
@@ -384,6 +387,8 @@ public class GameManager : MonoBehaviour
                         if (matchB < 2)
                         {
                             Buttons[i].GetComponent<Image>().color = Color.red;
+                            buttonAnims[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            buttonAnims[i].GetComponent<Animator>().Play("red_gem");
                             matchB++;
                             Buttons[i].tag = "MatchB";
                             buttonIsSet[i] = true;
@@ -393,6 +398,8 @@ public class GameManager : MonoBehaviour
                         if (matchC < 2)
                         {
                             Buttons[i].GetComponent<Image>().color = Color.yellow;
+                            buttonAnims[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            buttonAnims[i].GetComponent<Animator>().Play("orange_gem");
                             matchC++;
                             Buttons[i].tag = "MatchC";
                             buttonIsSet[i] = true;
@@ -402,6 +409,8 @@ public class GameManager : MonoBehaviour
                         if (matchD < 2)
                         {
                             Buttons[i].GetComponent<Image>().color = Color.cyan;
+                            buttonAnims[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            buttonAnims[i].GetComponent<Animator>().Play("blue_gem");
                             matchD++;
                             Buttons[i].tag = "MatchD";
                             buttonIsSet[i] = true;
@@ -411,6 +420,8 @@ public class GameManager : MonoBehaviour
                         if (matchBomb < 1)
                         {
                             Buttons[i].GetComponent<Image>().color = Color.black;
+                            buttonAnims[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            buttonAnims[i].GetComponent<Animator>().Play("bomb");
                             matchBomb++;
                             Buttons[i].tag = "MatchBomb";
                             buttonIsSet[i] = true;
@@ -476,6 +487,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 9; i++)
         {
             Buttons[i].GetComponent<Image>().color = Color.white;
+            buttonAnims[i].GetComponent<Image>().color = new Color(0, 0, 0, 0);
         }
         EnableButtons(true);
     }

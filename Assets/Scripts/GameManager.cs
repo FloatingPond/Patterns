@@ -286,6 +286,93 @@ public class GameManager : MonoBehaviour
     {
         SaveSystem.SaveGame(this);
     }
+    void SetUpButtonAnimsForGamemodes()
+    {
+        //Sets up the animations for the buttons
+        bool[] animUsed = new bool[9];
+        bool[] buttonIsSet = new bool[9];
+        for (int i = 0; i < 9; i++)
+        {
+            while (buttonIsSet[i] == false)
+            {
+                switch (UnityEngine.Random.Range(0, 9))
+                {
+                    case 0:
+                        if (animUsed[0] == false)
+                        {
+                            buttonAnims[i].GetComponent<Animator>().Play("blue_gem");
+                            buttonIsSet[i] = true;
+                            animUsed[0] = true;
+                        }
+                        break;
+                    case 1:
+                        if (animUsed[1] == false)
+                        {
+                            buttonAnims[i].GetComponent<Animator>().Play("red_gem");
+                            buttonIsSet[i] = true;
+                            animUsed[1] = true;
+                        }
+                        break;
+                    case 2:
+                        if (animUsed[2] == false)
+                        {
+                            buttonAnims[i].GetComponent<Animator>().Play("orange_gem");
+                            buttonIsSet[i] = true;
+                            animUsed[2] = true;
+                        }
+                        break;
+                    case 3:
+                        if (animUsed[3] == false)
+                        {
+                            buttonAnims[i].GetComponent<Animator>().Play("green_gem");
+                            buttonIsSet[i] = true;
+                            animUsed[3] = true;
+                        }
+                        break;
+                    case 4:
+                        if (animUsed[4] == false)
+                        {
+                            buttonAnims[i].GetComponent<Animator>().Play("coin");
+                            buttonIsSet[i] = true;
+                            animUsed[4] = true;
+                        }
+                        break;
+                    case 5:
+                        if (animUsed[5] == false)
+                        {
+                            buttonAnims[i].GetComponent<Animator>().Play("scroll");
+                            buttonIsSet[i] = true;
+                            animUsed[5] = true;
+                        }
+                        break;
+                    case 6:
+                        if (animUsed[6] == false)
+                        {
+                            buttonAnims[i].GetComponent<Animator>().Play("book");
+                            buttonIsSet[i] = true;
+                            animUsed[6] = true;
+                        }
+                        break;
+                    case 7:
+                        if (animUsed[7] == false)
+                        {
+                            buttonAnims[i].GetComponent<Animator>().Play("heart");
+                            buttonIsSet[i] = true;
+                            animUsed[7] = true;
+                        }
+                        break;
+                    case 8:
+                        if (animUsed[8] == false)
+                        {
+                            buttonAnims[i].GetComponent<Animator>().Play("key");
+                            buttonIsSet[i] = true;
+                            animUsed[8] = true;
+                        }
+                        break;
+                }
+            }
+        }
+    }
     void RandomGenerateRandomPattern() //Game 2
     {
         EnableButtons(false);
@@ -767,6 +854,10 @@ public class GameManager : MonoBehaviour
     
     public void RestartGame(string gamemode)
     {
+        if (gamemode != "match")
+        {
+            SetUpButtonAnimsForGamemodes();
+        }
         if (gamemode != "") //Used when game has been chosen for the first time
         {
             currentGamemode = gamemode;

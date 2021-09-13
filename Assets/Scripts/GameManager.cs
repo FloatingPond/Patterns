@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Android;
-using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using System;
 

@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
     public float time_buttonsTimeBetween = 0.25f;
 
     private int matchA, matchB, matchC, matchD, matchBomb;
-    private bool bMatchA, bMatchB, bMatchC, bMatchD, bMatchBomb;
     public string matchComparison;
     public int matchComparisonNumber;
     public int newMCnumber;
@@ -293,6 +292,7 @@ public class GameManager : MonoBehaviour
         bool[] buttonIsSet = new bool[9];
         for (int i = 0; i < 9; i++)
         {
+            buttonAnims[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
             while (buttonIsSet[i] == false)
             {
                 switch (UnityEngine.Random.Range(0, 9))

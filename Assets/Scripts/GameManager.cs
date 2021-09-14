@@ -521,7 +521,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator AnimateButtonColours() //Used for Classic, Random and Timed Round
     {
-        yield return new WaitForSeconds(0.17f);
+        yield return new WaitForSeconds(0.25f);
         while (AreAnyMessageBoxesOpen()) //Stops buttons being animated whilst any window is open e.g Tutorial window
         {
             yield return new WaitForSeconds(Time.deltaTime);
@@ -563,7 +563,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator HideMatchButtons() //Used in Match
     {
-        yield return new WaitForSeconds(0.17f);
+        yield return new WaitForSeconds(0.25f);
         while (AreAnyMessageBoxesOpen()) //Stops buttons being animated whilst any window is open e.g Tutorial window
         {
             yield return new WaitForSeconds(Time.deltaTime);

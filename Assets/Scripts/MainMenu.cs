@@ -34,6 +34,7 @@ public class MainMenu : MonoBehaviour
     public GameObject tadRewards;
     public GameObject tHighestStreak;
     public GameObject tStreakAchieved;
+    public GameObject bAchivementList;
 
     [Title("Premium Objects")]
     public TextMeshProUGUI titleRewards;
@@ -320,6 +321,17 @@ public class MainMenu : MonoBehaviour
             tButtonsPressed.GetComponent<TextMeshProUGUI>().text = "Buttons Pressed: 0";
             tadRewards.GetComponent<TextMeshProUGUI>().text = "Reward Ads Watched: 0";
             tHighestStreak.GetComponent<TextMeshProUGUI>().text = "Longest Streak: 0 DAYS"; //Highest streak the player has ever got
+        }
+        if (gm.achm.isGpgsEnabled())
+        {
+            //Enable achievement list button
+            bAchivementList.SetActive(true);
+
+        }
+        else
+        {
+            bAchivementList.SetActive(false);
+            //Disable achievement list button
         }
     }
 }

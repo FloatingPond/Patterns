@@ -226,6 +226,15 @@ public class AchievementManager : MonoBehaviour
         return false;
     }
 
+    public bool isGpgsEnabled()
+    {
+        if (Social.Active.localUser.authenticated) //Ensure GPG is enabled an player logged in
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void UnlockButtonAchivement(int buttons)
     {
         if (Social.Active.localUser.authenticated) //Ensure GPG is enabled an player logged in

@@ -328,7 +328,7 @@ public class AdManager : MonoBehaviour
         //if has been less than 3 days since last watched reward ad
         int hours = (int)(DateTime.Now - dtLastTimeRewardAdWatched).TotalHours;
 
-        if (hours <= 72)
+        if (hours <= RewardAdNoAdsHours)
         {
             return true;
         }

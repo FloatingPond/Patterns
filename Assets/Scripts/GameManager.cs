@@ -706,9 +706,67 @@ public class GameManager : MonoBehaviour
 
         //Enable Play Again and Return buttons
         CheckGameStreak(false);
+        if (currentGamemode == "match")
+        {
+            ShowMatchButtonAnims();
+        }
 
     }
-
+    public void ShowMatchButtonAnims()
+    {
+        bool[] buttonIsSet = new bool[9];
+        for (int i = 0; i < 9; i++)
+        {
+            while (buttonIsSet[i] == false)
+            {
+                if (Buttons[i].tag == "MatchA")
+                {
+                    Buttons[i].GetComponent<Image>().color = Color.green;
+                    Buttons[i].GetComponent<Animator>().Play("Disabled");
+                    Buttons[i].GetComponent<Button>().interactable = false;
+                    buttonAnims[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                    buttonAnims[i].GetComponent<Animator>().Play("green_gem");
+                    buttonIsSet[i] = true;
+                }
+                if (Buttons[i].tag == "MatchB")
+                {
+                    Buttons[i].GetComponent<Image>().color = Color.red;
+                    Buttons[i].GetComponent<Animator>().Play("Disabled");
+                    Buttons[i].GetComponent<Button>().interactable = false;
+                    buttonAnims[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                    buttonAnims[i].GetComponent<Animator>().Play("red_gem");
+                    buttonIsSet[i] = true;
+                }
+                if (Buttons[i].tag == "MatchC")
+                {
+                    Buttons[i].GetComponent<Image>().color = Color.yellow;
+                    Buttons[i].GetComponent<Animator>().Play("Disabled");
+                    Buttons[i].GetComponent<Button>().interactable = false;
+                    buttonAnims[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                    buttonAnims[i].GetComponent<Animator>().Play("orange_gem");
+                    buttonIsSet[i] = true;
+                }
+                if (Buttons[i].tag == "MatchD")
+                {
+                    Buttons[i].GetComponent<Image>().color = Color.cyan;
+                    Buttons[i].GetComponent<Animator>().Play("Disabled");
+                    Buttons[i].GetComponent<Button>().interactable = false;
+                    buttonAnims[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                    buttonAnims[i].GetComponent<Animator>().Play("blue_gem");
+                    buttonIsSet[i] = true;
+                }
+                if (Buttons[i].tag == "MatchBomb")
+                {
+                    Buttons[i].GetComponent<Image>().color = Color.black;
+                    Buttons[i].GetComponent<Animator>().Play("Disabled");
+                    Buttons[i].GetComponent<Button>().interactable = false;
+                    buttonAnims[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                    buttonAnims[i].GetComponent<Animator>().Play("bomb");
+                    buttonIsSet[i] = true;
+                }
+            }
+        }
+    }
     public void MakeButtonsInteractable()
     {
         foreach (GameObject button in Buttons)
@@ -765,9 +823,25 @@ public class GameManager : MonoBehaviour
                 matchComparison = Buttons[newNumber].tag;
                 matchComparisonNumber = number;
                 //DISABLES BUTTON SO PLAYER CANNOT MATCH THE SAME BUTTON THEY JUST CLICKED
-                Buttons[newNumber].GetComponent<Image>().color = Color.grey;
+                //Buttons[newNumber].GetComponent<Image>().color = Color.grey;
                 Buttons[newNumber].GetComponent<Button>().interactable = false;
                 buttonAnims[newNumber].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                if (Buttons[newNumber].tag == "MatchA")
+                {
+                    Buttons[newNumber].GetComponent<Image>().color = Color.green;
+                }
+                if (Buttons[newNumber].tag == "MatchB")
+                {
+                    Buttons[newNumber].GetComponent<Image>().color = Color.red;
+                }
+                if (Buttons[newNumber].tag == "MatchC")
+                {
+                    Buttons[newNumber].GetComponent<Image>().color = Color.yellow;
+                }
+                if (Buttons[newNumber].tag == "MatchD")
+                {
+                    Buttons[newNumber].GetComponent<Image>().color = Color.cyan;
+                }
             }
             else
             {
@@ -779,11 +853,43 @@ public class GameManager : MonoBehaviour
                         newMCnumber = matchComparisonNumber - 1;
                     }
                     //DISABLES BUTTONS THAT HAVE JUST BEEN MATCHED
+                    if (Buttons[newMCnumber].tag == "MatchA")
+                    {
+                        Buttons[newMCnumber].GetComponent<Image>().color = Color.green;
+                    }
+                    if (Buttons[newMCnumber].tag == "MatchB")
+                    {
+                        Buttons[newMCnumber].GetComponent<Image>().color = Color.red;
+                    }
+                    if (Buttons[newMCnumber].tag == "MatchC")
+                    {
+                        Buttons[newMCnumber].GetComponent<Image>().color = Color.yellow;
+                    }
+                    if (Buttons[newMCnumber].tag == "MatchD")
+                    {
+                        Buttons[newMCnumber].GetComponent<Image>().color = Color.cyan;
+                    }
                     buttonAnims[newMCnumber].GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                    Buttons[newMCnumber].GetComponent<Image>().color = Color.grey;
+                    //Buttons[newMCnumber].GetComponent<Image>().color = Color.grey;
                     Buttons[newMCnumber].GetComponent<Button>().interactable = false;
+                    if (Buttons[newNumber].tag == "MatchA")
+                    {
+                        Buttons[newNumber].GetComponent<Image>().color = Color.green;
+                    }
+                    if (Buttons[newNumber].tag == "MatchB")
+                    {
+                        Buttons[newNumber].GetComponent<Image>().color = Color.red;
+                    }
+                    if (Buttons[newNumber].tag == "MatchC")
+                    {
+                        Buttons[newNumber].GetComponent<Image>().color = Color.yellow;
+                    }
+                    if (Buttons[newNumber].tag == "MatchD")
+                    {
+                        Buttons[newNumber].GetComponent<Image>().color = Color.cyan;
+                    }
                     buttonAnims[newNumber].GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                    Buttons[newNumber].GetComponent<Image>().color = Color.grey;
+                    //Buttons[newNumber].GetComponent<Image>().color = Color.grey;
                     Buttons[newNumber].GetComponent<Button>().interactable = false;
                     matchComparisonNumber = 0;
                     matchComparison = ""; //TAKES OUT CURRENTLY STORED TILE FOR COMPARISON

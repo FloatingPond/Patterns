@@ -854,10 +854,6 @@ public class GameManager : MonoBehaviour
     
     public void RestartGame(string gamemode)
     {
-        if (gamemode != "match" && gamemode != "")
-        {
-            SetUpButtonAnimsForGamemodes();
-        }
         if (gamemode != "") //Used when game has been chosen for the first time
         {
             currentGamemode = gamemode;
@@ -866,6 +862,10 @@ public class GameManager : MonoBehaviour
                 mm.DisplayTutorialMessage(this);
                 //Show Tutorial message
             }
+        }
+        if (currentGamemode != "match")
+        {
+            SetUpButtonAnimsForGamemodes();
         }
         endgamePanel.SetActive(false); //Disable Play Again and Return buttons
         sPatternAnswer = "";

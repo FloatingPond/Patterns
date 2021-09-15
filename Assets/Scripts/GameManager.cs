@@ -751,6 +751,7 @@ public class GameManager : MonoBehaviour
         //If player clicks bomb, lose game
         if (Buttons[newNumber].tag == "MatchBomb")
         {
+            buttonAnims[newNumber].GetComponent<Image>().color = new Color(1, 1, 1, 1);
             matchComparisonNumber = 0;
             matchComparison = "";
             matchCounter = 0;
@@ -766,6 +767,7 @@ public class GameManager : MonoBehaviour
                 //DISABLES BUTTON SO PLAYER CANNOT MATCH THE SAME BUTTON THEY JUST CLICKED
                 Buttons[newNumber].GetComponent<Image>().color = Color.grey;
                 Buttons[newNumber].GetComponent<Button>().interactable = false;
+                buttonAnims[newNumber].GetComponent<Image>().color = new Color(1, 1, 1, 1);
             }
             else
             {
@@ -777,8 +779,10 @@ public class GameManager : MonoBehaviour
                         newMCnumber = matchComparisonNumber - 1;
                     }
                     //DISABLES BUTTONS THAT HAVE JUST BEEN MATCHED
+                    buttonAnims[newMCnumber].GetComponent<Image>().color = new Color(1, 1, 1, 1);
                     Buttons[newMCnumber].GetComponent<Image>().color = Color.grey;
                     Buttons[newMCnumber].GetComponent<Button>().interactable = false;
+                    buttonAnims[newNumber].GetComponent<Image>().color = new Color(1, 1, 1, 1);
                     Buttons[newNumber].GetComponent<Image>().color = Color.grey;
                     Buttons[newNumber].GetComponent<Button>().interactable = false;
                     matchComparisonNumber = 0;

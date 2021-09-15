@@ -12,7 +12,7 @@ public class SoundManager : MonoBehaviour
     public AudioMixer audioMixer;
     public float masterFloat = 1, musicFloat = 1, SFX_Float = 1, voiceFloat = 1;
 
-    public Slider masterSlider, musicSlider, SFX_slider, voiceSlider;
+    public Slider masterSlider, musicSlider, SFX_slider;
     private void Awake()
     {
         int rando = Random.Range(0, 5);
@@ -49,7 +49,6 @@ public class SoundManager : MonoBehaviour
         masterSlider.value = masterFloat;
         musicSlider.value = musicFloat;
         SFX_slider.value = SFX_Float;
-        voiceSlider.value = voiceFloat;
     }
 
     private void Start()

@@ -7,9 +7,9 @@ public class MessageManager : MonoBehaviour
 {
     //This script is for managing the message box(es)
 
-    public GameObject popUpBase, popUpTutorial, popUpReclaim;
+    public GameObject popUpBase, popUpTutorial, popUpReclaim, popUpAdfree;
 
-    public PopUpMessage MainMessageBox, ReclaimStreakMessageBox, TutorialMessageBox;
+    public PopUpMessage MainMessageBox, ReclaimStreakMessageBox, TutorialMessageBox, AdfreeMessageBox;
 
     //Message
     public void OpenMessage()
@@ -71,7 +71,38 @@ public class MessageManager : MonoBehaviour
 
         OpenReclaimMessage();
     }
-    
+
+    //Adfree
+    public void OpenAdfreeMessage()
+    {
+        popUpAdfree.GetComponent<Animator>().SetTrigger("Open");
+    }
+    public void CloseAdfreeMessage()
+    {
+        popUpAdfree.GetComponent<Animator>().SetTrigger("Close");
+    }
+    public void DisplayAdfree(string title, string text, string buttonPos, string buttonNeg)
+    {
+        PopulateButtonAdfree(title, text, buttonPos, buttonNeg);
+    }
+    void PopulateButtonAdfree(string title, string body, string buttonPos, string buttonNeg) //This is for the reward pop up message
+    {
+        //Set title to 'Welcome'
+        AdfreeMessageBox.tTitle.text = title;
+
+        //Set body to 'Something'
+        AdfreeMessageBox.tBody.text = body;
+
+        //Set button to 'Something'
+        AdfreeMessageBox.tButton.text = buttonPos;
+
+        //Set button to 'Something'
+        AdfreeMessageBox.tButton2.text = buttonNeg;
+
+        OpenAdfreeMessage();
+    }
+
+
     //Tutorial
     public void OpenMessageTutorial()
     {

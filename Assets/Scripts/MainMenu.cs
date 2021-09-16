@@ -119,6 +119,16 @@ public class MainMenu : MonoBehaviour
         DisplayHighScores();
         DisplayStreak();
         SwitchToCanvas("mainmenu");
+
+        if (!am.CheckIfPlayerHasRewardAdPremiumBoolEdition())
+        {
+            //Do a random to determine whether to show a "WATCH AD TO GET RID OF ADS LOL"
+            int random = UnityEngine.Random.Range(0, 20);
+            if (random == 1)
+            {
+                gm.mm.DisplayAdfree("AD-FREE?", "Watch a reward ad and get 2 days ad-free!", "Sure!", "no");
+            }
+        }
     }
 
     public void ReturnToMainMenuFromStats()

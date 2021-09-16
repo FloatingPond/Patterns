@@ -154,7 +154,7 @@ public class AdManager : MonoBehaviour
         
     }
 
-    public void RewardAdReclaimStreak() //WORKS - And is used for no ads
+    public void RewardAdReclaimStreak() //WORKS - And is used for claiming streak back
     {
         //TUTORIAL REWARDS
         string adUnitId;
@@ -193,54 +193,6 @@ public class AdManager : MonoBehaviour
     {
         // Create a 320x50 banner at the top of the screen.
         adBannerBottom = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
-    }
-
-    private void RequestReward() //DOES NOT WORK
-    {
-        Debug.Log("Reward Ad Made");
-
-        requestForReward = new AdRequest.Builder().Build();
-
-        adReward.LoadAd(requestForReward);
-    }
-
-    public void RequestReward2() //DOES NOT WORK
-    {
-        //Reward - IS NOT WORKING
-        Debug.Log("BUTTON PRESSED");
-
-        List<string> testids = new List<string>();
-        testids.Add("21B75031C51D44C92C2561822796725B");
-        RequestConfiguration config = new RequestConfiguration.Builder().SetTestDeviceIds(testids).build();
-        MobileAds.SetRequestConfiguration(config);
-
-        adReward = new RewardedAd(adUnitId2);
-
-        requestForReward = new AdRequest.Builder().Build();
-
-        adReward.LoadAd(requestForReward);
-
-        adReward.Show();
-    }
-
-    public void RequestReward3() //DOES NOT WORK
-    {
-        //RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("21B75031C51D44C92C2561822796725B"));
-        List<string> testids = new List<string>();
-        testids.Add("21B75031C51D44C92C2561822796725B");
-        RequestConfiguration config = new RequestConfiguration.Builder().SetTestDeviceIds(testids).build();
-        MobileAds.SetRequestConfiguration(config);
-
-
-        requestForReward = new AdRequest.Builder().Build();
-
-        string test = "";
-        adRbva.LoadAd(requestForReward, test);
-
-        adRbva.OnAdLoaded += this.HandleOnRewardAdLoaded;
-
-        // Called when an ad request failed to load.
-        //adRbva.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
     }
 
     public void CloseBannerAd()

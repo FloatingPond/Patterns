@@ -160,6 +160,13 @@ public class GameManager : MonoBehaviour
     }
     [PropertyOrder(4)]
 
+    [Button(ButtonSizes.Small)]
+    private void ResetAdFree()
+    {
+        am.dtLastTimeRewardAdWatched = am.dtLastTimeRewardAdWatched.AddDays(-2);
+    }
+    [PropertyOrder(4)]
+
 
     //End of variables and buttons
 

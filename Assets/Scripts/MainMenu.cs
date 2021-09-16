@@ -65,6 +65,7 @@ public class MainMenu : MonoBehaviour
         //gm.LoadGame();
         DisplayStreak();
         StartCoroutine(AnimatePremiumButton());
+        Screen.orientation = ScreenOrientation.Portrait;
     }
     
     public void Start_Gamemode(string gamemode) //Called via Main Menu Gamemode buttons to open specified game

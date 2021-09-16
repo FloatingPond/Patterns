@@ -274,10 +274,6 @@ public class AdManager : MonoBehaviour
     }
     public bool CheckIfPlayerHasRewardAdPremiumBoolEdition() //Called on start for checking stuff
     {
-        //if has bought premium
-        //return true
-
-        //if has been less than 3 days since last watched reward ad
         int hours = (int)(DateTime.Now - dtLastTimeRewardAdWatched).TotalHours;
 
         if (hours <= RewardAdNoAdsHours)

@@ -9,7 +9,6 @@ using TMPro;
 public class AchievementManager : MonoBehaviour
 {
     public int playerScore;
-    public TextMeshProUGUI textStatus;
 
     string leaderboardID = "CgkIq77noacSEAIQAQ"; //Classic High Score
     //Achievements
@@ -66,18 +65,15 @@ public class AchievementManager : MonoBehaviour
     }
     public void AuthenticateGoogleV2()
     {
-        String text1 = textStatus.text;
         platform.Authenticate(SignInInteractivity.CanPromptAlways, (result) =>
         {
             switch (result)
             {
                 case SignInStatus.Success:
-                    textStatus.text = text1 + "Success";
                     Debug.Log("Logged in successfully");
                     bLogIn.SetActive(false);
                     break;
                 default:
-                    textStatus.text = text1 + "Failed";
                     Debug.Log("Login Failed - " + result);
                     bLogIn.SetActive(true);
                     break;
@@ -87,19 +83,16 @@ public class AchievementManager : MonoBehaviour
 
     public void AuthenticateGoogleV3()
     {
-        String text1 = textStatus.text;
         platform.Authenticate(SignInInteractivity.CanPromptOnce, (result) =>
         {
             switch (result)
             {
                 case SignInStatus.Success:
-                    textStatus.text = text1 + "Success";
                     Debug.Log("Logged in successfully");
                     bLogIn.SetActive(false);
                     UnlockAchievement(); 
                     break;
                 default:
-                    textStatus.text = text1 + "Failed";
                     Debug.Log("Login Failed " + result);
                     bLogIn.SetActive(true);
                     break;

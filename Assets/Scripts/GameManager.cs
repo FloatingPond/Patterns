@@ -213,7 +213,7 @@ public class GameManager : MonoBehaviour
 
     private bool AreAnyMessageBoxesOpen()
     {
-        if (mm.MainMessageBox.transform.localScale.x > 0 || mm.VariantMessageBox.transform.localScale.x > 0 || mm.TutorialMessageBox.transform.localScale.x > 0)
+        if (mm.MainMessageBox.transform.localScale.x > 0 || mm.ReclaimStreakMessageBox.transform.localScale.x > 0 || mm.TutorialMessageBox.transform.localScale.x > 0)
         {
             return true;
         }
@@ -1181,7 +1181,6 @@ public class GameManager : MonoBehaviour
                 mm.DisplayWelcomeMessage();
             }
         }
-
         else if (days > 2) //Too late
         {
             //  Too late

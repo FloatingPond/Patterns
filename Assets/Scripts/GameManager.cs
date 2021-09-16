@@ -1207,10 +1207,6 @@ public class GameManager : MonoBehaviour
             //  OFFER CHANCE TO RECLAIM STREAK
             if (showMessages) //Game just opened
             {
-                //IF HAS PREMIUM AD FREE
-                //Streak Saved
-                //Else
-                //Show this window
                 mm.DisplayAbleToWatchRewardAd("Want a free streak?", "Watch a reward ad to claim your streak back!", "Yes Please!", "No thanks!");
             }
 
@@ -1249,8 +1245,7 @@ public class GameManager : MonoBehaviour
         }
         CheckStreakHighscore(gameStreak, dateLastAcquiredStreak);
         CheckStreakHighscore(gameStreakLast, dateLastAcquiredStreakLast);
-        //Ultimately save
-        Save();
+        Save(); //Ultimately save
     }
 
     private void SaveFormerStreak() //Saves the current streak as the last streak aquired

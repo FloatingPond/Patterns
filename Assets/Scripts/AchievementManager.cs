@@ -13,9 +13,9 @@ public class AchievementManager : MonoBehaviour
     string leaderboardID = "CgkIq77noacSEAIQAQ"; //Classic High Score
     //Achievements
     //1
-    string aIdFirstTimeOpen = "CgkIq77noacSEAIQAA"; //Start Game
+    string aIdFirstTimeOpen = "CgkIq77noacSEAIQBA"; //New Beginnings
     //2
-    string aIdOneGamePlayed = "CgkIq77noacSEAIQAA"; //Play 1 of any Game mode
+    string aIdOneGamePlayed = "CgkIq77noacSEAIQAA"; //Start Game - Play 1 of any Game mode
     //3
     string aIdAllGameModesPlayed = "CgkIq77noacSEAIQCA"; //Play all game modes
     //4
@@ -59,29 +59,10 @@ public class AchievementManager : MonoBehaviour
             PlayGamesPlatform.DebugLogEnabled = true;
             platform = PlayGamesPlatform.Activate();
         }
-
-        AuthenticateGoogleV3();
-        
+        AuthenticateGoogle();
     }
-    public void AuthenticateGoogleV2()
-    {
-        platform.Authenticate(SignInInteractivity.CanPromptAlways, (result) =>
-        {
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    Debug.Log("Logged in successfully");
-                    bLogIn.SetActive(false);
-                    break;
-                default:
-                    Debug.Log("Login Failed - " + result);
-                    bLogIn.SetActive(true);
-                    break;
-            }
-        });
-    }
-
-    public void AuthenticateGoogleV3()
+    
+    public void AuthenticateGoogle()
     {
         platform.Authenticate(SignInInteractivity.CanPromptOnce, (result) =>
         {

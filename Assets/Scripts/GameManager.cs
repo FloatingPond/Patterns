@@ -82,92 +82,6 @@ public class GameManager : MonoBehaviour
 
     public AchievementManager achm;
     
-    [Title("Buttons and Debug")]
-    
-    //DateTime stuff
-
-    public DateTime dt;
-    public DateTime dtnew, dtnew2;
-    [PropertyOrder(1)]
-    public string dtString2 = "2005-10-05 22:12 PM";
-    [PropertyOrder(1)]
-    public string dtString3 = "2005-10-05 22:12 PM";
-    [PropertyOrder(2)]
-    public string dtString4 = "2021-10-05 22:12 PM";
-
-    [Button(ButtonSizes.Small)]
-    [PropertyOrder(1)]
-    private void ParseStringToDateTime()
-    {
-        StringToDateTime();
-    }
-
-    [Button(ButtonSizes.Small)]
-    private void ChangeDateLastAcquiredStreak()
-    {
-        dateLastAcquiredStreak = DateTime.ParseExact(dtString4, "yyyy-MM-dd HH:mm tt", null);
-    }
-
-    [Button(ButtonSizes.Small)]
-    [PropertyOrder(3)]
-    private void ChangeDlasAndDisplay()
-    {
-        dateLastAcquiredStreak = DateTime.ParseExact(dtString4, "yyyy-MM-dd HH:mm tt", null);
-        //ChangeGameStreak();
-        CheckGameStreak(false);
-    }
-
-    [Button(ButtonSizes.Small)]
-    [PropertyOrder(2)]
-    private void GetDateLastAcquiredStreak()
-    {
-        dtString4 = dateLastAcquiredStreak.ToString("yyyy-MM-dd HH:mm tt");
-    }
-
-    //Newest debugging for streak stuff
-    [Title("Buttons and Debug")]
-    [PropertyOrder(4)]
-    public string sTestOne;
-    [PropertyOrder(4)]
-    public string sTestTwo;
-
-    public DateTime dtTestOne;
-    public DateTime dtTestTwo;
-
-    [PropertyOrder(4)]
-
-    [Button(ButtonSizes.Small)]
-    private void SetdtTestOneToNow()
-    {
-        sTestOne = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
-    }
-    [PropertyOrder(4)]
-
-    [Button(ButtonSizes.Small)]
-    private void SetdtTestTwoToNow()
-    {
-        sTestTwo = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
-    }
-    [PropertyOrder(4)]
-
-    [Button(ButtonSizes.Small)]
-    private void TestCheckStreakButton()
-    {
-        dtTestOne = StringToDateTime(sTestOne);
-        dtTestTwo = StringToDateTime(sTestTwo);
-
-        TestCheckStreak(dtTestOne, dtTestTwo);
-    }
-    [PropertyOrder(4)]
-
-    [Button(ButtonSizes.Small)]
-    private void ResetAdFree()
-    {
-        am.dtLastTimeRewardAdWatched = am.dtLastTimeRewardAdWatched.AddDays(-2);
-    }
-    [PropertyOrder(4)]
-
-
     //End of variables and buttons
 
     void Awake() //Called before MainMenu's Start method
@@ -585,18 +499,6 @@ public class GameManager : MonoBehaviour
         }
         EnableButtons(true);
     }
-    
-    void StringToDateTime() //Used to calculate the time between two datetimes
-    {
-        dtnew = DateTime.ParseExact(dtString2, "yyyy-MM-dd HH:mm tt", null);
-        dtnew2 = DateTime.ParseExact(dtString3, "yyyy-MM-dd HH:mm tt", null);
-        TimeSpan TimeBetween = dtnew2.Subtract(dtnew);
-        Debug.Log(TimeBetween);
-        Debug.Log(TimeBetween.Hours);
-
-        Debug.Log(dtnew);
-    
-}
     
     void ResetMatchTileCounters() 
     {

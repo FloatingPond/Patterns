@@ -10369,7 +10369,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: www.paulgush.com
+          m_StringArgument: http://www.paulgush.com
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1437646572
@@ -10981,7 +10981,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: www.samcrosby.co.uk
+          m_StringArgument: http://www.samcrosby.co.uk
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1509690354
@@ -14382,7 +14382,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonRewardAd: {fileID: 1675457366}
   tRewardAdDate: {fileID: 2074989400}
-  adsRewardsWatched: 0
   mm: {fileID: 994137742}
   gm: {fileID: 1893154942}
 --- !u!114 &1893154944

@@ -106,6 +106,8 @@ public class AchievementManager : MonoBehaviour
             //Unlock "Play one game of any game mode"
             Social.ReportProgress(aIdOneGamePlayed, 100f, success => { });
 
+            UnlockAchievement(); //Should not have to be used here but for some reason not working in sign in code
+
             //Check if all games have been played by seeing if player has high score of 1 in all
             if (CheckIfAllGamemodesHaveBeenPlayed(gm))
             {

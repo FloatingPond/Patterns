@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
 using System;
-using UnityEngine.UI;
-using Sirenix.OdinInspector;
 using TMPro;
 
 
@@ -30,43 +28,15 @@ public class AdManager : MonoBehaviour
     public GameObject buttonRewardAd;
     public GameObject tRewardAdDate;
 
-    [Title("Counter")]
-    [SerializeField]
     private int adsRewardsWatched;
 
-    [Title("Managers")]
     public MainMenu mm;
 
     public GameManager gm;
-
-    [Title("Buttons")]
-
-    [Button(ButtonSizes.Large)]
-
-    private void BigButton()
+    
+    void Start() //Not used
     {
-        RewardAdNoBanners();
-    }
 
-    void Start()
-    {
-        ////Always needs to be called
-        //MobileAds.Initialize(initStatus => { });
-
-        ////TutorialStuffThatDidntWork();
-
-
-        ////Banner
-
-        //RequestBanner();
-
-        //requestForBanner = new AdRequest.Builder().Build();
-
-        //adBannerBottom.LoadAd(requestForBanner);
-
-        ////Reward
-
-        //// adRbva = RewardBasedVideoAd.Instance;
     }
 
     public void SetupOnStart(bool firstTime) //Called in GameManager's Awake
@@ -79,44 +49,30 @@ public class AdManager : MonoBehaviour
         {
             EnableRewardAdElements(false);
         }
-        else if (CheckIfPlayerHasPremium()) //Paid Premium
-        {
-
-        }
-        else if (firstTime) //Delay ads by 3 minutes
+        else if (firstTime) //Delay ads by 60 seconds
         {
             EnableRewardAdElements(true);
-            StartCoroutine(WaitBeforeRequestingBanner());
+            StartCoroutine(WaitBeforeRequestingBanner(60));
         }
-        
-        else //Initialise ads immediately on launch
+        else //Returning non-reward ad play - Initialise ads 12s on launch
         {
             EnableRewardAdElements(true);
             //Banner ad stuff
-            RequestBanner();
-            adBannerBottom.LoadAd(requestForBanner);
+            StartCoroutine(WaitBeforeRequestingBanner(12));
         }
-        
-        // adRbva = RewardBasedVideoAd.Instance; //Reward
     }
 
-    IEnumerator WaitBeforeRequestingBanner()
+    IEnumerator WaitBeforeRequestingBanner(float time)
     {
-        yield return new WaitForSeconds(60f);
+        yield return new WaitForSeconds(time);
         RequestBanner();
         adBannerBottom.LoadAd(requestForBanner);
-
     }
     
-    public bool CheckIfPlayerHasPremium()
-    {
-        return false;
-    }
-
     private void EnableRewardAdElements(bool state)
     {
         buttonRewardAd.SetActive(state);
-        StartCoroutine(DelayEnableRewardTextEndDate(!state));
+        StartCoroutine(DelayEnableRewardTextEndDate(!state)); //Done due to error if done instantly
     }
     
     public void RewardAdNoBanners() //WORKS - And is used for no ads
@@ -197,7 +153,6 @@ public class AdManager : MonoBehaviour
 
     public void CloseBannerAd()
     {
-        //StopAllCoroutines(); //Not sure why this was here
         if (adBannerBottom != null)
         { 
             adBannerBottom.Destroy();
@@ -239,12 +194,10 @@ public class AdManager : MonoBehaviour
 
         dtLastTimeRewardAdWatched = DateTime.Now; //Sets last time user watched reward ad to now
 
-        //Give back streak
-        gm.ReclaimStreak();
+        CloseBannerAd();
 
-        //Show it on main menu
-
-        mm.DisplayStreak();
+        gm.ReclaimStreak(); //Give back streak
+        mm.DisplayStreak(); //Show it on main menu
 
         gm.Save();
         mm.DisplayStats();
@@ -299,7 +252,7 @@ public class AdManager : MonoBehaviour
 
     }
 
-    public void HandleRewardedAdFailedToLoad(object sender, AdErrorEventArgs args)
+    public void HandleRewardedAdFailedToLoad(object sender, AdErrorEventArgs args) //Reward ad didn't load
     {
         MonoBehaviour.print(
             "HandleRewardedAdFailedToLoad event received with message: "
@@ -311,7 +264,7 @@ public class AdManager : MonoBehaviour
         return adsRewardsWatched;
     }
 
-    public void SetadsRewardsWatched(int number)
+    public void SetadsRewardsWatched(int number) //Called in GM Load
     {
         adsRewardsWatched = number;
     }
@@ -329,10 +282,5 @@ public class AdManager : MonoBehaviour
             tRewardAdDate.GetComponent<TextMeshProUGUI>().text = "AD-free ends in " + (RewardAdNoAdsHours - hours2) + " hours."; //Sets the text from the component above
         }
     }
-
     
-
-
-
-
 }

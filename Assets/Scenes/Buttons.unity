@@ -1169,7 +1169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 0.78431374}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6445,8 +6445,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8723,8 +8723,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9929,8 +9929,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -10369,7 +10369,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: www.paulgush.com
+          m_StringArgument: http://www.paulgush.com
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 175238941}
@@ -11003,7 +11003,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: www.samcrosby.co.uk
+          m_StringArgument: http://www.samcrosby.co.uk
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 175238941}
@@ -14407,11 +14407,6 @@ MonoBehaviour:
   sm: {fileID: 175238941}
   mm: {fileID: 1893154944}
   achm: {fileID: 1893154945}
-  dtString2: 2005-10-05 22:12 PM
-  dtString3: 2005-10-05 22:12 PM
-  dtString4: 2021-10-05 22:12 PM
-  sTestOne: 
-  sTestTwo: 
 --- !u!114 &1893154943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14426,7 +14421,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonRewardAd: {fileID: 1675457366}
   tRewardAdDate: {fileID: 2074989400}
-  adsRewardsWatched: 0
   mm: {fileID: 994137742}
   gm: {fileID: 1893154942}
 --- !u!114 &1893154944

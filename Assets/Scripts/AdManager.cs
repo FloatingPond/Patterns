@@ -282,10 +282,5 @@ public class AdManager : MonoBehaviour
             tRewardAdDate.GetComponent<TextMeshProUGUI>().text = "AD-free ends in " + (RewardAdNoAdsHours - hours2) + " hours."; //Sets the text from the component above
         }
     }
-
     
-
-
-
-
 }

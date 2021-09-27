@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour
     public Slider masterSlider, musicSlider, SFX_slider;
     private void Awake()
     {
+        /*DEV MEMES
         int rando = Random.Range(0, 5);
         Debug.Log("Rando is " + rando);
         if (rando == 3)
@@ -22,7 +23,8 @@ public class SoundManager : MonoBehaviour
             LoadAudioClip_Music("Funky Funky loop2");
         }
         else
-        LoadAudioClip_Music("Funky Funky loop");
+        */
+        LoadAudioClip_Music("Funky Chill loop");
         PlayMusic();
     }
 

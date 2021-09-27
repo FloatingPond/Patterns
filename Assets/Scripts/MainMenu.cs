@@ -345,4 +345,9 @@ public class MainMenu : MonoBehaviour
             //Disable achievement list button
         }
     }
+
+    public void OpenWebpage(string url)
+    {
+        Application.OpenURL(url);
+    }
 }

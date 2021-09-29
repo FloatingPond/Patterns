@@ -803,7 +803,21 @@ public class GameManager : MonoBehaviour
                     matchComparisonNumber = 0;
                     matchComparison = ""; //TAKES OUT CURRENTLY STORED TILE FOR COMPARISON
                     matchCounter++; //INCREMENTS TRACKER OF HOW MANY MATCHES THERE HAVE BEEN
-                    sm.LoadAudioClip_SFX("match3_1a");
+                    switch (matchCounter)
+                    {
+                        case 1:
+                            sm.LoadAudioClip_SFX("match3_1a");          //Plays different sounds on incrementing matches
+                            break;
+                        case 2:
+                            sm.LoadAudioClip_SFX("match3_1b");
+                            break;
+                        case 3:
+                            sm.LoadAudioClip_SFX("match3_1c");
+                            break;
+                        case 4:
+                            sm.LoadAudioClip_SFX("match3_1d");
+                            break;
+                    }
                     sm.PlaySFX();
                     //ROUND WIN CONDITION: If there have been 4 matches, move to the next round
                     if (matchCounter == 4)

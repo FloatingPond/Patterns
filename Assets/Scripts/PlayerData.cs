@@ -48,7 +48,7 @@ public class PlayerData
 
     public PlayerData(GameManager gm)
     {
-        fileVersion = "dev16";
+        fileVersion = "prod1"; //Previous most dev was dev16, now on prod, prod1 being release
         highscores = new int[4];
         highscores[0] = gm.Highscore[0]; //Classic
         highscores[1] = gm.Highscore[1]; ; //Random

@@ -13,10 +13,11 @@ public class AdManager : MonoBehaviour
 
     //Banner
     private BannerView adBannerBottom;
-    private string adUnitId = "ca-app-pub-3940256099942544/6300978111";
+    private string adUnitIdBanner = "ca-app-pub-5688744298036134/5023660262";
+    private string adUnitIdRewardPremium = "ca-app-pub-5688744298036134/5669677461";
+    private string adUnitIdRewardStreak = "ca-app-pub-5688744298036134/5669677461";
+
     private AdRequest requestForBanner;
-    //Reward
-    private string adUnitId2 = "ca-app-pub-3940256099942544/5224354917";
     
     //Reward Ad stuff
     RewardedAd rewardedAd;
@@ -34,11 +35,7 @@ public class AdManager : MonoBehaviour
 
     public GameManager gm;
     
-    void Start() //Not used
-    {
-
-    }
-
+    
     public void SetupOnStart(bool firstTime) //Called in GameManager's Awake
     {
         //Always needs to be called
@@ -62,14 +59,14 @@ public class AdManager : MonoBehaviour
         }
     }
 
-    IEnumerator WaitBeforeRequestingBanner(float time)
+    IEnumerator WaitBeforeRequestingBanner(float time) //Holds showinf the banner for an amount of time
     {
         yield return new WaitForSeconds(time);
         RequestBanner();
         adBannerBottom.LoadAd(requestForBanner);
     }
     
-    private void EnableRewardAdElements(bool state)
+    private void EnableRewardAdElements(bool state) //Enables or disables showing the reward ad button
     {
         buttonRewardAd.SetActive(state);
         StartCoroutine(DelayEnableRewardTextEndDate(!state)); //Done due to error if done instantly
@@ -77,78 +74,38 @@ public class AdManager : MonoBehaviour
     
     public void RewardAdNoBanners() //WORKS - And is used for no ads
     {
-        //TUTORIAL REWARDS
-        string adUnitId;
-        #if UNITY_ANDROID
-        adUnitId = "ca-app-pub-3940256099942544/5224354917";
-        #elif UNITY_IPHONE
-                            adUnitId = "ca-app-pub-3940256099942544/1712485313";
-        #else
-                            adUnitId = "unexpected_platform";
-        #endif
-
-        rewardedAd = new RewardedAd(adUnitId);
+        rewardedAd = new RewardedAd(adUnitIdRewardPremium);
         
-        List<string> testids = new List<string>();
-        testids.Add("21B75031C51D44C92C2561822796725B");
-        RequestConfiguration config = new RequestConfiguration.Builder().SetTestDeviceIds(testids).build();
-        MobileAds.SetRequestConfiguration(config);
-
-        // Called when an ad request has successfully loaded.
-        rewardedAd.OnAdLoaded += HandleOnRewardAdLoaded;
-        // Called when an ad request failed to load.
-        rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
-        // Called when the user should be rewarded for interacting with the ad.
-        rewardedAd.OnUserEarnedReward += HandleUserEarnedRewardNoAds;
-
-        // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder()
-                         .AddTestDevice("34343")
-                         .Build();
-        // Load the rewarded ad with the request.
-        rewardedAd.LoadAd(request);
+        rewardedAd.OnAdLoaded += HandleOnRewardAdLoaded; // Called when an ad request has successfully loaded.
         
+        rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad; // Called when an ad request failed to load.
+        
+        rewardedAd.OnUserEarnedReward += HandleUserEarnedRewardNoAds; // Called when the user should be rewarded for interacting with the ad.
+
+        AdRequest request = new AdRequest.Builder().Build(); // Create an empty ad request.
+
+        rewardedAd.LoadAd(request); // Load the rewarded ad with the request.
+
     }
 
     public void RewardAdReclaimStreak() //WORKS - And is used for claiming streak back
     {
-        //TUTORIAL REWARDS
-        string adUnitId;
-#if UNITY_ANDROID
-        adUnitId = "ca-app-pub-3940256099942544/5224354917";
-#elif UNITY_IPHONE
-                            adUnitId = "ca-app-pub-3940256099942544/1712485313";
-#else
-                            adUnitId = "unexpected_platform";
-#endif
-
-        rewardedAd = new RewardedAd(adUnitId);
-
-        List<string> testids = new List<string>();
-        testids.Add("21B75031C51D44C92C2561822796725B");
-        RequestConfiguration config = new RequestConfiguration.Builder().SetTestDeviceIds(testids).build();
-        MobileAds.SetRequestConfiguration(config);
-
-        // Called when an ad request has successfully loaded.
-        rewardedAd.OnAdLoaded += HandleOnRewardAdLoaded;
-        // Called when an ad request failed to load.
-        rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
-        // Called when the user should be rewarded for interacting with the ad.
-        rewardedAd.OnUserEarnedReward += HandleUserEarnedRewardReclaimStreak;
-
-        // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder()
-                         .AddTestDevice("34343")
-                         .Build();
-        // Load the rewarded ad with the request.
-        rewardedAd.LoadAd(request);
-
+        rewardedAd = new RewardedAd(adUnitIdRewardStreak);
+        
+        rewardedAd.OnAdLoaded += HandleOnRewardAdLoaded; // Called when an ad request has successfully loaded.
+        
+        rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad; // Called when an ad request failed to load.
+        
+        rewardedAd.OnUserEarnedReward += HandleUserEarnedRewardReclaimStreak; // Called when the user should be rewarded for interacting with the ad.
+        
+        AdRequest request = new AdRequest.Builder().Build(); // Create an empty ad request.
+        
+        rewardedAd.LoadAd(request); // Load the rewarded ad with the request.
     }
 
     private void RequestBanner()
     {
-        // Create a 320x50 banner at the top of the screen.
-        adBannerBottom = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
+        adBannerBottom = new BannerView(adUnitIdBanner, AdSize.Banner, AdPosition.Bottom); // Create a 320x50 banner at the top of the screen.
     }
 
     public void CloseBannerAd()
@@ -168,20 +125,18 @@ public class AdManager : MonoBehaviour
         string type = args.Type;
         double amount = args.Amount;
         MonoBehaviour.print("HandleRewardedAdRewarded event received for " + amount.ToString() + " " + type);
+
         adsRewardsWatched++;
         
         dtLastTimeRewardAdWatched = DateTime.Now; //Sets last time user watched reward ad to now
         
-        //If we make it - set the "Watched 1 reward ad" achievement to acquired
-        //-
-
         //Method to disable ads
         CheckIfPlayerHasRewardAdPremium(); //Used to disable ads - DISABLED
         
         //Closes ad if open
         CloseBannerAd();
 
-        gm.Save();
+        gm.Save(); //Saves as rewards watched has gone up
         mm.DisplayStats();
     }
 
@@ -200,24 +155,17 @@ public class AdManager : MonoBehaviour
         mm.DisplayStreak(); //Show it on main menu
 
         gm.Save();
-        mm.DisplayStats();
+        mm.DisplayStats(); //Saves as rewards watched has gone up
     }
 
     public void CheckIfPlayerHasRewardAdPremium() //Called on Reward Win
     {
-        //if has bought premium
-        //return true
-
-        //if has been less than 3 days since last watched reward ad
         int hours = (int)(DateTime.Now - dtLastTimeRewardAdWatched).TotalHours;
 
         if (hours <= RewardAdNoAdsHours)
         {
             EnableRewardAdElements(false); //Disable showing reward ad button
-
-            //tRewardAdDate.SetActive(true); //Shows the text
-            //TextMeshProUGUI tText = tRewardAdDate.GetComponent<TextMeshProUGUI>(); //Gets the text component from the text
-            //tText.text = "AD-free ends in " + (72 - hours) + " hours."; //Sets the text from the component above
+            
         }
         else
         { 

@@ -442,7 +442,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator AnimateButtonColours() //Used for Classic, Random and Timed Round
     {
-        if (ReturnScoreOfGamemode() == 0)
+        if (ReturnScoreOfGamemode() == 0 && iPatternNumbers == 1) //Highscore is zero and it is the first round
         {
             yield return new WaitForSeconds(1f);
         }
@@ -487,7 +487,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator HideMatchButtons() //Used in Match
     {
-        if (ReturnScoreOfGamemode() == 0)
+        if (ReturnScoreOfGamemode() == 0 && iPatternNumbers == 1) //Highscore is zero and it is the first round
         { 
             yield return new WaitForSeconds(1f);
         }
@@ -577,8 +577,8 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    //Called when the criteria has been met for a gamemode
-    void NextRound()
+    
+    void NextRound() //Called when the criteria has been met for a gamemode
     {
         //Clear answer
         sPatternAnswer = "";
